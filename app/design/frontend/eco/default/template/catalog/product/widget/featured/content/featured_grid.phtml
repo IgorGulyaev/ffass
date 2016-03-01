@@ -1,0 +1,15 @@
+<?php
+$featuredProducts = $this->getLoadedProductCollection()->addAttributeToSelect('small_image');
+$imageHelper = $this->helper('catalog/image');
+?>
+<?php if(count($featuredProducts->getItems())): ?>
+    <div class="category-row products-grid">
+        <?php $productRenderer = $this->getChild('product_renderer'); ?>
+        <?php foreach($featuredProducts as $fp): ?>
+        <div class="category-item">
+            <?php $productRenderer->setProduct($fp); ?>
+            <?php echo $productRenderer->toHtml(); ?>
+        </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

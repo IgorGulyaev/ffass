@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Ecomitize_Navigation
+ *
+ * @package    Ecomitize_All
+ * @author     Ecomitizet Magento Team <>
+ * @copyright  Copyright (c) 2015 Ecomitize http://www.ecomitize.com
+ */
+-->
+<config>
+    <modules>
+        <Ecomitize_Navigation>
+            <version>1.0.0</version>
+        </Ecomitize_Navigation>
+    </modules>
+    <global>
+        <blocks>
+            <ecomitize_navigation>
+                <class>Ecomitize_Navigation_Block</class>
+            </ecomitize_navigation>
+        </blocks>
+        <blocks>
+            <page>
+                <rewrite>
+                    <html_topmenu>Ecomitize_Navigation_Block_Page_Html_Topmenu</html_topmenu>
+                </rewrite>
+            </page>
+        </blocks>
+        <models>
+            <ecomitize_navigation>
+                <class>Ecomitize_Navigation_Model</class>
+            </ecomitize_navigation>
+        </models>
+    </global>
+</config>

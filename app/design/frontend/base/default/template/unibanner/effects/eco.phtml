@@ -1,0 +1,82 @@
+<?php
+define('BANNER_MAX_WIDTH',    600);
+define('BANNER_TYPE_IMAGE',   0);
+define('BANNER_TYPE_CONTENT', 1);
+$gCode   = $this->getBannerGroupCode();
+$data    = $this->getDataByGroupCode($gCode);
+$gData   = $data['group_data'];
+$mode    = $gData->getPreBannerEffects();
+?>
+<?php if(count($data['banner_data'])): ?>
+    <div class="banners">
+        <div class="owl-carousel">
+            <?php foreach ($data['banner_data'] as $banner): ?>
+                <div class="item">
+                    <?php
+                        $type    = $banner->getBannerType();
+                        $title   = $banner->getTitle();
+                        $content = $banner->getBannerContent();
+                        $link    = $banner->getLink();
+                        $imgName = $banner->getFilename();
+                        if ($type == BANNER_TYPE_IMAGE) :
+                            $image = null; $path = Mage::getBaseDir('media') . DS . $imgName;
+                            if (@file_exists($path) && $size = getimagesize($path)) :
+                                $image = ($size[0] > BANNER_MAX_WIDTH)
+                                    ? $this->getResizeImage($imgName, $gCode, BANNER_MAX_WIDTH)
+                                    : Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $imgName;
+                            endif;
+                            if ($image) : ?>
+
+                                    <!-- HTMl -->
+                                    <a  <?php echo ($link) ? sprintf('href="%s"', $link):''; ?>
+                                        <?php echo ($title && $gData->getShowTitle() ? sprintf('title="%s"', $title):''); ?>
+                                        <?php echo ($link) ? 'target="_blank"':''; ?> >
+                                        <img src="<?php echo $image; ?>" />
+                                    </a>
+                                    <!-- END HTMl -->
+
+                            <?php
+                            endif;
+                        elseif ($type == BANNER_TYPE_CONTENT) :
+                            if ($content && $gData->getShowContent()) : ?>
+
+                                <!-- HTMl -->
+                                    <?php echo $content; ?>
+                                <!-- END HTMl -->
+
+                            <?php
+                            endif;
+                        endif;
+                    ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('.banners .owl-carousel').owlCarousel({
+                margin: 0,
+                loop: true,
+                nav: false,
+                dots: false,
+                <?php if ($mode == 'fade') : ?>
+                    <!-- Create animation fade effect -->
+                <?php endif; ?>
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    960: {
+                        items: 2
+                    },
+                    1200: {
+                        items: 2
+                    }
+                }
+            });
+        });
+    </script>
+<?php endif; ?>

@@ -1,0 +1,44 @@
+<?php
+/**
+ *
+ * Copyright (c) 2015 Ecomitize Ltd
+ *
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+
+$collection = Mage::helper('ecomitize_all')->getManufacturers();
+$_helper = $this->helper('catalog/output');
+
+?>
+<div class="manufactures">
+    <?php if(sizeof($collection) == 0): ?>
+        <p><?php echo $this->__('There are no current manufacturers.') ?></p>
+    <?php else: ?>
+        <div class="category-products">
+            <div class="category-row products-grid">
+                <?php foreach ($collection as $value): ?>
+                    <?php $filename = Mage::getModel('manufacturer/manufacturer')->getCollection()->addFieldToSelect('*')->addFieldToFilter('menufecturer_name',array('eq' => $value['value']))->getFirstItem() ?>
+                    <div class="category-item">
+                        <div class="products-item">
+                            <?php if(!$filename->getFilename()): ?>
+                                <a href="<?php echo $this->getUrl('offers/index/index/manufacturer/' . $value['value']) ?>"><img class="img-responsive" src="<?php echo $this->getSkinUrl('images/catalog/product/placeholder/image.jpg') ?>"></a>
+                            <?php else: ?>
+                            <a href="<?php echo $this->getUrl('offers/index/index/manufacturer/' . $value['value']) ?>"><img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'Manufacturer/' . $filename->getFilename() ?>"></a>
+                            <?php endif; ?>
+                            <h3><a href="<?php echo $this->getUrl('offers/index/index/manufacturer/' . $value['value']) ?>"><?php echo $value['label']; ?></a></h3>
+                            <p><a href="<?php echo $this->getUrl('offers/index/index/manufacturer/' . $value['value']) ?>"><?php echo $this->__('View Products') ?> <?php echo $value['label']; ?></a></p>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>

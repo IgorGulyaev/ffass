@@ -1,0 +1,94 @@
+<?php
+    $bMaxW  = ($this->getBannerImgMaxWidth()) ? $this->getBannerImgMaxWidth() : 1600;
+    define('BANNER_MAX_WIDTH',    $bMaxW);
+    define('BANNER_TYPE_IMAGE',   0);
+    define('BANNER_TYPE_CONTENT', 1);
+    $gCode = $this->getBannerGroupCode();
+    $data  = $this->getDataByGroupCode($gCode);
+    $gData = $data['group_data'];
+    $mode  = $gData->getPreBannerEffects();
+    $bCnt  = ($this->getBannerCount()) ? $this->getBannerCount() : 1;
+    $bLoop  = ($this->getBannerLoop()) ? $this->getBannerLoop() : 'true';
+    $bNav  = ($this->getBannerNav()) ? $this->getBannerNav() : 'false';
+    $bDots  = ($this->getBannerDots()) ? $this->getBannerDots() : 'false';
+    $bCntResponsiveXs  = ($this->getBannerCountResponsiveXs()) ? $this->getBannerCountResponsiveXs() : 1;
+    $bCntResponsiveSm  = ($this->getBannerCountResponsiveSm()) ? $this->getBannerCountResponsiveSm() : 1;
+    $bCntResponsiveMd  = ($this->getBannerCountResponsiveMd()) ? $this->getBannerCountResponsiveMd() : 1;
+    $bCntResponsiveLg  = ($this->getBannerCountResponsiveLg()) ? $this->getBannerCountResponsiveLg() : 1;
+    $bCntResponsiveXlg  = ($this->getBannerCountResponsiveXlg()) ? $this->getBannerCountResponsiveXlg() : 1;
+?>
+<?php if(count($data['banner_data'])): ?>
+    <div class="banners">
+        <div class="owl-carousel<?php if (!$this->getAutoHeight() == 'true'): ?> owl-height<?php endif; ?>">
+            <?php foreach ($data['banner_data'] as $banner): ?>
+                <div class="item">
+                    <?php
+                        $type    = $banner->getBannerType();
+                        $title   = $banner->getTitle();
+                        $content = $banner->getBannerContent();
+                        $link    = $banner->getLink();
+                        $imgName = $banner->getFilename();
+                        if ($type == BANNER_TYPE_IMAGE) :
+                            $image = null;
+                            $path = Mage::getBaseDir('media') . DS . $imgName;
+                            if (@file_exists($path) && $size = getimagesize($path)) :
+                                $image = ($size[0] > BANNER_MAX_WIDTH)
+                                    ? $this->getResizeImage($imgName, $gCode, BANNER_MAX_WIDTH)
+                                    : Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $imgName;
+                            endif;
+                            if ($image) : ?>
+                            <a <?php echo ($link) ? sprintf('href="%s"', $link):''; ?>
+                                <?php echo ($title && $gData->getShowTitle() ? sprintf('title="%s"', $title):''); ?>
+                                <?php echo ($link) ? 'target="_blank"':''; ?> >
+                                <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>">
+                            </a>
+                            <?php endif; ?>
+                            <?php elseif ($type == BANNER_TYPE_CONTENT) : ?>
+                            <?php if ($content && $gData->getShowContent()) : ?>
+                                    <?php echo $content; ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $('.banners .owl-carousel').owlCarousel({
+                    margin: 0,
+                    navText: false,
+                    <?php if ($mode == 'fade') : ?>
+                    animateOut: 'fadeOut',
+                    <?php endif; ?>
+                    <?php if (!$this->getAutoHeight() == 'true'): ?>
+                    autoHeight: true,
+                    <?php endif; ?>
+                    loop: <?php echo $bLoop; ?>,
+                    nav: <?php echo $bNav; ?>,
+                    dots: <?php echo $bDots; ?>,
+                    <?php if (!$this->getBannerResponsive() == 'true'): ?>
+                    items: <?php echo $bCnt; ?>
+                    <?php else: ?>
+                    responsive: {
+                        0:{
+                            items: <?php echo $bCntResponsiveXs; ?>
+                        },
+                        600:{
+                            items: <?php echo $bCntResponsiveSm; ?>
+                        },
+                        960:{
+                            items: <?php echo $bCntResponsiveMd; ?>
+                        },
+                        1200:{
+                            items: <?php echo $bCntResponsiveLg; ?>
+                        },
+                        1500: {
+                            items: <?php echo $bCntResponsiveXlg; ?>
+                        }
+                    }
+                    <?php endif; ?>
+                });
+            });
+        </script>
+    </div>
+
+<?php endif; ?>

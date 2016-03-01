@@ -1,0 +1,66 @@
+<?php
+    $carouselCount  = ($this->getCarouselCount()) ? $this->getCarouselCount() : 1;
+    $carouselLoop  = ($this->getCarouselLoop()) ? $this->getCarouselLoop() : 'true';
+    $carouselNav  = ($this->getCarouselNav()) ? $this->getCarouselNav() : 'false';
+    $carouselDots  = ($this->getCarouselDots()) ? $this->getCarouselDots() : 'false';
+    $carouselResponsiveXs  = ($this->getCarouselCountResponsiveXs()) ? $this->getCarouselCountResponsiveXs() : 2;
+    $carouselResponsiveSm  = ($this->getCarouselCountResponsiveSm()) ? $this->getCarouselCountResponsiveSm() : 3;
+    $carouselResponsiveMd  = ($this->getCarouselCountResponsiveMd()) ? $this->getCarouselCountResponsiveMd() : 4;
+    $carouselResponsiveLg  = ($this->getCarouselCountResponsiveLg()) ? $this->getCarouselCountResponsiveLg() : 4;
+?>
+<?php if ($this->getStoreCategories()): ?>
+    <div class="widget widget-category-list">
+        <?php if ($this->getCarousel() == 'true'): ?><div class="owl-carousel<?php if (!$this->getCarouselHeight() == true): ?> owl-height<?php endif; ?>"><?php endif; ?>
+            <?php foreach ($this->getStoreCategories() as $_category): ?>
+                <?php if ($_category->getLevel() == 2): ?>
+                    <?php $image = Mage::getModel('catalog/category')->load($_category->getId())->getThumbnail() ?>
+                    <?php if ($image): ?>
+                        <div class="item">
+                            <a href="<?php echo $this->getCategoryUrl($_category)?>">
+                                <img src="<?php echo $this->getUrl('media/catalog/category/'); ?><?php echo $image ?>" alt="<?php echo $this->htmlEscape($_category->getName()) ?>">
+                                <span><?php echo $_category->getName()?></span>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php if ($this->getCarousel() == 'true'): ?>
+        </div>
+            <script type="text/javascript">
+                jQuery(document).ready(function ($) {
+                    $('.widget-category-list .owl-carousel').owlCarousel({
+                        margin: 0,
+                        navText: false,
+                        <?php if ($mode == 'fade') : ?>
+                        animateOut: 'fadeOut',
+                        <?php endif; ?>
+                        <?php if (!$this->getCarouselHeight() == true): ?>
+                        autoHeight: true,
+                        <?php endif; ?>
+                        loop: <?php echo $carouselLoop; ?>,
+                        nav: <?php echo $carouselNav; ?>,
+                        dots: <?php echo $carouselDots; ?>,
+                        <?php if (!$this->getCarouselResponsive() == true): ?>
+                        items: <?php echo $carouselCount; ?>
+                        <?php else: ?>
+                        responsive: {
+                            0:{
+                                items: <?php echo $carouselResponsiveXs; ?>
+                            },
+                            600:{
+                                items: <?php echo $carouselResponsiveSm; ?>
+                            },
+                            960:{
+                                items: <?php echo $carouselResponsiveMd; ?>
+                            },
+                            1200:{
+                                items: <?php echo $carouselResponsiveLg; ?>
+                            }
+                        }
+                        <?php endif; ?>
+                    })
+                })
+            </script>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,20 @@
+<?php
+$_helper = $this->helper('catalog/output');
+$productRenderer = $this->getChild('product_renderer');
+?>
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+    <div class="page-title">
+        <h2><?php echo $this->__('Best Seller Products') ?></h2>
+    </div>
+    <?php $_collectionSize = count($_products->getItems()) ?>
+    <div class="category-row products-grid">
+        <?php foreach ($_products->getItems() as $_product): ?>
+            <?php $productRenderer->setProduct($_product); ?>
+            <div class="category-item">
+                <?php echo $productRenderer->toHtml(); ?>
+            </div>
+        <?php endforeach ?>
+    </div>
+<?php else: ?>
+    <?php echo 'There are no products matching your selection.' ?>
+<?php endif ?>

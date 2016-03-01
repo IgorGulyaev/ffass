@@ -1,0 +1,63 @@
+<?php
+    $relatedProducts = $this->getItems()->addAttributeToSelect('small_image');
+?>
+<?php if(count($relatedProducts->getItems())): ?>
+    <?php if ($this->getTitle()): ?><h3 class="section-title"><?php echo $this->getTitle(); ?></h3><?php endif; ?>
+    <div class="carousel">
+        <a href="#" class="carousel-controls prev"><i class="icon-left"></i></a>
+        <a href="#" class="carousel-controls next"><i class="icon-right"></i></a>
+        <div class="owl-carousel" id="block-related">
+            <?php $productRenderer = $this->getChild('product_renderer'); ?>
+            <?php foreach($relatedProducts as $rp): ?>
+                <div class="item">
+                    <?php if(!$rp->isComposite() && $rp->isSaleable()): ?>
+                        <?php if (!$rp->getRequiredOptions()): ?>
+                            <input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $rp->getId() ?>" name="related_products[]" value="<?php echo $rp->getId() ?>">
+                            <label for="related-checkbox<?php echo $rp->getId() ?>" class="checkbox">
+                                <?php echo $this->__('Add to cart') ?>
+                            </label>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <?php $productRenderer->setProduct($rp); ?>
+                    <?php echo $productRenderer->toHtml(); ?>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+    <script type="text/javascript">
+        //<![CDATA[
+        $$('.related-checkbox').each(function(elem){
+            Event.observe(elem, 'click', addRelatedToProduct)
+        });
+
+        var relatedProductsCheckFlag = false;
+        function selectAllRelated(txt){
+            if (relatedProductsCheckFlag == false) {
+                $$('.related-checkbox').each(function(elem){
+                    elem.checked = true;
+                });
+                relatedProductsCheckFlag = true;
+                txt.innerHTML="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('unselect all')) ?>";
+            } else {
+                $$('.related-checkbox').each(function(elem){
+                    elem.checked = false;
+                });
+                relatedProductsCheckFlag = false;
+                txt.innerHTML="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('select all')) ?>";
+            }
+            addRelatedToProduct();
+        }
+
+        function addRelatedToProduct(){
+            var checkboxes = $$('.related-checkbox');
+            var values = [];
+            for(var i=0;i<checkboxes.length;i++){
+                if(checkboxes[i].checked) values.push(checkboxes[i].value);
+            }
+            if($('related-products-field')){
+                $('related-products-field').value = values.join(',');
+            }
+        }
+        //]]>
+    </script>
+<?php endif ?>

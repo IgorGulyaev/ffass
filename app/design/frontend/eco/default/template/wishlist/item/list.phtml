@@ -1,0 +1,27 @@
+<?php
+$columns = $this->getColumns();
+$productRenderer = $this->getParentBlock()->getChild('product_renderer');
+?>
+<?php if (count($this->getItems())): ?>
+    <div class="category-row products-list wishlist-list">
+    <?php foreach ($this->getItems() as $item): ?>
+        <?php $productRenderer->setProduct($item); ?>
+        <div class="category-item wishlist-item">
+            <?php echo $productRenderer->toHtml(); ?>
+            <?php foreach ($columns as $column): ?>
+                <?php $column->setItem($item); echo $column->toHtml($item);?>
+            <?php endforeach; ?>
+        </div>
+    <?php endforeach ?>
+    </div>
+<?php else: ?>
+    <p><?php echo $this->__('This Wishlist has no Items');?></p>
+<?php endif; ?>
+<?php foreach ($columns as $column): ?>
+    <?php echo $column->getAdditionalHtml();?>
+<?php endforeach; ?>
+<script type="text/javascript">
+<?php foreach ($columns as $column): ?>
+    <?php echo $column->getJs();?>
+<?php endforeach; ?>
+</script>

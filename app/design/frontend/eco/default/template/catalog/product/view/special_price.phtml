@@ -1,0 +1,12 @@
+<?php
+$_product = Mage::registry('current_product');
+$_actualPrice = $_product->getPrice();
+$_specialPrice =  $_product->getFinalPrice();
+?>
+<?php echo $this->getChildHtml('', true, true) ?>
+<?php if ($_actualPrice > $_specialPrice): ?>
+    <?php $_save = $_actualPrice - $_specialPrice; ?>
+    <div class="price-save">
+        <p><?php echo $this->__('You saved: ') . Mage::helper('core')->currency($_save,true,false); ?></p>
+    </div>
+<?php endif; ?>

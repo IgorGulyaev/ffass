@@ -1,0 +1,14 @@
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+    <div class="category-row products-grid">
+        <?php $_products->addAttributeToSelect('image'); ?>
+        <?php $renderer = $this->getChild('product_renderer'); ?>
+        <?php if (!$renderer) : $renderer = $this->getLayout()
+            ->createBlock('ecomitize_all/product_renderer'); endif; ?>
+        <?php foreach($_products->getItems() as $_product): ?>
+        <div class="category-item">
+            <?php $renderer->setProduct($_product); ?>
+            <?php echo $renderer->toHtml(); ?>
+        </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

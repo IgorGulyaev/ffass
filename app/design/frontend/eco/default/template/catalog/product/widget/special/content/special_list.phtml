@@ -1,0 +1,15 @@
+<?php
+$onsaleProducts = $this->getLoadedProductCollection();
+$imageHelper = $this->helper('catalog/image');
+?>
+<?php if(count($onsaleProducts->getItems())): ?>
+    <div class="category-row products-list">
+        <?php $productRenderer = $this->getChild('product_renderer'); ?>
+        <?php foreach ($onsaleProducts as $op): ?>
+            <div class="category-item">
+                <?php $productRenderer->setProduct($op); ?>
+                <?php echo $productRenderer->toHtml(); ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

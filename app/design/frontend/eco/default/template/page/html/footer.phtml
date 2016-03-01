@@ -1,0 +1,80 @@
+<?php
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2011-2014 Ecomitize Ltd
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+?>
+    <?php echo $this->getChildHtml('footer_scripts'); ?>
+</div>
+<footer>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="row-height row-footer">
+                    <div class="col-xs-12 col-sm-7 col-sm-height col-sm-middle first">
+                        <div class="footer-left">
+                            <nav id="footer-navbar" class="navbar footer-nav">
+                                <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/account-nav.phtml')->toHtml(); ?>
+                                <?php echo $this->getChildHtml('footer-nav'); ?>
+                            </nav>
+                            <p class="copyright"><?php echo $this->__(Mage::getStoreConfig('design/footer/copyright')) ?></p>
+                            <?php if (!empty($_COOKIE['USER_AGENT'])) : ?>
+                                <p><a class="go-full-version" href="javascript:backToMobileVersion()"><?php echo $this->__('Back to mobile version') ?></a></p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-sm-height col-sm-middle last">
+                        <div class="footer-right">
+                            <div class="row">
+                                <div class="row-height">
+                                    <div class="col-md-8 col-md-height col-md-middle last-first">
+                                        <?php echo $this->getChildHtml('newsletter'); ?>
+                                        <?php if(Mage::getStoreConfig('general/store_information/address')): ?>
+                                            <address class="visible-xs">
+                                                <?php echo Mage::getStoreConfig('general/store_information/address'); ?>
+                                            </address>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="col-md-4 col-md-height col-md-bottom last-last">
+                                        <?php echo $this->getChildHtml('footer-social'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php if(Mage::getStoreConfig('general/store_information/phone')): ?>
+                                <div class="footer-phone hidden-xs">
+                                    <a href="tel:<?php echo Mage::getStoreConfig('general/store_information/phone'); ?>"><?php echo Mage::getStoreConfig('general/store_information/phone'); ?></a>
+                                </div>
+                            <?php endif; ?>
+                            <?php if(Mage::getStoreConfig('general/store_information/address')): ?>
+                                <address class="hidden-xs">
+                                    <?php echo Mage::getStoreConfig('general/store_information/address'); ?>
+                                </address>
+                            <?php endif; ?>
+                            <?php echo $this->getChildHtml('footer-payment'); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<button class="btn-scroll-top" data-spy="affix" data-offset-top="500"><i class="icon-arrow-up2"></i></button>

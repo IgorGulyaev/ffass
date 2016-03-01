@@ -1,0 +1,7 @@
+<?php
+    $_current_category = Mage::registry('current_category');
+?>
+<div class="back-product-list visible-xs">
+    <a href="<?php if ($_current_category): ?><?php echo $_current_category->getUrl() ?><?php else: ?><?php echo $this->getUrl(); ?><?php endif; ?>" class="button button-back-product-list visible-xs"><i class="icon-left"></i><?php echo $this->__('Back to Product List') ?></a>
+</div>
+

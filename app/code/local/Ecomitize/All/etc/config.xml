@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Carousels
+ *
+ * @package    Ecomitize_All
+ * @author     Ecomitizet Magento Team <>
+ * @copyright  Copyright (c) 2015 Ecomitize http://www.ecomitize.com
+ */
+-->
+<config>
+    <modules>
+        <Ecomitize_All>
+            <version>1.0.1</version>
+        </Ecomitize_All>
+    </modules>
+    <adminhtml>
+    </adminhtml>
+    <global>
+        <models>
+            <ecomitize_all>
+                <class>Ecomitize_All_Model</class>
+            </ecomitize_all>
+            <ajaxcartpro>
+                <rewrite>
+                    <renderer>Ecomitize_All_Model_Ajaxcartpro_Renderer</renderer>
+                </rewrite>
+            </ajaxcartpro>
+        </models>
+        <resources>
+            <ecomitize_all_setup>
+                <setup>
+                    <module>Ecomitize_All</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </ecomitize_all_setup>
+        </resources>
+        <blocks>
+            <ecomitize_all>
+                <class>Ecomitize_All_Block</class>
+            </ecomitize_all>
+            <core>
+                <rewrite>
+                    <html_select>Ecomitize_All_Block_Html_Select</html_select>
+                </rewrite>
+            </core>
+        </blocks>
+        <helpers>
+            <ecomitize_all>
+                <class>Ecomitize_All_Helper</class>
+            </ecomitize_all>
+        </helpers>
+        <resources>
+            <ecomitize_all_setup>
+                <setup>
+                    <module>Ecomitize_All</module>
+                </setup>
+            </ecomitize_all_setup>
+        </resources>
+    </global>
+    <frontend>
+        <routers>
+            <deal>
+                <use>standard</use>
+                <args>
+                    <module>Ecomitize_All</module>
+                    <frontName>recomendation</frontName>
+                </args>
+            </deal>
+        </routers>
+        <checkout>
+            <args>
+                <modules>
+                    <ecomitize_all before="Mage_Checkout">Ecomitize_All</ecomitize_all>
+                </modules>
+            </args>
+        </checkout>
+    </frontend>
+</config>

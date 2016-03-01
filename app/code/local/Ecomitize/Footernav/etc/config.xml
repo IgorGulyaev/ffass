@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Ecomitize_Footernav
+ *
+ * @package    Ecomitize_All
+ * @author     Ecomitizet Magento Team <>
+ * @copyright  Copyright (c) 2015 Ecomitize http://www.ecomitize.com
+ */
+-->
+<config>
+    <modules>
+        <Ecomitize_Footernav>
+            <version>0.1.0</version>
+        </Ecomitize_Footernav>
+    </modules>
+    <global>
+        <blocks>
+            <ecomitize_footernav>
+                <class>Ecomitize_Footernav_Block</class>
+            </ecomitize_footernav>
+            <catalog>
+                <rewrite>
+                    <product_list>Ecomitize_Footernav_Block_Product_List</product_list>
+                </rewrite>
+            </catalog>
+        </blocks>
+        <models>
+            <ecomitize_footernav>
+                <class>Ecomitize_Footernav_Model</class>
+            </ecomitize_footernav>
+            <catalog>
+                <rewrite>
+                    <layer>Ecomitize_Footernav_Model_Layer</layer>
+                </rewrite>
+            </catalog>
+        </models>
+    </global>
+    <frontend>
+        <routers>
+            <offers>
+                <use>standard</use>
+                <args>
+                    <module>Ecomitize_Footernav</module>
+                    <frontName>offers</frontName>
+                </args>
+            </offers>
+        </routers>
+        <layout>
+            <updates>
+                <ecomitize_footernav>
+                    <file>ecomitize_footernav.xml</file>
+                </ecomitize_footernav>
+            </updates>
+        </layout>
+    </frontend>
+</config>

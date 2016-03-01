@@ -1,0 +1,10 @@
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+    <?php $_products->addAttributeToSelect('image'); ?>
+    <?php $productRenderer = $this->getChild('product_renderer'); ?>
+    <div class="products-list category-row">
+    <?php foreach($_products->getItems() as $_product): ?>
+        <?php $productRenderer->setProduct($_product); ?>
+        <?php echo $productRenderer->toHtml(); ?>
+    <?php endforeach; ?>
+    </div>
+<?php endif; ?>

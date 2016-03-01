@@ -1,0 +1,376 @@
+<?php
+/**
+ * Galleries
+ *
+ * @category   QS
+ * @package    QS_Galleries
+ * @author     Quart-soft Magento Team <magento@quart-soft.com>
+ * @copyright  Copyright (c) 2010 Quart-soft Ltd http://quart-soft.com
+ */
+?>
+<div style="display:none">
+<?= $this->getLayout()->createBlock('adminhtml/media_uploader')->toHtml()?>
+</div>
+
+<div class="fieldset">
+    <div class="grid">
+        <div class="hor-scroll">
+            <table cellspacing="0" class="data border"> 
+                <col />
+                <col width="1" />
+                <col width="1" />
+                <col width="1" />
+                <col width="1" />
+                <col width="1" />				
+                <thead>
+                    <tr class="headings">
+                        <th><?php echo Mage::helper('galleries')->__('Identifier') ?> / <?php echo Mage::helper('galleries')->__('Title') ?> / <?php echo Mage::helper('galleries')->__('Link') ?></th>
+						<th><?php echo Mage::helper('galleries')->__('Image') ?></th>
+						<th><?php echo Mage::helper('galleries')->__('File') ?></th>
+                        <th><?php echo Mage::helper('galleries')->__('Text') ?></th>
+                        <th><span class="nobr"><?php echo Mage::helper('galleries')->__('Sort Order') ?></span></th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="a-right"><?php echo $this->getAddButtonHtml() ?>&nbsp;<?php echo $this->getUploadButtonHtml() ?></td>
+                    </tr>
+                </tfoot>
+                <tbody id="galleries_images_body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+//<![CDATA[>
+
+var imagesTemplate = '<div class="no-display" id="[[idName]]-template">' +
+                            '<div id="{{id}}" class="file-row file-row-narrow">' +
+                                '<span class="file-info">' +
+                                    '<span class="file-info-name">{{name}}</span>' +
+                                    ' ' +
+                                    '<span class="file-info-size">({{size}})</span>' +
+                                '</span>' +
+                                '<span class="progress-text"></span>' +
+                                '<div class="clear"></div>' +
+                            '</div>' +
+                        '</div>' +
+                            '<div class="no-display" id="[[idName]]-template-progress">' +
+                            '{{percent}}% {{uploaded}} / {{total}}' +
+                            '</div>';
+
+var fileListTemplate = '<span class="file-info">' +
+                            '<span class="file-info-name">{{name}}</span>' +
+                            ' ' +
+                            '<span class="file-info-size">({{size}})</span>' +
+                        '</span>';
+
+var Image = {
+    uploaderObj : $H({}),
+    objCount : 0,
+    setUploaderObj : function(type, key, obj){
+        if (!this.uploaderObj.get(type)) {
+            this.uploaderObj.set(type, $H({}));
+        }
+        this.uploaderObj.get(type).set(key, obj);
+    },
+    getUploaderObj : function(type, key){
+        try {
+            return this.uploaderObj.get(type).get(key);
+        } catch (e) {
+            try {
+                console.log(e);
+            } catch (e2) {
+                alert(e.name + '\n' + e.message);
+            }
+        }
+    },
+    unsetUploaderObj : function(type, key){
+        try {
+            this.uploaderObj.get(type).unset(key);
+        } catch (e) {
+            try {
+                console.log(e);
+            } catch (e2) {
+                alert(e.name + '\n' + e.message);
+            }
+        }
+    },
+    massUpload : function(type){
+        try {
+            this.uploaderObj.get(type).each(function(item){
+                container = item.value.container.up('tr');
+                if (container.visible() && !container.hasClassName('no-display')) {
+                    item.value.upload();
+                } else {
+                    Image.unsetUploaderObj(type, item.key);
+                }
+            });
+        } catch (e) {
+            try {
+                console.log(e);
+            } catch (e2) {
+                alert(e.name + '\n' + e.message);
+            }
+        }
+    }
+};
+
+
+Image.FileUploader = Class.create();
+Image.FileUploader.prototype = {
+    type : null,
+    key : null, //key, identifier of uploader obj
+    elmContainer : null, //insert Flex object and templates to elmContainer
+    fileValueName : null, //name of field of JSON data of saved file
+    fileValue : null,
+    idName : null, //id name of elements for unique uploader
+    uploaderText: imagesTemplate,
+    uploaderSyntax : /(^|.|\r|\n)(\[\[(\w+)\]\])/,
+    uploaderObj : $H({}),
+    config : null,
+    initialize: function (type, key, elmContainer, fileValueName, fileValue ,idName, config) {
+        this.type = type;
+        this.key = key;
+        this.elmContainer = elmContainer;
+        this.fileValueName = fileValueName;
+        this.fileValue = fileValue;
+        this.idName = idName;
+        this.config = config;
+        imagesTemplate = new Template(this.uploaderText, this.uploaderSyntax);
+        <?php if (true || !$this->isReadonly()):?>
+        Element.insert(
+            elmContainer,
+            {'top' : imagesTemplate.evaluate({
+                    'idName' : this.idName,
+                    'fileValueName' : this.fileValueName,
+                    'uploaderObj' : 'Image.getUploaderObj(\''+this.type+'\', \''+this.key+'\')'
+                })
+            }
+        );
+        if ($(this.idName+'_save')) {
+            $(this.idName+'_save').value = Object.toJSON(this.fileValue);
+        }
+        Image.setUploaderObj(
+            this.type,
+            this.key,
+            new Flex.Uploader(this.idName, '<?php echo $this->getSkinUrl('media/uploaderSingle.swf') ?>', this.config)
+        );
+        if (varienGlobalEvents) {
+            varienGlobalEvents.attachEventHandler('tabChangeBefore', Image.getUploaderObj(type, key).onContainerHideBefore);
+        }
+        new Image.FileList(this.idName, Image.getUploaderObj(type, key));
+        <?php endif;?>
+    }
+}
+
+Image.FileList = Class.create();
+Image.FileList.prototype = {
+    file: [],
+    containerId: '',
+    container: null,
+    uploader: null,
+    fileListTemplate: fileListTemplate,
+    templatePattern : /(^|.|\r|\n)({{(\w+)}})/,
+    listTemplate : null,
+    initialize: function (containerId, uploader) {
+        this.containerId  = containerId,
+        this.container = $(this.containerId);
+        this.uploader = uploader;
+        this.uploader.onFilesComplete = this.handleUploadComplete.bind(this);
+        this.file = this.getElement('save').value.evalJSON();
+        this.listTemplate = new Template(this.fileListTemplate, this.templatePattern);
+        this.updateFiles();
+        this.uploader.onFileRemoveAll = this.handleFileRemoveAll.bind(this);
+        this.uploader.onFileSelect = this.handleFileSelect.bind(this);
+    },
+    handleFileRemoveAll: function(fileId) {
+        $(this.containerId+'-new').hide();
+        $(this.containerId+'-old').show();
+    },
+    handleFileSelect: function() {
+        $(this.containerId+'_type').checked = true;
+    },
+    getElement: function (name) {
+        return $(this.containerId + '_' + name);
+    },
+    handleUploadComplete: function (files) {
+        files.each(function(item) {
+           if (!item.response.isJSON()) {
+                try {
+                    console.log(item.response);
+                } catch (e2) {
+                    alert(item.response);
+                }
+               return;
+           }
+           var response = item.response.evalJSON();
+           if (response.error) {
+               return;
+           }
+           var newFile = {};
+           newFile.file = response.file;
+           newFile.name = response.name;
+           newFile.size = response.size;
+           newFile.status = 'new';
+           this.file[0] = newFile;
+           this.uploader.removeFile(item.id);
+        }.bind(this));
+        this.updateFiles();
+    },
+    updateFiles: function() {
+        this.getElement('save').value = Object.toJSON(this.file);
+        this.file.each(function(row){
+            row.size = this.uploader.formatSize(row.size);
+            $(this.containerId + '-old').innerHTML = this.listTemplate.evaluate(row);
+            $(this.containerId + '-new').hide();
+            $(this.containerId + '-old').show();
+        }.bind(this));
+    }
+}
+
+var alertAlreadyDisplayed = false;
+
+Validation.addAllThese([
+    ['validate-docs-file', 'Please upload a file.', function(v,element) {
+            linkType = element.up(0).down('input[value="file"]');
+            if (linkType.checked && (v == '' || v == '[]')) {
+                newFileContainer = element.up(0).down('div.new-file');
+                if (!alertAlreadyDisplayed && (newFileContainer.empty() || newFileContainer.style.display != 'none')) {
+                    alertAlreadyDisplayed = true;
+                    alert('There are files that were selected but not uploaded yet. Please upload or remove them first');
+                }
+                return false;
+            }
+            return true;
+        }]
+    ]);
+
+//]]>
+</script>
+
+
+
+<script type="text/javascript">
+//<![CDATA[>
+var galleryItemTemplate = '<tr>'+
+                        '<td style="width:150px;">'+
+                            '<input type="hidden" class="__delete__" name="image[item][{{id}}][is_delete]" value="" />'+
+                            '<input type="hidden" name="image[item][{{id}}][image_id]" value="{{image_id}}" />'+
+							'<label><strong><?php echo Mage::helper('galleries')->__('Identifier') ?><span class="required">*</span></strong></label>'+
+							'<input style="margin:0 2px 2px 0;width:100%;padding:2px 0" type="text" class="required-entry input-text" name="image[item][{{id}}][image_identifier]" value="{{image_identifier}}" />'+
+                            '<label><strong><?php echo Mage::helper('galleries')->__('Image Title') ?></strong></label>'+
+							'<input style="margin:0 2px 2px 0;width:100%;padding:2px 0" type="text" class="input-text" name="image[item][{{id}}][image_title]" value="{{image_title}}" />'+
+							'<label><strong><?php echo Mage::helper('galleries')->__('Image Link') ?></strong></label>'+
+							'<input style="margin:0 2px 2px 0;width:100%;padding:2px 0" type="text" class="input-text" name="image[item][{{id}}][image_link]" value="{{image_link}}" />'+
+                        '</td>'+
+                        '<td style="width:1px;">'+
+						'<img src="{{image_src}}" alt="" width="125" />'+
+                        '</td>'+						
+                        '<td>'+
+                            '<div class="files-wide" style="width:280px;">'+
+                                '<div class="row">'+
+                                    '<label for="image_item_{{id}}_file_save">File:</label>'+
+                                    '<input type="hidden" class="validate-image-file" id="image_item_{{id}}_file_save" name="image[item][{{id}}][image_file]" value="{{file_save}}" />'+
+                                    '<div id="image_item_{{id}}_file" class="uploader" style="width:190px;">'+
+                                        '<div id="image_item_{{id}}_file-old" class="file-row-info"></div>'+
+                                        '<div id="image_item_{{id}}_file-new" class="file-row-info new-file"></div>'+
+                                        '<div class="buttons">'+
+                                            '<div id="image_item_{{id}}_file-install-flash" style="display:none">'+
+                                                '<?php echo Mage::helper('media')->__('This content requires last version of Adobe Flash Player. <a href="%s">Get Flash</a>', 'http://www.adobe.com/go/getflash/') ?>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="clear"></div>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div>'+
+                                    '<span id="image_item_{{id}}_container"></span>'+
+                                '</div>'+
+                            '</div>'+
+                        '</td>'+
+                        '<td style="width:100px;">'+
+						'<textarea name="image[item][{{id}}][image_text]" style="width:100%;padding:0">{{image_text}}</textarea>'+
+                        '</td>'+																		
+                        '<td class="a-center"><input type="text" name="image[item][{{id}}][position]" value="{{position}}" class="input-text sort" /></td>'+
+                        '<td>'+
+                            '<button type="button" class="scalable delete icon-btn delete-galleries-item"><span>Delete</span></button>'+
+                        '</td>'+
+                    '</tr>';
+					
+var galleryItems = {
+    tbody : $('galleries_images_body'),
+    templateSyntax : /(^|.|\r|\n)({{(\w+)}})/,
+    templateText : galleryItemTemplate,
+    itemCount : 0,
+    add : function(data) {
+        alertAlreadyDisplayed = false;
+        this.template = new Template(this.templateText, this.templateSyntax);
+
+        if(!data.image_id){
+            data = {};            
+            data.image_id  = 0;
+        }
+
+        data.id = this.itemCount;
+
+        Element.insert(this.tbody, {'bottom':this.template.evaluate(data)});
+
+		imageUrl = $('image_item_'+data.id+'_file');
+
+        if (!data.file_save) {
+            data.file_save = [];
+        }
+        new Image.FileUploader(
+            'image',
+            data.id,
+            imageUrl.up('td').down('div.uploader'),
+            'image[item]['+data.id+']',
+            data.file_save,
+            'image_item_'+data.id+'_file',
+            <?php echo $this->getConfigJson() ?>
+        );         
+        imagesFile = $('image_item_'+data.id+'_file');
+        imagesFile.advaiceContainer = 'image_item_'+data.id+'_container';
+        $('image_item_'+data.id+'_file_save').advaiceContainer = 'image_item_'+data.id+'_container';
+
+        this.itemCount++;
+        this.bindRemoveButtons();
+    },
+    remove : function(event){
+        var element = $(Event.findElement(event, 'tr'));
+        alertAlreadyDisplayed = false;
+        if(element){
+            element.down('input[type="hidden"].__delete__').value = '1';
+            element.down('div.flex').remove();
+            element.addClassName('no-display');
+            element.addClassName('ignore-validate');
+            element.hide();
+        }
+    },
+    bindRemoveButtons : function(){
+        var buttons = $$('tbody#galleries_images_body .delete-galleries-item');
+        for(var i=0;i<buttons.length;i++){
+            if(!$(buttons[i]).binded){
+                $(buttons[i]).binded = true;
+                Event.observe(buttons[i], 'click', this.remove.bind(this));
+            }
+        }
+    }
+}
+
+galleryItems.bindRemoveButtons();
+
+if($('add_image_item')){
+    Event.observe('add_docs_item', 'click', docsItems.add.bind(docsItems));
+}
+
+<?php foreach ($images->getItems() as $item): ?>
+    galleryItems.add(<?php echo $item->toJson() ?>);
+<?php endforeach; ?>
+
+//]]>
+</script>

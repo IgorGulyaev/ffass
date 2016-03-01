@@ -1,0 +1,13 @@
+<?php
+$featuredProducts = $this->getLoadedProductCollection()->addAttributeToSelect('small_image');
+$imageHelper = $this->helper('catalog/image');
+?>
+<?php if(count($featuredProducts->getItems())): ?>
+    <?php $productRenderer = $this->getChild('product_renderer'); ?>
+    <div class="category-row products-list">
+        <?php foreach($featuredProducts as $fp): ?>
+        <?php $productRenderer->setProduct($fp); ?>
+        <?php echo $productRenderer->toHtml(); ?>
+    <?php endforeach; ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,55 @@
+<?php $gallery = $this->helper('galleries')->getGallery($this->getGalleryId())?>
+ <?php if($gallery['gallery']->getApplyCarousel() == 1): ?>
+	<?php if($gallery['gallery']->getRotationType() == 1): ?>
+		<?php if(count($gallery['images']) > 0): ?>
+			<?php $fate = rand(1, count($gallery['images'])) ?>
+			<?php $i = 1; ?>
+			<?php foreach($gallery['images'] as $image): ?>
+				<?php if ($i == $fate): ?>
+				<div id="gallery-carousel" style="position:relative;background:url(<?= $this->helper('galleries')->getImageSrc($image) ?>) center center no-repeat;width:<?= $gallery['gallery']->getWidth()?>;height:<?= $gallery['gallery']->getHeight()?>;<?= $gallery['gallery']->getStyleUpdate() ?>">
+					<a style="position:absolute;top:0;width:100%;height:100%;" id="bannerLink" href="<?= $this->helper('galleries')->getImageLink($image) ?>" title="">
+						<img src="<?= $this->getSkinUrl('images/spacer.gif') ?>" />
+					</a>
+				</div>
+				<?php endif ?>
+				<?php $i++; ?>
+			<?php endforeach ?>
+		<?php endif ?>
+    <?php elseif($gallery['gallery']->getRotationType() == 2 || $gallery['gallery']->getRotationType() == 3): ?>
+        <?php if($gallery['gallery']->getRotationType() == 3) : ?>
+          <?php $type_cycle = ", effect:'fade'" ?>
+        <?php endif ?>
+        <?php if($gallery['gallery']->getRotationType() == 2) : ?>
+          <?php $type_cycle = ", 'effect':scroll" ?>
+        <?php endif ?>
+        <div id="carousel-wrapper" style="width:<?= $gallery['gallery']->getWidth()?>;height:<?= $gallery['gallery']->getHeight() ?>">
+            <div id="carousel-content">
+              <?php $slider_counter=1?>
+                <?php foreach($gallery['images'] as $image): ?>
+                    <div class="slide" id="slide-<?php echo($slider_counter++)?>" style="width:<?= $gallery['gallery']->getWidth()?>;height:<?= $gallery['gallery']->getHeight() ?>">
+                        <?php echo $image->getImageText()?>
+                        <?php $imageLink = $this->helper('galleries')->getImageLink($image);
+                        if (empty($imageLink)) : ?>
+                            <img src="<?php echo $this->helper('galleries')->getImageSrc($image) ?>" style="<?= $gallery['gallery']->getStyleUpdate() ?>" alt="<?php echo $image->getImageTitle() ?>"/>
+                        <?php else: ?>
+                            <a href="<?php echo $imageLink ?>" title="<?php echo $image->getImageTitle() ?>">
+                                <img src="<?php echo $this->helper('galleries')->getImageSrc($image) ?>" style="<?= $gallery['gallery']->getStyleUpdate() ?>" alt="<?php echo $image->getImageTitle() ?>"/>
+                            </a>
+                        <?php endif ?>
+                    </div>
+                <?php endforeach ?>
+            </div>
+        </div>
+      <div class="carousel-pagination">
+         <?php for($_i=1; $_i<=count($gallery['images']); $_i++):?>
+             <a href="javascript:" class="carousel-jumper <?php echo ($_i==1)? 'carousel-selected' : '' ?>"  rel="slide-<?php echo($_i)?>" id="point_slide-<?php echo($_i)?>" style="text-decoration:none;"></a>
+         <?php endfor;?>
+      </div>
+      <script type="text/javascript">
+        Event.observe(window, 'load', function() {
+          new Carousel('carousel-wrapper', $$('#carousel-content .slide'), $$('a.carousel-control','a.carousel-jumper'),
+          {'auto':true, 'frequency':<?= $gallery['gallery']->getRotationDelay()?>, 'circular':true <?php echo($type_cycle)?> , 'wheel':false, 'duration':<?= $gallery['gallery']->getTransitionTime() ?>});
+          });
+      </script>
+    <?php endif ?>
+ <?php endif  ?>

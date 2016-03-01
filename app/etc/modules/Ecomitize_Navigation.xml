@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ecomitize_Navigation>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Ecomitize_Navigation>
+    </modules>
+</config>

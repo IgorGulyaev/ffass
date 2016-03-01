@@ -1,0 +1,4 @@
+<div<?php if ($this->getElementClass()): ?> class="<?php echo $this->getElementClass(); ?>"<?php endif; ?><?php if ($this->getElementId()): ?> id="<?php echo $this->getElementId(); ?>"<?php endif; ?>>
+    <?php if ($this->getTitle()): ?><h3 class="section-title"><?php echo $this->getTitle(); ?></h3><?php endif; ?>
+    <?php echo $this->getChildHtml() ?>
+</div>

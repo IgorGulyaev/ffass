@@ -1,0 +1,421 @@
+<layout version="0.1.0">
+    <default>
+        <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
+            <block type="newsletter/subscribe" name="topmenu.newsletter" as="newsletter" template="newsletter/subscribe.phtml"/>
+        </block>
+        <reference name="root">
+            <block type="core/text_list" name="left_first" as="left_first" translate="label">
+                <label>Left Column First (shows above main column on smaller screens)</label>
+            </block>
+            <block type="core/text_list" name="item_section" as="item_section" translate="label">
+                <label>Section Content Area</label>
+            </block>
+            <block type="core/text_list" name="before_footer" as="before_footer" translate="label">
+                <label>Section Content Area</label>
+            </block>
+            <reference name="top.links">
+                <!--<action method="addLink" translate="label title">
+                    <label>About Us</label>
+                    <url>about</url>
+                    <title>About Us</title>
+                    <prepare>true</prepare>
+                    <urlParams helper="core/url/getHomeUrl"/>
+                    <position>1</position>
+                    <liParams/>
+                    <aParams>class="top-link-about-us"</aParams>
+                    <beforeText></beforeText>
+                    <afterText></afterText>
+                </action>-->
+                <action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action>
+                <remove name="checkout_cart_link"/>
+                <remove name="checkout_cart_link_custom"/>
+                <remove name="wishlist_link"/>
+            </reference>
+        </reference>
+
+        <reference name="header">
+            <block type="directory/currency" name="custom_currency_selector" template="currency/currency.phtml"/>
+            <block type="checkout/cart_sidebar" name="cart.link" as="cart_link" template="checkout/cart/link.phtml" />
+            <block type="checkout/cart_minicart" name="minicart_head" template="checkout/cart/minicart.phtml" before="-">
+                <block type="checkout/cart_sidebar" name="minicart_content" template="checkout/cart/minicart/items.phtml">
+                    <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/cart/minicart/default.phtml</template></action>
+                    <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/minicart/default.phtml</template></action>
+                    <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/minicart/default.phtml</template></action>
+                    <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/minicart/default.phtml</template></action>
+
+                    <block type="core/text_list" name="cart_sidebar.cart_promotion" as="cart_promotion" translate="label" module="checkout">
+                        <label>Mini-cart promotion block</label>
+                    </block>
+                    <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                        <label>Shopping Cart Sidebar Extra Actions</label>
+                    </block>
+                </block>
+            </block>
+        </reference>
+
+        <reference name="footer">
+            <block type="core/text_list" name="before.footer" as="before_footer"/>
+            <block type="cms/block" name="nav.footer" as="footer-nav">
+                <action method="setBlockId"><value>footer-nav</value></action>
+            </block>
+            <block type="cms/block" name="footer.social" as="footer-social">
+                <action method="setBlockId"><value>footer-social</value></action>
+            </block>
+            <block type="cms/block" name="footer.payment" as="footer-payment">
+                <action method="setBlockId"><value>footer-payment</value></action>
+            </block>
+            <block type="newsletter/subscribe" name="footer.newsletter" as="newsletter" before="footer_store_language" template="newsletter/subscribe.phtml"/>
+        </reference>
+
+        <reference name="left">
+            <remove name="left.newsletter"/>
+            <remove name="catalog.compare.sidebar"/>
+        </reference>
+
+        <reference name="content">
+            <block type="core/template" name="loading" before="-" template="page/html/loading.phtml"/>
+        </reference>
+
+        <!--<remove name="left.poll"/>-->
+        <!--<remove name="right.poll"/>-->
+        <remove name="currency"/>
+        <remove name="right.permanent.callout"/>
+        <remove name="left.permanent.callout"/>
+        <remove name="right.permanent.callout"/>
+        <remove name="paypal.partner.right.logo"/>
+        <remove name="wishlist_sidebar"/>
+        <remove name="cart_sidebar"/>
+        <remove name="sale.reorder.sidebar"/>
+        <remove name="banner.left"/>
+        <remove name="banner.home"/>
+    </default>
+
+    <catalogsearch_advanced_result>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </catalogsearch_advanced_result>
+
+    <catalog_product_view translate="label">
+        <remove name="product.info.addtocart.paypal"/>
+        <remove name="bml.right.logo"/>
+        <remove name="product.info.addtocart.paypaluk.wrapper"/>
+        <remove name="product.clone_prices"/>
+        <remove name="html_calendar"/>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/bootstrap-rating-input.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/responsive-tabs.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jquery.zoom.js</name></action>
+        </reference>
+        <reference name="content">
+            <block type="reports/product_viewed" name="home.reports.product.viewed" after="-" template="reports/home_product_viewed.phtml">
+                <action method="setLimit">14</action>
+            </block>
+            <block type="core/template" name="product.info.back.link" after="-" template="catalog/product/back_link.phtml"/>
+        </reference>
+    </catalog_product_view>
+
+    <catalog_category_view>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+    </catalog_category_view>
+
+    <PRODUCT_TYPE_bundle>
+        <remove name="bundle.tierprices"/>
+        <remove name="product.info.qtyincrements"/>
+    </PRODUCT_TYPE_bundle>
+
+    <checkout_cart_index>
+    </checkout_cart_index>
+
+    <catalog_category_layered>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left">
+            <remove name="left.newsletter"/>
+            <remove name="currency"/>
+        </reference>
+    </catalog_category_layered>
+
+    <catalogsearch_advanced_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </catalogsearch_advanced_index>
+
+    <cms_index_index>
+        <reference name="content">
+            <remove name="page_content_heading"/>
+
+            <block type="core/template" name="home.cms.block.index.section" template="cms/block.phtml">
+                <action method="setElementClass"><value>index-banners</value></action>
+                <block type="banner/banner" name="home.page.banners">
+                    <action method="setBannerGroupCode"><value>home-page-banners</value></action>
+                    <action method="setBannerCount"><value>1</value></action>
+                    <action method="setBannerResponsive"><value>true</value></action>
+                    <action method="setBannerCountResponsiveXs"><value>1</value></action>
+                    <action method="setBannerCountResponsiveSm"><value>1</value></action>
+                    <action method="setBannerCountResponsiveMd"><value>1</value></action>
+                    <action method="setBannerCountResponsiveLg"><value>1</value></action>
+                    <action method="setBannerCountResponsiveXlg"><value>2</value></action>
+                    <action method="setBannerImgMaxWidth"><value>1000</value></action>
+                    <action method="setBannerLoop"><value>true</value></action>
+                    <action method="setBannerNav"><value>true</value></action>
+                    <action method="setBannerDots"><value>true</value></action>
+                    <action method="setBannerHeight"><value>true</value></action>
+                </block>
+            </block>
+
+            <block type="catalog/navigation" name="block.index.category" template="catalog/category/widget/category_list.phtml">
+                <action method="setCarousel"><value>true</value></action>
+                <action method="setStagePadding"><value>100</value></action>
+                <action method="setCarouselCount"><value>5</value></action>
+                <action method="setCarouselResponsive"><value>true</value></action>
+                <action method="setCarouselCountResponsiveXs"><value>3</value></action>
+                <action method="setCarouselCountResponsiveSm"><value>5</value></action>
+                <action method="setCarouselCountResponsiveMd"><value>5</value></action>
+                <action method="setCarouselCountResponsiveLg"><value>7</value></action>
+                <action method="setCarouselLoop"><value>true</value></action>
+                <action method="setCarouselNav"><value>false</value></action>
+                <action method="setCarouselDots"><value>false</value></action>
+                <action method="setCarouselHeight"><value>true</value></action>
+            </block>
+
+            <block type="core/template" name="block.index.sale" template="cms/block.phtml">
+                <action method="setElementClass"><value>section-products sale-product</value></action>
+                <action method="setTitle"><value>Special offers</value></action>
+                <block type="ecomitize_all/filterproducts_sale" name="on.sale.products" as="on_sale_products" template="catalog/product/list/onsale.phtml">
+                    <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer"/>
+                </block>
+            </block>
+
+
+            <block type="core/template" name="block.index.featured" template="cms/block.phtml">
+                <action method="setElementClass"><value>section-products featured-product</value></action>
+                <action method="setTitle"><value>Featured Product</value></action>
+                <block type="ecomitize_all/filterproducts_featured" name="featured.products" as="featured_products" template="catalog/product/list/featured.phtml">
+                    <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer">
+                        <action method="setImageType"><value>image</value></action>
+                    </block>
+                </block>
+            </block>
+
+            <block type="reports/product_viewed" name="home.reports.product.viewed" template="reports/home_product_viewed.phtml"/>
+
+        </reference>
+    </cms_index_index>
+
+    <contacts_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <action method="unsetChild"><name>contactForm</name></action>
+
+            <block type="core/template" name="block.contacts.row" template="cms/block.phtml">
+                <action method="setElementClass"><value>row contact-row</value></action>
+                <block type="core/template" name="block.contacts.col.right" template="cms/block.phtml">
+                    <action method="setElementClass"><value>col-sm-4 contact-col-left</value></action>
+                    <block type="cms/block" name="block.contacts">
+                        <action method="setBlockId"><value>contacts</value></action>
+                    </block>
+                </block>
+                <block type="core/template" name="block.contacts.col.left" template="cms/block.phtml">
+                    <action method="setElementClass"><value>col-sm-8 contact-col-right</value></action>
+                    <block type="core/template" name="contactForm" template="contacts/form.phtml"/>
+                </block>
+            </block>
+
+        </reference>
+    </contacts_index_index>
+
+    <catalogsearch_result_index>
+        <reference name="search_result_list">
+            <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer"/>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result>
+        <reference name="search_result_list">
+            <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer"/>
+        </reference>
+    </catalogsearch_advanced_result>
+
+    <customer_account>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>My Account</crumbName>
+                <crumbInfo><label>My Account</label><title>My Account</title><link>/customer/account/</link></crumbInfo>
+            </action>
+        </reference>
+
+        <reference name="left">
+            <action method="unsetChild"><name>cart_sidebar</name></action>
+            <remove name="catalog.compare.sidebar"/>
+
+            <action method="unsetChild"><name>customer_account_navigation</name></action>
+            <action method="setElementClass"><value>nav</value></action>
+            <block type="customer/account_navigation" name="customer_account_navigation" before="-" template="customer/account/navigation.phtml">
+                <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
+                <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action>
+                <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+                <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>My Orders</label></action>
+                <action method="addLink" translate="label" module="review"><name>reviews</name><path>review/customer</path><label>My Product Reviews</label></action>
+                <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>
+                <action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
+                <action method="addLink" translate="label" module="customer"><name>logout</name><path>customer/account/logout/</path><label>Logout</label></action>
+            </block>
+
+        </reference>
+    </customer_account>
+
+    <customer_account_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>My Account</crumbName>
+                <crumbInfo><label>My Account</label><title>My Account</title><link>/customer/account/</link></crumbInfo>
+            </action>
+        </reference>
+    </customer_account_index>
+
+    <customer_account_edit>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>My Account</crumbName>
+                <crumbInfo><label>My Account</label><title>My Account</title><link>/customer/account/</link></crumbInfo>
+            </action>
+        </reference>
+    </customer_account_edit>
+
+    <customer_account_create>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>Create an Account</crumbName>
+                <crumbInfo><label>Create an Account</label><title>Create an Account</title></crumbInfo>
+            </action>
+        </reference>
+    </customer_account_create>
+
+    <catalog_seo_sitemap_category>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>Categories Sitemap</crumbName>
+                <crumbInfo><label>Categories Sitemap</label><title>Categories Sitemap</title></crumbInfo>
+            </action>
+        </reference>
+    </catalog_seo_sitemap_category>
+
+    <catalog_seo_sitemap_product>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>Products Sitemap</crumbName>
+                <crumbInfo><label>Products Sitemap</label><title>Products Sitemap</title></crumbInfo>
+            </action>
+        </reference>
+    </catalog_seo_sitemap_product>
+
+
+    <customer_account_forgotpassword>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>Login or Create an Account</crumbName>
+                <crumbInfo><label>Login or Create an Account</label><title>Login or Create an Account</title><link>/customer/account/login/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>Forgot Your Password?</crumbName>
+                <crumbInfo><label>Forgot Your Password?</label><title>Forgot Your Password?</title></crumbInfo>
+            </action>
+        </reference>
+    </customer_account_forgotpassword>
+
+    <wishlist_index_index>
+        <reference name="customer.wishlist">
+            <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer">
+                <action method="setIsWishlist"><value>true</value></action>
+                <block type="wishlist/customer_wishlist_item_column_remove" name="customer.wishlist.item.remove" as="customer_wishlist_item_remove" template="wishlist/item/column/remove.phtml"/>
+            </block>
+            <reference name="customer.wishlist.items">
+                <action method="unsetChild"><name>customer.wishlist.item.image</name></action>
+                <!--<action method="unsetChild"><name>customer.wishlist.item.cart</name></action>-->
+                <action method="unsetChild"><name>customer.wishlist.item.remove</name></action>
+            </reference>
+        </reference>
+    </wishlist_index_index>
+
+    <catalogsearch_result_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <rss_index_index translate="label">
+        <label>RSS Feeds List</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </rss_index_index>
+
+    <print translate="label" module="page">
+        <label>All Pages (Print Version)</label>
+        <!-- Mage_Page -->
+        <block type="page/html" name="root" output="toHtml" template="page/print.phtml">
+
+            <block type="page/html_head" name="head" as="head">
+                <action method="addJs"><script>prototype/prototype.js</script></action>
+                <action method="addJs"><script>mage/translate.js</script></action>
+                <action method="addJs"><script>lib/ccard.js</script></action>
+                <action method="addJs"><script>prototype/validation.js</script></action>
+                <action method="addJs"><script>varien/js.js</script></action>
+
+                <action method="addCss"><stylesheet>css/bootstrap.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/style.css</stylesheet></action>
+                <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 8</if></action>
+                <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/print.css</stylesheet><params>media="print"</params></action>
+
+                <action method="addItem"><type>js</type><name>lib/ds-sleight.js</name><params/><if>lt IE 7</if></action>
+                <action method="addItem"><type>skin_js</type><name>js/ie6.js</name><params/><if>lt IE 7</if></action>
+            </block>
+
+            <block type="core/text_list" name="content" as="content" translate="label">
+                <label>Main Content Area</label>
+            </block>
+
+        </block>
+    </print>
+
+</layout>

@@ -1,0 +1,27 @@
+<?php
+$request = $this->getRequest();
+$module = $request->getModuleName();
+$controller = $request->getControllerName();
+$action = $request->getActionName();
+?>
+<a href="<?php echo $this->getUrl('checkout/cart'); ?>" data-toggle="dropdown" class="top-link-cart">
+    <span>
+        <span><i class="icon-cart"></i></span>
+        <span>
+        <?php
+            $count = $this->helper('checkout/cart')->getSummaryCount();
+            $total = $this->helper('checkout/cart')->getQuote()->getGrandTotal();
+            if ($count == 0) {
+                echo $this->__('<span class="cart-figure" title="0 Items">0 Items</span>', $count);
+            }
+            if ($count == 1) {
+                echo $this->__('<span class="cart-figure" title="1 Item">1 Item</span>', $count);
+            }
+            if ($count > 1) {
+                echo $this->__('<span class="cart-figure">%s Item</span>', $count);
+            }
+            echo '<span class="cart-open-price">'.$this->helper('core')->formatPrice($total, false).'</span>';
+        ?>
+        </span>
+    </span>
+</a>

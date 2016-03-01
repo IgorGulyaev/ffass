@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* @category   Bc
+* @package    Bc_Font
+* @author     ModuleCreator
+* @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
+<config>
+    <menu>
+        <biztech module="brand">
+            <children>
+                <log module="brand">
+                    <title>Manage Brand</title>
+                    <sort_order>1</sort_order>
+                    <action>adminhtml/brand</action>
+                </log>
+            </children>
+        </biztech>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <biztech>
+                        <title>Ecomitize</title>
+                        <sort_order>10</sort_order>
+                        <children>
+                            <log module="brand" translate="title">
+                                <title>Manage Brand</title>
+                                <sort_order>0</sort_order>
+                                <action>adminhtml/brand</action>
+                            </log>
+                        </children>
+                    </biztech>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <layout>
+        <updates>
+            <brand>
+                <file>brand.xml</file>
+            </brand>
+        </updates>
+    </layout>
+
+</config>
