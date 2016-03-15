@@ -72,6 +72,10 @@
             <remove name="catalog.compare.sidebar"/>
         </reference>
 
+        <reference name="right">
+            <remove name="amazon_payments.button.right.logo"/>
+        </reference>
+
         <reference name="content">
             <block type="core/template" name="loading" before="-" template="page/html/loading.phtml"/>
         </reference>
@@ -153,18 +157,20 @@
                 <action method="setElementClass"><value>index-banners</value></action>
                 <block type="banner/banner" name="home.page.banners">
                     <action method="setBannerGroupCode"><value>home-page-banners</value></action>
+                    <action method="setMixedBanner"><value>true</value></action>
                     <action method="setBannerCount"><value>1</value></action>
                     <action method="setBannerResponsive"><value>true</value></action>
                     <action method="setBannerCountResponsiveXs"><value>1</value></action>
                     <action method="setBannerCountResponsiveSm"><value>1</value></action>
                     <action method="setBannerCountResponsiveMd"><value>1</value></action>
                     <action method="setBannerCountResponsiveLg"><value>1</value></action>
-                    <action method="setBannerCountResponsiveXlg"><value>2</value></action>
+                    <action method="setBannerCountResponsiveXlg"><value>1</value></action>
                     <action method="setBannerImgMaxWidth"><value>1000</value></action>
                     <action method="setBannerLoop"><value>true</value></action>
                     <action method="setBannerNav"><value>true</value></action>
                     <action method="setBannerDots"><value>true</value></action>
                     <action method="setBannerHeight"><value>true</value></action>
+                    <action method="setBannerLinkText"><value>Shop now</value></action>
                 </block>
             </block>
 

@@ -86,6 +86,9 @@
             <action method="addCss">
                 <stylesheet>css/responsive.css</stylesheet>
             </action>
+            <action method="addCss">
+                <stylesheet>less/style.less</stylesheet>
+            </action>
 
             <action method="addItem">
                 <type>skin_js</type>

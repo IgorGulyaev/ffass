@@ -1,4 +1,22 @@
 @font-face {
+    font-family: 'MicrosoftTaiLe';
+    src: url('fonts/MicrosoftTaiLe.eot?#iefix') format('embedded-opentype'),  url('fonts/MicrosoftTaiLe.woff') format('woff'), url('fonts/MicrosoftTaiLe.ttf')  format('truetype'), url('fonts/MicrosoftTaiLe.svg#MicrosoftTaiLe') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Rafale-BG';
+    src: url('fonts/Rafale-BG.eot');
+    src: url('fonts/Rafale-BG.eot?#iefix') format('embedded-opentype'),
+    url('fonts/Rafale-BG.woff') format('woff'),
+    url('fonts/Rafale-BG.ttf') format('truetype'),
+    url('fonts/Rafale-BG.svg#Rafale-BG') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'icomoon';
     src:    url('fonts/icomoon.eot?xm5f8u');
     src:    url('fonts/icomoon.eot?xm5f8u#iefix') format('embedded-opentype'),
@@ -38,7 +56,7 @@ a[href*='amazon']:before,
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #31a348;
+    color: #add750;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;

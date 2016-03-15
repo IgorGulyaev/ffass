@@ -37,11 +37,36 @@
                                     : Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $imgName;
                             endif;
                             if ($image) : ?>
-                            <a <?php echo ($link) ? sprintf('href="%s"', $link):''; ?>
-                                <?php echo ($title && $gData->getShowTitle() ? sprintf('title="%s"', $title):''); ?>
-                                <?php echo ($link) ? 'target="_blank"':''; ?> >
-                                <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>">
-                            </a>
+                                <?php if($this->getMixedBanner() == true):?>
+                                    <div class="unibanner-item mixed row">
+                                        <div class="row-height">
+                                            <div class="uni-image col-xs-7 col-sm-8 col-height" style="background: url('<?php echo $image; ?>') no-repeat center center; background-size: cover;">
+                                                <!--<img src="<?php /*echo $image; */?>" class="visible-xs" alt="<?php /*echo $title; */?>">-->
+                                            </div>
+                                            <div class="uni-text col-xs-5 col-sm-4 col-height">
+                                                <?php if ($content && $gData->getShowContent()) : ?>
+                                                    <div class="uni-content"><?php echo $content; ?></div>
+                                                    <a class="button" <?php echo ($link) ? sprintf('href="%s"', $link):''; ?>
+                                                        <?php echo ($title && $gData->getShowTitle() ? sprintf('title="%s"', $title):''); ?>
+                                                        <?php echo ($link) ? 'target="_blank"':''; ?> >
+                                                        <?php if($this->getBannerLinkText()) {
+                                                            echo $this->getBannerLinkText();
+                                                        }?>
+                                                    </a>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php else: ?>
+                                <a <?php echo ($link) ? sprintf('href="%s"', $link):''; ?>
+                                    <?php echo ($title && $gData->getShowTitle() ? sprintf('title="%s"', $title):''); ?>
+                                    <?php echo ($link) ? 'target="_blank"':''; ?> >
+                                    <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>">
+                                    <?php if ($content && $gData->getShowContent()) : ?>
+                                        <span><?php echo $content; ?></span>
+                                    <?php endif; ?>
+                                </a>
+                                <?php endif; ?>
                             <?php endif; ?>
                             <?php elseif ($type == BANNER_TYPE_CONTENT) : ?>
                             <?php if ($content && $gData->getShowContent()) : ?>

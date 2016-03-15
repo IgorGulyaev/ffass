@@ -64,9 +64,12 @@
     }
 
     .header-inner > .row > .row-height > [class*='col-'] {
-        display: inline-table;
+        display: inline-table !important;
         height: auto;
         text-align: center;
+    }
+    .header-inner > .row > .row-height > .header-logo {
+        text-align: left;
     }
 
     .header-inner > .row [class*='col-'] {
@@ -75,8 +78,6 @@
 
     .logo {
         display: block;
-        width: 90%;
-        margin: 0 auto;
     }
 
     .minicart-wrapper {
@@ -803,6 +804,10 @@
 
     /**/
 
+    .top-link-cart i {
+        display: none;
+    }
+
 }
 
 /* tablet portrait  */
@@ -856,8 +861,12 @@
     }
 
     header .navbar {
-        background-color: #31a348;
         display: block;
+    }
+
+    .navbar-nav-container {
+        border-top: 1px dashed #bed38f;
+        border-bottom: 1px dashed #d7d7d7;
     }
 
     .navbar .navbar-nav {
@@ -875,10 +884,9 @@
     }
 
     .navbar .navbar-nav > li > a {
-        color: #fff;
         text-align: center;
         line-height: 1;
-        font-size: 12px;
+        font-size: 16px;
         font-weight: bold;
         padding: 20px 5px;
         height: auto;
@@ -906,16 +914,6 @@
         background-color: rgba(255, 255, 255, 0.1);
     }
 
-    .navbar .navbar-nav > .open > a,
-    .navbar .navbar-nav > .open > a:hover,
-    .navbar .navbar-nav > .open > a:active,
-    .navbar .navbar-nav > .open > a:focus,
-    .navbar .navbar-nav > li > a:hover,
-    .navbar .navbar-nav > li > a:active,
-    .navbar .navbar-nav > li > a:focus {
-        background-color: transparent;
-    }
-
     .dropdown-menu {
         background-color: #dee5ee;
         border: 0;
@@ -925,22 +923,13 @@
 
     .dropdown-menu > li > a {
         background-color: #fff;
-        margin-bottom: 1px;
-        color: #7585a6;
+        color: #555;
         text-transform: none;
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .dropdown-menu > li.last > a {
         margin-bottom: 0;
-    }
-
-    .dropdown-menu:before {
-        top: -8px;
-    }
-
-    .dropdown-menu:after {
-        top: -7px;
     }
 
     .navbar .dropdown-menu .dropdown  > a {

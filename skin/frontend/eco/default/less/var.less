@@ -1,0 +1,44 @@
+@headGreen: #92b545;
+@lightGreen: #bddf73;
+@lightGreen2: #bed38f;
+@orange: #efab01;
+
+@globalPadding: 15px;
+
+.dFlex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flexWrap {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.transition(@transition) {
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  transition: @transition;
+}
+
+.bgSize(@bgSize) {
+  -webkit-background-size: @bgSize;
+  -moz-background-size: @bgSize;
+  background-size: @bgSize;
+}
+
+.user-select(@userSelect) {
+  -webkit-user-select: @userSelect;
+  -moz-user-select: @userSelect;
+  -ms-user-select: @userSelect;
+  user-select: @userSelect
+}

@@ -23,7 +23,7 @@
                 <div class="header-inner">
                     <div class="row">
                         <div class="row-height">
-                            <div class="col-xs-3 col-sm-4 col-xs-height col-xs-middle header-navbar header-contact">
+                            <div class="col-xs-3 col-xs-height col-xs-middle header-navbar header-contact visible-xs">
                                 <div class="navbar-header">
                                     <button class="navbar-toggle collapsed nav-container-open" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false">
                                         <span></span>
@@ -31,12 +31,6 @@
                                         <span></span>
                                     </button>
                                 </div>
-                                <?php if(Mage::getStoreConfig('general/store_information/phone')): ?>
-                                    <span class="header-phone hidden-xs">
-                                        <a href="tel:<?php echo Mage::getStoreConfig('general/store_information/phone'); ?>"><?php echo Mage::getStoreConfig('general/store_information/phone'); ?></a>
-                                        <a href="<?php echo $this->getUrl('contacts'); ?>"><?php echo $this->__('Contact Us') ?></a>
-                                    </span>
-                                <?php endif; ?>
                             </div>
                             <div class="col-xs-6 col-sm-4 col-xs-height col-xs-middle header-logo">
                                 <?php if ($this->getIsHomePage()):?>
@@ -45,7 +39,7 @@
                                     <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img class="img-responsive" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>"></a>
                                 <?php endif?>
                             </div>
-                            <div class="col-xs-3 col-sm-4 col-sm-1 col-xs-height col-xs-middle col-sm-push-3 header-cart">
+                            <div class="col-xs-3 col-sm-3 col-xs-height col-xs-middle col-sm-push-5 header-cart">
                                 <ul class="nav nav-inline header-nav-cart">
                                     <li class="dropdown">
                                         <?php echo $this->getChildHtml('cart_link'); ?>
@@ -57,7 +51,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col-xs-12 col-sm-3 col-sm-height col-sm-middle col-sm-pull-1 header-search">
+                            <div class="col-xs-12 col-sm-5 col-sm-height col-sm-middle col-sm-pull-3 header-search">
                                 <?php echo $this->getChildHtml('topSearch') ?>
                                 <button class="button button-filter collapsed visible-xs" type="button" data-toggle="collapse" data-target=".col-left" aria-controls="col-left" aria-expanded="false">
                                     <span><i class="icon-filter"></i></span>
