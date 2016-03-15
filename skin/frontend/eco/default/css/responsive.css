@@ -414,8 +414,8 @@
     /* footer */
 
     footer .row-footer {
-        display: flex;
-        flex-direction: column-reverse;
+        /*display: flex;
+        flex-direction: column-reverse;*/
     }
 
     footer .footer-left {
@@ -423,7 +423,6 @@
     }
 
     footer .last {
-        background-color: #31a348;
     }
 
     footer .last .last-first {
@@ -453,8 +452,16 @@
         font-size: 12px;
     }
 
+    footer .footer-social {
+        width: 100%;
+        text-align: center;
+    }
+    footer .footer-social > li {
+        margin: 0 18px;
+
+    }
     footer .footer-social > li > a > i {
-        font-size: 28px;
+        font-size: 18px;
     }
 
     .form-subscribe .form-group label {
@@ -1005,13 +1012,8 @@
     .footer-nav .dropdown-menu a:active,
     .footer-nav .dropdown-menu a:focus {
         background-color: transparent;
-        color: #6f777d;
-    }
-
-    .footer-nav .dropdown-menu a:hover {
         color: #fff;
     }
-
     /**/
 
     /**/

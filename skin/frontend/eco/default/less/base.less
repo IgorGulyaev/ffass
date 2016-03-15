@@ -211,18 +211,12 @@ dl {
   text-align: center;
   padding: 15px 0;
 }
-
+/*
 @media (min-width: 1200px) {
   .container {
-    width: 1230px;
+    width: 1170px;
   }
-}
-
-@media (min-width: 1500px) {
-  .container {
-    width: 1500px;
-  }
-}
+}*/
 
 /* row display table */
 
@@ -411,7 +405,7 @@ dl {
 
 /* section-products owl */
 
-.navbar {
+#navbar {
   .navbar-nav,
   .dropdown-menu {
     &> li {
@@ -494,7 +488,6 @@ dl {
 /* owl-carousel */
 
 .owl-carousel {
-  display: none;
   width: 100%;
   -webkit-tap-highlight-color: transparent;
   position: relative;
@@ -1102,3 +1095,39 @@ h1:after,
 /**/
 
 /* end product item */
+
+
+.footer {
+  background-color: @headGreen;
+  color: #fff;
+  font-size: 16px;
+  a {
+    color: #fff;
+  }
+  .footer-nav {
+    padding-top: 46px;
+    padding-left: 55px;
+    background: url("@{path}images/butterfly.png") no-repeat 0 0;
+    a {
+      font-size: 16px;
+    }
+  }
+  .footer-social {
+    width: auto;
+    &> li {
+      display: inline-block;
+      margin-right: 37px;
+      &> a {
+        display: inline-block;
+        padding-top: 5px;
+        width: 44px;
+        height: 45px;
+        background: url("@{path}images/soc-flag.png") no-repeat 0 0;
+        i {
+          vertical-align: bottom;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

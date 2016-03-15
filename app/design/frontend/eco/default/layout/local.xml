@@ -189,27 +189,22 @@
                 <action method="setCarouselHeight"><value>true</value></action>
             </block>
 
-            <block type="core/template" name="block.index.sale" template="cms/block.phtml">
-                <action method="setElementClass"><value>section-products sale-product</value></action>
-                <action method="setTitle"><value>Special offers</value></action>
-                <block type="ecomitize_all/filterproducts_sale" name="on.sale.products" as="on_sale_products" template="catalog/product/list/onsale.phtml">
-                    <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer"/>
-                </block>
-            </block>
-
-
-            <block type="core/template" name="block.index.featured" template="cms/block.phtml">
-                <action method="setElementClass"><value>section-products featured-product</value></action>
-                <action method="setTitle"><value>Featured Product</value></action>
-                <block type="ecomitize_all/filterproducts_featured" name="featured.products" as="featured_products" template="catalog/product/list/featured.phtml">
-                    <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer">
-                        <action method="setImageType"><value>image</value></action>
+        </reference>
+        <reference name="before_footer">
+            <block type="core/template" name="block.index.tabs" template="cms/block.phtml">
+                <action method="setElementClass"><value>section-products index-tabs tabpanel-cookie</value></action>
+                <block type="core/template" name="block.index.tabs.wrapper" template="catalog/product/index_tabs.phtml">
+                    <block type="ecomitize_all/filterproducts_sale" name="on.sale.products" as="on_sale_products" template="catalog/product/list/onsale.phtml">
+                        <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer"/>
                     </block>
+                    <block type="ecomitize_all/filterproducts_featured" name="featured.products" as="featured_products" template="catalog/product/list/featured.phtml">
+                        <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer">
+                            <action method="setImageType"><value>image</value></action>
+                        </block>
+                    </block>
+                    <block type="reports/product_viewed" name="home.reports.product.viewed" as="clearance" template="reports/home_product_viewed.phtml"/>
                 </block>
             </block>
-
-            <block type="reports/product_viewed" name="home.reports.product.viewed" template="reports/home_product_viewed.phtml"/>
-
         </reference>
     </cms_index_index>
 

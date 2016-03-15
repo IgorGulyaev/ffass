@@ -1,0 +1,22 @@
+<div class="tabs-wrapper">
+    <div class="container">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#new" aria-controls="home" data-toggle="tab"><?php echo $this->__('New arrivals') ?></a></li>
+            <li><a href="#favorites" aria-controls="profile" data-toggle="tab"><?php echo $this->__("Customer's favorites") ?></a></li>
+            <li><a href="#clearance" aria-controls="settings" data-toggle="tab"><?php echo $this->__('Clearance') ?></a></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="tab-content">
+        <div class="tab-pane active" id="new">
+            <?php echo $this->getChildHtml('on_sale_products') ?>
+        </div>
+        <div class="tab-pane" id="favorites">
+            <?php echo $this->getChildHtml('featured_products') ?>
+        </div>
+        <div class="tab-pane" id="clearance">
+            <?php echo $this->getChildHtml('clearance') ?>
+        </div>
+    </div>
+</div>

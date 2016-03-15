@@ -237,20 +237,6 @@ select,
     transition: all 0.3s ease-out;
 }
 
-/**/
-
-@media (min-width: 1200px) {
-    .container {
-        width: 1230px;
-    }
-}
-
-@media (min-width: 1500px) {
-    .container {
-        width: 1500px;
-    }
-}
-
 /* row display table */
 
 .row-height {
@@ -524,7 +510,6 @@ select,
 }
 
 .owl-carousel {
-    display: none;
     width: 100%;
     -webkit-tap-highlight-color: transparent;
     position: relative;

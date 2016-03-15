@@ -30,35 +30,20 @@
         <div class="container">
             <div class="row">
                 <div class="row-height row-footer">
-                    <div class="col-xs-12 col-sm-7 col-sm-height col-sm-middle first">
+                    <div class="col-xs-12 col-sm-3 col-sm-height col-sm-middle first">
                         <div class="footer-left">
                             <nav id="footer-navbar" class="navbar footer-nav">
                                 <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/account-nav.phtml')->toHtml(); ?>
                                 <?php echo $this->getChildHtml('footer-nav'); ?>
                             </nav>
-                            <p class="copyright"><?php echo $this->__(Mage::getStoreConfig('design/footer/copyright')) ?></p>
                             <?php if (!empty($_COOKIE['USER_AGENT'])) : ?>
                                 <p><a class="go-full-version" href="javascript:backToMobileVersion()"><?php echo $this->__('Back to mobile version') ?></a></p>
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-5 col-sm-height col-sm-middle last">
-                        <div class="footer-right">
-                            <div class="row">
-                                <div class="row-height">
-                                    <div class="col-md-8 col-md-height col-md-middle last-first">
-                                        <?php echo $this->getChildHtml('newsletter'); ?>
-                                        <?php if(Mage::getStoreConfig('general/store_information/address')): ?>
-                                            <address class="visible-xs">
-                                                <?php echo Mage::getStoreConfig('general/store_information/address'); ?>
-                                            </address>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="col-md-4 col-md-height col-md-bottom last-last">
-                                        <?php echo $this->getChildHtml('footer-social'); ?>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-xs-12 col-sm-4 col-sm-height col-sm-top">
+                        <div class="footer-center">
+                            <?php echo $this->getChildHtml('footer-social'); ?>
                             <?php if(Mage::getStoreConfig('general/store_information/phone')): ?>
                                 <div class="footer-phone hidden-xs">
                                     <a href="tel:<?php echo Mage::getStoreConfig('general/store_information/phone'); ?>"><?php echo Mage::getStoreConfig('general/store_information/phone'); ?></a>
@@ -70,6 +55,12 @@
                                 </address>
                             <?php endif; ?>
                             <?php echo $this->getChildHtml('footer-payment'); ?>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-sm-height col-sm-middle last">
+                        <div class="footer-right">
+                            <?php echo $this->getChildHtml('newsletter'); ?>
+                            <p class="copyright"><?php echo $this->__(Mage::getStoreConfig('design/footer/copyright')) ?></p>
                         </div>
                     </div>
                 </div>

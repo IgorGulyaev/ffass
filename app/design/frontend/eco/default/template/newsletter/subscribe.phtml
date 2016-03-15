@@ -27,7 +27,10 @@
 <div class="block-subscribe">
     <form class="form-subscribe" action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
         <div class="form-group">
-            <label for="newsletter"><?php echo $this->__('Sign Up for Newsletter') ?></label>
+            <label for="newsletter">
+                <?php echo $this->__('Interested in SpeCial Offers?') ?>
+                <span><?php echo $this->__('Enter your email address to receive coupons & special deals via email newsletter') ?></span>
+            </label>
             <div class="input-group">
                 <input type="email" name="email" id="newsletter" title="<?php echo $this->__('Enter your email address') ?>" class="input-text required-entry validate-email" placeholder="<?php echo $this->__('Enter your email address') ?>">
                 <span class="input-group-btn">
