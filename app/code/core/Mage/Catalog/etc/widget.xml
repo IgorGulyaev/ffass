@@ -191,6 +191,10 @@
                         <value>catalog/category/widget/link/link_inline.phtml</value>
                         <label>Category Link Inline Template</label>
                     </link_inline>
+                    <link_hp translate="label">
+                        <value>catalog/category/widget/category_hp.phtml</value>
+                        <label>Category Link HP Template</label>
+                    </link_hp>
                 </values>
             </template>
         </parameters>

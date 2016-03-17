@@ -174,7 +174,26 @@
                 </block>
             </block>
 
-            <block type="catalog/navigation" name="block.index.category" template="catalog/category/widget/category_list.phtml">
+            <block type="core/template" name="home.cms.block.index.hp.cats" template="cms/block.phtml">
+                <action method="setElementClass"><value>index-cat-blocks</value></action>
+                <block type="core/template" name="hp.cats.wrapper" template="cms/block.phtml">
+                    <action method="setElementClass"><value>row</value></action>
+                    <block type="catalog/navigation" name="hp.cat.new" template="catalog/category/widget/category_hp.phtml">
+                        <action method="setCatId"><value>5</value></action>
+                    </block>
+                    <block type="catalog/navigation" name="hp.cat.holiday" template="catalog/category/widget/category_hp.phtml">
+                        <action method="setCatId"><value>4</value></action>
+                    </block>
+                    <block type="catalog/navigation" name="hp.cat.brand" template="catalog/category/widget/category_hp.phtml">
+                        <action method="setCatId"><value>8</value></action>
+                    </block>
+                    <block type="catalog/navigation" name="hp.cat.clearance" template="catalog/category/widget/category_hp.phtml">
+                        <action method="setCatId"><value>9</value></action>
+                    </block>
+                </block>
+            </block>
+
+            <!--<block type="catalog/navigation" name="block.index.category" template="catalog/category/widget/category_list.phtml">
                 <action method="setCarousel"><value>true</value></action>
                 <action method="setStagePadding"><value>100</value></action>
                 <action method="setCarouselCount"><value>5</value></action>
@@ -187,7 +206,7 @@
                 <action method="setCarouselNav"><value>false</value></action>
                 <action method="setCarouselDots"><value>false</value></action>
                 <action method="setCarouselHeight"><value>true</value></action>
-            </block>
+            </block>-->
 
         </reference>
         <reference name="before_footer">

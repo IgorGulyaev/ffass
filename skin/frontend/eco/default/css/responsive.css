@@ -944,13 +944,13 @@
     }
 
     .navbar .dropdown-menu .dropdown > a:before {
-        content: "\e90e";
+        /*content: "\e90e";
         position: absolute;
         right: 15px;
         top: 50%;
         margin-top: -5px;
         font-size: 10px;
-        color: #31a348;
+        color: #31a348;*/
     }
 
     .navbar .navbar-nav > .dropdown-right > .dropdown-menu {
