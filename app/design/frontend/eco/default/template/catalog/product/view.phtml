@@ -51,10 +51,10 @@
                 </div>
             </div>
             <div class="col-sm-7">
-                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                 <?php if ($_product->getSku()): ?>
-                    <p class="product-sku"><?php echo $this->__('Sku') ?>: <?php echo $_product->getSku() ?></p>
+                    <p class="product-sku"><?php echo $this->__('PRODUCT CODE') ?>: <span><?php echo $_product->getSku() ?></span></p>
                 <?php endif; ?>
+                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                 <?php echo $this->getChildHtml('alert_urls') ?>
                 <?php echo $this->getChildHtml('product_type_data') ?>
                 <?php echo $this->getTierPriceHtml() ?>

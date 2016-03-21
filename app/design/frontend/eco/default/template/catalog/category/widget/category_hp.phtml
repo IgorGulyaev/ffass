@@ -35,13 +35,15 @@ $url                    = $_category->getUrl();
 <div class="hp-cat col-xs-6">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
-            <a href="<?php echo $_category->getUrl(); ?>">
-                <img src="<?php echo $this->getUrl('media/catalog/category/'); ?><?php echo $image ?>" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" width="266" >
-                <span><?php echo $name ?></span>
+            <a href="<?php echo $_category->getUrl(); ?>" class="image" >
+                <img src="<?php echo $this->getUrl('media/catalog/category/'); ?><?php echo $image ?>" alt="<?php echo $this->htmlEscape($_category->getName()) ?>" >
+                <span class="img-label"><span><?php echo $name ?></span></span>
             </a>
         </div>
         <div class="col-sm-6 hidden-xs">
-            <h3><?php echo $name ?></h3>
+            <a href="<?php echo $_category->getUrl(); ?>">
+                <h3><?php echo $name ?></h3>
+            </a>
             <p><?php echo $categoryDescription ?></p>
             <a href="<?php echo $url ?>" class="button"><?php echo $this->__('Shop now >') ?></a>
         </div>

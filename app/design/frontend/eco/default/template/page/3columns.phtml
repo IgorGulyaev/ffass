@@ -28,6 +28,9 @@
  * Template for Mage_Page_Block_Html
  */
 ?>
+<?php
+$_helper    = $this->helper('catalog/output');
+?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->getLang() ?>">
 <head>
@@ -42,6 +45,11 @@
         <div class="container main-container col3-layout">
             <?php echo $this->getChildHtml('breadcrumbs') ?>
             <div class="row main">
+                <?php if($_category  = Mage::registry('current_category')):?>
+                    <div class="col-xs-12 page-title category-title">
+                        <h1><?php echo $_category->getName() ?></h1>
+                    </div>
+                <?php endif; ?>
                 <div class="col-sm-3 col-md-3 col-left sidebar" data-sidebar="left-sidebar"><?php echo $this->getChildHtml('left') ?></div>
                 <div class="col-sm-6 col-md-6 col-main">
                     <?php echo $this->getChildHtml('global_messages') ?>

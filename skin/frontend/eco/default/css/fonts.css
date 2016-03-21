@@ -181,8 +181,12 @@ a[href*='amazon']:before,
 }
 
 .add-to-links [href*='wishlist']:before {
-    content: "\e911";
+    content: "\e918";
+    color: #dddfe1;
 }
+    .add-to-links [href*='wishlist']:hover:before {
+        color: #ce2127;
+    }
 
 .add-to-links [href*='compare']:before {
     content: "\e910";

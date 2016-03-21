@@ -1509,8 +1509,15 @@ select::-ms-expand {
 .form-subscribe label {
     color: #fff;
     text-transform: uppercase;
+    font-size: 23px;
     font-weight: bold;
 }
+    .form-subscribe label span {
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+        text-transform: none;
+    }
 
 .form-subscribe .input-text {
     -webkit-box-shadow: none;
@@ -1532,7 +1539,7 @@ select::-ms-expand {
 .button,
 .back-link > a {
     display: inline-block;
-    height: 34px;
+    height: 43px;
     padding: 5px 12px;
     margin-bottom: 0;
     font-size: 14px;
@@ -3222,8 +3229,7 @@ span.product-image {
     /* add to cart button */
 
     @media (min-width: 767px) {
-        .product-options-top,
-        .product-options-bottom {
+        .product-options-top {
             max-width: 300px;
         }
     }
@@ -3516,15 +3522,16 @@ span.product-image {
 }
 
 .add-to-links a:before {
-    font-size: 20px;
+    font-size: 30px;
     margin-right: 10px;
-    top: 3px;
+    vertical-align: middle;
 }
 
 .product-view .add-to-links {
-    display: table;
-    width: 100%;
+    display: inline-block;
+    margin: 5px 0;
     table-layout: auto;
+    vertical-align: bottom;
 }
 
 .product-view .add-to-links > li {

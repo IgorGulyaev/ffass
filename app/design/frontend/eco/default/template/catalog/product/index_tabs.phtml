@@ -7,16 +7,18 @@
         </ul>
     </div>
 </div>
-<div class="container">
-    <div class="tab-content">
-        <div class="tab-pane active" id="new">
-            <?php echo $this->getChildHtml('on_sale_products') ?>
-        </div>
-        <div class="tab-pane" id="favorites">
-            <?php echo $this->getChildHtml('featured_products') ?>
-        </div>
-        <div class="tab-pane" id="clearance">
-            <?php echo $this->getChildHtml('clearance') ?>
+<div class="container-wrapper">
+    <div class="container">
+        <div class="tab-content">
+            <div class="tab-pane active" id="new">
+                <?php echo $this->getChildHtml('on_sale_products') ?>
+            </div>
+            <div class="tab-pane" id="favorites">
+                <?php echo $this->getChildHtml('featured_products') ?>
+            </div>
+            <div class="tab-pane" id="clearance">
+                <?php echo $this->getChildHtml('clearance') ?>
+            </div>
         </div>
     </div>
 </div>

@@ -17,7 +17,7 @@ $imageType = $this->getImageType() ? $this->getImageType() : 'small_image';
     <?php endif; ?>
     <div class="products-item-img">
         <a href="<?php echo $_product->getProductUrl(); ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, $imageType), null, true); ?>" class="product-image">
-            <img class="img-responsive" src="<?php echo $this->helper('catalog/image')->init($_product, 'image', $imageType)->resize(500); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, $imageType), null, true); ?>">
+            <img class="img-responsive" src="<?php echo $this->helper('adaptiveResize/image')->init($_product, 'image')->adaptiveResize(190, 238); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, $imageType), null, true); ?>">
         </a>
     </div>
     <div class="product-shop">
@@ -27,7 +27,7 @@ $imageType = $this->getImageType() ? $this->getImageType() : 'small_image';
             </a>
         </h2>
         <?php echo $this->getPriceHtml($_product, true); ?>
-            <?php if (!$isCompareList): ?>
+        <?php if (!$isCompareList): ?>
             <?php if($_product->isSaleable()): ?>
                 <div class="add-to-cart">
                     <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')">

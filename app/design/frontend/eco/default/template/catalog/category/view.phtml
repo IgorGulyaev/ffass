@@ -9,9 +9,6 @@
 ?>
 
 <?php echo $this->getMessagesBlock()->toHtml(); ?>
-<div class="page-title category-title">
-    <h1><?php echo $_category->getName() ?></h1>
-</div>
 <?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
     <div class="row category-description">
         <div class="<?php if(!$_imgUrl): ?>col-sm-12<?php else: ?>col-sm-7<?php endif; ?> first">

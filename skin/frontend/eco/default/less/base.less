@@ -82,6 +82,23 @@ label {
   }
 }
 
+[type=checkbox] + label:before,
+[type=radio] + label:before,
+[type=radio] + a:before {
+  height: 14px;
+  width: 14px;
+  border-color: #d0d0d0;
+  .border-radius(2px);
+  color: #666d77;
+  font-size: 10px;
+  line-height: 13px;
+}
+[type=checkbox]:checked + label:before,
+[type=radio]:checked + label:before,
+[type=radio]:checked + a:before {
+  content: "\e905";
+}
+
 .label {
   color: inherit;
   font-size: inherit;
@@ -217,6 +234,17 @@ dl {
     width: 1170px;
   }
 }*/
+
+
+.breadcrumb {
+  &>li {
+    &+li {
+      &:before {
+        padding: 0 0 0 3px;
+      }
+    }
+  }
+}
 
 /* row display table */
 
@@ -910,6 +938,8 @@ h1:after,
   /* media */
   .products-item-img {
     margin-bottom: 20px;
+    border: 1px dashed #ebebeb;
+    .border-radius(5px);
     &> a {
       display: block;
       text-align: center;
@@ -927,9 +957,9 @@ h1:after,
     margin-bottom: @globalPadding;
     margin-top: 0;
     text-transform: none;
-    text-align: left;
-    font-size: 18px;
-    color: inherit;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
   }
   p {
     line-height: 100%;
@@ -939,6 +969,7 @@ h1:after,
   /* price box */
   .price-box {
     margin-top: @globalPadding;
+    text-align: center;
     &> .price-item:nth-child(even) {
       text-align: right;
     }
@@ -950,17 +981,18 @@ h1:after,
     .price {
       font-weight: bold;
       font-size: 16px;
+      color: #070707;
     }
     &> .old-price {
       &> .price {
         text-decoration: line-through;
-        color: #6d7481;
       }
     }
     &> p {
-      display: block;
-      float: left;
-      width: 50%;
+      display: inline-block;
+      float: none;
+      width: auto;
+      margin: 0 10px;
     }
   }
   /*hover*/
@@ -1067,6 +1099,26 @@ h1:after,
   }
 }
 
+.product-shop {
+  .add-to-cart {
+    position: relative;
+    display: inline-block;
+    margin-right: 32px;
+    &:before {
+      position: absolute;
+      display: block;
+      content: '';
+      bottom: 21px;
+      left: -27px;
+      height: 46px;
+      width: 55px;
+      background: url("@{path}images/butterfly.png") no-repeat 0 0;
+      -webkit-background-size: contain;
+      background-size: contain;
+    }
+  }
+}
+
 /**/
 
 .sp-methods {
@@ -1095,6 +1147,12 @@ h1:after,
 /**/
 
 /* end product item */
+
+
+.header-top .links > li > a,
+.nav > li > a {
+  padding: 10px 20px;
+}
 
 
 .footer {
