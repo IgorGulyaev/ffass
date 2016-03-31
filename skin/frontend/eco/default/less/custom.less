@@ -2,9 +2,9 @@ button:not(.navbar-toggle),
 .button {
   position: relative;
   &:before {
-    display: block;
+    display: block !important;
     content: '';
-    position: absolute;
+    position: absolute !important;
     top: 3px;
     left: 4px;
     height: calc(~"100% - 6px");
@@ -16,6 +16,7 @@ button:not(.navbar-toggle),
 
 header {
   .header-top {
+    border-bottom: 1px dashed #fff;
     background-color: @headGreen;
   }
 }
@@ -37,6 +38,7 @@ header {
         padding: 30px;
         color: #fff;
         font-size: 60px;
+        line-height: 1.3;
       }
       .button {
         position: relative;
@@ -85,7 +87,7 @@ header {
           background: none;
           text-indent: -9999px;
           &:before {
-            display: none;
+            display: none !important;
           }
         }
       }
@@ -163,6 +165,81 @@ header {
     }
   }
 }
+
+/* HOME TOP LABEL */
+.index-top-label {
+  position: relative;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin: 0 35px 20px;
+  background-color: @lightGreen4;
+  &:before {
+    position: absolute;
+    top: 0;
+    left: -35px;
+    display: inline-block;
+    content: '';
+    height: 100%;
+    width: 35px;
+    background: url("@{path}images/top-label-l.png") no-repeat 0 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
+  &:after {
+    position: absolute;
+    top: 0;
+    right: -35px;
+    display: inline-block;
+    content: '';
+    height: 100%;
+    width: 35px;
+    background: url("@{path}images/top-label-r.png") no-repeat 0 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
+  .inner {
+    height: 40px;
+    border-top: 3px dashed #fff;
+    border-bottom: 3px dashed #fff;
+    color: #fff;
+    font-size: 30px;
+    line-height: 38px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+/* END HOME TOP LABEL */
+
+/* HOME MAIN SLIDER */
+.banners-home-page-banners {
+  img {
+    object-fit: cover;
+  }
+}
+/* END HOME MAIN SLIDER */
+
+/* HOME SPECIAL BANNERS */
+.index-special-banners {
+  .owl-item {
+    &:first-child {}
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .index-special-banners {
+    margin-right: -15px;
+    margin-left: -15px;
+    .owl-item {
+      &:first-child {
+        width: 100% !important;
+        &~ .owl-item {
+          width: 50% !important;
+        }
+      }
+    }
+  }
+}
+/* END HOME SPECIAL BANNERS */
 
 
 .index-cat-blocks {

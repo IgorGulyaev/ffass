@@ -1,8 +1,13 @@
 <ul class="nav nav-inline pull-right account-nav hidden-xs">
     <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/product/compare/link.phtml')->toHtml(); ?>
+    <?php if(Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+        <li>
+            <?php echo $this->getLayout()->createBlock('wishlist/links')->setBlockName('wishlist_link')->toHtml(); ?>
+        </li>
+    <?php endif; ?>
     <li<?php if(Mage::getSingleton('customer/session')->isLoggedIn()): ?> class="dropdown"<?php endif; ?>>
         <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-            <a href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo $this->__('Log in / Sign up'); ?></a>
+            <a href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo $this->__('Sign in'); ?></a>
         <?php else: ?>
             <a data-toggle="dropdown" href="<?php echo $this->getUrl('customer/account'); ?>"><?php echo $this->__('My Account'); ?></a>
             <ul class="dropdown-menu pull-right">
@@ -11,10 +16,14 @@
                 <li><a href="<?php echo $this->getUrl('customer/address/new'); ?>"><?php echo $this->__('Address Book') ?></a></li>
                 <li><a href="<?php echo $this->getUrl('sales/order/history'); ?>"><?php echo $this->__('My Orders') ?></a></li>
                 <li><a href="<?php echo $this->getUrl('review/customer'); ?>"><?php echo $this->__('My Product Reviews') ?></a></li>
-                <?php echo $this->getLayout()->createBlock('wishlist/links')->setBlockName('wishlist_link')->toHtml(); ?>
                 <li><a href="<?php echo $this->getUrl('newsletter/manage'); ?>"><?php echo $this->__('Newsletter Subscriptions') ?></a></li>
                 <li><a href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo $this->__('Logout'); ?></a></li>
             </ul>
         <?php endif; ?>
     </li>
+    <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+        <li>
+            <a href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo $this->__('Register'); ?></a>
+        </li>
+    <?php endif; ?>
 </ul>

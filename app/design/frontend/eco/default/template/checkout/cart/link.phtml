@@ -7,21 +7,16 @@ $action = $request->getActionName();
 <a href="<?php echo $this->getUrl('checkout/cart'); ?>" data-toggle="dropdown" class="top-link-cart">
     <span>
         <span><i class="icon-cart"></i></span>
-        <span>
+        <span class="cart-info">
+            <span class="cart-title hidden-xs"><?php echo $this->__('My Cart') ?></span>
         <?php
             $count = $this->helper('checkout/cart')->getSummaryCount();
             $total = $this->helper('checkout/cart')->getQuote()->getGrandTotal();
-            if ($count == 0) {
-                echo $this->__('<span class="cart-figure" title="0 Items">0 Items</span>', $count);
-            }
-            if ($count == 1) {
-                echo $this->__('<span class="cart-figure" title="1 Item">1 Item</span>', $count);
-            }
-            if ($count > 1) {
-                echo $this->__('<span class="cart-figure">%s Item</span>', $count);
-            }
-            echo '<span class="cart-open-price">'.$this->helper('core')->formatPrice($total, false).'</span>';
+            if (!$count) {$count = 0;}
         ?>
+            <span class="cart-figure"><?php echo $count; ?> item(s)</span>
+            <span class="hidden-xs"><?php echo $this->__(' - ') ?></span>
+            <span class="cart-open-price"><?php echo $this->helper('core')->formatPrice($total, false); ?></span>
         </span>
     </span>
 </a>

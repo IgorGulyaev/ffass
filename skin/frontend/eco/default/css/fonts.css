@@ -153,10 +153,10 @@ a[href*='amazon']:before,
     content: "\e92b";
 }
 .icon-minus:before {
-    content: "\e92c";
+    content: "\e900";
 }
 .icon-plus:before {
-    content: "\e92d";
+    content: "\e903";
 }
 .icon-amazon:before {
     content: "\e92e";
@@ -174,10 +174,6 @@ a[href*='amazon']:before,
 
 .back-link > a:before {
     content: "\e90d";
-}
-
-.form-search .button:before {
-    content: "\e801";
 }
 
 .add-to-links [href*='wishlist']:before {

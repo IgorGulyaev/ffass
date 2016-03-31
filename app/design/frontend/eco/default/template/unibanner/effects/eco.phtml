@@ -18,7 +18,7 @@
     $bCntResponsiveXlg  = ($this->getBannerCountResponsiveXlg()) ? $this->getBannerCountResponsiveXlg() : 1;
 ?>
 <?php if(count($data['banner_data'])): ?>
-    <div class="banners">
+    <div class="banners banners-<?php echo $gCode; ?>">
         <div class="owl-carousel<?php if (!$this->getAutoHeight() == 'true'): ?> owl-height<?php endif; ?>">
             <?php foreach ($data['banner_data'] as $banner): ?>
                 <div class="item">
@@ -40,8 +40,8 @@
                                 <?php if($this->getMixedBanner() == true):?>
                                     <div class="unibanner-item mixed row">
                                         <div class="row-height">
-                                            <div class="uni-image col-xs-7 col-sm-8 col-height" style="background: url('<?php echo $image; ?>') no-repeat center center; background-size: cover;">
-                                                <!--<img src="<?php /*echo $image; */?>" class="visible-xs" alt="<?php /*echo $title; */?>">-->
+                                            <div class="uni-image col-xs-7 col-sm-8 col-height"> <!--style="background: url('<?php /*echo $image; */?>') no-repeat center center; background-size: cover;"-->
+                                                <img src="<?php echo $image; ?>" class="visible-xs" alt="<?php echo $title; ?>" width="760" height="489" />
                                             </div>
                                             <div class="uni-text col-xs-5 col-sm-4 col-height">
                                                 <?php if ($content && $gData->getShowContent()) : ?>
@@ -78,7 +78,7 @@
         </div>
         <script type="text/javascript">
             jQuery(document).ready(function ($) {
-                $('.banners .owl-carousel').owlCarousel({
+                $('.banners.banners-<?php echo $gCode; ?> .owl-carousel').owlCarousel({
                     margin: 0,
                     navText: false,
                     <?php if ($mode == 'fade') : ?>
@@ -87,6 +87,7 @@
                     <?php if (!$this->getAutoHeight() == 'true'): ?>
                     autoHeight: true,
                     <?php endif; ?>
+                    center: true,
                     loop: <?php echo $bLoop; ?>,
                     nav: <?php echo $bNav; ?>,
                     dots: <?php echo $bDots; ?>,
@@ -116,4 +117,5 @@
         </script>
     </div>
 
+<?php else: ?>
 <?php endif; ?>

@@ -29,11 +29,13 @@
 <?php if($_product->isSaleable()): ?>
     <div class="add-to-cart">
         <?php if(!$_product->isGrouped()): ?>
-        <label for="qty"><?php echo $this->__('Qty:') ?></label>
-        <div class="input-group qty-group">
-            <span class="input-group-addon"><button type="button" class="button button-qty qty-minus" data-value="-1" data-target="#qty" data-toggle="spinner"><i class="icon-minus"></i></button></span>
-            <input data-ride="spinner" data-min="<?php echo ($qty = $this->getProductDefaultQty() * 1) ? $qty : 1 ?>" type="text" name="qty" id="qty" maxlength="12" value="<?php echo ($qty = $this->getProductDefaultQty() * 1) ? $qty : 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty">
-            <span class="input-group-addon"><button type="button" class="button button-qty qty-plus" data-value="1" data-target="#qty" data-toggle="spinner"><i class="icon-plus"></i></button></span>
+        <div class="qty-wrapper">
+            <label for="qty"><?php echo $this->__('Qty:') ?></label>
+            <div class="input-group qty-group">
+                <span class="input-group-addon"><button type="button" class="button button-qty qty-minus" data-value="-1" data-target="#qty" data-toggle="spinner"><i class="icon-minus"></i></button></span>
+                <input data-ride="spinner" data-min="<?php echo ($qty = $this->getProductDefaultQty() * 1) ? $qty : 1 ?>" type="text" name="qty" id="qty" maxlength="12" value="<?php echo ($qty = $this->getProductDefaultQty() * 1) ? $qty : 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty">
+                <span class="input-group-addon"><button type="button" class="button button-qty qty-plus" data-value="1" data-target="#qty" data-toggle="spinner"><i class="icon-plus"></i></button></span>
+            </div>
         </div>
         <?php endif; ?>
         <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>

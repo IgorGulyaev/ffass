@@ -14,19 +14,46 @@
                 <label>Section Content Area</label>
             </block>
             <reference name="top.links">
-                <!--<action method="addLink" translate="label title">
-                    <label>About Us</label>
-                    <url>about</url>
-                    <title>About Us</title>
+                <action method="addLink" translate="label title">
+                    <label>Contact Us</label>
+                    <url>contacts</url>
+                    <title>Contact Us</title>
                     <prepare>true</prepare>
                     <urlParams helper="core/url/getHomeUrl"/>
                     <position>1</position>
                     <liParams/>
-                    <aParams>class="top-link-about-us"</aParams>
+                    <aParams>class="top-link-contact-us"</aParams>
                     <beforeText></beforeText>
                     <afterText></afterText>
-                </action>-->
+                </action>
+                <action method="addLink" translate="label title">
+                    <label>Help Center</label>
+                    <url>help-center</url>
+                    <title>Help Center</title>
+                    <prepare>true</prepare>
+                    <urlParams helper="core/url/getHomeUrl"/>
+                    <position>2</position>
+                    <liParams/>
+                    <aParams>class="top-link-help-center"</aParams>
+                    <beforeText></beforeText>
+                    <afterText></afterText>
+                </action>
+                <action method="addLink" translate="label title">
+                    <label>Sign Up For Newsletter</label>
+                    <url>newsletter</url>
+                    <title>Sign Up For Newsletter</title>
+                    <prepare>true</prepare>
+                    <urlParams helper="core/url/getHomeUrl"/>
+                    <position>3</position>
+                    <liParams/>
+                    <aParams>class="top-link-newsletter"</aParams>
+                    <beforeText></beforeText>
+                    <afterText></afterText>
+                </action>
+                <action method="removeLinkByUrl"><url helper="customer/getLoginUrl"/></action>
+                <action method="removeLinkByUrl"><url helper="opc/paypal/getLoginUrl"/></action>
                 <action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action>
+                <remove name="customer_login_link"/>
                 <remove name="checkout_cart_link"/>
                 <remove name="checkout_cart_link_custom"/>
                 <remove name="wishlist_link"/>
@@ -153,6 +180,16 @@
         <reference name="content">
             <remove name="page_content_heading"/>
 
+            <block type="core/template" name="index.cms.block.toplabel.wrapper" template="cms/block.phtml">
+                <action method="setElementClass"><value>index-top-label hidden-xs</value></action>
+                <block type="core/template" name="index.cms.block.toplabel.inner" template="cms/block.phtml">
+                    <action method="setElementClass"><value>inner hidden-xs</value></action>
+                    <block type="cms/block" name="index.cms.block.toplabel">
+                        <action method="setBlockId"><block_id>index-top-label</block_id></action>
+                    </block>
+                </block>
+            </block>
+
             <block type="core/template" name="home.cms.block.index.section" template="cms/block.phtml">
                 <action method="setElementClass"><value>index-banners</value></action>
                 <block type="banner/banner" name="home.page.banners">
@@ -174,8 +211,35 @@
                 </block>
             </block>
 
+            <block type="core/template" name="home.cms.block.index.section.special" template="cms/block.phtml">
+                <action method="setElementClass"><value>index-special-banners</value></action>
+                <block type="banner/banner" name="index.special.banners">
+                    <action method="setBannerGroupCode"><value>index-special-banners</value></action>
+                    <action method="setBannerCount"><value>3</value></action>
+                    <action method="setBannerResponsive"><value>true</value></action>
+                    <action method="setBannerCountResponsiveXs"><value>3</value></action>
+                    <action method="setBannerCountResponsiveSm"><value>3</value></action>
+                    <action method="setBannerCountResponsiveMd"><value>3</value></action>
+                    <action method="setBannerCountResponsiveLg"><value>3</value></action>
+                    <action method="setBannerCountResponsiveXlg"><value>3</value></action>
+                    <action method="setBannerImgMaxWidth"><value>1000</value></action>
+                    <action method="setBannerLoop"><value>false</value></action>
+                    <action method="setBannerNav"><value>false</value></action>
+                    <action method="setBannerDots"><value>false</value></action>
+                    <action method="setBannerHeight"><value>true</value></action>
+                </block>
+            </block>
+
+            <block type="core/template" name="index.cms.block.infoblock.wrapper" template="cms/block.phtml">
+                <action method="setElementClass"><value>index-info-block</value></action>
+                <block type="cms/block" name="index.cms.block.infoblock">
+                    <action method="setBlockId"><block_id>index-info-block</block_id></action>
+                </block>
+            </block>
+
             <block type="core/template" name="home.cms.block.index.hp.cats" template="cms/block.phtml">
                 <action method="setElementClass"><value>index-cat-blocks</value></action>
+                <action method="setTitle"><value>Categories</value></action>
                 <block type="core/template" name="hp.cats.wrapper" template="cms/block.phtml">
                     <action method="setElementClass"><value>row</value></action>
                     <block type="catalog/navigation" name="hp.cat.new" template="catalog/category/widget/category_hp.phtml">

@@ -136,7 +136,7 @@
 	<!--  LOGIN WITH PAYPAL -->
 	<customer_logged_out>
         <reference name="top.links">
-            <action method="addLink" translate="label title" module="opc" ifconfig="opc/paypallogin/status"><label></label><url helper="opc/paypal/getLoginUrl"/><title>Log In With Paypal</title><prepare/><urlParams/><position>100</position><liParams/><aParams><id>topPayPalIn</id><class>paypal-auth</class></aParams></action>
+            <!--<action method="addLink" translate="label title" module="opc" ifconfig="opc/paypallogin/status"><label></label><url helper="opc/paypal/getLoginUrl"/><title>Log In With Paypal</title><prepare/><urlParams/><position>100</position><liParams/><aParams><id>topPayPalIn</id><class>paypal-auth</class></aParams></action>-->
         </reference>
     </customer_logged_out>
     
