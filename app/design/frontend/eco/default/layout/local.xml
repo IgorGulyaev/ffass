@@ -85,6 +85,9 @@
             <block type="cms/block" name="nav.footer" as="footer-nav">
                 <action method="setBlockId"><value>footer-nav</value></action>
             </block>
+            <block type="cms/block" name="footer.help.center" as="footer-help-center">
+                <action method="setBlockId"><value>footer-help-center</value></action>
+            </block>
             <block type="cms/block" name="footer.social" as="footer-social">
                 <action method="setBlockId"><value>footer-social</value></action>
             </block>

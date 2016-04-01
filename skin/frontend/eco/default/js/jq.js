@@ -117,29 +117,37 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
     });
 
-    $('.section-products .owl-carousel').owlCarousel({
-        margin: 0,
-        loop: false,
-        nav: false,
-        dots: false,
-        thumbs: false,
-        responsive: {
-            0:{
-                items: 2
-            },
-            767:{
-                items: 2
-            },
-            991:{
-                items: 3
-            },
-            1200:{
-                items: 4
-            },
-            1500:{
-                items: 5
-            }
+    $('.section-products .owl-carousel').each(function () {
+        if ($(this).find('.products-item').length > 4) {
+            var $center = true;
+        } else {
+            var $center = false;
         }
+        $(this).owlCarousel({
+            margin: 0,
+            loop: true,
+            nav: false,
+            center: true,
+            dots: false,
+            thumbs: false,
+            responsive: {
+                0:{
+                    items: 1
+                },
+                767:{
+                    items: 2
+                },
+                991:{
+                    items: 3
+                },
+                1200:{
+                    items: 4
+                },
+                1500:{
+                    items: 5
+                }
+            }
+        });
     });
 
     /**/

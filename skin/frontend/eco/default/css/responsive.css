@@ -9,7 +9,7 @@
 
 .navbar-toggle > span {
     display: block;
-    background-color: #31a348;
+    background-color: #c7c7c7;
     height: 3px;
     margin: 3px 0;
     border-radius: 2px;
@@ -50,9 +50,13 @@
 
     /* header */
 
+    .header {
+        margin-bottom: 10px;
+    }
+
     .header-inner {
         text-align: center;
-        padding-bottom: 0;
+        padding: 22px 0 0;
     }
 
     .header-top > .container {
@@ -74,6 +78,11 @@
 
     .header-inner > .row [class*='col-'] {
         padding: 0!important;
+    }
+
+    .navbar-header {
+        text-align: left;
+        padding-left: 20px;
     }
 
     .logo {
@@ -135,15 +144,15 @@
     /* search */
 
     .header-search {
-        margin-top: 10px;
-        background-color: #31a348;
+        margin-top: 14px;
     }
 
     .form-search {
-        padding: 5px;
         margin: 0;
         float: left;
-        height: 55px;
+        height: 35px;
+        border: 1px solid #cacaca;
+        border-radius: 3px;
     }
 
     .catalog-category-view .form-search,
@@ -151,9 +160,11 @@
         width: 80%;
     }
 
-    .form-search .input-text,
-    .form-search .button {
+    .form-search .input-text {
         border-color: transparent!important;
+    }
+    .form-search .button {
+        border: 1px solid #cacaca;
     }
 
     .form-search .button:before {
@@ -411,7 +422,51 @@
 
     /**/
 
+    /* Index Info Block */
+    div.index-info-block {
+        margin-bottom: 30px;
+    }
+    .index-info-block .video-frame {
+        display: none;
+    }
+    div.index-info-block p {
+        padding: 0;
+        margin-bottom: 10px;
+        color: #555;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    div.index-info-block a {
+        padding: 0 40px;
+        font-size: 18px;
+        line-height: 43px;
+    }
+    /* END Index Info Block */
+
+    /* Home page blocks */
+    .section-title {
+        display: none;
+    }
+    .index-cat-blocks {
+        padding: 0 10px;
+    }
+    div.index-cat-blocks .hp-cat {
+        padding: 0 5px;
+        margin-bottom: 10px;
+    }
+    div.index-cat-blocks a.image .img-label {
+        bottom: 24px;
+        height: 30px;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    /* END Home page blocks */
+
     /* footer */
+
+    div.footer {
+        padding-bottom: 0;
+    }
 
     footer .row-footer {
         /*display: flex;
@@ -452,11 +507,11 @@
         font-size: 12px;
     }
 
-    footer .footer-social {
+    div.footer ul.footer-social {
         width: 100%;
         text-align: center;
     }
-    footer .footer-social > li {
+    div.footer ul.footer-social > li {
         margin: 0 18px;
 
     }
@@ -464,14 +519,31 @@
         font-size: 18px;
     }
 
-    .form-subscribe .form-group label {
-        color: #31a348;
-        font-size: 22px;
-        text-align: center;
+    .footer-center .contact-line {
+        line-height: 2;
+    }
+
+    .footer-help-center a {
+        font-size: 16px !important;
+        line-height: 3;
+        text-decoration: underline !important;
+    }
+
+    .footer-center a {
+        font-size: 13px;
+    }
+    .footer-center span {
+        margin-right: 10px;
+        font-size: 16px;
         font-weight: bold;
+    }
+
+    .form-subscribe .form-group label {
+        font-size: 16px;
+        font-weight: normal;
         display: block;
         white-space: normal;
-        line-height: 1;
+        line-height: 1.6;
         margin-bottom: 20px;
     }
 
@@ -589,12 +661,23 @@
     }
 
     .section-products .owl-carousel .owl-stage {
-        border-top: 1px solid #dae2ea;
+
+    }
+
+    div.index-tabs .nav > li > a {
+        padding: 5px 20px;
+    }
+
+    div.index-tabs .tab-content> .tab-pane .owl-stage-outer {
+        margin: 0;
     }
 
     .section-products .owl-carousel .owl-item {
-        border-right: 1px solid #dae2ea;
-        border-bottom: 1px solid #dae2ea;
+        -webkit-transform: scale(1) !important;
+        -moz-transform: scale(1) !important;
+        -ms-transform: scale(1) !important;
+        -o-transform: scale(1) !important;
+        transform: scale(1) !important;
     }
 
     .section-products.crosssell-product {

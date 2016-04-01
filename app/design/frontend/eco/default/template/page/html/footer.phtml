@@ -30,7 +30,7 @@
         <div class="container">
             <div class="row">
                 <div class="row-height row-footer">
-                    <div class="col-xs-12 col-sm-3 col-sm-height col-sm-middle first">
+                    <div class="col-xs-12 col-sm-3 col-sm-height col-sm-middle first hidden-xs">
                         <div class="footer-left">
                             <nav id="footer-navbar" class="navbar footer-nav">
                                 <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/account-nav.phtml')->toHtml(); ?>
@@ -44,15 +44,21 @@
                     <div class="col-xs-12 col-sm-4 col-sm-height col-sm-top">
                         <div class="footer-center">
                             <?php echo $this->getChildHtml('footer-social'); ?>
+                            <?php echo $this->getChildHtml('footer-help-center'); ?>
                             <?php if(Mage::getStoreConfig('general/store_information/phone')): ?>
-                                <div class="footer-phone hidden-xs">
-                                    <a href="tel:<?php echo Mage::getStoreConfig('general/store_information/phone'); ?>"><?php echo Mage::getStoreConfig('general/store_information/phone'); ?></a>
+                                <div class="footer-phone contact-line">
+                                    <span><?php echo $this->__('Direct:') ?></span><a href="tel:<?php echo Mage::getStoreConfig('general/store_information/phone'); ?>"><?php echo Mage::getStoreConfig('general/store_information/phone'); ?></a>
                                 </div>
                             <?php endif; ?>
                             <?php if(Mage::getStoreConfig('general/store_information/address')): ?>
-                                <address class="hidden-xs">
+                                <address class="footer-address contact-line hidden-xs">
                                     <?php echo Mage::getStoreConfig('general/store_information/address'); ?>
                                 </address>
+                            <?php endif; ?>
+                            <?php if(Mage::getStoreConfig('trans_email/ident_general/email')): ?>
+                                <div class="footer-email contact-line">
+                                    <span><?php echo $this->__('Email:') ?></span><a href="mailto:<?php echo Mage::getStoreConfig('trans_email/ident_general/email'); ?>"><?php echo Mage::getStoreConfig('trans_email/ident_general/email'); ?></a>
+                                </div>
                             <?php endif; ?>
                             <?php echo $this->getChildHtml('footer-payment'); ?>
                         </div>
@@ -68,4 +74,4 @@
         </div>
     </div>
 </footer>
-<button class="btn-scroll-top" data-spy="affix" data-offset-top="500"><i class="icon-arrow-up"></i></button>
+<button class="btn-scroll-top hidden-xs" data-spy="affix" data-offset-top="500"><i class="icon-arrow-up"></i></button>
