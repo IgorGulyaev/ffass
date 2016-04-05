@@ -45,16 +45,50 @@
         <input type="hidden" name="related_product" id="related-products-field" value="">
         <div class="product-shop">
             <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <div class="product-img-box">
                     <?php echo $this->getChildHtml('media') ?>
                 </div>
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-6">
                 <?php if ($_product->getSku()): ?>
                     <p class="product-sku"><?php echo $this->__('PRODUCT CODE') ?>: <span><?php echo $_product->getSku() ?></span></p>
                 <?php endif; ?>
                 <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+
+                <!-- Ratings -->
+                <ul class="ratings-bar">
+                    <li class="bar">
+                        <?php
+                        $storeId = Mage::app()->getStore()->getId();
+                        $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)->load($_product->getId());
+                        ?>
+                        <div class="rating-star">
+                            <?php
+                            $x = $summaryData['rating_summary'];
+                            $stars = 0;
+                            for ($i = 1; $i <= 5; $i++) {
+                                if ((($i - 1) * 20 < $x) && ($x <= $i * 20)) {
+                                    $stars = $i;
+                                }
+                            }
+                            ?>
+                            <?php for ($i = 0; $i < $stars; $i++): ?>
+                                <i class="icon-star active"></i>
+                            <?php endfor; ?>
+                            <?php for ($i = 0; $i < 5-$stars; $i++): ?>
+                                <i class="icon-star"></i>
+                            <?php endfor; ?>
+                        </div>
+                    </li>
+                    <li class="bar">
+                        <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                    </li>
+                    <li class="bar">
+                        <a href="#tab-reviews" role="tab" data-toggle="tab"><?php echo $this->__('Add Your Review') ?></a>
+                    </li>
+                </ul>
+
                 <?php echo $this->getChildHtml('alert_urls') ?>
                 <?php echo $this->getChildHtml('product_type_data') ?>
                 <?php echo $this->getTierPriceHtml() ?>

@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * Copyright [2015] [Dexxtz]
+ *
+ * @package   Dexxtz_Productzoom
+ * @author    Dexxtz
+ * @license   http://www.apache.org/licenses/LICENSE-2.0
+ */
+ 
+?>
+<?php
+	$product = Mage::registry('current_product');
+	Mage::helper('productzoom')->getVideoCss();
+	$img = $this->getSkinUrl('dexxtz/productzoom/images/close.png');
+	$js  = $this->getSkinUrl('dexxtz/productzoom/js/dexxtz-modal.js');
+
+	if ($video = $product->getDexxtzVideo()) { ?>
+		<div class="dexxtz-bg-modal" onclick="DexxtzModalClose(this);"></div>
+		<div class="dexxtz-modal-content">
+			<div>
+				<img class="dexxtz-close-modal" onclick="DexxtzModalClose(this);" src="<?php echo $img; ?>" />
+				<?php echo $video; ?>
+			</div>
+		</div>
+		<script type="text/javascript" src="<?php echo $js; ?>"></script>
+<?php } ?>

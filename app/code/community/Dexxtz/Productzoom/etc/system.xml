@@ -1,0 +1,446 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright [2015] [Dexxtz]
+ *
+ * @package   Dexxtz_Productzoom
+ * @author    Dexxtz
+ * @license   http://www.apache.org/licenses/LICENSE-2.0
+ */
+-->
+<config>
+	<tabs>
+        <dexxtz translate="label">
+            <label>Dexxtz</label>
+            <sort_order>150</sort_order>
+        </dexxtz>
+    </tabs>
+    <sections>
+		<dexxtz_productzoom translate="label" module="productzoom">
+            <label>Product Image Zoom</label>
+            <tab>dexxtz</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>70</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>				
+				<general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active>
+                            <label>Active</label>
+							<comment>Enables or disables customization on product page.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+						<autoplay>
+                            <label>Autoplay</label>
+							<comment>Enables or disables the automatic image change.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </autoplay>
+						<autoplay_interval>
+							<comment>Example: (6000), only integer is valid.</comment>
+							<tooltip>Speed of interval of Image change.</tooltip>
+                            <label>Autoplay interval time</label>
+							<validate>validate-digits</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<autoplay>1</autoplay>
+							</depends>
+                        </autoplay_interval>
+						<fadein_interval>
+                            <label>Fade in interval</label>
+							<comment>Example: (600), only integer is valid.</comment>
+							<tooltip>It is the image transition effect, how much most the transition is slower.</tooltip>
+							<validate>validate-digits</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fadein_interval>
+						<magnifier_icon>
+                            <label>Show magnifier icon</label>
+							<comment>Display magnifying glass icon on the main image.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magnifier_icon>
+                    </fields>
+                </general>
+                <featured_settings translate="label">
+                    <label>Featured Picture Settings</label>				
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <featured_width>
+                            <label>Width</label>
+							<comment>Main image width, example: (260), enter only integer.</comment>
+							<validate>validate-digits</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </featured_width>
+						<featured_height>
+                            <label>Height</label>
+							<comment>Main image height, example: (260), enter only integer.</comment>
+							<validate>validate-digits</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </featured_height>
+						<resize>
+                            <label>Resize image in scale</label>
+							<comment>Keep the image in original aspect ratio.</comment>
+							<tooltip>If the image does not reaches minimum the in proportion size is added a frame maintaining the scale.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </resize>
+						<background_color>
+                            <label>Background color of resize</label>
+							<comment>Change the background color of frame if necessary.</comment>
+							<tooltip>After resizing the image, is added a frame if the image does not reach minimum proportion, the color selected in the field changes the background color of this frame.</tooltip>
+							<validate>color-switch</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+                                <resize>1</resize>
+                            </depends>
+                        </background_color>
+                    </fields>
+                </featured_settings>
+				<thumbnails_settings translate="label">
+                    <label>Thumbnails Settings</label>					
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <thumbnails_qty>
+                            <label>Show</label>
+							<comment>Fixed amount of thumbnails shown.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>dexxtz_productzoom/system_config_source_thumbnails_qty</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </thumbnails_qty>
+						<thumbnails_position>
+                            <label>Position of thumbnails</label>
+							<comment>Position of where it will be displayed thumbnails.</comment>
+							<tooltip>The position of the thumbnails is based in the main picture, ie the thumbnails will positioned in the chosen side (top, right, bottom and left) of the main image.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>dexxtz_productzoom/system_config_source_thumbnails_position</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </thumbnails_position>
+                    </fields>
+                </thumbnails_settings>
+				<zoom_settings translate="label">
+                    <label>Zoom Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <zoom_image_width>
+                            <label>Width image of zoom</label>
+							<comment>Example: (800), enter only integer</comment>
+							<validate>validate-digits</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoom_image_width>
+						<zoom_image_height>
+                            <label>Height image of zoom</label>
+							<comment>Example: (800), enter only integer</comment>
+							<validate>validate-digits</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoom_image_height>
+						<zoom_area_width>
+                            <label>Zoom area width</label>
+							<comment>Example: (500), enter only integer</comment>
+							<validate>validate-digits</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoom_area_width>
+						<zoom_area_height>
+                            <label>Zoom area height</label>
+							<comment>Example: (500) or blank = automatic, enter only integer.</comment>
+							<validate>validate-digits</validate>
+							<tooltip>If you want the height is automatic with the content of the images, leave this field blank.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoom_area_height>
+						<description_active>
+                            <label>Show description</label>
+							<comment>Shown description of the image, on image of zoom.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </description_active>
+						<description_position>
+                            <label>Position of description</label>
+							<comment>Position of description of image of zoom.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>dexxtz_productzoom/system_config_source_description_position</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+                                <description_active>1</description_active>
+                            </depends>
+                        </description_position>
+						<description_opacity>
+                            <label>Opacity of description</label>
+							<comment>Example: (0.7), default of css.</comment>
+                            <validate>validate-number-range number-range-0-1</validate>
+							<frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+                                <description_active>1</description_active>
+                            </depends>
+                        </description_opacity>
+						<background_color>
+                            <label>Background color of description</label>
+							<comment>Example: (#FFFFF).</comment>
+							<validate>color-switch</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+                                <description_active>1</description_active>
+                            </depends>
+                        </background_color>
+						<description_color>
+                            <label>Color of description</label>
+							<comment>Example: (#000000).</comment>
+							<validate>color-switch</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+                                <description_active>1</description_active>
+                            </depends>
+                        </description_color>												
+                    </fields>
+                </zoom_settings>
+				<css_settings translate="label">
+                    <label>Css Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <border>
+                            <label>Border</label>
+							<comment>Example: (1px solid #DDDDDD), default of css.</comment>
+							<tooltip>Customizes the edge of images with thickness and color.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </border>
+						 <box_shadow>
+                            <label>Box shadow</label>
+							<comment>Example: (0 0 10px #DDDDDD), default of css.</comment>
+							<tooltip>Customize the shadows of the images, and can increase the shadow height and give color to it.</tooltip>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </box_shadow>
+						<opacity_inative>
+                            <label>Opacity inactive thumbnails</label>
+							<comment>Example: (0.3), default of css.</comment>
+							<tooltip>Transparency of the thumbnails that were not selected.</tooltip>
+                            <validate>validate-number-range number-range-0-1</validate>
+							<frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opacity_inative>
+						<opacity_magnifier>
+                            <label>Opacity image in magnifier</label>
+							<comment>Example: (0.5), default of css.</comment>
+							<tooltip>Transparency of the main image when passes mouse.</tooltip>
+                            <validate>validate-number-range number-range-0-1</validate>
+							<frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </opacity_magnifier>						
+                    </fields>
+                </css_settings>
+				<video translate="label">
+                    <label>Video Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active>
+                            <label>Active</label>
+							<comment>Enables or disables video display.</comment>
+							<tooltip>If 'Yes', enables a tab on new/edit product next to images tab, with a field to add the video embed. On the front-end displays an icon next to the thumbnails, which when clicked displays the video.</tooltip>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+						<image_upload translate="label comment">
+                            <label>Video icon</label>
+							<tooltip>Select an image as the video icon. If you do not select any icon, a default will be displayed, after clicking on icon the video displayed.</tooltip>
+							<frontend_type>image</frontend_type>
+							<sort_order>20</sort_order>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="0">dexxtz/productzoom/images</upload_dir>
+                            <base_url type="media" scope_info="0">dexxtz/productzoom/images</base_url>
+							<show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+                                <active>1</active>
+                            </depends>
+						</image_upload>						
+						<background_color>
+                            <label>Background color of modal</label>
+							<comment>Select a background color of modal.</comment>
+							<validate>color-switch</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+                                <active>1</active>
+                            </depends>
+                        </background_color>
+						<background_opacity>
+                            <label>Opacity of background</label>
+							<comment>Example: (0.7), default of css.</comment>
+                            <validate>validate-number-range number-range-0-1</validate>
+							<frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+                                <active>1</active>
+                            </depends>
+                        </background_opacity>	
+						<border>
+                            <label>Border of content</label>
+							<comment>Example: (1px solid #DDDDDD), default of css.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+                                <active>1</active>
+                            </depends>
+                        </border>
+						<box_shadow>
+                            <label>Box shadow of content</label>
+							<comment>Example: (0 0 10px #DDDDDD), default of css.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+                                <active>1</active>
+                            </depends>
+                        </box_shadow>
+						<background_content>							
+                            <label>Background color of content</label>
+							<comment>Select a background color of content.</comment>
+							<validate>color-switch</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>							
+							<depends>
+                                <active>1</active>
+                            </depends>
+                        </background_content>						
+                    </fields>
+                </video>
+            </groups>
+        </dexxtz_productzoom>
+    </sections>
+</config>

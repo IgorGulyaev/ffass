@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * Copyright [2015] [Dexxtz]
+ *
+ * @package   Dexxtz_Productzoom
+ * @author    Dexxtz
+ * @license   http://www.apache.org/licenses/LICENSE-2.0
+ */
+ 
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+	$dexxtz = Mage::helper('productzoom');
+	
+	$dexxtz->getCss();
+	$dexxtz->getJs();
+?>
+
+<ul id="etalage">
+	<li>				
+		<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image')); ?>" />
+		<img class="etalage_source_image" title="<?php echo $_product->getImageLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image'), true); ?>" />
+	</li>
+	<?php 
+		foreach ($this->getGalleryImages() as $_image) {
+        	if(Mage::registry('current_product')->getImage() != $_image->getFile()) { ?>                
+            <li>
+            	<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())); ?>" />
+				<img class="etalage_source_image" title="<?php echo $_image->getLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()), true); ?>" />
+            </li> 
+        <?php 
+			}    
+		}
+	?>	 
+</ul>

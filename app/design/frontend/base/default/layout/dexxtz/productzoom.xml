@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright [2015] [Dexxtz]
+ *
+ * @package   Dexxtz_Productzoom
+ * @author    Dexxtz
+ * @license   http://www.apache.org/licenses/LICENSE-2.0
+ */
+ -->
+<layout>    
+	<catalog_product_view>
+        <reference name="head">
+			<action method="addCss"><stylesheet>dexxtz/productzoom/css/etalage.css</stylesheet></action>
+            <action method="addCss"><stylesheet>dexxtz/productzoom/css/dexxtz.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>dexxtz/productzoom/js/jquery.etalage.min.js</name><params/><if/></action>
+        </reference>
+		
+		<reference name="product.info.media">
+			<action method="setTemplate" ifconfig="dexxtz_productzoom/general/active"><template>dexxtz/productzoom/media.phtml</template></action>
+		</reference>
+		
+		<reference name="before_body_end">
+			<block type="core/template" name="modal">
+				<action method="setTemplate" ifconfig="dexxtz_productzoom/video/active">
+					<template>dexxtz/productzoom/modal.phtml</template>
+				</action>
+			</block>
+        </reference>
+	</catalog_product_view>
+	
+	<review_product_list>
+		<reference name="head">
+			<action method="addCss"><stylesheet>dexxtz/productzoom/css/etalage.css</stylesheet></action>
+            <action method="addCss"><stylesheet>dexxtz/productzoom/css/dexxtz.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>dexxtz/productzoom/js/jquery.etalage.min.js</name><params/><if/></action>
+        </reference>
+		
+		<reference name="product.info.media">			
+			<action method="setTemplate" ifconfig="dexxtz_productzoom/general/active"><template>dexxtz/productzoom/media.phtml</template></action>
+			<!--<action method="setTemplate" ifconfig="dexxtz_productzoom/general/active"><template>catalog/product/gallery.phtml</template></action>-->		
+		</reference>
+		
+		<reference name="before_body_end">
+			<block type="core/template" name="modal">
+				<action method="setTemplate" ifconfig="dexxtz_productzoom/video/active">
+					<template>dexxtz/productzoom/modal.phtml</template>
+				</action>
+			</block>
+        </reference>
+	</review_product_list>
+</layout>

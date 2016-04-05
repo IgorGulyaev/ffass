@@ -32,13 +32,10 @@
  */
 ?>
 <div class="cart">
-
-    <?php echo $this->getChildHtml('checkout.track.block') ?>
-
     <h1><?php echo $this->__('Shopping Cart') ?></h1>
     <form id="cart-form" action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-8">
                 <div class="cart" id="form-cart">
                     <?php echo $this->getMessagesBlock()->toHtml() ?>
                     <?php echo $this->getChildHtml('form_before') ?>
@@ -51,13 +48,18 @@
                         <?php endforeach ?>
                     </div>
                 </div>
-                <a href="#couponCode" data-toggle="collapse"><?php echo $this->__('I have a coupon code') ?></a>
-                <div id="couponCode" class="collapse">
-                    <?php echo $this->getChildHtml('coupon') ?>
-                </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <div class="cart-right">
+                    <?php if($this->getContinueShoppingUrl()): ?>
+                        <button type="button" title="<?php echo $this->quoteEscape($this->__('Continue Shopping')) ?>" class="button btn-continue" onclick="setLocation('<?php echo Mage::helper('core')->quoteEscape($this->getContinueShoppingUrl()) ?>')">
+                            <?php echo $this->__('Continue Shopping') ?>
+                        </button>
+                    <?php endif; ?>
+                    <button type="submit" name="update_cart_action" onclick="setCartAction(this)" value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update Shopping Cart')); ?>" class="button btn-update" id="update_qty_button"><?php echo $this->__('Update Shopping Cart'); ?></button>
+                    <input type="hidden" name="update_cart_action"  value="" id="update_action_placeholder">
+                    <button type="submit" name="update_cart_action" onclick="setCartAction(this)" value="empty_cart" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Clear Shopping Cart')); ?>" class="button btn-empty" id="empty_cart_button"><?php echo $this->__('Clear Shopping Cart'); ?></button>
+                    <?php echo $this->getChildHtml('coupon') ?>
                     <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif;?>
                     <?php echo $this->getChildHtml('totals'); ?>
                     <?php echo $this->getChildHtml('onepage_second'); ?>

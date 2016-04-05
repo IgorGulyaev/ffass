@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright [2015] [Dexxtz]
+ *
+ * @package   Dexxtz_Productzoom
+ * @author    Dexxtz
+ * @license   http://www.apache.org/licenses/LICENSE-2.0
+ */
+ -->
+<layout>
+	<default>
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>dexxtz/productzoom/js/color.js</name><params/><if/></action>
+		</reference>
+	</default>
+	
+	<adminhtml_catalog_product_new>
+		<reference name="product_tabs">
+			<action method="removeTab">
+				<name helper="productzoom/getTabName" />
+			</action>
+		</reference>
+	</adminhtml_catalog_product_new>
+	
+	<adminhtml_catalog_product_edit>
+		<reference name="product_tabs">
+			<action method="removeTab">
+				<name helper="productzoom/getTabName" />
+			</action>
+		</reference>
+	</adminhtml_catalog_product_edit>
+</layout>

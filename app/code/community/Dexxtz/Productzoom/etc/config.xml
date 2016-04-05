@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright [2015] [Dexxtz]
+ *
+ * @package   Dexxtz_Productzoom
+ * @author    Dexxtz
+ * @license   http://www.apache.org/licenses/LICENSE-2.0
+ */
+-->
+<config>
+    <modules>
+        <Dexxtz_Productzoom>
+            <version>1.0.0</version>
+        </Dexxtz_Productzoom>
+    </modules>
+    <frontend>
+        <routers>
+            <productzoom>
+                <use>standard</use>
+                <args>
+                    <module>Dexxtz_Productzoom</module>
+                    <frontName>productzoom</frontName>
+                </args>
+            </productzoom>
+        </routers>
+        <translate>
+            <modules>
+                <Dexxtz_Productzoom>
+                    <files>
+                        <default>Dexxtz_Productzoom.csv</default>
+                    </files>
+                </Dexxtz_Productzoom>
+            </modules>
+        </translate>
+		<layout>
+            <updates>
+                <productzoom>
+                    <file>dexxtz/productzoom.xml</file>
+                </productzoom>
+            </updates>
+        </layout>
+    </frontend>
+	<admin>
+        <routers>
+            <productzoom>
+                <use>admin</use>
+                <args>
+                    <module>Dexxtz_Productzoom</module>
+                    <frontName>productzoom</frontName>
+                </args>
+            </productzoom>
+			<adminhtml>
+				<args>
+					<modules>
+						<productzoom before="Mage_Adminhtml">Dexxtz_Productzoom</productzoom>         
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <dexxtz_productzoom translate="title" module="productzoom">
+                                            <title>Config CloudZoom</title>
+                                            <sort_order>50</sort_order>
+                                        </dexxtz_productzoom>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <Dexxtz_Productzoom>
+                    <files>
+                        <default>Dexxtz_Productzoom.csv</default>
+                    </files>
+                </Dexxtz_Productzoom>
+            </modules>
+        </translate>
+		<layout>
+            <updates>
+                <productzoom>
+                    <file>dexxtz/productzoom.xml</file>
+                </productzoom>
+            </updates>
+        </layout>
+    </adminhtml>
+    <global>
+        <resources>
+		    <dexxtz_productzoom_setup>
+				<setup>
+					<module>Dexxtz_Productzoom</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+		    </dexxtz_productzoom_setup>
+		    <productzoom_write>
+                <connection>
+                  <use>core_write</use>
+                </connection>
+            </productzoom_write>
+            <productzoom_read>
+               <connection>
+                <use>core_read</use>
+              </connection>
+            </productzoom_read>
+		</resources>
+        <blocks>
+            <dexxtz_productzoom>
+                <class>Dexxtz_Productzoom_Block</class>
+            </dexxtz_productzoom>
+        </blocks>
+        <models>
+            <dexxtz_productzoom>
+                <class>Dexxtz_Productzoom_Model</class>
+            </dexxtz_productzoom>
+        </models>
+        <helpers>
+            <productzoom>
+                <class>Dexxtz_Productzoom_Helper</class>
+            </productzoom>
+        </helpers>
+    </global>
+    <default>		
+        <dexxtz_productzoom>
+			<general>
+				<autoplay>1</autoplay>
+				<autoplay_interval>6000</autoplay_interval>
+				<fadein_interval>600</fadein_interval>				
+				<magnifier_icon>1</magnifier_icon>
+			</general>
+			<featured_settings>
+				<featured_width>300</featured_width>
+				<featured_height>300</featured_height>
+			</featured_settings>
+            <thumbnails_settings>
+				<thumbnails_qty>3</thumbnails_qty>
+				<thumbnails_position>bottom</thumbnails_position>
+            </thumbnails_settings>
+			<zoom_settings>
+				<zoom_image_width>1200</zoom_image_width>
+				<zoom_image_height>1200</zoom_image_height>
+				<zoom_area_width>500</zoom_area_width>
+				<zoom_area_height>500</zoom_area_height>
+				<description_active>1</description_active>
+				<description_position>bottom</description_position>
+				<description_opacity>0.7</description_opacity>
+				<background_color>#FFFFFF</background_color>
+				<description_color>#000000</description_color>
+			</zoom_settings>
+			<css_settings>
+				<border>1px solid #DDDDDD</border>
+				<box_shadow>0 0 10px #DDDDDD</box_shadow>
+				<opacity_inative>0.3</opacity_inative>
+				<opacity_magnifier>0.5</opacity_magnifier>
+			</css_settings>
+			<video>
+				<background_color>#000000</background_color>
+				<background_opacity>0.7</background_opacity>
+				<border>1px solid #DDDDDD</border>
+				<box_shadow>0 0 10px #DDDDDD</box_shadow>
+				<background_content>#FFFFFF</background_content>
+			</video>
+        </dexxtz_productzoom>
+    </default>
+</config>

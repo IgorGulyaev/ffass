@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright [2015] [Dexxtz]
+ *
+ * @package   Dexxtz_Productzoom
+ * @author    Dexxtz
+ * @license   http://www.apache.org/licenses/LICENSE-2.0
+ */
+-->
+<config>
+    <modules>
+        <Dexxtz_Productzoom>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Dexxtz_Productzoom>
+    </modules>
+</config>
