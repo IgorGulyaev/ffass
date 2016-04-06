@@ -1,0 +1,269 @@
+<?php
+ /**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Softprodigy
+ * @package     Softprodigy_Giftwrap
+ * @copyright   Copyright (c) 2013 Softprodigy System Solutions Pvt. Ltd (http://www.softprodigy.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+?>
+<?php
+$cart_items = Mage::helper('checkout/cart')->getCart()->getItemsCount();
+if($cart_items > 0):
+?>
+<div class="cart">
+    <div class="page-title title-buttons">
+        <h1><?php echo $this->__('Shopping Cart') ?></h1>
+        <?php if(!$this->hasError()): ?>
+        <ul class="checkout-types">
+        <?php foreach ($this->getMethods('top_methods') as $method): ?>
+            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+            <li><?php echo $methodHtml; ?></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        </ul>
+        <?php endif; ?>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    
+    <div id="popup">
+		<form action="<?php echo Mage::getBaseUrl(); ?>giftwrap" method="post">
+			<div id="giftwrap-data">
+				<div class="giftwrap-container">
+					<div class="close-btn">X</div>
+					<?php
+					$collection = Mage::getResourceModel('giftwrap/giftwrap_product_collection')->addAttributeToSelect('*')->addFieldToFilter('giftwrap_status','1');	
+					foreach($collection as $gift) {
+						?>
+						<div class="giftwrap_box">
+							<div class="giftwrap_image"><img width="100" height="100" alt="<?php echo $gift->getGiftwrapName(); ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$gift->getGiftwrapImage(); ?>"></div>
+							<div class="giftwrap-content">
+								<div class="giftwrap_name"><?php echo $gift->getGiftwrapName(); ?></div>
+								<div class="giftwrap-price"><?php echo $this->__('Price'). ': ' .Mage::helper('core')->currency($gift->getGiftwrapPrice(), true, false); ?></div>
+								<div class="giftwrap-radio"><input type="radio" name="giftwraps" value="<?php echo $gift->getId(); ?>" /></div>
+							</div>
+						</div>
+						<?
+					}
+					?>
+				</div>
+			</div>
+			<div class="next-btn">
+				<input type="hidden" name="product_id" value="" id="giftwrap_product_id" />
+				<button type="submit" name="submit" value="Add" class="button btn-cart">
+					<span><span><?php echo $this->__('Add'); ?></span></span>
+				</button>
+			</div>
+		</form>
+    </div>
+    
+    <div class="main-cart">
+		<?php 
+		$_giftwraps = Mage::getSingleton('core/session')->getGiftWraps(); 
+		$_cart = Mage::getModel('checkout/cart')->getQuote();
+		foreach ($_cart->getAllItems() as $item) {
+			$productId = $item->getProductId();
+			if(isset($_giftwraps[$productId])) {
+				$new_giftwrap[$productId] = $_giftwraps[$productId]; 
+			}
+		}
+		Mage::getSingleton('core/session')->setGiftWraps($new_giftwrap); 
+		$giftwraps = $new_giftwrap;
+		if(count($giftwraps) > 0) {
+		?>
+		<table id="shopping-cart-table" class="data-table cart-table">
+			<thead>
+                <tr class="first last">
+					<th rowspan="1" width="10%">&nbsp;</th>
+					<th rowspan="1" width="40%"><span class="nobr"><?php echo $this->__('Gift Wrap Name') ?></span></th>
+					<th rowspan="1" width="40%"><span class="nobr"><?php echo $this->__('Product Name') ?></span></th>
+					<th colspan="1" class="a-center" width="7%"><span class="nobr"><?php echo $this->__('Subtotal') ?></span></th>
+					<th class="a-center" rowspan="1" width="3%">&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php 
+					foreach($giftwraps as $pro=>$gifts) {
+						$_item = Mage::getModel('catalog/product')
+						->setStoreId(Mage::app()->getStore()->getId())
+						->load($pro);
+						$gift = Mage::getModel('giftwrap/giftwrap')->load($gifts);
+						?>
+						<tr>
+							<td><img width="75" height="75" alt="<?php echo $gift->getGiftwrapName(); ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$gift->getGiftwrapImage(); ?>"></td>
+							<td>
+								<h2 class="product-name">
+									<?php echo $gift->getGiftwrapName(); ?>
+								</h2>
+							</td>
+							<td>
+								<h2 class="product-name">
+									<?php echo $_item->getName(); ?>
+								</h2>
+							</td>
+							<td class="a-right">
+								<span class="cart-price">
+									<span class="price"><?php echo Mage::helper('core')->currency($gift->getGiftwrapPrice(), true, false); ?></span>
+								</span>
+							</td>
+							<td class="a-center"><a href="<?php echo Mage::getBaseUrl(); ?>giftwrap/index/remove/id/<?php echo $pro; ?>" title="<?php echo $this->__('Remove item')?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove item')?></a></td>
+						</tr>
+						<?php
+					}
+				?>
+			</tbody>
+		</table>
+		<?php } ?>
+    </div>
+    <?php echo $this->getChildHtml('form_before') ?>
+    <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+        <fieldset>
+            <table id="shopping-cart-table" class="data-table cart-table">
+                <col width="1" />
+                <col />
+                <col width="1" />
+            <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                <col width="1" />
+            <?php endif ?>
+            <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+            <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+                <col width="1" />
+            <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+            <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+                <col width="1" />
+
+            <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+                <thead>
+                    <tr>
+                        <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
+                        <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product Name') ?></span></th>
+                        <th rowspan="<?php echo $mergedCells; ?>"></th>
+                        <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
+                        <?php endif ?>
+                        <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Unit Price') ?></span></th>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
+                        <th class="a-center" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal') ?></th>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center">&nbsp;</th>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Gift Wrap') ?></th>
+                    </tr>
+                    <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                    <tr>
+                        <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                        <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                        <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                        <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                    </tr>
+                    <?php endif; ?>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="50" class="a-right">
+                            <?php if($this->getContinueShoppingUrl()): ?>
+                                <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+                            <?php endif; ?>
+                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update Shopping Cart'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
+                            <button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo $this->__('Clear Shopping Cart'); ?>" class="button btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Clear Shopping Cart'); ?></span></span></button>
+                            <!--[if lt IE 8]>
+                            <input type="hidden" id="update_cart_action_container" />
+                            <script type="text/javascript">
+                            //<![CDATA[
+                                Event.observe(window, 'load', function()
+                                {
+                                    // Internet Explorer (lt 8) does not support value attribute in button elements
+                                    $emptyCartButton = $('empty_cart_button');
+                                    $cartActionContainer = $('update_cart_action_container');
+                                    if ($emptyCartButton && $cartActionContainer) {
+                                        Event.observe($emptyCartButton, 'click', function()
+                                        {
+                                            $emptyCartButton.setAttribute('name', 'update_cart_action_temp');
+                                            $cartActionContainer.setAttribute('name', 'update_cart_action');
+                                            $cartActionContainer.setValue('empty_cart');
+                                        });
+                                    }
+
+                                });
+                            //]]>
+                            </script>
+                            <![endif]-->
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                <?php foreach($this->getItems() as $_item): ?>
+                    <?php echo $this->getItemHtml($_item) ?>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+            <script type="text/javascript">decorateTable('shopping-cart-table')</script>
+        </fieldset>
+    </form>
+    <div class="cart-collaterals">
+        <div class="col2-set">
+            <div class="col-1">
+                <?php echo $this->getChildHtml('crosssell') ?>
+            </div>
+            <div class="col-2">
+                <?php /* Extensions placeholder */ ?>
+                <?php echo $this->getChildHtml('checkout.cart.extra') ?>
+                <?php echo $this->getChildHtml('coupon') ?>
+                <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+            </div>
+        </div>
+        <div class="totals">
+            <?php echo $this->getChildHtml('totals'); ?>
+            <?php if(!$this->hasError()): ?>
+            <ul class="checkout-types">
+            <?php foreach ($this->getMethods('methods') as $method): ?>
+                <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                <li><?php echo $methodHtml; ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<?php
+else:
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Shopping Cart is Empty') ?></h1>
+</div>
+<div class="cart-empty">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?>
+    <p><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+    <p><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', $this->getContinueShoppingUrl()) ?></p>
+    <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
+</div>
+<?php
+endif;
+?>
