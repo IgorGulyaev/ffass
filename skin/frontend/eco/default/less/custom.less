@@ -424,7 +424,8 @@ header {
 /* CHECKOUT */
 
 /* ~~~ Shopping cart ~~~ */
-.checkout-cart-index {
+.checkout-cart-index,
+.checkout-onepage-index {
   .header {
     .header-top {
       display: none;
@@ -548,14 +549,14 @@ header {
       float: none;
       display: table-cell;
       text-align: center;
-      a {
+      a, span {
         display: inline-block;
         color: #282828;
         font-size: 19px;
         text-transform: uppercase;
       }
       &.active {
-        a {
+        span {
           color: @orange;
         }
       }

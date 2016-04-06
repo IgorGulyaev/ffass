@@ -31,6 +31,10 @@
             <action method="addJs" ifconfig="payment/braintree/active"><file>braintree/braintree-1.3.4.js</file></action>
 		</reference>
 
+		<reference name="header">
+			<action method="unsetChild"><name>topMenu</name></action>
+		</reference>
+
         <reference name="content">        	
 			<block type="opc/wrapper" name="es.checkout.container" template="opc/wrapper.phtml">
 			

@@ -61,7 +61,6 @@ Default layout, loads most of the pages
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="header">
-            <!--<remove name="topMenu"/>-->
             <action method="unsetChild"><name>topMenu</name></action>
         </reference>
         <reference name="content">
@@ -320,11 +319,13 @@ One page checkout main layout
     <checkout_onepage_index translate="label">
         <label>One Page Checkout</label>
         <!-- Mage_Checkout -->
-        <remove name="topMenu"/>
         <remove name="left"/>
 
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="header">
+            <action method="unsetChild"><name>topMenu</name></action>
         </reference>
         <reference name="right">
             <action method="unsetChildren"></action>

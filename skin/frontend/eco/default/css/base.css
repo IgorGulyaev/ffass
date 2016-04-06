@@ -1383,10 +1383,14 @@ select:focus {
 
     .form-list [class*='customer-'] > .field,
     .form-list .fields > .field {
-        width: 50%;
+        width: 100%;
         float: left;
         padding-left: 10px;
         padding-right: 10px;
+    }
+    .form-list [class*='customer-'] > .field.half,
+    .form-list .fields > .field.half {
+        width: 50%;
     }
 
     #add_recipient_button button {
@@ -4378,7 +4382,7 @@ span.product-image {
 }
 
 .opc {
-    max-width: 900px;
+    max-width: 652px;
     position: relative;
     margin: 0 auto;
 }
@@ -4411,6 +4415,7 @@ span.product-image {
 
 .opc .section .step {
     position: relative;
+    display: block !important;
 }
 
 .opc .section.active {
@@ -4480,6 +4485,7 @@ span.product-image {
 .opc .buttons-set {
     margin-top: 15px;
     opacity: 1!important;
+    text-align: center;
 }
 
 .opc .please-wait {
@@ -4508,7 +4514,6 @@ span.product-image {
     }
 
     .opc .buttons-set button {
-        float: right;
     }
 }
 

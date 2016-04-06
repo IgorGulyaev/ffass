@@ -99,9 +99,21 @@ label {
   font-size: 10px;
   line-height: 13px;
 }
-[type=checkbox]:checked + label:before,
+[type=radio] + label:before,
+[type=radio] + a:before {
+  background-color: @orange;
+  border-width: 7px;
+  border-color: #fff;
+  .border-radius(50%);
+  .box-shadow(0 0 1px 1px #d0d0d0);
+  .transition(all 200ms linear);
+}
 [type=radio]:checked + label:before,
 [type=radio]:checked + a:before {
+  border-width: 3px;
+  content: '';
+}
+[type=checkbox]:checked + label:before {
   content: "\e905";
 }
 
