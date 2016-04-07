@@ -63,56 +63,9 @@ if(empty($_cartQty)) {
                 Mini.init();
             });
         </script>
-        <?php if ($this->getChildHtml('cart_promotion')): ?>
-            <div id="minicart-widgets">
-                <?php echo $this->getChildHtml('cart_promotion') ?>
-            </div>
-        <?php endif; ?>
-        <div class="block-content">
-            <?php
-            $_cartQty = $this->getSummaryCount();
-            if(empty($_cartQty)) {
-                $_cartQty = 0;
-            }
-            ?>
-            <p class="total-qty">
-                <?php echo $this->__('There are') ?>
-                <?php echo $_cartQty; ?>
-                <?php echo $this->__('items in your cart') ?>
-            </p>
-            <p class="total sub-total">
-                <?php if ($this->canApplyMsrp()): ?>
-                    <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
-                <?php else: ?>
-                    <span class="label"><?php echo $this->__('Cart Subtotal:') ?></span>
-                    <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
-                    <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
-                        <br>(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
-                    <?php endif; ?>
-                <?php endif; ?>
-            </p>
-            <p class="total grand-total">
-                <?php if ($this->canApplyMsrp()): ?>
-                    <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
-                <?php else: ?>
-                    <span class="label"><?php echo $this->__('Cart Grand Total:') ?></span>
-                    <?php echo Mage::helper('checkout')->formatPrice($this->getQuote()->getGrandTotal()) ?>
-                <?php endif; ?>
-            </p>
-        </div>
         <div class="minicart-actions">
-            <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
-                <ul class="checkout-types minicart">
-                    <?php echo $this->getChildHtml('extra_actions') ?>
-                    <li>
-                        <a class="button checkout-button" href="<?php echo $this->getCheckoutUrl() ?>">
-                            <?php echo $this->__('Checkout') ?>
-                        </a>
-                    </li>
-                </ul>
-            <?php endif ?>
-            <a class="button cart-link" href="<?php echo $this->getUrl('checkout/cart'); ?>">
-                <?php echo $this->__('View Shopping Cart'); ?>
+            <a class="button btn-cart cart-link" href="<?php echo $this->getUrl('checkout/cart'); ?>">
+                <?php echo $this->__('View cart & Checkout'); ?>
             </a>
         </div>
     <?php else: ?>

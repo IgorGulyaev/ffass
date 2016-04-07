@@ -16,6 +16,7 @@
                         <li class="pull-left"><a href="tel:<?php echo Mage::getStoreConfig('general/store_information/phone'); ?>"><?php echo Mage::getStoreConfig('general/store_information/phone'); ?></a></li>
                     </ul>
                     <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/account-nav.phtml')->toHtml(); ?>
+                    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('persistent/customer/form/login-modal.phtml')->toHtml(); ?>
                     <?php echo $this->getChildHtml('topLinks'); ?>
                 </div>
             </div>

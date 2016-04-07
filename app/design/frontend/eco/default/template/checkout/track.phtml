@@ -40,7 +40,7 @@ $pageTitle = $this->getLayout()->getBlock('head')->getTitle();
     <ul class="track-items">
         <li><a href="/"><?php echo $this->__('Keep shopping') ?></a></li>
         <li class="<?php if($pageTitle == 'Shopping Cart') { echo 'active'; }?>"><?php if($pageTitle == 'Shopping Cart') { echo '<span>'.$this->__("Shopping cart").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/cart").'">'.$this->__("Shopping cart").'</a>'; } ?></li>
-        <li class="<?php if($pageTitle == 'Checkout') { echo 'active'; }?>"><a href="<?php if($pageTitle == 'Checkout') { echo '#'; } else { echo $this->getUrl('checkout/onepage'); } ?>"><?php echo $this->__('Customer information') ?></a></li>
+        <li class="<?php if($pageTitle == 'Checkout') { echo 'active'; }?>"><?php if($pageTitle == 'Checkout') { echo '<span>'.$this->__("Customer information").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/onepage").'">'.$this->__("Customer information").'</a>'; } ?></li>
         <li><a href="/"><?php echo $this->__('Order review') ?></a></li>
         <li><a href="/"><?php echo $this->__('Order confirmation') ?></a></li>
     </ul>

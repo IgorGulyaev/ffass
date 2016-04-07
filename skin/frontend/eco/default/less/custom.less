@@ -1,5 +1,4 @@
-button:not(.navbar-toggle),
-.button {
+.button:not(.navbar-toggle):not(.close) {
   position: relative;
   &:before {
     display: block !important;
@@ -12,6 +11,16 @@ button:not(.navbar-toggle),
     border: 2px dashed #fff;
     border-radius: 5px;
   }
+}
+
+.btn-login {
+  position: relative;
+  padding-right: 80px;
+  padding-left: 80px;
+  background-color: #ef9d3c!important;
+  border-color: #ef9d3c!important;
+  font-size: 16px;
+  margin-top: 15px;
 }
 
 header {
@@ -441,6 +450,9 @@ header {
       }
     }
   }
+  .page-title {
+    display: none;
+  }
   .footer {
     .row-footer {
       text-align: center;
@@ -540,12 +552,25 @@ header {
 }
 /* ~~~ End Shopping cart ~~~ */
 
+#opc-login .step-title {
+  display: none;
+}
+#checkout-step-login {
+  padding: 0;
+}
+#checkout-step-login .buttons-set {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
 /* ~~~ Track ~~~*/
 .track {
+  margin-bottom: 60px;
   .track-items {
     display: table;
     width: 100%;
     li {
+      position: relative;
       float: none;
       display: table-cell;
       text-align: center;
@@ -554,6 +579,16 @@ header {
         color: #282828;
         font-size: 19px;
         text-transform: uppercase;
+        i {
+          position: absolute;
+          bottom: -25px;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          height: 19px;
+          width: 100%;
+          text-align: center;
+        }
       }
       &.active {
         span {
@@ -566,3 +601,18 @@ header {
 /* ~~~ End Track ~~~*/
 
 /* END CHECKOUT */
+
+
+/* LOGIN/REGISTER */
+#accountLogin {
+  .modal-dialog {
+  }
+}
+@media (min-width: 768px) {
+  #accountLogin {
+    .modal-dialog {
+      width: 394px;
+    }
+  }
+}
+/* END LOGIN/REGISTER */

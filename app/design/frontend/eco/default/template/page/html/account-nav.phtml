@@ -7,7 +7,7 @@
     <?php endif; ?>
     <li<?php if(Mage::getSingleton('customer/session')->isLoggedIn()): ?> class="dropdown"<?php endif; ?>>
         <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-            <a href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo $this->__('Sign in'); ?></a>
+            <a href="#" data-toggle="modal" data-target="#accountLogin"><?php echo $this->__('Sign in'); ?></a>
         <?php else: ?>
             <a data-toggle="dropdown" href="<?php echo $this->getUrl('customer/account'); ?>"><?php echo $this->__('My Account'); ?></a>
             <ul class="dropdown-menu pull-right">
