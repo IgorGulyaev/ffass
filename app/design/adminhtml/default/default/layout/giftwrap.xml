@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+ /**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Softprodigy
+ * @package     Softprodigy_Giftwrap
+ * @copyright   Copyright (c) 2013 Softprodigy System Solutions Pvt. Ltd (http://www.softprodigy.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<layout version="0.1.0">
+    <giftwrap_adminhtml_giftwrap_index>
+        <reference name="content">
+            <block type="giftwrap/adminhtml_giftwrap" name="giftwrap" />
+        </reference>
+    </giftwrap_adminhtml_giftwrap_index>
+    <adminhtml_sales_order_view>
+        <reference name="order_totals">
+            <block type="adminhtml/sales_order_totals_item" name="giftwrap" template="giftwrap/sales/order/total.phtml" />
+            <block type="adminhtml/sales_order_totals_item" name="giftwrap.refunded" template="giftwrap/sales/order/refunded.phtml">
+                <action method="setDisplayArea"><area>footer</area></action>
+                <action method="setAfterCondition"><condition>last</condition></action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_view>
+
+    <adminhtml_sales_order_invoice_new>
+        <reference name="invoice_totals">
+            <block type="adminhtml/sales_order_totals_item" name="giftwrap" template="giftwrap/sales/order/total.phtml" />
+        </reference>
+    </adminhtml_sales_order_invoice_new>
+
+    <adminhtml_sales_order_invoice_updateqty>
+        <reference name="invoice_totals">
+            <block type="adminhtml/sales_order_totals_item" name="giftwrap" template="giftwrap/sales/order/total.phtml" />
+        </reference>
+    </adminhtml_sales_order_invoice_updateqty>
+
+    <adminhtml_sales_order_invoice_view>
+        <reference name="invoice_totals">
+            <block type="adminhtml/sales_order_totals_item" name="giftwrap" template="giftwrap/sales/order/total.phtml" />
+        </reference>
+    </adminhtml_sales_order_invoice_view>
+
+    <adminhtml_sales_order_creditmemo_new>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="giftwrap" template="giftwrap/sales/order/total.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_new>
+
+    <adminhtml_sales_order_creditmemo_updateqty>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="giftwrap" template="giftwrap/sales/order/total.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_updateqty>
+
+    <adminhtml_sales_order_creditmemo_view>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="giftwrap.refunded" template="giftwrap/sales/order/refunded.phtml">
+                <action method="setDisplayArea"><area>footer</area></action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_creditmemo_view>
+</layout>

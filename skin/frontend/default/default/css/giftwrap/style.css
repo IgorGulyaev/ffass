@@ -1,0 +1,65 @@
+.giftwrap_box {
+	float: left; padding:10px; display:block; border:0	px solid red; width:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	background:#fff;
+	border:1px solid #ccc;
+	margin-top:-1px;
+}
+
+.giftwrap_box *{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.giftwrap-container{overflow-y:auto; border:0px solid red; max-height:375px;position:relative;}
+.giftwrap_box > .giftwrap_image{float:left; width:auto; margin-right:10px;}
+.giftwrap_box > .giftwrap_image > img{border:1px solid #ccc; padding:3px;}
+.giftwrap_box .giftwrap-content{overflow:hidden; border:0px solid red;}
+
+.giftwrap_box .giftwrap-content > .giftwrap_name{font-size:16px; font-weight:bold; margin-bottom:10px;}
+.giftwrap_box .giftwrap-content > .options{display:block; border:0px solid red; float:left; width:100%; margin-bottom:10px; }
+.giftwrap_box .giftwrap-content > .options > label{font-size:12px; float:left; width:30%; margin-right:2%;}
+.giftwrap_box .giftwrap-content > .options select{width:55%; float:left;}
+
+.next-btn{display:block; border-top:1px solid #ccc; text-align:center; padding:10px 0}
+
+.msg{display:inline-block; *display:inline; *zoom:1; padding:5px 10px; background:#fff; font-size:14px; border:1px solid #ccc; border-radius:5px;}
+.msg.success{background-color: #DFF0D8; border-color: #D6E9C6; color: #3C763D;}
+.msg.error{background-color: #F2DEDE; border-color: #EBCCD1; color: #A94442}
+.overlay {
+	background: none repeat scroll 0 0 #000000;
+	height: 100%;
+	opacity: 0.7;
+	position: fixed;
+	width: 100%;
+	z-index: 999;
+}
+#popup{
+	display: none;
+	background: none repeat scroll 0 0 #fff;
+	border: 1px solid #ccc;
+	height: auto;
+	position: fixed;
+	top: 0;
+	width: 450px;
+	left:0;
+	right:0;
+	top:20%;
+	margin:0 auto;
+	z-index: 99;
+}
+.main-cart {
+	margin: 0 0 20px 0;
+}
+#popup .close-btn {
+	background: none repeat scroll 0 0 #CCCCCC;
+    border: 1px solid transparent;
+    font-size: 14px;
+    padding: 0 5px;
+    position: absolute;
+    right: 1px;
+    top: 0;
+    cursor:pointer;
+}

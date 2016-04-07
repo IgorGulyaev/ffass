@@ -1,0 +1,242 @@
+<?xml version="1.0" ?>
+<!--
+ /**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Softprodigy
+ * @package     Softprodigy_Giftwrap
+ * @copyright   Copyright (c) 2013 Softprodigy System Solutions Pvt. Ltd (http://www.softprodigy.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Softprodigy_Giftwrap>
+            <version>1.0.1</version>
+        </Softprodigy_Giftwrap>
+    </modules>
+
+
+    <global>
+		<sales>
+            <quote>
+                <totals>
+                    <giftwrap>
+                        <class>giftwrap/sales_quote_address_total_giftwrap</class>
+                        <renderer>giftwrap/checkout_totals_giftwrap</renderer>
+                        <admin_renderer>giftwrap/adminhtml_sales_order_create_totals_giftwrap</admin_renderer>
+                    </giftwrap>
+                </totals>
+            </quote>
+            <order_invoice>
+                <totals>
+                    <giftwrap>
+                        <class>giftwrap/sales_order_total_invoice_giftwrap</class>
+                    </giftwrap>
+                </totals>
+            </order_invoice>
+            <order_creditmemo>
+                <totals>
+                    <giftwrap>
+                        <class>giftwrap/sales_order_total_creditmemo_giftwrap</class>
+                    </giftwrap>
+                </totals>
+            </order_creditmemo>
+        </sales>
+        <events>
+            <paypal_prepare_line_items>
+                <observers>
+                    <paypal_prepare_line_items>
+                        <class>giftwrap/observer</class>
+                        <method>updatePaypalTotal</method>
+                    </paypal_prepare_line_items>
+                </observers>
+            </paypal_prepare_line_items>
+            <sales_order_invoice_save_after>
+                <observers>
+                    <sales_order_invoice_save_after>
+                        <class>giftwrap/observer</class>
+                        <method>invoiceSaveAfter</method>
+                    </sales_order_invoice_save_after>
+                </observers>
+            </sales_order_invoice_save_after>
+            <sales_order_creditmemo_save_after>
+                <observers>
+                    <sales_order_creditmemo_save_after>
+                        <class>giftwrap/observer</class>
+                        <method>creditmemoSaveAfter</method>
+                    </sales_order_creditmemo_save_after>
+                </observers>
+            </sales_order_creditmemo_save_after>
+        </events>
+        <fieldsets>
+            <sales_convert_quote_address>
+                <giftwrap_amount>
+                    <to_order>*</to_order>
+                </giftwrap_amount>
+                <base_giftwrap_amount>
+                    <to_order>*</to_order>
+                </base_giftwrap_amount>
+            </sales_convert_quote_address>
+        </fieldsets>
+        <pdf>
+            <totals>
+                <giftwrap translate="title">
+                    <title>Giftwrap</title>
+                    <source_field>giftwrap_amount</source_field>
+                    <font_size>7</font_size>
+                    <display_zero>0</display_zero>
+                    <sort_order>650</sort_order>
+                    <amount_prefix></amount_prefix>
+                </giftwrap>
+            </totals>
+        </pdf>
+        <models>
+            <giftwrap>
+                <class>Softprodigy_Giftwrap_Model</class>
+                <resourceModel>giftwrap_entity</resourceModel>
+            </giftwrap>
+            <giftwrap_entity>
+	            <class>Softprodigy_Giftwrap_Model_Entity</class>
+	            <entities>
+	            	<giftwrap_entity>
+	            		<table>giftwrap_entity</table>
+	            	</giftwrap_entity>
+	            	<entity>
+	            		<table>giftwrap_entity</table>
+	            	</entity>
+	            </entities>
+	         </giftwrap_entity>
+        </models>
+        <blocks>
+            <giftwrap>
+                <class>Softprodigy_Giftwrap_Block</class>
+            </giftwrap>
+        </blocks>
+        <helpers>
+            <giftwrap>
+                <class>Softprodigy_Giftwrap_Helper</class>
+            </giftwrap>
+        </helpers>
+
+        <resources>
+         <giftwrap_setup>
+            <setup>
+               <module>Softprodigy_Giftwrap</module>
+               <class>Softprodigy_Giftwrap_Model_Entity_Setup</class>
+            </setup>
+            <connection>
+               <use>core_setup</use>
+            </connection>
+         </giftwrap_setup>
+         <giftwrap_write>
+            <connection>
+               <use>core_write</use>
+            </connection>
+         </giftwrap_write>
+         <giftwrap_read>
+            <connection>
+               <use>core_read</use>
+            </connection>
+         </giftwrap_read>
+      </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <giftwrap>
+                <use>admin</use>
+                <args>
+                    <module>Softprodigy_Giftwrap</module>
+                    <frontName>giftwrap</frontName>
+                </args>
+            </giftwrap>
+        </routers>
+    </admin>
+
+    <adminhtml>
+		<menu>
+			<catalog translate="title" module="giftwrap">
+				<children>
+					<giftwraps translate="title" module="giftwrap">
+						<title>Manage Gift Wraps</title>
+						<sort_order>0</sort_order> 
+						<action>giftwrap/adminhtml_giftwrap</action>
+					</giftwraps>
+				</children>
+			</catalog>
+		</menu>
+		
+
+        <acl>
+            <resources>
+            	<all>
+					<title>Allow everything</title>
+				</all>
+                <admin>
+                    <children>
+                        <giftwrap>
+                            <title>Giftwrap</title>
+                            <products>
+                        		<scheduler>
+                           			 <title>Giftwrap Products</title>
+                                </scheduler>
+                            </products>
+                        </giftwrap>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <giftwrap translate="title" module="giftwrap">
+                                            <title>Giftwrap</title>
+                                        </giftwrap>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+
+		<layout>
+			<updates>
+				<giftwrap module="Softprodigy_Giftwrap">
+					<file>giftwrap.xml</file>
+				</giftwrap>
+			</updates>
+		</layout>
+    </adminhtml>
+	<frontend>
+
+       	<routers>
+            <Softprodigy_Giftwrap>
+                <use>standard</use>
+                <args>
+                    <module>Softprodigy_Giftwrap</module>
+                    <frontName>giftwrap</frontName>
+                </args>
+            </Softprodigy_Giftwrap>
+        </routers>
+
+		<layout>
+		    <updates>
+		        <giftwrap module="Softprodigy_Giftwrap">
+		            <file>giftwrap.xml</file>
+		        </giftwrap>
+		    </updates>
+		</layout>
+    </frontend>
+   
+  
+</config>
