@@ -75,12 +75,12 @@ class Ecomitize_Navigation_Block_Page_Html_Topmenu extends Mage_Page_Block_Html_
             $html .= '<a href="' . $child->getUrl() . '" ' . $outermostClassCode  . '>' . $this->escapeHtml($child->getName()) . '</a>';
 
 
-            if ($child->hasChildren()) {
+            if ($child->hasChildren() && $childLevel < 1) {
                 if (!empty($childrenWrapClass)) {
                     $html .= '<div class="' . $childrenWrapClass . '">';
                 }
 
-                if($childLevel < 3) {
+                if($childLevel < 1) {
                     $html .= '<ul class="level' . $childLevel . ' dropdown-menu">';
                     $html .= $this->_getHtml($child, $childrenWrapClass);
                     $html .= '</ul>';
