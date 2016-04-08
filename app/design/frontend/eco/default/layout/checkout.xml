@@ -62,6 +62,7 @@ Default layout, loads most of the pages
         </reference>
         <reference name="header">
             <action method="unsetChild"><name>topMenu</name></action>
+            <action method="unsetChild"><name>index.cms.block.toplabel.wrapper</name></action>
         </reference>
         <reference name="content">
             <block type="checkout/cart" name="checkout.cart">
@@ -326,6 +327,7 @@ One page checkout main layout
         </reference>
         <reference name="header">
             <action method="unsetChild"><name>topMenu</name></action>
+            <action method="unsetChild"><name>index.cms.block.toplabel.wrapper</name></action>
         </reference>
         <reference name="right">
             <action method="unsetChildren"></action>

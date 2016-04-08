@@ -306,13 +306,13 @@
             <block type="core/template" name="block.contacts.row" template="cms/block.phtml">
                 <action method="setElementClass"><value>row contact-row</value></action>
                 <block type="core/template" name="block.contacts.col.right" template="cms/block.phtml">
-                    <action method="setElementClass"><value>col-sm-4 contact-col-left</value></action>
+                    <action method="setElementClass"><value>col-sm-6 contact-col-left</value></action>
                     <block type="cms/block" name="block.contacts">
                         <action method="setBlockId"><value>contacts</value></action>
                     </block>
                 </block>
                 <block type="core/template" name="block.contacts.col.left" template="cms/block.phtml">
-                    <action method="setElementClass"><value>col-sm-8 contact-col-right</value></action>
+                    <action method="setElementClass"><value>col-sm-6 contact-col-right</value></action>
                     <block type="core/template" name="contactForm" template="contacts/form.phtml"/>
                 </block>
             </block>
