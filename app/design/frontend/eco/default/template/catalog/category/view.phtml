@@ -9,24 +9,6 @@
 ?>
 
 <?php echo $this->getMessagesBlock()->toHtml(); ?>
-<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
-    <div class="row category-description">
-        <div class="<?php if(!$_imgUrl): ?>col-sm-12<?php else: ?>col-sm-7<?php endif; ?> first">
-            <div class="category-description std">
-                <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
-            </div>
-        </div>
-        <?php if($_imgUrl): ?>
-        <div class="col-sm-5 last">
-            <?php echo $_imgHtml ?>
-        </div>
-        <?php endif; ?>
-    </div>
-    <?php else: ?>
-    <?php if($_imgUrl): ?>
-        <?php echo $_imgHtml ?>
-    <?php endif; ?>
-<?php endif; ?>
 
 <?php if($this->isContentMode()): ?>
     <?php echo $this->getCmsBlockHtml() ?>

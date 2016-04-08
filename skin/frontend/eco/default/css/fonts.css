@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300italic,300,400italic,500,500italic,700italic,700,900,900italic);
+
 @font-face {
     font-family: 'MicrosoftTaiLe';
     src: url('fonts/MicrosoftTaiLe.eot?#iefix') format('embedded-opentype'),  url('fonts/MicrosoftTaiLe.woff') format('woff'), url('fonts/MicrosoftTaiLe.ttf')  format('truetype'), url('fonts/MicrosoftTaiLe.svg#MicrosoftTaiLe') format('svg');
@@ -13,6 +15,29 @@
     url('fonts/Rafale-BG.ttf') format('truetype'),
     url('fonts/Rafale-BG.svg#Rafale-BG') format('svg');
     font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'chalkboard';
+    src: url('fonts/chalkboard.eot');
+    src: url('fonts/chalkboard.eot?#iefix') format('embedded-opentype'),
+    url('fonts/chalkboard.woff2') format('woff2'),
+    url('fonts/chalkboard.woff') format('woff'),
+    url('fonts/chalkboard.ttf') format('truetype'),
+    url('fonts/chalkboard.svg#chalkboard') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'chalkboard';
+    src: url('fonts/ufonts.com_chalkboard-bold.eot');
+    src: url('fonts/ufonts.com_chalkboard-bold.eot?#iefix') format('embedded-opentype'),
+    url('fonts/ufonts.com_chalkboard-bold.woff2') format('woff2'),
+    url('fonts/ufonts.com_chalkboard-bold.woff') format('woff'),
+    url('fonts/ufonts.com_chalkboard-bold.ttf') format('truetype'),
+    url('fonts/ufonts.com_chalkboard-bold.svg#chalkboard') format('svg');
+    font-weight: bold;
     font-style: normal;
 }
 

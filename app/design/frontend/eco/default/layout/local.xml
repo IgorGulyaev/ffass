@@ -61,6 +61,7 @@
         </reference>
 
         <reference name="header">
+            <!--<block type="core/template" name="login.modal" as="login_modal" template="persistent/customer/form/login-modal.phtml" />-->
             <block type="directory/currency" name="custom_currency_selector" template="currency/currency.phtml"/>
             <block type="checkout/cart_sidebar" name="cart.link" as="cart_link" template="checkout/cart/link.phtml" />
             <block type="checkout/cart_minicart" name="minicart_head" template="checkout/cart/minicart.phtml" before="-">
@@ -78,6 +79,17 @@
                     </block>
                 </block>
             </block>
+
+            <block type="core/template" name="index.cms.block.toplabel.wrapper" template="cms/block.phtml">
+                <action method="setElementClass"><value>index-top-label hidden-xs</value></action>
+                <block type="core/template" name="index.cms.block.toplabel.inner" template="cms/block.phtml">
+                    <action method="setElementClass"><value>inner hidden-xs</value></action>
+                    <block type="cms/block" name="index.cms.block.toplabel">
+                        <action method="setBlockId"><block_id>index-top-label</block_id></action>
+                    </block>
+                </block>
+            </block>
+
         </reference>
 
         <reference name="footer">
@@ -182,16 +194,6 @@
     <cms_index_index>
         <reference name="content">
             <remove name="page_content_heading"/>
-
-            <block type="core/template" name="index.cms.block.toplabel.wrapper" template="cms/block.phtml">
-                <action method="setElementClass"><value>index-top-label hidden-xs</value></action>
-                <block type="core/template" name="index.cms.block.toplabel.inner" template="cms/block.phtml">
-                    <action method="setElementClass"><value>inner hidden-xs</value></action>
-                    <block type="cms/block" name="index.cms.block.toplabel">
-                        <action method="setBlockId"><block_id>index-top-label</block_id></action>
-                    </block>
-                </block>
-            </block>
 
             <block type="core/template" name="home.cms.block.index.section" template="cms/block.phtml">
                 <action method="setElementClass"><value>index-banners</value></action>

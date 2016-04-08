@@ -2397,7 +2397,9 @@ a[href*='amazon']:after {
 /* sorting */
 
 .sorting {
-    position: relative;
+    position: absolute;
+    top: -25px;
+    right: 0;
     margin: 0 -10px 15px;
 }
 
@@ -2904,7 +2906,7 @@ a[href*='amazon']:after {
 @media (min-width: 1200px) {
 
     .category-row.products-grid {
-        margin: 0 -15px;
+        margin: -15px -15px 0;
     }
 
     .category-row.products-grid > .category-item {

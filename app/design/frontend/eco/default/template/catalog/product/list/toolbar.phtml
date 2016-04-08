@@ -1,33 +1,6 @@
 <?php if($this->getCollection()->getSize()): ?>
 <div class="sorting">
     <div class="row-sorting">
-        <div class="col-sorting col-sorting-show">
-            <span class="sorting-select">
-                <select class="input-text pager" onchange="setLocation(this.value)" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Results per page')); ?>">
-                    <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
-                        <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
-                            <?php echo $this->__('Show') ?> <?php echo $_limit ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </span>
-        </div>
-        <div class="col-sorting col-sorting-sort-by">
-            <span class="sorting-select">
-                <select onchange="setLocation(this.value)" class="input-text sort-by">
-                    <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
-                        <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>><?php echo $this->__('Sort By') ?> <?php echo $this->__($_order) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </span>
-            <span class="sorting-button col-sorting-asc-desc">
-                <?php if($this->getCurrentDirection() == 'desc'): ?>
-                    <a class="button button-asc" href="<?php echo $this->getOrderUrl(null, 'asc') ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Ascending Direction')) ?>"><i class="icon-arrow-up2"></i></a>
-                <?php else: ?>
-                    <a class="button button-desc" href="<?php echo $this->getOrderUrl(null, 'desc') ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Descending Direction')) ?>"><i class="icon-arrow-down2"></i></a>
-                <?php endif; ?>
-            </span>
-        </div>
         <?php if( $this->isExpanded() ): ?>
             <div class="col-sorting col-sorting-grid">
                 <?php if( $this->isEnabledViewSwitcher() ): ?>
@@ -45,12 +18,5 @@
             </div>
         <?php endif; ?>
     </div>
-    <?php if($this->getCollection()->getSize()): ?>
-        <?php if ($this->getPagerHtml()): ?>
-            <div class="row-pagination">
-                <?php echo $this->getPagerHtml(); ?>
-            </div>
-        <?php endif; ?>
-    <?php endif; ?>
 </div>
 <?php endif; ?>

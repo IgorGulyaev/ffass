@@ -32,9 +32,6 @@
 <html lang="<?php echo $this->getLang() ?>">
 <head>
     <?php echo $this->getChildHtml('head') ?>
-    <script type="text/javascript">
-        var $j = jQuery.noConflict();
-    </script>
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
@@ -45,11 +42,11 @@
         <div class="container main-container col2-right-layout">
             <?php echo $this->getChildHtml('breadcrumbs') ?>
             <div class="row main">
-                <div class="col-sm-7 col-main">
+                <div class="col-sm-8 col-md-9 col-main">
                     <?php echo $this->getChildHtml('global_messages') ?>
                     <?php echo $this->getChildHtml('content') ?>
                 </div>
-                <div class="col-sm-5 col-right sidebar" data-sidebar="right-sidebar"><?php echo $this->getChildHtml('right') ?></div>
+                <div class="col-sm-4 col-md-3 col-right sidebar" data-sidebar="right-sidebar"><?php echo $this->getChildHtml('right') ?></div>
             </div>
         </div>
         <?php echo $this->getChildHtml('before_footer'); ?>

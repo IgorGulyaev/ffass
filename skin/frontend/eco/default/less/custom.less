@@ -1,4 +1,4 @@
-.button:not(.navbar-toggle):not(.close) {
+*:not(.sorting-button) .button:not(.navbar-toggle):not(.close) {
   position: relative;
   &:before {
     display: block !important;
@@ -224,7 +224,7 @@ header {
   position: relative;
   padding-top: 2px;
   padding-bottom: 2px;
-  margin: 0 35px 20px;
+  margin: 20px 35px 0;
   background-color: @lightGreen4;
   &:before {
     position: absolute;
@@ -616,3 +616,128 @@ header {
   }
 }
 /* END LOGIN/REGISTER */
+
+/* CMS PAGES */
+blockquote {
+  position: relative;
+  padding: 0;
+  border: none;
+  color: #282828;
+  font-family: 'chalkboard';
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  br:last-child {
+    display: block !important;
+  }
+  &:before {
+    position: absolute;
+    top: -60px;
+    left: -15px;
+    display: block;
+    content: '“';
+    color: #add750;
+    font-family: 'Roboto', sans-serif;
+    font-size: 119px;
+    font-weight: 500;
+  }
+  &:after {
+    position: absolute;
+    bottom: -135px;
+    right: -15px;
+    display: block;
+    content: '”';
+    color: #add750;
+    font-family: 'Roboto', sans-serif;
+    font-size: 119px;
+    font-weight: 500;
+  }
+}
+
+.sidebar-block {
+  padding: 40px 15px;
+  margin-bottom: 33px;
+  border: 1px dashed #cdcdcd;
+  .border-radius(4px);
+  font-family: 'chalkboard';
+  text-align: center;
+  &.sidebar-citate {
+    padding-top: 80px;
+    padding-bottom: 65px;
+    blockquote {
+      margin-bottom: 70px;
+    }
+    &> p {
+      display: inline-block;
+      position: relative;
+      font-size: 20px;
+      font-weight: bold;
+      &:before {
+        position: absolute;
+        display: block;
+        content: '';
+        bottom: 0;
+        right: -30px;
+        height: 46px;
+        width: 55px;
+        background: url("@{path}images/butterfly.png") no-repeat 0 0;
+        -webkit-background-size: contain;
+        background-size: contain;
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+      }
+    }
+  }
+  &.sidebar-info {
+    h4 {
+      position: relative;
+      margin-bottom: 40px;
+      font-size: 24px;
+      text-transform: none;
+      &:before {
+        position: absolute;
+        bottom: -25px;
+        left: 0;
+        right: 0;
+        content: "\e907";
+        margin: 0 auto;
+        height: 19px;
+        width: 100%;
+        text-align: center;
+        font-family: 'icomoon';
+        display: inline-block;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #add750;
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+        -webkit-transform: scale(1, 0.6);
+        -moz-transform: scale(1, 0.6);
+        -ms-transform: scale(1, 0.6);
+        -o-transform: scale(1, 0.6);
+        transform: scale(1, 0.6);
+      }
+    }
+    p {
+      padding: 0 40px;
+      margin-bottom: 25px;
+      font-size: 16px;
+      strong {
+        margin: 0 -25px;
+        font-size: 18px;
+      }
+    }
+  }
+}
+/* END CMS PAGES */
