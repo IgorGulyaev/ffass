@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ecomitize_Cmspages>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Ecomitize_Cmspages>
+    </modules>
+</config>
