@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Ecomitize_Pagesaccordeon>
+            <version>0.0.1</version>
+        </Ecomitize_Pagesaccordeon>
+    </modules>
+    <frontend>
+        <routers>
+            <Ecomitize_Pagesaccordeon>
+                <use>standard</use>
+                <args>
+                    <module>Ecomitize_Pagesaccordeon</module>
+                    <frontName>pagesaccordeon</frontName>
+                </args>
+            </Ecomitize_Pagesaccordeon>
+        </routers>
+    </frontend>
+    <global>
+        <blocks>
+            <ecomitize_pagesaccordeon>
+                <class>Ecomitize_Pagesaccordeon_Block</class>
+            </ecomitize_pagesaccordeon>
+        </blocks>
+        <helpers>
+            <ecomitize_pagesaccordeon>
+                <class>Ecomitize_Pagesaccordeon_Helper</class>
+            </ecomitize_pagesaccordeon>
+        </helpers>
+        <models>
+            <ecomitize_pagesaccordeon>
+                <class>Ecomitize_Pagesaccordeon_Model</class>
+            </ecomitize_pagesaccordeon>
+        </models>
+    </global>
+</config>
