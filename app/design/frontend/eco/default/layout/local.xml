@@ -1,7 +1,7 @@
 <layout version="0.1.0">
     <default>
         <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
-            <block type="newsletter/subscribe" name="topmenu.newsletter" as="newsletter" template="newsletter/subscribe-header.phtml"/>
+            <!--<block type="newsletter/subscribe" name="topmenu.newsletter" as="newsletter" template="newsletter/subscribe-header.phtml"/>-->
         </block>
         <reference name="root">
             <block type="core/text_list" name="left_first" as="left_first" translate="label">
@@ -40,13 +40,13 @@
                 </action>
                 <action method="addLink" translate="label title">
                     <label>Sign Up For Newsletter</label>
-                    <url>#newsletterHeader</url>
+                    <url>#</url>
                     <title>Sign Up For Newsletter</title>
                     <prepare>true</prepare>
                     <urlParams helper="core/url/getHomeUrl"/>
                     <position>3</position>
                     <liParams/>
-                    <aParams>class="top-link-newsletter"</aParams>
+                    <aParams>class="top-link-newsletter" data-toggle="modal" data-target="#newsletterHeader"</aParams>
                     <beforeText></beforeText>
                     <afterText></afterText>
                 </action>

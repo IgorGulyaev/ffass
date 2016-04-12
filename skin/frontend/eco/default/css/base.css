@@ -1189,7 +1189,7 @@ header .header-top .nav > li > a {
 /* tabs */
 
 .tab-content {
-    border: 1px solid #dae2ea;
+    border: 1px solid #ebebeb;
     border-radius: 2px;
     padding: 20px;
     margin-top: 7px;
@@ -3467,6 +3467,7 @@ span.product-image {
         padding: 0;
         margin: 0;
         width: 100%;
+        text-align: center;
     }
 
     .social-likes > li {
@@ -3487,11 +3488,15 @@ span.product-image {
     }
 
     .social-likes > li > .link-email-friend > span {
-        display: inline-block;
+        position: absolute;
+        display: block;
+        white-space: nowrap;
+        top: 0;
+        left: 115%;
+        text-decoration: underline;
     }
 
     .social-likes > li > .link-email-friend > i {
-        margin-right: 10px;
     }
 
     @media (min-width: 767px) {

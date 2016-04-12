@@ -44,8 +44,8 @@ class Ecomitize_Pagesaccordeon_Block_Pages extends Mage_Core_Block_Template impl
 
     protected function _getTabs($array_pages)
     {
-        $ul = '<ul class="nav nav-tabs">';
-        $tabContent = '<div class="tab-content">';
+        $ul = '<ul class="pages-accordeon nav nav-tabs">';
+        $tabContent = '<div class="pages-accordeon tab-content">';
         $i=0;
 
         foreach ($array_pages as $option) {
