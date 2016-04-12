@@ -42,6 +42,10 @@ jQuery(document).ready(function ($) {
     });
     /* / */
 
+
+    $('.cms-page-view .page-title').prependTo('.row.main');
+    $('.contacts-index-index .page-title').prependTo('.row.contact-row');
+
     /* nice alerts + confirm (bootstrap modal) */
     $(document).on('click', '[data-confirm]', function (e) {
         e.preventDefault();
