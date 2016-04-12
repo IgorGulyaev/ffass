@@ -898,6 +898,18 @@
         display: none;
     }
 
+    #form-cart .cart-row {
+        position: relative;
+        padding-bottom: 50px;
+    }
+    #form-cart .cart-row .col-xs-middle {}
+    #form-cart .cart-row .col-quantity,
+    #form-cart .cart-row .col-update {
+        position: absolute;
+        bottom: 0;
+    }
+    #form-cart {}
+
 }
 
 /* tablet portrait  */
