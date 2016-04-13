@@ -2,7 +2,7 @@
 
 class Ecomitize_Pagesaccordeon_Model_Options
 {
-    public function getAllOptions()
+    private function getAllOptions()
     {
         if (is_null($this->_options)) {
             $cmsPagesCollection = Mage::getModel('cms/page')->getCollection();
