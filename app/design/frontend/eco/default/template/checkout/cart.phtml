@@ -35,6 +35,48 @@
 
     <?php echo $this->getChildHtml('checkout.track.block') ?>
 
+
+    <div id="giftPopup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Gift Wraps</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="<?php echo Mage::getBaseUrl(); ?>giftwrap" method="post">
+                        <div id="giftwrap-data">
+                            <div class="giftwrap-container">
+                                <?php
+                                $giftCollection = Mage::getResourceModel('giftwrap/giftwrap_product_collection')->addAttributeToSelect('*')->addFieldToFilter('giftwrap_status','1');
+                                foreach($giftCollection as $gift): ?>
+                                    <div class="giftwrap_box row">
+                                        <div class="row-height">
+                                            <div class="giftwrap_image col-sm-4 col-height"><img width="100" height="100" alt="<?php echo $gift->getGiftwrapName(); ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$gift->getGiftwrapImage(); ?>"></div>
+                                            <div class="giftwrap-content col-sm-5 col-height">
+                                                <div class="giftwrap_name"><?php echo $gift->getGiftwrapName(); ?></div>
+                                                <div class="giftwrap-price"><?php echo $this->__('Price'). ': ' .Mage::helper('core')->currency($gift->getGiftwrapPrice(), true, false); ?></div>
+                                            </div>
+                                            <div class="giftwrap-radio col-sm-3 col-height"><input id="gift-<?php echo $gift->getId(); ?>" type="radio" name="giftwraps" value="<?php echo $gift->getId(); ?>" /><label for="gift-<?php echo $gift->getId(); ?>"><?php echo $this->__('Add this') ?></label></div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="next-btn row">
+                            <input type="hidden" name="product_id" value="" id="giftwrap_product_id" />
+                            <button type="submit" name="submit" value="Add" class="col-xs-12 button btn-checkout">
+                                <span><span><?php echo $this->__('Add'); ?></span></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <h1><?php echo $this->__('Shopping Cart') ?></h1>
     <form id="cart-form" action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
         <div class="row">
@@ -79,5 +121,10 @@
 <script>
     function setCartAction(el){
         document.getElementById('update_action_placeholder').value = el.value;
+    }
+</script>
+<script type="text/javascript">
+    function giftwrapid(id) {
+
     }
 </script>

@@ -88,5 +88,23 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php if ($isVisibleProduct): ?>
             <a class="btn-update" href="#" onclick="jQuery('#cart-form').submit(); return false" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update item parameters')) ?>"><i class="icon-update hidden-xs"></i><span><?php echo $this->__('Update') ?></span></a>
         <?php endif ?>
+
+        <?php
+        $giftwraps = Mage::getSingleton('core/session')->getGiftWraps();
+        if(array_key_exists($_item->getProductId(),$giftwraps)) {
+            ?>
+            <div class="a-center added">
+                    <a href="<?php echo Mage::getBaseUrl(); ?>giftwrap">
+                        <i class="icon-gift"></i><span><?php echo $this->__('Gift Wrap Added')?>
+                    </a>
+            </div>
+            <?php
+        } else {
+            ?>
+            <div class="a-center"><a href="#" onclick="jQuery('#giftwrap_product_id').val(<?php echo $_item->getProductId(); ?>);" title="<?php echo $this->__('Add Gift Wrap')?>" data-toggle="modal" data-target="#giftPopup"><i class="icon-gift"></i><span><?php echo $this->__('Add Gift Wrap')?></span></a></div>
+            <?php
+        }
+        ?>
+
     </div>
 </div>
