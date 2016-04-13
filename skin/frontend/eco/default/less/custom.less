@@ -504,7 +504,26 @@ a[href*='paypal'] {
   }
 }
 
+.opc {
+  .input-box {
+    position: relative;
+    .valid {
+      position: absolute;
+      top: 8px;
+      right: -35px;
+      font-size: 16px;
+      color: #9dc34b;
+      &.icon-close2 {
+        right: -30px;
+        color: #cc1d21;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
 /* ~~~ Shopping cart ~~~ */
+.checkout-onepage-success,
 .checkout-cart-index,
 .checkout-onepage-index {
   .header {

@@ -1343,6 +1343,7 @@ textarea {
 }
 
 .validation-failed {
+    position: relative;
     border-color: #eb340a !important;
 }
 
@@ -4462,7 +4463,7 @@ span.product-image {
 .opc .section {
     display: none;
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 .opc .section.allow {
     display: block;

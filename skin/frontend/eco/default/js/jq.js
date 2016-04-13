@@ -20,6 +20,42 @@ jQuery(document).ready(function ($) {
     });
     /* / */
 
+    $('.opc .input-text').on('change', function () {
+        var $this = $(this);
+        var validParent = $this.parent();
+        var validType = $this.attr('type');
+        var validFailed = '<i class="icon-close2 valid"></i>';
+        var validPassed = '<i class="icon-checkmark valid"></i>';
+
+        var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+
+        console.log(validType);
+
+        validParent.find('.valid').remove();
+
+        if (validType == 'text' && !$this.hasClass('validate-email')) {
+            if ($this.val() == '') {
+                validParent.append(validFailed);
+            } else {
+                validParent.append(validPassed);
+            }
+        }
+        if ($this.hasClass('validate-email')) {
+            if ($this.val() == '' || !re.test($this.val())) {
+                validParent.append(validFailed);
+            } else {
+                validParent.append(validPassed);
+            }
+        }
+        if (validType == 'tel') {
+            if ($this.val() == '') {
+                validParent.append(validFailed);
+            } else {
+                validParent.append(validPassed);
+            }
+        }
+    });
+
     /* bootstrap tabs cookie */
     var tabId = $('.tabpanel-cookie').attr('id');
     $('.tabpanel-cookie [data-toggle="tab"]').on('shown.bs.tab', function(e){

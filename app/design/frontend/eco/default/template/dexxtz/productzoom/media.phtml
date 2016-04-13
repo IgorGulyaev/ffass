@@ -1,0 +1,153 @@
+<?php
+
+/**
+ * Copyright [2015] [Dexxtz]
+ *
+ * @package   Dexxtz_Productzoom
+ * @author    Dexxtz
+ * @license   http://www.apache.org/licenses/LICENSE-2.0
+ */
+ 
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+	$dexxtz = Mage::helper('productzoom');
+	
+	$dexxtz->getCss();
+	$dexxtz->getJs();
+
+	$visibleThumbnails  = ($this->getVisibleThumbnails()) ? $this->getVisibleThumbnails() : '3';
+	$resizeImg  = ($this->getResizeImg()) ? $this->getResizeImg() : '1000, 1000';
+	$resizeThumbnail  = ($this->getResizeThumbnail()) ? $this->getResizeThumbnail() : '220, 130';
+	$quality  = ($this->getQuality()) ? $this->getQuality() : 100;
+?>
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+	<div class="modal fade modal-media" id="product-media-modal" data-backdrop="false">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="icon-close"></i></button>
+					<h3 class="modal-title"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h3>
+				</div>
+				<div class="modal-body">
+					<div class="product-img">
+						<ul class="owl-carousel">
+							<?php foreach ($this->getGalleryImages() as $_image): ?>
+								<li class="item">
+									<a data-toggle="media" href="#product-media-modal" class="open-big">
+										<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeImg);?>">
+									</a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+						<div class="carousel product-thumbs">
+							<?php if($this->getGalleryImages()->getSize() > 3): ?>
+								<a href="#" class="carousel-controls prev"><i class="icon-left"></i></a>
+								<a href="#" class="carousel-controls next"><i class="icon-right"></i></a>
+							<?php endif; ?>
+							<div class="product-thumbs-img">
+								<ul class="owl-carousel-thumbs">
+									<?php foreach ($this->getGalleryImages() as $_image): ?>
+										<li class="item"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeThumbnail);?>"></li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="product-img product-view-img visible-xs">
+		<ul class="owl-carousel">
+			<?php foreach ($this->getGalleryImages() as $_image): ?>
+				<li class="item">
+					<a href="#product-media-modal" class="product-img-big" data-toggle="modal">
+						<img id="main-product-image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeImg);?>">
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+		<div class="carousel product-thumbs">
+			<?php if($this->getGalleryImages()->getSize() > $visibleThumbnails): ?>
+				<a href="#" class="carousel-controls prev"><i class="icon-left"></i></a>
+				<a href="#" class="carousel-controls next"><i class="icon-right"></i></a>
+			<?php endif; ?>
+			<div class="product-thumbs-img">
+				<ul class="owl-carousel-thumbs">
+					<?php foreach ($this->getGalleryImages() as $_image): ?>
+						<li class="item">
+							<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeThumbnail);?>">
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			var $sync1 = $(".product-img .owl-carousel"),
+				$sync2 = $(".product-img .product-thumbs .owl-carousel-thumbs"),
+				flag = false,
+				duration = 100;
+			$sync1.owlCarousel({
+				items: 1,
+				margin: 0,
+				nav: false,
+				thumbs: false,
+				animateOut: 'fadeOut',
+				dots: false
+			}).on('changed.owl.carousel', function (e) {
+				if (!flag) {
+					flag = true;
+					$sync2.trigger('to.owl.carousel', [e.item.index, duration, true]);
+					flag = false;
+				}
+			});
+			$sync2.owlCarousel({
+				margin: 0,
+				items: <?php echo $visibleThumbnails ?>,
+				nav: false,
+				center: false,
+				dots: false,
+				navRewind: false
+			}).on('click', '.owl-item', function () {
+				$sync1.trigger('to.owl.carousel', [$(this).index(), duration, true]);
+			}).on('changed.owl.carousel', function (e) {
+				if (!flag) {
+					flag = true;
+					$sync1.trigger('to.owl.carousel', [e.item.index, duration, true]);
+					flag = false;
+				}
+			});
+			$('.product-img-big').zoom();
+		});
+	</script>
+<?php else: ?>
+	<div class="product-img product-img-none visible-xs">
+		<?php
+		$_img = '<img class="img-responsive" src="'.$this->helper('catalog/image')->init($_product, 'image')->setQuality($quality)->resize($resizeImg).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'">';
+		echo $_helper->productAttribute($_product, $_img, 'image');
+		?>
+	</div>
+<?php endif; ?>
+
+
+<ul id="etalage" class="hidden-xs">
+	<li>				
+		<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image')); ?>" />
+		<img class="etalage_source_image" title="<?php echo $_product->getImageLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image'), true); ?>" />
+	</li>
+	<?php 
+		foreach ($this->getGalleryImages() as $_image) {
+        	if(Mage::registry('current_product')->getImage() != $_image->getFile()) { ?>                
+            <li>
+            	<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())); ?>" />
+				<img class="etalage_source_image" title="<?php echo $_image->getLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()), true); ?>" />
+            </li> 
+        <?php 
+			}    
+		}
+	?>	 
+</ul>

@@ -499,7 +499,12 @@ One page checkout order review block
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
+        <reference name="header">
+            <action method="unsetChild"><name>topMenu</name></action>
+            <action method="unsetChild"><name>index.cms.block.toplabel.wrapper</name></action>
+        </reference>
         <reference name="content">
+            <block type="core/template" name="checkout.track.block" template="checkout/track.phtml" />
             <block type="checkout/onepage_success" name="checkout.success" template="checkout/success.phtml"/>
         </reference>
     </checkout_onepage_success>
