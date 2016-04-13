@@ -31,6 +31,21 @@
             <ecomitize_pagesaccordeon>
                 <class>Ecomitize_Pagesaccordeon_Model</class>
             </ecomitize_pagesaccordeon>
+            <widget>
+                <rewrite>
+                    <widget_instance>Ecomitize_Pagesaccordeon_Model_Widget_Widget_Instance</widget_instance>
+                </rewrite>
+            </widget>
         </models>
+        <events>
+            <widget_widget_instance_save_before>
+                <observers>
+                    <ecomitize_pagesaccordeon>
+                        <class>ecomitize_pagesaccordeon/observer</class>
+                        <method>saveBefore</method>
+                    </ecomitize_pagesaccordeon>
+                </observers>
+            </widget_widget_instance_save_before>
+        </events>
     </global>
 </config>
