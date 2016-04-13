@@ -201,7 +201,7 @@ a[href*='amazon']:before,
     content: "\e90d";
 }
 
-.add-to-links [href*='wishlist']:before {
+.add-to-links [href*='wishlist']:before {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     content: "\e918";
     color: #dddfe1;
 }
