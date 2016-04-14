@@ -94,8 +94,8 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         if(array_key_exists($_item->getProductId(),$giftwraps)) {
             ?>
             <div class="a-center added">
-                    <a href="<?php echo Mage::getBaseUrl(); ?>giftwrap">
-                        <i class="icon-gift"></i><span><?php echo $this->__('Gift Wrap Added')?>
+                    <a href="<?php echo Mage::getBaseUrl(); ?>giftwrap/index/remove/id/<?php echo $_product->getId() ?>">
+                        <i class="icon-gift"></i><span><?php echo $this->__('Remove Gift Wrap')?>
                     </a>
             </div>
             <?php
