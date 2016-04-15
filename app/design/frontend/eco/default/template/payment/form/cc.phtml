@@ -49,7 +49,7 @@
     <li class="wide">
         <div class="input-box">
             <span class="cc-label"><?php echo $this->__('Credit Card Number') ?><em>*</em></span>
-            <input type="text" id="<?php echo $_code ?>_cc_number" name="payment[cc_number]" title="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Credit Card Number')) ?>" class="input-text validate-cc-number validate-cc-type" pattern="[0-9]*" value="" />
+            <input type="text" id="<?php echo $_code ?>_cc_number" name="payment[cc_number]" title="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Credit Card Number')) ?>" class="input-text validate-cc-number validate-cc-type" pattern="[0-9]*" maxlength="19" value="" />
         </div>
     </li>
     <li id="<?php echo $_code ?>_cc_type_exp_div" class="auto exp-date">
@@ -59,8 +59,11 @@
                 <span class="cc-label"><?php echo $this->__('MM') ?><em>*</em></span>
                 <select id="<?php echo $_code ?>_expiration" name="payment[cc_exp_month]" class="input-text month validate-cc-exp required-entry">
                 <?php $_ccExpMonth = $this->getInfoData('cc_exp_month') ?>
-                <?php foreach ($this->getCcMonths() as $k=>$v): ?>
-                    <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccExpMonth): ?> selected="selected"<?php endif ?>><?php echo $k ?></option>
+                <?php $i=0; foreach ($this->getCcMonths() as $k=>$v): ?>
+                    <?php if($i == 0):?>
+                    <?php else:?>
+                        <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccExpMonth): ?> selected="selected"<?php endif ?>><?php if (strlen($k) == 1){$e = '0'.$k;}else{$e = $k;}?><?php echo $e ?></option>
+                    <?php endif; $i++;?>
                 <?php endforeach ?>
                 </select>
             </div>
@@ -81,7 +84,7 @@
         <div class="input-box">
             <div class="v-fix">
                 <span class="cc-label"><?php echo $this->__('CVV') ?><em>*</em></span>
-                <input type="text" title="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Card Verification Number')) ?>" class="input-text cvv required-entry validate-cc-cvn" id="<?php echo $_code ?>_cc_cid" name="payment[cc_cid]" value="" />
+                <input type="text" title="<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Card Verification Number')) ?>" class="input-text cvv required-entry validate-cc-cvn" id="<?php echo $_code ?>_cc_cid" name="payment[cc_cid]" maxlength="3" value="" />
             </div>
             <a href="#" class="cvv-what-is-this"><?php echo $this->__('What is this?') ?></a>
         </div>
@@ -145,6 +148,11 @@
         </ul>
     </li>
     <script type="text/javascript">
+
+        document.getElementById('<?php echo $_code ?>_cc_number').addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+        });
+
         jQuery('#<?php echo $_code ?>_cc_number').creditCardTypeDetector({
             'credit_card_logos' : '.card_logos',
             'credit_card_select': 'select[name="payment[cc_type]"]'
