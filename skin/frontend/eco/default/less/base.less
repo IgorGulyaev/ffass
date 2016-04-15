@@ -70,6 +70,7 @@ p:last-child {
   margin-bottom: 0;
 }
 
+.cc-label,
 label {
   font-weight: normal;
   em {
@@ -784,6 +785,119 @@ table[class*='data-table'] {
   vertical-align: top;
   border: 0;
 }
+
+#co-shipping-method-form {
+  .sp-methods {
+    dt {
+      display: none !important;
+    }
+  }
+}
+
+#co-payment-form {
+  .sp-methods {
+    &> ul {
+      &> li {
+        padding: 0;
+        &:nth-child(even) {
+          float: right;
+        }
+        a {
+          padding: 0;
+          margin: 0 !important;
+          border: 0;
+          &+ a {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+  .tab-content {
+    border: 0;
+    padding: 0;
+    margin: 30px 0 0;
+    .input-text {
+      padding-right: 8px !important;
+      height: 65px;
+      background: transparent !important;
+      font-size: 20px;
+      line-height: 80px;
+      &.cvv {
+        width: 68px;
+      }
+    }
+    select.input-text {
+      padding-left: 8px !important;
+      width: 68px;
+      color: transparent;
+      &.act {
+        color: #333;
+      }
+      &.validate-cc-type-select {
+        width: 100%;
+      }
+    }
+  }
+}
+
+#p_method_authorizenet + label {
+  width: 323px;
+  height: 43px;
+  color: transparent;
+  background: url("@{path}images/cc.png") no-repeat 40px 0;
+  &:before {
+    margin-top: 15px;
+  }
+}
+#p_method_paypal_express + label {
+  width: 175px;
+  height: 43px;
+  color: transparent;
+  background: url("@{path}images/paypal.png") no-repeat 40px 5px;
+  img {
+    display: none !important;
+  }
+  a {
+    display: none !important;
+  }
+  &:before {
+    margin-top: 15px;
+  }
+}
+
+.cc-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 18px 8px 8px 15px;
+  z-index: -1;
+  font-size: 20px;
+  color: #333;
+  .transition(all 300ms ease-out);
+  &.min {
+    padding-top: 8px;
+    font-size: 14px;
+  }
+}
+.v-fix {
+  .cc-label {
+    padding-left: 18px;
+  }
+}
+
+#authorizenet_cc_type_exp_div {
+  .cc {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: middle;
+    &+ .input-box {
+      display: inline-block !important;
+      vertical-align: middle;
+    }
+  }
+}
+
 
 table[id*='totals-table'] > caption + thead > tr:first-child > th,
 table[id*='totals-table'] > colgroup + thead > tr:first-child > th,

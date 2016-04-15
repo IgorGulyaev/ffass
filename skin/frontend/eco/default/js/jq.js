@@ -20,7 +20,7 @@ jQuery(document).ready(function ($) {
     });
     /* / */
 
-    $('.opc .input-text').on('change', function () {
+    $('.opc .input-text.required-entry').on('change', function () {
         var $this = $(this);
         var validParent = $this.parent();
         var validType = $this.attr('type');
@@ -53,6 +53,28 @@ jQuery(document).ready(function ($) {
             } else {
                 validParent.append(validPassed);
             }
+        }
+    });
+
+    var ccInput = '#co-payment-form .tab-content .input-text';
+    var ccSelect = '#co-payment-form .tab-content .input-text';
+
+    jQuery('body').on('focus', ccSelect, function () {
+        jQuery(this).addClass('act');
+    });
+    jQuery('body').on('blur', ccSelect, function () {
+        if (jQuery(this).val() == '') {
+            jQuery(this).removeClass('act');
+        } else {
+            jQuery(this).addClass('act');
+        }
+    });
+    jQuery('body').on('focus', ccInput, function () {
+        jQuery(this).siblings('.cc-label').addClass('min');
+    });
+    jQuery('body').on('blur', ccInput, function () {
+        if (jQuery(this).val() == '') {
+            jQuery(this).siblings('.cc-label').removeClass('min');
         }
     });
 

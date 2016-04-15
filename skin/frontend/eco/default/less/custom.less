@@ -654,6 +654,52 @@ a[href*='paypal'] {
   margin-bottom: 20px;
 }
 
+#authorizenet_cc_type_cvv_div {
+  .v-fix {
+    float: none !important;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  a.cvv-what-is-this {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.card_logos {
+  li {
+    display: none;
+    text-transform: uppercase;
+    span {
+      display: inline-block;
+      padding-left: 86px;
+      height: 43px;
+      vertical-align: middle;
+      line-height: 43px;
+    }
+    &[data-cc-type="AE"] {
+      span {
+        background: url("@{path}images/cc/american-express.png") no-repeat 0 center;
+      }
+    }
+    &[data-cc-type="VI"] {
+      span {
+        background: url("@{path}images/cc/visa.png") no-repeat 0 center;
+      }
+    }
+    &[data-cc-type="MC"] {
+      span {
+        background: url("@{path}images/cc/master-card.png") no-repeat 0 center;
+      }
+    }
+    &[data-cc-type="DI"] {
+      span {
+        background: url("@{path}images/cc/discover.png") no-repeat 0 center;
+      }
+    }
+  }
+}
+
 /* ~~~ Track ~~~*/
 .track {
   margin-bottom: 60px;

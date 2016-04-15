@@ -2148,7 +2148,7 @@ a[href*='amazon'] {
     width: auto!important;
     text-align: center;
     margin: 15px!important;
-    display: block!important;
+    /*display: block!important;*/
 }
 
 .main a[href*='amazon']:before {
@@ -4574,6 +4574,9 @@ span.product-image {
         border: none !important;
         background-color: #efab01;
     }
+    .opc .section.allow:not(.active) .buttons-set button {
+        display: none !important;
+    }
 }
 
 .checkout-onepage-success .col-main {
@@ -4601,11 +4604,19 @@ span.product-image {
 @media (min-width: 767px) {
     #authorizenet_cc_type_exp_div .input-box,
     #payment_form_authorizenet {
+        display: block !important;
         position: relative;
         margin-left: -10px;
         margin-right: -10px;
     }
 
+    #payment_form_paypal_express {
+        display: block !important;
+    }
+
+    #payment_form_authorizenet .input-box .v-fix {
+        position: relative;
+    }
     #payment_form_authorizenet .input-box .v-fix,
     #payment_form_authorizenet > li {
         float: left;
@@ -4614,6 +4625,17 @@ span.product-image {
     }
     #payment_form_authorizenet > li.wide {
         width: 100%;
+    }
+    #payment_form_authorizenet > li.auto {
+        width: auto !important;
+    }
+    #payment_form_authorizenet > li.exp-date {
+        padding-right: 30px;
+    }
+    #payment_form_authorizenet > li#ccTypeDisplay {
+        position: absolute;
+        bottom: 15px;
+        right: 0;
     }
 }
 
