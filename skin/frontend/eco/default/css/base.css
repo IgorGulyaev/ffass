@@ -2166,7 +2166,7 @@ a[href*='amazon']:after {
 }
 
 a[href*='paypal']:after {
-    content: 'Login In with Paypal';
+    content: 'Checkout with PayPal';
 }
 
 a[href*='paypal']:before,
@@ -3262,14 +3262,6 @@ span.product-image {
         min-width: 30px;
     }
 
-    .qty-group .input-group-addon:first-child {
-        padding-right: 15px;
-    }
-
-    .qty-group .input-group-addon:last-child {
-        padding-left: 15px;
-    }
-
     @media (max-width: 767px) {
         .cart .qty-group .input-group-addon {
             display: none;
@@ -4036,6 +4028,7 @@ span.product-image {
 .cart-right .button {
     margin-bottom: 15px;
     display: block;
+    height: 43px;
     width: 100%;
 }
 

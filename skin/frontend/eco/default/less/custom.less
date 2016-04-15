@@ -578,19 +578,13 @@ a[href*='paypal'] {
         }
       }
       .button-qty {
-        padding: 0;
+        padding: 10px 15px;
         i {
           font-size: 7px;
         }
       }
       .qty-group {
         .input-group-addon {
-          &:first-child {
-            padding-right: 14px;
-          }
-          &:last-child {
-            padding-left: 2px;
-          }
           button {
             border: none !important;
             .box-shadow(none !important);
@@ -616,8 +610,12 @@ a[href*='paypal'] {
           font-weight: bold;
         }
       }
+      .col-price {
+        min-width: 119px;
+      }
       .col-update {
         padding: 0;
+        min-width: 119px;
         white-space: nowrap;
         i {
           position: relative;
@@ -639,6 +637,51 @@ a[href*='paypal'] {
         border-bottom: 0;
       }
     }
+  }
+}
+
+#shopping-cart-totals-table {
+  tr {
+    &> td {
+      &:first-child {
+        text-align: left !important;
+      }
+      &:last-child {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.paypal-logo {
+  &> a {
+    display: block;
+    &:before {
+      display: none !important;
+    }
+    img {
+      display: none !important;
+    }
+  }
+  &+ li {
+    display: none !important;
+  }
+}
+
+.cart-checkout {
+  position: relative;
+  padding: 0 0 0 8px;
+  &:before {
+    position: absolute;
+    display: block;
+    content: '';
+    top: -25px;
+    left: -21px;
+    height: 46px;
+    width: 55px;
+    background: url("@{path}images/butterfly.png") no-repeat 0 0;
+    -webkit-background-size: contain;
+    background-size: contain;
   }
 }
 /* ~~~ End Shopping cart ~~~ */

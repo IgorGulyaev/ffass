@@ -64,13 +64,13 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <div class="input-group qty-group qty-cart">
             <div class="input-group-addon">
                 <button type="button" class="button button-qty qty-minus" data-value="-1" data-target=".qty-<?php echo $_item->getId() ?>" data-toggle="spinner">
-                    <i class="icon-minus"></i>
+                    <i class="icon-arrow-down"></i>
                 </button>
             </div>
             <input name="cart[<?php echo $_item->getId() ?>][qty]" data-ride="spinner" data-min="1" value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty qty-<?php echo $_item->getId() ?>" maxlength="4" id="qty">
             <div class="input-group-addon">
                 <button type="button" class="button button-qty qty-plus" data-value="1" data-target=".qty-<?php echo $_item->getId() ?>" data-toggle="spinner">
-                    <i class="icon-plus"></i>
+                    <i class="icon-arrow-up"></i>
                 </button>
             </div>
         </div>
@@ -93,7 +93,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         $giftwraps = Mage::getSingleton('core/session')->getGiftWraps();
         if(array_key_exists($_item->getProductId(),$giftwraps)) {
             ?>
-            <div class="a-center added">
+            <div class="added">
                     <a href="<?php echo Mage::getBaseUrl(); ?>giftwrap/index/remove/id/<?php echo $_product->getId() ?>">
                         <i class="icon-gift"></i><span><?php echo $this->__('Remove Gift Wrap')?>
                     </a>
@@ -101,7 +101,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             <?php
         } else {
             ?>
-            <div class="a-center"><a href="#" onclick="jQuery('#giftwrap_product_id').val(<?php echo $_item->getProductId(); ?>);" title="<?php echo $this->__('Add Gift Wrap')?>" data-toggle="modal" data-target="#giftPopup"><i class="icon-gift"></i><span><?php echo $this->__('Add Gift Wrap')?></span></a></div>
+            <div><a href="#" onclick="jQuery('#giftwrap_product_id').val(<?php echo $_item->getProductId(); ?>);" title="<?php echo $this->__('Add Gift Wrap')?>" data-toggle="modal" data-target="#giftPopup"><i class="icon-gift"></i><span><?php echo $this->__('Add Gift Wrap')?></span></a></div>
             <?php
         }
         ?>
