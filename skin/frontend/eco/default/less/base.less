@@ -255,6 +255,10 @@ dl {
 }*/
 
 
+.compare-link {
+  display: none;
+}
+
 .breadcrumb {
   &>li {
     &+li {
@@ -1052,7 +1056,8 @@ h1:after,
   /* add to */
   .add-to-links {
     color: #5ba5db;
-    left: @globalPadding;
+    left: auto;
+    right: 21px;
     top: -100%;
     opacity: 0;
     height: auto;
@@ -1064,12 +1069,16 @@ h1:after,
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
-    @media (max-width: 767px) {
-      top: @globalPadding;
-      opacity: 1;
-      &> li > a > span {
-        display: none;
+    i {
+      color: #dddfe1;
+      font-size: 30px;
+      &:hover {
+        color: #ce2127;
       }
+    }
+    @media (max-width: 767px) {
+      top: 6px;
+      opacity: 1;
     }
   }
   .button-remove {
@@ -1140,8 +1149,19 @@ h1:after,
   /*hover*/
   &:hover {
     .add-to-links {
-      top: @globalPadding;
+      top: 21px;
       opacity: 1;
+    }
+  }
+}
+
+.cms-index-index {
+  .products-item {
+    &:hover {
+      .add-to-links {
+        top: 6px;
+        right: 6px;
+      }
     }
   }
 }
@@ -1254,17 +1274,34 @@ h1:after,
     position: relative;
     /*display: inline-block;*/
     margin-right: 32px;
-    &:before {
-      position: absolute;
-      display: block;
-      content: '';
-      bottom: 21px;
-      left: -27px;
-      height: 46px;
-      width: 55px;
-      background: url("@{path}images/butterfly.png") no-repeat 0 0;
-      -webkit-background-size: contain;
-      background-size: contain;
+    .wrap {
+      position: relative;
+      float: left;
+      clear: both;
+      margin-top: 27px;
+      margin-right: 32px;
+      &:before {
+        position: absolute;
+        display: block;
+        content: '';
+        top: -10px;
+        left: -27px;
+        height: 46px;
+        width: 55px;
+        background: url("@{path}images/butterfly.png") no-repeat 0 0;
+        -webkit-background-size: contain;
+        background-size: contain;
+      }
+      button {
+        padding-right: 64px;
+        padding-left: 64px;
+        height: 43px;
+        span {
+          &:before {
+            display: none;
+          }
+        }
+      }
     }
   }
 }

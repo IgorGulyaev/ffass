@@ -126,14 +126,6 @@
             </action>
             <action method="addItem">
                 <type>skin_js</type>
-                <name>js/owl.carousel.vert.js</name>
-            </action>
-            <!--<action method="addItem">
-                <type>skin_js</type>
-                <name>js/jquery-ui.min.js</name>
-            </action>-->
-            <action method="addItem">
-                <type>skin_js</type>
                 <name>js/jquery.creditCardTypeDetector.js</name>
             </action>
             <action method="addItem">

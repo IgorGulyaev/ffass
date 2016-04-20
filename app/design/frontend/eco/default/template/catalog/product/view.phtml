@@ -93,6 +93,7 @@
                 <?php echo $this->getChildHtml('product_type_data') ?>
                 <?php echo $this->getTierPriceHtml() ?>
                 <?php echo $this->getChildHtml('extrahint') ?>
+
                 <?php if (!$this->hasOptions()):?>
                     <div class="add-to-box">
                         <?php if($_product->isSaleable()): ?>

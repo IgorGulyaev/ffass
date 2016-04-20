@@ -43,12 +43,12 @@ $imageType = $this->getImageType() ? $this->getImageType() : 'small_image';
         <ul class="add-to-links">
             <?php if(!$isWishList): ?>
                 <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                    <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product); ?>" class="link-wishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><span><?php echo $this->__('Add to Wishlist') ?></span></a></li>
+                    <li class="wishlist-link"><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product); ?>" class="link-wishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><i class="icon-wishlist"></i></a></li>
                 <?php endif; ?>
             <?php endif; ?>
             <?php if(!$isCompareList): ?>
                 <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-                    <li><a href="<?php echo $_compareUrl ?>" class="link-compare" title="<?php echo $this->__('Add to Compare') ?>"><span><?php echo $this->__('Add to Compare') ?></span></a></li>
+                    <li class="compare-link"><a href="<?php echo $_compareUrl ?>" class="link-compare" title="<?php echo $this->__('Add to Compare') ?>"><span><?php echo $this->__('Add to Compare') ?></span></a></li>
                 <?php endif; ?>
             <?php endif; ?>
         </ul>

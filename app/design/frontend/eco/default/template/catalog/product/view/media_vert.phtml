@@ -121,79 +121,7 @@ $quality  = ($this->getQuality()) ? $this->getQuality() : 100;
                     flag = false;
                 }
             });
-            $sync2.amazingcarousel({
-                width:99,
-                height:126,
-                skinsfoldername:"",
-                interval:3000,
-                itembottomshadowimagetop:100,
-                donotcrop:false,
-                random:false,
-                showhoveroverlay:true,
-                rownumber:1,
-                height:126,
-                arrowheight:32,
-                showbottomshadow:false,
-                itembackgroundimagewidth:100,
-                imageheight:126,
-                skin:"Vertical",
-                responsive:true,
-                enabletouchswipe:true,
-                navstyle:"none",
-                backgroundimagetop:-40,
-                arrowstyle:"always",
-                bottomshadowimagetop:100,
-                hidehoveroverlayontouch:false,
-                continuous:false,
-                itembackgroundimagetop:0,
-                lightboxshowdescription:false,
-                width:99,
-                navswitchonmouseover:false,
-                showhoveroverlayalways:false,
-                transitioneasing:"easeOutExpo",
-                lightboxshownavigation:false,
-                showitembackgroundimage:false,
-                itembackgroundimage:"",
-                playvideoimagepos:"center",
-                circular:true,
-                arrowimage:"arrows-32-32-4.png",
-                scrollitems:1,
-                direction:"vertical",
-                supportiframe:false,
-                showbackgroundimage:false,
-                spacing:12,
-                navdirection:"vertical",
-                itembottomshadowimagewidth:100,
-                backgroundimage:"",
-                autoplay:true,
-                arrowwidth:32,
-                transparent:false,
-                continuousduration:2500,
-                scrollmode:"page",
-                navmode:"page",
-                arrowhideonmouseleave:1000,
-                showitembottomshadow:false,
-                navspacing:4,
-                pauseonmouseover:true,
-                imagefillcolor:"FFFFFF",
-                transitionduration:1000,
-                visibleitems:4,
-                imagewidth:99,
-                usescreenquery:false,
-                bottomshadowimagewidth:110,
-                screenquery:{
-                    mobile: {
-                        screenwidth: 600,
-                        visibleitems: 1
-                    }
-                },
-                navwidth:24,
-                loop:0,
-                navheight:24
-            }).on('click', '.item', function () {
-                $sync1.trigger('to.owl.carousel', [$(this).index(), duration, true]);
-            });
-            /*$sync2.owlCarouselVert({
+            $sync2.owlCarouselVert({
                 margin: 0,
                 items: <?php echo $visibleThumbnails ?>,
                 nav: false,
@@ -208,7 +136,7 @@ $quality  = ($this->getQuality()) ? $this->getQuality() : 100;
                     $sync1.trigger('to.owl.carousel', [e.item.index, duration, true]);
                     flag = false;
                 }
-            });*/
+            });
             $('.product-img-big').zoom();
         });
     </script>

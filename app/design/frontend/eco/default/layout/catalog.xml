@@ -211,6 +211,7 @@ Supported layout update handles (special):
 
                 <block type="catalog/product_view" name="product.info.addto" as="addto" template="catalog/product/view/addto.phtml"/>
                 <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="catalog/product/view/addtocart.phtml"/>
+                <block type="catalog/product_view" name="product.info.sizechart" as="sizechart" template="catalog/product/view/sizechart.phtml"/>
 
                 <block type="core/text_list" name="product.info.extrahint" as="extrahint" translate="label">
                     <label>Product View Extra Hint</label>
@@ -240,12 +241,14 @@ Supported layout update handles (special):
                     <action method="setDataByKey"><key>alias_in_layout</key><value>container1</value></action>
                     <action method="setDataByKeyFromRegistry"><key>options_container</key><key_in_registry>product</key_in_registry></action>
                     <action method="append"><block>product.info.options.wrapper</block></action>
+                    <action method="append"><block>product.info.sizechart</block></action>
                     <action method="append"><block>product.info.options.wrapper.bottom</block></action>
                 </block>
                 <block type="core/template_facade" name="product.info.container2" as="container2">
                     <action method="setDataByKey"><key>alias_in_layout</key><value>container2</value></action>
                     <action method="setDataByKeyFromRegistry"><key>options_container</key><key_in_registry>product</key_in_registry></action>
                     <action method="append"><block>product.info.options.wrapper</block></action>
+                    <action method="append"><block>product.info.sizechart</block></action>
                     <action method="append"><block>product.info.options.wrapper.bottom</block></action>
                 </block>
                 <action method="unsetCallChild"><child>container1</child><call>ifEquals</call><if>0</if><key>alias_in_layout</key><key>options_container</key></action>
