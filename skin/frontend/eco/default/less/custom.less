@@ -738,6 +738,7 @@ a[href*='paypal'] {
   }
 }
 
+.minicart-actions,
 .cart-checkout {
   position: relative;
   padding: 0 0 0 8px;
@@ -754,7 +755,42 @@ a[href*='paypal'] {
     background-size: contain;
   }
 }
+.minicart-actions {
+  padding: 0;
+  margin: 30px auto 0;
+  width: 90%;
+}
 /* ~~~ End Shopping cart ~~~ */
+
+/* MINI CART */
+.dropdown-menu-cart {
+  border: 1px dashed #cdcdcd;
+  .border-radius(5px);
+}
+.mini-products-list {
+  .col-image {
+    padding-right: 0;
+  }
+  .product-image {
+    display: block;
+    height: auto;
+    width: 100%;
+    img {
+      border: 1px dashed #ebebeb;
+      .border-radius(5px);
+    }
+  }
+  .info-wrapper {
+    &> div {
+      display: inline-block;
+      font-weight: 600;
+    }
+    .product-qty {
+      margin-right: 15px;
+    }
+  }
+}
+/* END MINI CART */
 
 #opc-login .step-title {
   display: none;
