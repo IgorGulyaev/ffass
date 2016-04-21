@@ -20,9 +20,9 @@ jQuery(document).ready(function ($) {
     });
     /* / */
 
-    var opcRequired = $('.opc .input-text.required-entry');
-    $('body').on('blur', '.opc .input-text.required-entry', function () {
-        $(this).parents('li').prevAll('li').find('.input-text.required-entry').change();
+    var opcRequired = $('.opc .input-text.required-entry, .opc select.validate-select');
+    $('body').on('blur', '.opc .input-text.required-entry, .opc select.validate-select', function () {
+        $(this).parents('li').prevAll('li').find('.input-text.required-entry, select.validate-select').change();
         $(this).change();
     });
     opcRequired.on('change', function () {
@@ -37,6 +37,15 @@ jQuery(document).ready(function ($) {
         validParent.find('.valid').remove();
 
         if (validType == 'text' && !$this.hasClass('validate-email')) {
+            if ($this.val() == '') {
+                validParent.append(validFailed);
+            } else {
+                validParent.append(validPassed);
+            }
+        }
+        if ($this.hasClass('validate-select') == true) {
+            console.log('select');
+            console.log($this.val());
             if ($this.val() == '') {
                 validParent.append(validFailed);
             } else {
