@@ -20,16 +20,19 @@ jQuery(document).ready(function ($) {
     });
     /* / */
 
-    $('.opc .input-text.required-entry').on('change', function () {
+    var opcRequired = $('.opc .input-text.required-entry');
+    $('body').on('blur', '.opc .input-text.required-entry', function () {
+        $(this).parents('li').prevAll('li').find('.input-text.required-entry').change();
+        $(this).change();
+    });
+    opcRequired.on('change', function () {
         var $this = $(this);
         var validParent = $this.parent();
         var validType = $this.attr('type');
-        var validFailed = '<i class="icon-close2 valid"></i>';
+        var validFailed = '<i class="icon-no valid"></i>';
         var validPassed = '<i class="icon-checkmark valid"></i>';
 
         var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
-
-        console.log(validType);
 
         validParent.find('.valid').remove();
 
