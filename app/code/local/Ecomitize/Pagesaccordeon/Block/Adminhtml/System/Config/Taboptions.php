@@ -9,7 +9,7 @@ class Ecomitize_Pagesaccordeon_Block_Adminhtml_System_Config_Taboptions extends 
     public function _prepareToRender()
     {
         $this->addColumn('attribute', array(
-            'label' => Mage::helper('ecomitize_pagesaccordeon')->__('Attribute'),
+            'label' => Mage::helper('ecomitize_pagesaccordeon')->__('Page'),
             'renderer' => $this->_getTabRenderer(),
 
         ));
