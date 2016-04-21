@@ -1940,6 +1940,7 @@ fieldset[disabled] textarea {
 /* footer */
 
 footer {
+    margin-top: 40px;
     background-color: #36444e;
     color: #8a9298;
 }
