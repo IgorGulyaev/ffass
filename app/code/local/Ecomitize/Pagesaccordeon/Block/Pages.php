@@ -34,6 +34,8 @@ class Ecomitize_Pagesaccordeon_Block_Pages extends Mage_Core_Block_Template impl
             $option[$i]['identifier'] = $identifier;
             $option[$i]['sort'] = $optionsArray[$identifier]['sort'];
             $option[$i]['type'] = $optionsArray[$identifier]['type'];
+            $option[$i]['link'] = $optionsArray[$identifier]['link'];
+            $option[$i]['linktype'] = $optionsArray[$identifier]['linktype'];
 
             $i++;
         }
@@ -46,7 +48,16 @@ class Ecomitize_Pagesaccordeon_Block_Pages extends Mage_Core_Block_Template impl
 
         foreach ($array_pages as $option) {
             if($option['type'] == 'link'){
-                $link = '<a href="'.Mage::helper('cms/page')->getPageUrl( $option['identifier'] ).'">'.$option['label'].'</a>';
+
+                if($option['linktype'] == 'inner'){
+                    $href = Mage::getUrl( $option['link'] );
+                }elseif( $option['linktype'] == 'cmspage'){
+                    $href = Mage::helper('cms/page')->getPageUrl( $option['identifier'] );
+                }else{
+                    $href = $option['link'];
+                }
+
+                $link = '<a href="'.$href.'">'.$option['label'].'</a>';
             }else{
                 $link = '<a data-toggle="collapse" data-parent="#accordion" href="#'.$option['identifier'].'">'.$option['label'].'</a>';
             }
@@ -75,7 +86,16 @@ class Ecomitize_Pagesaccordeon_Block_Pages extends Mage_Core_Block_Template impl
         foreach ($array_pages as $option) {
 
             if($option['type'] == 'link'){
-                $link = '<a href="'.Mage::helper('cms/page')->getPageUrl( $option['identifier'] ).'">'.$option['label'].'</a>';
+
+                if($option['linktype'] == 'inner'){
+                    $href = Mage::getUrl( $option['link'] );
+                }elseif( $option['linktype'] == 'cmspage'){
+                    $href = Mage::helper('cms/page')->getPageUrl( $option['identifier'] );
+                }else{
+                    $href = $option['link'];
+                }
+
+                $link = '<a href="'.$href.'">'.$option['label'].'</a>';
             }else{
                 $link = '<a data-toggle="tab" href="#'.$option['identifier'].'">'.$option['label'].'</a>';
             }
@@ -135,6 +155,8 @@ class Ecomitize_Pagesaccordeon_Block_Pages extends Mage_Core_Block_Template impl
             $array_links[] = $value['attribute'];
             $optionsArray[$value['attribute']]['sort'] = $value['tab_sort'];
             $optionsArray[$value['attribute']]['type'] = $value['type'];
+            $optionsArray[$value['attribute']]['link'] = $value['link'];
+            $optionsArray[$value['attribute']]['linktype'] = $value['linktype'];
         }
 
         $array_pages = $this->_getPages($array_links, $optionsArray);
