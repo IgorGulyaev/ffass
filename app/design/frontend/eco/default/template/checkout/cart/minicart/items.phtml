@@ -45,6 +45,11 @@ if(empty($_cartQty)) {
     <?php $_items = $this->getRecentItems() ?>
     <?php $countItems = count($_items); ?>
     <?php if($countItems): ?>
+        <div class="minicart-actions">
+            <a class="button btn-cart cart-link" href="<?php echo $this->getUrl('checkout/cart'); ?>">
+                <?php echo $this->__('View cart & Checkout'); ?>
+            </a>
+        </div>
         <div class="minicart-header">
             <ul id="cart-sidebar" class="mini-products-list">
                 <?php foreach($_items as $_item): ?>
