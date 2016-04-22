@@ -282,12 +282,14 @@ jQuery(document).ready(function ($) {
             $('.navbar').on('affix.bs.affix affix-top.bs.affix', function () {
                 $('body').css('padding-top', 0);
             });
+            $('footer .footer-left').appendTo('.navbar .navbar-footer');
         } else if(windowWidth > 767) {
             $('[data-hover="dropdown"]').dropdownHover();
             $('.navbar').on('affix.bs.affix affix-top.bs.affix', function (e) {
                 var padding = e.type === 'affix' ? $(this).height() : '';
                 $('body').css('padding-top', padding);
             });
+            $('.navbar .footer-left').appendTo('.row-footer .first');
         }
     }
     /**/

@@ -243,18 +243,29 @@
         -webkit-overflow-scrolling: touch;
     }
 
-    .navbar .navbar-footer {
-        padding: 30px 20px;
+    .navbar .navbar-footer .account-nav {
+        display: none !important;
+    }
+    .navbar .navbar-footer li.dropdown > a {
+        display: none !important;
+    }
+    .navbar .navbar-footer li.dropdown ul {
+        display: block !important;
+        background: none;
+    }
+    .navbar.footer-nav {
+        position: static;
     }
 
     .navbar .navbar-footer address {
-        font-size: 16px;
+        /*font-size: 16px;
         font-weight: bold;
         color: #2b2e31;
         text-align: center;
         display: block;
         margin: 0 auto;
-        text-transform: none;
+        text-transform: none;*/
+        display: none;
     }
 
     .navbar .navbar-footer .form-subscribe .form-group label {
@@ -270,7 +281,7 @@
     .navbar.in,
     .col-left.in,
     .navbar-active .open .dropdown-menu.dropdown-menu-cart {
-        top: 90px;
+        top: 144px;
     }
 
     .backdrop,
@@ -384,6 +395,13 @@
         border-radius: 4px;
         background-color: #fff;
     }
+    .navbar.footer-nav ul li a {
+        padding: 15px 20px !important;
+        border: 0;
+        background: none;
+        font-weight: bold;
+        text-decoration: underline;
+    }
 
     .navbar > ul > li > a,
     .navbar > ul > li > a:hover,
@@ -431,10 +449,45 @@
         color: #fff !important;
     }
 
-    .nav.nav-inline {
-        display: block !important;
+    header .header-top {
         position: absolute;
+        top: -1000px;
+        left: 0;
+        height: 55px;
+        width: 100%;
+        z-index: 50;
+        background-color: #f6f6f6 !important;
+        border: 0 !important;
+        -webkit-transition: all 0.5s ease-out;
+        -moz-transition: all 0.5s ease-out;
+        transition: all 0.5s ease-out;
     }
+    .navbar-active header .header-top {
+        top: 90px;
+    }
+    header .header-top .nav,
+    header .header-top .links {
+        text-align: center;
+    }
+    header .header-top .nav > li,
+    header .header-top .links > li {
+        display: inline-block;
+        float: none;
+    }
+    header .header-top .nav > li > a,
+    header .header-top .links > li > a {
+        padding: 18px 24px;
+        color: #5d5d5d;
+        font-size: 12px;
+        text-decoration: underline;
+    }
+
+    .header-top .nav.nav-inline {
+        display: block !important;
+        float: none !important;
+    }
+
+
 
     /**/
 
