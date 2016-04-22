@@ -5,12 +5,26 @@ class Ecomitize_Pagesaccordeon_Block_Adminhtml_System_Config_Taboptions extends 
 {
     protected $_tabRenderer;
     protected $_typeRenderer;
+    protected $_linkConfRenderer;
 
     public function _prepareToRender()
     {
         $this->addColumn('attribute', array(
             'label' => Mage::helper('ecomitize_pagesaccordeon')->__('Page'),
             'renderer' => $this->_getTabRenderer(),
+        ));
+
+        $this->addColumn('custompagename', array(
+            'label' => Mage::helper('ecomitize_pagesaccordeon')->__('Custom page name'),
+        ));
+
+        $this->addColumn('link', array(
+            'label' => Mage::helper('ecomitize_pagesaccordeon')->__('Link'),
+        ));
+
+        $this->addColumn('linktype', array(
+            'label' => Mage::helper('ecomitize_pagesaccordeon')->__('Link type'),
+            'renderer' => $this->_getLinkConfRenderer(),
 
         ));
 
@@ -50,12 +64,27 @@ class Ecomitize_Pagesaccordeon_Block_Adminhtml_System_Config_Taboptions extends 
         }
         return $this->_typeRenderer;
     }
+    protected function _getLinkConfRenderer(){
+        if (!$this->_linkConfRenderer) {
+            $this->_linkConfRenderer = $this->getLayout()->createBlock(
+                'ecomitize_pagesaccordeon/adminhtml_system_config_field_linkconfig', '',
+                array('is_render_to_js_template' => true)
+            );
+        }
+        return $this->_linkConfRenderer;
+    }
 
     protected function _prepareArrayRow(Varien_Object $row)
     {
         $row->setData(
             'option_extra_attr_' . $this->_getTabRenderer()
                 ->calcOptionHash($row->getData('attribute')),
+            'selected="selected"'
+        );
+
+        $row->setData(
+            'option_extra_attr_' . $this->_getLinkConfRenderer()
+                ->calcOptionHash($row->getData('linktype')),
             'selected="selected"'
         );
 

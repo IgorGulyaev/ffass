@@ -16,39 +16,30 @@ class Ecomitize_Pagesaccordeon_Block_Pages extends Mage_Core_Block_Template impl
         }
     }
 
-    protected function _getPages($array_links, $optionsArray)
-    {
-        $cmsPagesCollection = Mage::getModel('cms/page')->getCollection()->addFieldToFilter(
-            array('identifier'),
-            array(
-                array('in'=>$array_links),
-            )
-        );
-
-        $i=0;
-        foreach ($cmsPagesCollection as $page){
-
-            $identifier = $page->getIdentifier();
-            $option[$i]['label'] = $page->getTitle();
-            $option[$i]['content'] = $page->getContent();
-            $option[$i]['identifier'] = $identifier;
-            $option[$i]['sort'] = $optionsArray[$identifier]['sort'];
-            $option[$i]['type'] = $optionsArray[$identifier]['type'];
-
-            $i++;
-        }
-        return $option;
-    }
-
     protected function _getAccordeon($array_pages)
     {
         $html .= '<div class="panel-group" id="accordion">';
 
         foreach ($array_pages as $option) {
-            if($option['type'] == 'link'){
-                $link = '<a href="'.Mage::helper('cms/page')->getPageUrl( $option['identifier'] ).'">'.$option['label'].'</a>';
+            if($option['custompagename']){
+                $label = $option['custompagename'];
             }else{
-                $link = '<a data-toggle="collapse" data-parent="#accordion" href="#'.$option['identifier'].'">'.$option['label'].'</a>';
+                $label = $option['label'];
+            }
+
+            if($option['type'] == 'link'){
+
+                if($option['linktype'] == 'inner'){
+                    $href = Mage::getUrl( $option['link'] );
+                }elseif( $option['linktype'] == 'cmspage'){
+                    $href = Mage::helper('cms/page')->getPageUrl( $option['identifier'] );
+                }else{
+                    $href = $option['link'];
+                }
+
+                $link = '<a href="'.$href.'">'.$label.'</a>';
+            }else{
+                $link = '<a data-toggle="collapse" data-parent="#accordion" href="#'.$option['identifier'].'">'.$label.'</a>';
             }
             $html .= '<div class="panel panel-default">
                             <div class="panel-heading">
@@ -74,10 +65,24 @@ class Ecomitize_Pagesaccordeon_Block_Pages extends Mage_Core_Block_Template impl
 
         foreach ($array_pages as $option) {
 
-            if($option['type'] == 'link'){
-                $link = '<a href="'.Mage::helper('cms/page')->getPageUrl( $option['identifier'] ).'">'.$option['label'].'</a>';
+            if($option['custompagename']){
+                $label = $option['custompagename'];
             }else{
-                $link = '<a data-toggle="tab" href="#'.$option['identifier'].'">'.$option['label'].'</a>';
+                $label = $option['label'];
+            }
+            if($option['type'] == 'link'){
+
+                if($option['linktype'] == 'inner'){
+                    $href = Mage::getUrl( $option['link'] );
+                }elseif( $option['linktype'] == 'cmspage'){
+                    $href = Mage::helper('cms/page')->getPageUrl( $option['identifier'] );
+                }else{
+                    $href = $option['link'];
+                }
+
+                $link = '<a href="'.$href.'">'.$label.'</a>';
+            }else{
+                $link = '<a data-toggle="tab" href="#'.$option['identifier'].'">'.$label.'</a>';
             }
 
             $li .= '<li class="'.($i==0?'active':'').'" >'.$link.'</li>';
@@ -132,13 +137,18 @@ class Ecomitize_Pagesaccordeon_Block_Pages extends Mage_Core_Block_Template impl
         }
 
         foreach($pages_options as $key => $value){
-            $array_links[] = $value['attribute'];
-            $optionsArray[$value['attribute']]['sort'] = $value['tab_sort'];
-            $optionsArray[$value['attribute']]['type'] = $value['type'];
+            $pageModel = Mage::getModel('cms/page')->setStore(Mage::app()->getStore()->getId())->load($value['attribute'], 'identifier');
+            $arrayResults[$key]['label'] = $pageModel->getTitle();
+            $arrayResults[$key]['content'] = $pageModel->getContent();
+            $arrayResults[$key]['identifier'] = $pageModel->getIdentifier();
+            $arrayResults[$key]['sort'] = $value['tab_sort'];
+            $arrayResults[$key]['type'] = $value['type'];
+            $arrayResults[$key]['link'] = $value['link'];
+            $arrayResults[$key]['linktype'] = $value['linktype'];
+            $arrayResults[$key]['custompagename'] = $value['custompagename'];
         }
 
-        $array_pages = $this->_getPages($array_links, $optionsArray);
-        $array_pages = $this->array_sort($array_pages, 'sort');
+        $array_pages = $this->array_sort($arrayResults, 'sort');
 
         $allowShow = $this->_allowShow($menuShow);
 
