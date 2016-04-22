@@ -31,13 +31,13 @@ $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
 $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
 <div class="row cart-row">
-    <div class="col-xs-3 col-xs-height col-xs-middle">
-        <a data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>" href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="close"><i class="icon-close2"></i></a>
+    <div class="col-xs-4 col-sm-3 col-xs-height col-xs-middle">
+        <a data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>" href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="close"><i class="icon-no"></i></a>
         <?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="cart-img product-image">
         <?php endif;?><img class="img-responsive" src="<?php echo $this->getProductThumbnail()->init($_product, 'image')->resize(400); ?>" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>">
         <?php if ($this->hasProductUrl()):?></a><?php endif;?>
     </div>
-    <div class="col-xs-4 col-xs-height col-xs-middle">
+    <div class="col-xs-8 col-sm-4 col-xs-height col-xs-middle">
         <h3 class="product-name">
             <?php if ($this->hasProductUrl()):?>
                 <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
@@ -60,7 +60,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             <?php echo $addInfoBlock->setItem($_item)->toHtml() ?>
         <?php endif;?>
     </div>
-    <div class="col-xs-2 col-xs-height col-xs-middle col-quantity">
+    <div class="col-xs-2 col-sm-2 col-xs-height col-xs-middle col-quantity">
         <div class="input-group qty-group qty-cart">
             <div class="input-group-addon">
                 <button type="button" class="button button-qty qty-minus" data-value="-1" data-target=".qty-<?php echo $_item->getId() ?>" data-toggle="spinner">
@@ -75,7 +75,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             </div>
         </div>
     </div>
-    <div class="col-xs-2 col-xs-height col-xs-middle col-price">
+    <div class="col-xs-2 col-sm-2 col-xs-height col-xs-middle col-price">
         <div class="price-box cart-price-box">
             <?php if ($this->getQty() > 1): ?>
                 <span class="cart-price cart-price-total">
@@ -84,9 +84,9 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             <?php endif; ?>
         </div>
     </div>
-    <div class="col-xs-2 col-xs-height col-xs-middle col-update">
+    <div class="col-xs-2 col-sm-2 col-xs-height col-xs-middle col-update">
         <?php if ($isVisibleProduct): ?>
-            <a class="btn-update" href="#" onclick="jQuery('#cart-form').submit(); return false" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update item parameters')) ?>"><i class="icon-update hidden-xs"></i><span><?php echo $this->__('Update') ?></span></a>
+            <a class="btn-update" href="#" onclick="jQuery('#cart-form').submit(); return false" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update item parameters')) ?>"><i class="icon-update"></i><span><?php echo $this->__('Update') ?></span></a>
         <?php endif ?>
 
         <?php
@@ -95,13 +95,13 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             ?>
             <div class="added">
                     <a href="<?php echo Mage::getBaseUrl(); ?>giftwrap/index/remove/id/<?php echo $_product->getId() ?>">
-                        <i class="icon-gift"></i><span><?php echo $this->__('Remove Gift Wrap')?>
+                        <i class="icon-gift gift-is"></i><span class="hidden-xs"><?php echo $this->__('Remove Gift Wrap')?></span><span class="visible-xs"><?php echo $this->__('Gift Wrap')?></span>
                     </a>
             </div>
             <?php
         } else {
             ?>
-            <div><a href="#" onclick="jQuery('#giftwrap_product_id').val(<?php echo $_item->getProductId(); ?>);" title="<?php echo $this->__('Add Gift Wrap')?>" data-toggle="modal" data-target="#giftPopup"><i class="icon-gift"></i><span><?php echo $this->__('Add Gift Wrap')?></span></a></div>
+            <div><a href="#" onclick="jQuery('#giftwrap_product_id').val(<?php echo $_item->getProductId(); ?>);" title="<?php echo $this->__('Add Gift Wrap')?>" data-toggle="modal" data-target="#giftPopup"><i class="icon-gift"></i><span class="hidden-xs"><?php echo $this->__('Add Gift Wrap')?></span><span class="visible-xs"><?php echo $this->__('Gift Wrap')?></span></a></div>
             <?php
         }
         ?>

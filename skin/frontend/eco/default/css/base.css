@@ -3289,7 +3289,7 @@ span.product-image {
 
     @media (max-width: 767px) {
         .cart .qty-group .input-group-addon {
-            display: none;
+            /*display: none;*/
         }
     }
 
@@ -3947,11 +3947,13 @@ span.product-image {
 @media (max-width: 767px) {
     .cart-body {
         position: relative;
-        margin: 0 -15px 15px;
+        padding: 0 10px !important;
+        margin: 0 0 15px;
     }
 }
 
 .cart .cart-row {
+    display: table;
     position: relative;
     border-bottom: 1px solid #dae2ea;
     margin: 0;
