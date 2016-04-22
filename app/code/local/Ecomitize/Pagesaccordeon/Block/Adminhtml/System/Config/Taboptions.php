@@ -12,7 +12,10 @@ class Ecomitize_Pagesaccordeon_Block_Adminhtml_System_Config_Taboptions extends 
         $this->addColumn('attribute', array(
             'label' => Mage::helper('ecomitize_pagesaccordeon')->__('Page'),
             'renderer' => $this->_getTabRenderer(),
+        ));
 
+        $this->addColumn('custompagename', array(
+            'label' => Mage::helper('ecomitize_pagesaccordeon')->__('Custom page name'),
         ));
 
         $this->addColumn('link', array(
