@@ -2863,6 +2863,7 @@ a[href*='amazon']:after {
     .category-row.products-grid {
         position: relative;
         margin: 0 -15px;
+        width: calc(100% + 30px);
         border-top: 1px solid #dae2ea;
     }
 
@@ -2888,6 +2889,20 @@ a[href*='amazon']:after {
         border-bottom: 1px solid #dae2ea;
     }
 
+}
+
+@media (max-width: 479px) {
+    .category-row.products-grid {
+        border: 0;
+    }
+    .category-row.products-grid > .category-item {
+        padding: 0 35px;
+        width: 100%;
+        border: 0;
+    }
+    .category-row.products-grid > .category-item > .products-item {
+        border: 0;
+    }
 }
 
 @media (min-width: 767px) and (max-width: 1200px) {
