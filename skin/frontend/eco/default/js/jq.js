@@ -44,8 +44,6 @@ jQuery(document).ready(function ($) {
             }
         }
         if ($this.hasClass('validate-select') == true) {
-            console.log('select');
-            console.log($this.val());
             if ($this.val() == '') {
                 validParent.append(validFailed);
             } else {
@@ -66,6 +64,7 @@ jQuery(document).ready(function ($) {
                 validParent.append(validPassed);
             }
         }
+        $this.parents('.field, .wide').addClass('passed');
     });
 
     var ccInput = '#co-payment-form .tab-content .input-text';
