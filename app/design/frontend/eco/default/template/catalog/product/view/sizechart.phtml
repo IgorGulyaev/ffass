@@ -1,6 +1,9 @@
 <?php if($sizeChartUrl = $this->getProduct()->getSizeChart()): ?>
     <iframe src="<?php echo $sizeChartUrl ?>"></iframe>
 <?php endif; ?>
+<?php $fits_true = $this->getProduct()->getFitsTrue() ?>
+<?php $runs_small = $this->getProduct()->getRunsSmall() ?>
+<?php $runs_big = $this->getProduct()->getRunsBig() ?>
 <div class="sizechart">
     <div class="inner-block">
         <div class="left">

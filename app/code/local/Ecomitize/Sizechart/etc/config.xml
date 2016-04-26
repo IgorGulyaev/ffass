@@ -10,7 +10,7 @@
 <config>
     <modules>
         <Ecomitize_Sizechart>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </Ecomitize_Sizechart>
     </modules>
     <global>
