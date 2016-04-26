@@ -249,6 +249,13 @@ jQuery(document).ready(function ($) {
         $('body').addClass('navbar-active');
     });
 
+    $('.irs-from').bind('DOMSubtreeModified', function () {
+        $('input.price-from').val($('.irs-from').html());
+    });
+    $('.irs-to').bind('DOMSubtreeModified', function () {
+        $('input.price-to').val($('.irs-to').html());
+    });
+
     function dropdownActive() {
         if(!$('.top-link-cart').parent('.dropdown').hasClass('open')) {
             $('body').addClass('navbar-active');

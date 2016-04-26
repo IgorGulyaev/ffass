@@ -667,6 +667,23 @@
         margin: 0 -15px 15px;
     }
 
+    p.product-sku {
+        display: none;
+    }
+
+    .ratings-bar {
+        margin-bottom: 12px;
+        text-align: center;
+    }
+    .ratings-bar .bar {
+        height: 18px !important;
+    }
+    .ratings-bar .bar,
+    .ratings-bar .bar a {
+        color: #eeab01;
+        font-size: 12px;
+    }
+
     /* filter */
 
     .block-layered-nav {
@@ -1066,7 +1083,12 @@
     }
 
     .product-view .price-box {
+        padding-bottom: 0;
+        border: 0;
         text-align: center;
+    }
+    .product-view h1 {
+        text-transform: none;
     }
 
     .product-shop .add-to-cart {

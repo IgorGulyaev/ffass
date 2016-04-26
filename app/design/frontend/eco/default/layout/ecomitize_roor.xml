@@ -81,6 +81,15 @@
                 <stylesheet>css/fonts.css</stylesheet>
             </action>
             <action method="addCss">
+                <stylesheet>css/ion.rangeSlider.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/ion.rangeSlider.skinFlat.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/normalize.css</stylesheet>
+            </action>
+            <action method="addCss">
                 <stylesheet>css/theme.css</stylesheet>
             </action>
             <action method="addCss">
@@ -127,6 +136,10 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <name>js/jquery.creditCardTypeDetector.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/ion.rangeSlider.js</name>
             </action>
             <action method="addItem">
                 <type>skin_js</type>

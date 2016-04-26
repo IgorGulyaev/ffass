@@ -27,16 +27,26 @@
 <?php $filterHtmlID = "aw-ln-filter-" . $this->getFilter()->getId() . "-options"?>
 <div id="<?php echo $filterHtmlID?>" class="aw-ln-filter-options-fromto">
     <div class="row">
-        <div class="col-xs-6">
-            <input class="input-text" type="text" name="<?php echo $this->getFilter()->getCode();?>" value="<?php echo $this->getMinimumAppliedValue();?>">
+        <div class="col-xs-12">
+            <input type="text" id="price_range" name="price_range" value="" />
         </div>
-        <div class="col-xs-6">
-            <input class="input-text" type="text" name="<?php echo $this->getFilter()->getCode();?>" value="<?php echo $this->getMaximumAppliedValue();?>">
+        <div class="col-xs-6 hidden">
+            <input class="input-text price-from" type="text" name="<?php echo $this->getFilter()->getCode();?>" value="<?php echo $this->getMinimumAppliedValue();?>">
+        </div>
+        <div class="col-xs-6 hidden">
+            <input class="input-text price-to" type="text" name="<?php echo $this->getFilter()->getCode();?>" value="<?php echo $this->getMaximumAppliedValue();?>">
         </div>
     </div>
     <button type="button" title="<?php echo $this->__('Find') ?>" class="button"><span><span><?php echo $this->__('Find') ?></span></span></button>
 </div>
 <script type="text/javascript">
+
+    jQuery("#price_range").ionRangeSlider({
+        type: "double",
+        min: <?php echo $this->getMinimumAppliedValue();?>,
+        max: <?php echo $this->getMaximumAppliedValue();?>
+    });
+
     awLnUpdaterInstance.registerFilter(
         new awLnFilterTypeFromTo({
             name: <?php echo Zend_Json::encode($this->getFilter()->getCode());?>,

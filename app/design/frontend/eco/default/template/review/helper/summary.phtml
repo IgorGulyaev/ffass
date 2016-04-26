@@ -25,7 +25,7 @@
  */
 ?>
 <?php if ($this->getReviewsCount()): ?>
-    <?php echo $this->__('Reviews (%d)', $this->getReviewsCount()) ?>
+    <?php echo $this->__('(%d) Review(s)', $this->getReviewsCount()) ?>
 <?php elseif ($this->getDisplayIfEmpty()): ?>
-    <?php echo $this->__('Be the first to review') ?>
+    <?php echo $this->__('0 Reviews') ?>
 <?php endif; ?>

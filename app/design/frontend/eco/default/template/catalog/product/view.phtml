@@ -46,6 +46,7 @@
         <div class="product-shop">
             <div class="row">
             <div class="col-sm-6">
+                <h1 class="product-name visible-xs"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                 <div class="product-img-box">
                     <?php echo $this->getChildHtml('media') ?>
                 </div>
@@ -54,7 +55,7 @@
                 <?php if ($_product->getSku()): ?>
                     <p class="product-sku"><?php echo $this->__('PRODUCT CODE') ?>: <span><?php echo $_product->getSku() ?></span></p>
                 <?php endif; ?>
-                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                <h1 class="hidden-xs"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
 
                 <!-- Ratings -->
                 <ul class="ratings-bar">

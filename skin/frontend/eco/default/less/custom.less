@@ -1386,3 +1386,59 @@ ul.pages-accordeon {
   }
 }
 /* END GIFT WRAP */
+
+
+/* FILTERS */
+.irs {
+  .irs-line,
+  .irs-min,
+  .irs-max {
+    display: none;
+  }
+  .irs-bar {
+    top: 15px;
+    height: 5px;
+    background: #efab01;
+  }
+  .irs-slider {
+    top: 12px;
+    height: 11px;
+    width: 11px;
+    .border-radius(50%);
+    background: #efab01;
+    .box-shadow(0 0 2px 1px rgba(0,0,0,0.3));
+  }
+  .irs-from,
+  .irs-to,
+  .irs-single {
+    top: auto;
+    bottom: -10px;
+    padding: 0;
+    background: none;
+    color: #282828;
+    font-size: 14px;
+    font-weight: 600;
+    &:before {
+      display: inline-block;
+      content: '$';
+    }
+    &:after {
+      display: none;
+    }
+  }
+}
+
+#aw-ln-filters-container {
+  dd {
+    ol {
+      li {
+        font-weight: 600;
+        font-size: 14px !important;
+        a {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+/* END FILTERS */
