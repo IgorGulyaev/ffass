@@ -227,10 +227,16 @@ jQuery(document).ready(function ($) {
 
     /* mobile */
 
-    $('.navbar, .col-left').on('show.bs.collapse', function () {
+    $('.navbar').on('show.bs.collapse', function () {
         $('body').addClass('navbar-active');
     }).on('hide.bs.collapse', function () {
         $('body').removeClass('navbar-active');
+    });
+
+    $('.col-left').on('show.bs.collapse', function () {
+        $('.button-filter').addClass('active');
+    }).on('hide.bs.collapse', function () {
+        $('.button-filter').removeClass('active');
     });
 
     $('.backdrop, .active-navbar').on('click', function() {

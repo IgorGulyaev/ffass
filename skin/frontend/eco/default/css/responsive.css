@@ -155,11 +155,6 @@
         border-radius: 3px;
     }
 
-    .catalog-category-view .form-search,
-    .catalogsearch-result-index .form-search {
-        width: 80%;
-    }
-
     .form-search .input-text {
         border-color: transparent!important;
     }
@@ -173,18 +168,24 @@
 
     /**/
 
+    .col-left {
+        display: none;
+    }
+
     /* filter button */
 
     .button-filter {
         float: right;
-        margin: 0;
-        width: 20%;
-        height: 57px;
+        margin: 15px 0 0;
+        width: 100%;
+        height: 43px;
         border-radius: 0;
         background-color: #31a348;
         border-color: #31a348;
-        padding: 0 5px 0 0;
+        padding: 0 20px;
         display: none!important;
+        font-size: 18px;
+        text-align: left;
     }
 
     .catalog-category-view .button-filter,
@@ -192,26 +193,30 @@
         display: block!important;
     }
 
-    .button-filter:active,
-    .button-filter:hover,
     .button-filter:focus {
         background-color: #31a348;
         border-color: #31a348;
     }
+    .button-filter.active,
+    .button-filter:active,
+    .button-filter:hover,
+    .button-filter.active:focus {
+        background-color: #efab01;
+        border-color: #efab01;
+    }
 
     .button-filter > span {
-        background-color: #fff;
         display: block;
-        height: 47px;
-        line-height: 47px;
-        border-radius: 4px;
+        height: 43px;
+        line-height: 43px;
     }
 
     .button-filter > span > i {
+        float: right;
         margin: 0;
-        color: #31a348!important;
-        font-size: 20px;
-        top: 5px;
+        color: #fff !important;
+        font-size: 14px;
+        top: 13px;
         left: 0;
     }
 
@@ -279,7 +284,6 @@
     }
 
     .navbar.in,
-    .col-left.in,
     .navbar-active .open .dropdown-menu.dropdown-menu-cart {
         top: 144px;
     }
@@ -487,6 +491,19 @@
         float: none !important;
     }
 
+
+    /* FILTERS */
+
+    #aw-ln-filters-container dd ol li {
+        padding: 2px 0 2px 0 !important;
+    }
+
+    #aw-ln-filters-container dd ol li,
+    #aw-ln-filters-container dd ol li.aw-ln-filters-container-1column-layout {
+        width: 40% !important;
+    }
+
+    /* END FILTERS */
 
 
     /**/

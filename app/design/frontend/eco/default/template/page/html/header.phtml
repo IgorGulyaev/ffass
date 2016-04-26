@@ -56,7 +56,8 @@
                             <div class="col-xs-12 col-sm-5 col-sm-height col-sm-middle col-sm-pull-3 header-search">
                                 <?php echo $this->getChildHtml('topSearch') ?>
                                 <button class="button button-filter collapsed visible-xs" type="button" data-toggle="collapse" data-target=".col-left" aria-controls="col-left" aria-expanded="false">
-                                    <span><i class="icon-filter"></i></span>
+                                    <span class="visible-xs"><?php echo $this->__('Filter') ?><i class="icon-right"></i></span>
+                                    <span class="hidden-xs"><i class="icon-filter"></i></span>
                                 </button>
                             </div>
                         </div>
