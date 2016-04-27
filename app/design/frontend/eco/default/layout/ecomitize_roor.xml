@@ -87,9 +87,6 @@
                 <stylesheet>css/ion.rangeSlider.skinFlat.css</stylesheet>
             </action>
             <action method="addCss">
-                <stylesheet>css/normalize.css</stylesheet>
-            </action>
-            <action method="addCss">
                 <stylesheet>css/theme.css</stylesheet>
             </action>
             <action method="addCss">

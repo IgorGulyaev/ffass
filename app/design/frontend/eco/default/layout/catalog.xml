@@ -256,7 +256,7 @@ Supported layout update handles (special):
             </block>
         </reference>
         <reference name="before_footer">
-            <block type="core/template" name="block.footer.container" template="cms/block.phtml">
+            <!--<block type="core/template" name="block.footer.container" template="cms/block.phtml">
                 <action method="setElementClass"><value>container</value></action>
                 <block type="core/template" name="block.page.related" template="cms/block.phtml">
                     <action method="setElementClass"><value>section-products related-product</value></action>
@@ -274,6 +274,17 @@ Supported layout update handles (special):
                         <action method="setColumnCount"><columns>1</columns></action>
                         <action method="setItemLimit"><type>upsell</type><limit>20</limit></action>
                         <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer"/>
+                    </block>
+                </block>
+            </block>-->
+            <block type="core/template" name="block.product.tabs" template="cms/block.phtml">
+                <action method="setElementClass"><value>section-products index-tabs tabpanel-cookie</value></action>
+                <block type="core/template" name="block.product.tabs.wrapper" template="catalog/product/product_tabs.phtml">
+                    <block type="catalog/product_list_related" name="related.products" as="related_products" template="catalog/product/list/related.phtml">
+                        <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer"></block>
+                    </block>
+                    <block type="reports/product_viewed" name="product.viewed.block" as="product_viewed_block" template="reports/home_product_viewed.phtml">
+                        <action method="setLimit">14</action>
                     </block>
                 </block>
             </block>

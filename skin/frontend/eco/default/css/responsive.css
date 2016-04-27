@@ -89,11 +89,34 @@
         display: block;
     }
 
+    .dropdown-menu-cart {
+        width: 100vw;
+    }
+
     .minicart-wrapper {
-        padding-bottom: 15px;
+        padding: 20px;
+        background-color: #fff;
+        width: 100vw;
+        margin-left: 15px;
+        border-bottom: 1px dashed #cdcdcd;
+    }
+    .header-minicart .minicart-actions a,
+    .header-minicart .minicart-actions button {
+        line-height: 35px;
     }
 
     /**/
+
+    .page ul.pages-accordeon {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .page .pages-accordeon.tab-content {
+        width: 100%;
+    }
+    body.cms-page-view.cms-help-center table {
+        width: 100%;
+    }
 
     /* responsive table */
 
@@ -226,8 +249,7 @@
 
     /*.col-left,*/
     .navbar,
-    .navbar.affix,
-    .dropdown-menu.dropdown-menu-cart {
+    .navbar.affix {
         display: block!important;
         float: none!important;
         margin: 0!important;

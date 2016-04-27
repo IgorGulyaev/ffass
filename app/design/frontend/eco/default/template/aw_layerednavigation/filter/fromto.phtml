@@ -24,34 +24,89 @@
  * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
  */
 ?><?php /** @var AW_Layerednavigation_Block_Filter_Type_Decimal $this; */?>
+<?php $currency_code = Mage::app()->getStore()->getCurrentCurrencyCode(); ?>
+<div class="filter-options-range">
+    <input id="range-input" type="text" class="span2" value=""
+           data-slider-min="<?php echo $this->getMinimumValue();?>"
+           data-slider-max="<?php echo $this->getMaximumValue();?>"
+           data-slider-step="5"
+           data-slider-value="[<?php echo $this->getMinimumAppliedValue();?>,<?php echo $this->getMaximumAppliedValue();?>]">
+    <div class="range-min-max">
+        <span class="slider-min">
+            <span class="currency"><?php echo Mage::app()->getLocale()->currency( $currency_code )->getSymbol() ?></span><span class="value"><?php echo $this->getMinimumAppliedValue();?></span>
+        </span>
+        <span class="slider-max">
+            <span class="currency"><?php echo Mage::app()->getLocale()->currency( $currency_code )->getSymbol() ?></span><span class="value"><?php echo $this->getMaximumAppliedValue();?></span>
+        </span>
+    </div>
+</div>
+
 <?php $filterHtmlID = "aw-ln-filter-" . $this->getFilter()->getId() . "-options"?>
-<div id="<?php echo $filterHtmlID?>" class="aw-ln-filter-options-fromto">
-    <div class="row">
-        <div class="col-xs-12">
-            <input type="text" id="price_range" name="price_range" value="" />
-        </div>
-        <div class="col-xs-6 hidden">
-            <input class="input-text price-from" type="text" name="<?php echo $this->getFilter()->getCode();?>" value="<?php echo $this->getMinimumAppliedValue();?>">
-        </div>
-        <div class="col-xs-6 hidden">
-            <input class="input-text price-to" type="text" name="<?php echo $this->getFilter()->getCode();?>" value="<?php echo $this->getMaximumAppliedValue();?>">
+<div id="<?php echo $filterHtmlID?>" class="aw-ln-filter-options-range" style="display: none">
+    <div class="aw-ln-filter-options-range-slider">
+        <div class="aw-ln-filter-options-range-slider-wrapper">
+            <div class="aw-ln-filter-options-range-slider-wrapper-left">
+                <div class="aw-ln-filter-options-range-slider-wrapper-right">
+                    <span class="aw-ln-filter-options-range-slider-min" title="<?php echo $this->__("Scroll to set minimum value");?>"></span>
+                    <span class="aw-ln-filter-options-range-slider-active"></span>
+                    <span class="aw-ln-filter-options-range-slider-max" title="<?php echo $this->__("Scroll to set maximum value");?>"></span>
+                </div>
+            </div>
         </div>
     </div>
-    <button type="button" title="<?php echo $this->__('Find') ?>" class="button"><span><span><?php echo $this->__('Find') ?></span></span></button>
+    <div class="aw-ln-filter-options-range-status">
+        <div class="aw-ln-filter-options-range-status-from">
+            <?php echo $this->getMinimumValuePrefix();?>
+            <span class="aw-ln-filter-options-range-status-from-value"><?php echo $this->getMinimumAppliedValue();?></span>
+            <input type="text" disabled="disabled" name="<?php echo $this->getFilter()->getCode();?>" value="<?php echo $this->getMinimumAppliedValue();?>"/>
+        </div>
+        <div class="aw-ln-filter-options-range-status-to">
+            <?php echo $this->getMaximumValuePrefix();?>
+            <span class="aw-ln-filter-options-range-status-to-value"><?php echo $this->getMaximumAppliedValue();?></span>
+            <input type="text" disabled="disabled" name="<?php echo $this->getFilter()->getCode();?>" value="<?php echo $this->getMaximumAppliedValue();?>"/>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
-
-    jQuery("#price_range").ionRangeSlider({
-        type: "double",
-        min: <?php echo $this->getMinimumAppliedValue();?>,
-        max: <?php echo $this->getMaximumAppliedValue();?>
+    jQuery(document).ready(function ($) {
+        var aw_range = $("#range-input").slider({
+            tooltip: 'hide'
+        });
+        aw_range.on('slideStop', function(ev){
+            var min = Math.round(ev.value[0]);
+            var max = Math.round(ev.value[1]);
+            var values = [min, max];
+            awLNFilterOptionRangeInstance.onChangeFn(values);
+        });
+        aw_range.on('slide', function(ev){
+            $(".slider-min .value").text(ev.value[0]);
+            $(".slider-max .value").text(ev.value[1]);
+        });
+        aw_range.on('slideStop', function(ev){});
     });
-
+</script>
+<script type="text/javascript">
+    var awLNFilterOptionRangeInstance = new awLNFilterOptionRange({
+        trackElSelector:        "#<?php echo $filterHtmlID?> .aw-ln-filter-options-range-slider-wrapper",
+        minHandleElSelector:    "#<?php echo $filterHtmlID?> .aw-ln-filter-options-range-slider-min",
+        maxHandleElSelector:    "#<?php echo $filterHtmlID?> .aw-ln-filter-options-range-slider-max",
+        activeStatusElSelector: "#<?php echo $filterHtmlID?> .aw-ln-filter-options-range-slider-active",
+        minStatusElSelector:    "#<?php echo $filterHtmlID?> .aw-ln-filter-options-range-status-from-value",
+        maxStatusElSelector:    "#<?php echo $filterHtmlID?> .aw-ln-filter-options-range-status-to-value",
+        minValue:               <?php echo Zend_Json::encode($this->getMinimumAppliedValue());?>,
+        maxValue:               <?php echo Zend_Json::encode($this->getMaximumAppliedValue());?>,
+        rangeMinValue:          <?php echo Zend_Json::encode($this->getMinimumValue());?>,
+        rangeMaxValue:          <?php echo Zend_Json::encode($this->getMaximumValue());?>
+    });
+</script>
+<script type="text/javascript">
     awLnUpdaterInstance.registerFilter(
-        new awLnFilterTypeFromTo({
+        new awLnFilterTypeRange({
             name: <?php echo Zend_Json::encode($this->getFilter()->getCode());?>,
-            containerElSelector: <?php echo Zend_Json::encode("#" . $filterHtmlID); ?>,
-            isApplied: <?php echo Zend_Json::encode($this->getIsFilterApplied()); ?>
+            containerElSelector: <?php echo Zend_Json::encode("#" . $filterHtmlID); ?>
         })
     );
+    Event.observe(window, 'resize', function(){
+        awLNFilterOptionRangeInstance.initSlider();
+    });
 </script>

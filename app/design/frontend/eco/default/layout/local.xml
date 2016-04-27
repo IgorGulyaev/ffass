@@ -154,10 +154,7 @@
             <action method="addItem"><type>skin_js</type><name>js/jquery.zoom.js</name></action>
         </reference>
         <reference name="content">
-            <block type="reports/product_viewed" name="home.reports.product.viewed" after="-" template="reports/home_product_viewed.phtml">
-                <action method="setLimit">14</action>
-            </block>
-            <block type="core/template" name="product.info.back.link" after="-" template="catalog/product/back_link.phtml"/>
+            <!--<block type="core/template" name="product.info.back.link" after="-" template="catalog/product/back_link.phtml"/>-->
         </reference>
     </catalog_product_view>
 

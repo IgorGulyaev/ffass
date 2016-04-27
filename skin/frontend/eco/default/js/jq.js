@@ -250,19 +250,23 @@ jQuery(document).ready(function ($) {
     });
 
     $('.irs-from').bind('DOMSubtreeModified', function () {
-        $('input.price-from').val($('.irs-from').html());
+        $('input.price-from').val($('.irs-from').html()).change();
+        $('#priceSubmit').trigger('click');
+        console.log('ranged');
     });
     $('.irs-to').bind('DOMSubtreeModified', function () {
-        $('input.price-to').val($('.irs-to').html());
+        $('input.price-to').val($('.irs-to').html()).change();
+        $('#priceSubmit').trigger('click');
+        console.log('ranged');
     });
 
-    function dropdownActive() {
+    /*function dropdownActive() {
         if(!$('.top-link-cart').parent('.dropdown').hasClass('open')) {
             $('body').addClass('navbar-active');
         } else {
             $('body').removeClass('navbar-active');
         }
-    }
+    }*/
 
     $('.btn-back').on('click', function(e) {
         e.preventDefault();

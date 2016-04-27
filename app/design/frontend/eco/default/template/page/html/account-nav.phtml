@@ -7,7 +7,7 @@
     <?php endif; ?>
     <li<?php if(Mage::getSingleton('customer/session')->isLoggedIn()): ?> class="dropdown"<?php endif; ?>>
         <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-            <a href="#" data-toggle="modal" data-target="#accountLogin"><?php echo $this->__('Sign in'); ?></a>
+            <a href="#" data-toggle="modal" data-target="#accountLogin" onclick="logInClick();"><?php echo $this->__('Sign in'); ?></a>
         <?php else: ?>
             <a data-toggle="dropdown" href="<?php echo $this->getUrl('customer/account'); ?>"><?php echo $this->__('My Account'); ?></a>
             <ul class="dropdown-menu pull-right">
@@ -27,3 +27,9 @@
         </li>
     <?php endif; ?>
 </ul>
+<script type="text/javascript">
+    function logInClick() {
+        jQuery('body').removeClass('navbar-active');
+        jQuery('#navbar').removeClass('in').removeClass('collapse').addClass('collapsed');
+    }
+</script>
