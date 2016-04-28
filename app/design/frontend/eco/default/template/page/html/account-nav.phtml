@@ -9,22 +9,15 @@
         <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
             <a href="#" data-toggle="modal" data-target="#accountLogin" onclick="logInClick();"><?php echo $this->__('Sign in'); ?></a>
         <?php else: ?>
-            <a data-toggle="dropdown" href="<?php echo $this->getUrl('customer/account'); ?>"><?php echo $this->__('My Account'); ?></a>
-            <ul class="dropdown-menu pull-right">
-                <li><a href="<?php echo $this->getUrl('customer/account'); ?>"><?php echo $this->__('Account Dashboard') ?></a></li>
-                <li><a href="<?php echo $this->getUrl('customer/account/edit'); ?>"><?php echo $this->__('Account Information') ?></a></li>
-                <li><a href="<?php echo $this->getUrl('customer/address/new'); ?>"><?php echo $this->__('Address Book') ?></a></li>
-                <li><a href="<?php echo $this->getUrl('sales/order/history'); ?>"><?php echo $this->__('My Orders') ?></a></li>
-                <li><a href="<?php echo $this->getUrl('review/customer'); ?>"><?php echo $this->__('My Product Reviews') ?></a></li>
-                <li><a href="<?php echo $this->getUrl('newsletter/manage'); ?>"><?php echo $this->__('Newsletter Subscriptions') ?></a></li>
-                <li><a href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo $this->__('Logout'); ?></a></li>
-            </ul>
+            <a href="<?php echo $this->getUrl('customer/account'); ?>"><?php echo $this->__('My Account'); ?></a>
         <?php endif; ?>
     </li>
     <?php if(!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
         <li>
             <a href="<?php echo $this->getUrl('customer/account/create'); ?>"><?php echo $this->__('Register'); ?></a>
         </li>
+    <?php else: ?>
+        <li><a href="<?php echo $this->getUrl('customer/account/logout'); ?>"><?php echo $this->__('Logout'); ?></a></li>
     <?php endif; ?>
 </ul>
 <script type="text/javascript">

@@ -96,10 +96,10 @@
                 <stylesheet>css/base.css</stylesheet>
             </action>
             <action method="addCss">
-                <stylesheet>css/responsive.css</stylesheet>
+                <stylesheet>less/style.less</stylesheet>
             </action>
             <action method="addCss">
-                <stylesheet>less/style.less</stylesheet>
+                <stylesheet>css/responsive.css</stylesheet>
             </action>
 
             <action method="addItem">

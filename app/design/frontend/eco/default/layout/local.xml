@@ -50,6 +50,7 @@
                     <beforeText></beforeText>
                     <afterText></afterText>
                 </action>
+                <action method="removeLinkByUrl"><url helper="customer/getLogoutUrl"/></action>
                 <action method="removeLinkByUrl"><url helper="customer/getLoginUrl"/></action>
                 <action method="removeLinkByUrl"><url helper="opc/paypal/getLoginUrl"/></action>
                 <action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action>
@@ -467,6 +468,12 @@
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>
     </catalogsearch_result_index>
+
+    <customer_logged_in>
+        <reference name="top.links">
+            <action method="removeLinkByUrl"><url helper="customer/getLogoutUrl"/></action>
+        </reference>
+    </customer_logged_in>
 
     <rss_index_index translate="label">
         <label>RSS Feeds List</label>

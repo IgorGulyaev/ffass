@@ -718,17 +718,15 @@ dl {
 }
 
 .owl-dots {
-  @media (max-width: 767px) {
-    display: none;
-  }
   .owl-dot {
     display: inline-block;
     zoom: 1;
     span {
-      width: @globalPadding;
-      height: @globalPadding;
+      width: 10px;
+      height: 10px;
       margin: 5px 7px;
-      background: #fff;
+      background: transparent;
+      border: 2px solid #92b545;
       display: block;
       -webkit-backface-visibility: visible;
       .transition(opacity 200ms ease);
@@ -737,15 +735,16 @@ dl {
   }
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   .owl-dots {
-    display: none;
+    display: none !important;
   }
 }
 
 .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
-  background: #31a348;
+  background: #fff;
+  border-width: 3px;
 }
 
 /**/
@@ -1374,6 +1373,10 @@ h1:after,
     background-color: #efab01;
     font-size: 16px;
     line-height: 33px;
+    &:hover {
+      border-color: #cc1d21;
+      background-color: #cc1d21;
+    }
   }
 }
 /* END INDEX INFO BLOCK */
@@ -1382,6 +1385,9 @@ h1:after,
   border: 0 !important;
   border-radius: 4px !important;
   background-color: @orange;
+  &:hover {
+    background-color: #cc1d21;
+  }
 }
 
 .footer {
@@ -1404,6 +1410,9 @@ h1:after,
     background: url("@{path}images/butterfly.png") no-repeat 0 0;
     a {
       font-size: 16px;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   .footer-social {

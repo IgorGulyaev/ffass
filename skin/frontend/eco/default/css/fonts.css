@@ -260,10 +260,10 @@ a[href*='amazon']:before,
 /* base icons */
 
 .back-link > a:before {
-    content: "\e90d";
+    content: "\e901";
 }
 
-.add-to-links [href*='wishlist']:before {aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+.add-to-links [href*='wishlist']:before {
     content: "\e918";
     color: #dddfe1;
 }

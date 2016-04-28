@@ -1,8 +1,8 @@
 <?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
     <?php $_products->addAttributeToSelect('image'); ?>
     <div class="carousel new-product">
-        <a class="carousel-controls prev"><i class="icon-left"></i></a>
-        <a class="carousel-controls next"><i class="icon-right"></i></a>
+        <a class="carousel-controls prev"><i class="icon-left2"></i></a>
+        <a class="carousel-controls next"><i class="icon-right2"></i></a>
         <div class="container">
             <div class="owl-carousel">
                 <?php $productRenderer = $this->getChild('product_renderer'); ?>
