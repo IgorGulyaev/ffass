@@ -2626,8 +2626,8 @@ a[href*='amazon']:after {
 }
 
 .slider.slider-horizontal .slider-selection {
-    height: 100%;
-    top: 0;
+    height: 4px;
+    top: -1px;
     bottom: 0;
 }
 
@@ -2688,18 +2688,6 @@ a[href*='amazon']:after {
 .slider-track {
     position: absolute;
     cursor: pointer;
-    background-color: #f7f7f7;
-    background-image: -moz-linear-gradient(top, #f5f5f5, #f9f9f9);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9));
-    background-image: -webkit-linear-gradient(top, #f5f5f5, #f9f9f9);
-    background-image: -o-linear-gradient(top, #f5f5f5, #f9f9f9);
-    background-image: linear-gradient(to bottom, #f5f5f5, #f9f9f9);
-    background-repeat: repeat-x;
-    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
 }
 
 .slider-selection {
