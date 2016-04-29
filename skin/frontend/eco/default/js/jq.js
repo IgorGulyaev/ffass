@@ -273,6 +273,14 @@ jQuery(document).ready(function ($) {
         history.back();
     });
 
+    $('.ratings-bar a[role="tab"]').click(function () {
+        var tabTop = $('.section-tab').offset().top;
+        $('html, body').animate({
+            scrollTop: tabTop
+        },500, 'easeOutExpo');
+
+    });
+
     /**/
 
     /* responsive */

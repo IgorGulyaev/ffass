@@ -1,9 +1,11 @@
 <?php
 $helper = $this->helper('catalog/output');
 $_product = $this->getProduct();
+$_parent = $this->getParentBlock();
 $isWishList = $this->getIsWishlist();
 $isCompareList = $this->getIsCompareList();
 $isListMode = $this->getIsListMode();
+$modeTool = $_parent->getMode();
 $isCatalogProductList = (bool)$this->getIsProductList();
 if($isWishList){
     $_product = $this->getProduct()->getProduct();
@@ -11,6 +13,7 @@ if($isWishList){
 $imageType = $this->getImageType() ? $this->getImageType() : 'small_image';
 ?>
 <div class="products-item">
+    <?php if($modeTool!='grid'): ?><div class="row"><div class="row-height"><div class="col-sm-3 col-height col-middle"><?php endif; ?>
     <?php if($isWishList): ?>
         <?php $this->getChild('customer_wishlist_item_remove')->setItem($this->getProduct()); ?>
         <?php echo $this->getChildHtml('customer_wishlist_item_remove'); ?>
@@ -19,26 +22,44 @@ $imageType = $this->getImageType() ? $this->getImageType() : 'small_image';
         <a href="<?php echo $_product->getProductUrl(); ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, $imageType), null, true); ?>" class="product-image">
             <img class="img-responsive" src="<?php echo $this->helper('adaptiveResize/image')->init($_product, 'image')->adaptiveResize(190, 238); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, $imageType), null, true); ?>">
         </a>
+        <?php if($modeTool!='grid'): ?>
+            <ul class="add-to-links">
+                <?php if(!$isWishList): ?>
+                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                        <li class="wishlist-link"><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product); ?>" class="link-wishlist" title="<?php echo $this->__('Add to Wishlist') ?>"></a></li>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <?php if(!$isCompareList): ?>
+                    <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                        <li class="compare-link"><a href="<?php echo $_compareUrl ?>" class="link-compare" title="<?php echo $this->__('Add to Compare') ?>"><span><?php echo $this->__('Add to Compare') ?></span></a></li>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </ul>
+        <?php endif; ?>
     </div>
+    <?php if($modeTool!='grid'): ?></div><?php endif; ?>
+    <?php if($modeTool!='grid'): ?><div class="col-sm-7 col-height col-middle"><?php endif; ?>
     <div class="product-shop">
         <h2 class="product-name">
             <a href="<?php echo $_product->getProductUrl(); ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
                 <?php echo $helper->productAttribute($_product, $_product->getName(), 'name') ?>
             </a>
         </h2>
-        <?php echo $this->getPriceHtml($_product, true); ?>
-        <ul class="add-to-links">
-            <?php if(!$isWishList): ?>
-                <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                    <li class="wishlist-link"><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product); ?>" class="link-wishlist" title="<?php echo $this->__('Add to Wishlist') ?>"><i class="icon-wishlist"></i></a></li>
+        <?php if($modeTool=='grid'): ?>
+            <?php echo $this->getPriceHtml($_product, true); ?>
+            <ul class="add-to-links">
+                <?php if(!$isWishList): ?>
+                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                        <li class="wishlist-link"><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product); ?>" class="link-wishlist" title="<?php echo $this->__('Add to Wishlist') ?>"></a></li>
+                    <?php endif; ?>
                 <?php endif; ?>
-            <?php endif; ?>
-            <?php if(!$isCompareList): ?>
-                <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-                    <li class="compare-link"><a href="<?php echo $_compareUrl ?>" class="link-compare" title="<?php echo $this->__('Add to Compare') ?>"><span><?php echo $this->__('Add to Compare') ?></span></a></li>
+                <?php if(!$isCompareList): ?>
+                    <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                        <li class="compare-link"><a href="<?php echo $_compareUrl ?>" class="link-compare" title="<?php echo $this->__('Add to Compare') ?>"><span><?php echo $this->__('Add to Compare') ?></span></a></li>
+                    <?php endif; ?>
                 <?php endif; ?>
-            <?php endif; ?>
-        </ul>
+            </ul>
+        <?php endif; ?>
         <?php if (!$isCompareList): ?>
             <?php if ($_product->getShortDescription()): ?>
                 <div class="product-description">
@@ -47,4 +68,11 @@ $imageType = $this->getImageType() ? $this->getImageType() : 'small_image';
             <?php endif; ?>
         <?php endif; ?>
     </div>
+    <?php if($modeTool!='grid'): ?>
+        </div>
+        <div class="col-sm-2 col-height col-middle">
+            <?php echo $this->getPriceHtml($_product, true); ?>
+        </div>
+    <?php endif; ?>
+    <?php if($modeTool!='grid'): ?></div></div><?php endif; ?>
 </div>
