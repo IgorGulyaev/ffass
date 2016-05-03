@@ -59,6 +59,39 @@
 			</div>
 		</div>
 	</div>
+	<div class="product-img product-view-img hidden-xs">
+		<ul id="etalage" class="hidden-xs <?php if(count($this->getGalleryImages()) >= 4):?>slide<?php endif; ?>">
+			<li>
+				<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image')); ?>" />
+				<img class="etalage_source_image" title="<?php echo $_product->getImageLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image'), true); ?>" />
+			</li>
+			<?php
+			foreach ($this->getGalleryImages() as $_image) {
+				if(Mage::registry('current_product')->getImage() != $_image->getFile()) { ?>
+					<li>
+						<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())); ?>" />
+						<img class="etalage_source_image" title="<?php echo $_image->getLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()), true); ?>" />
+					</li>
+					<?php
+				}
+			}
+			?>
+		</ul>
+		<?php if(count($this->getGalleryImages()) >= 4):?>
+		<div class="etalage_nav_links hidden-xs">
+			<span class="etalage_nav etalage_nav_end" onclick="thumbsNavEnd();"><i class="icon-arrow-up2"></i></span>
+			<span class="etalage_nav etalage_nav_start" onclick="thumbsNavStart();"><i class="icon-arrow-down2"></i></span>
+		</div>
+		<?php endif; ?>
+		<script type="text/javascript">
+			function thumbsNavStart() {
+				jQuery('.etalage_smallthumb_last').trigger('click');
+			}
+			function thumbsNavEnd() {
+				jQuery('.etalage_smallthumb_first').trigger('click');
+			}
+		</script>
+	</div>
 	<div class="product-img product-view-img visible-xs">
 		<ul class="owl-carousel">
 			<?php foreach ($this->getGalleryImages() as $_image): ?>
@@ -84,46 +117,46 @@
 				</ul>
 			</div>
 		</div>
+		<script type="text/javascript">
+			jQuery(document).ready(function ($) {
+				var $sync1 = $(".product-img .owl-carousel"),
+					$sync2 = $(".product-img .product-thumbs .owl-carousel-thumbs"),
+					flag = false,
+					duration = 100;
+				$sync1.owlCarousel({
+					items: 1,
+					margin: 0,
+					nav: false,
+					thumbs: false,
+					animateOut: 'fadeOut',
+					dots: false
+				}).on('changed.owl.carousel', function (e) {
+					if (!flag) {
+						flag = true;
+						$sync2.trigger('to.owl.carousel', [e.item.index, duration, true]);
+						flag = false;
+					}
+				});
+				$sync2.owlCarousel({
+					margin: 0,
+					items: <?php echo $visibleThumbnails ?>,
+					nav: false,
+					center: false,
+					dots: false,
+					navRewind: false
+				}).on('click', '.owl-item', function () {
+					$sync1.trigger('to.owl.carousel', [$(this).index(), duration, true]);
+				}).on('changed.owl.carousel', function (e) {
+					if (!flag) {
+						flag = true;
+						$sync1.trigger('to.owl.carousel', [e.item.index, duration, true]);
+						flag = false;
+					}
+				});
+				// $('.product-img-big').zoom();
+			});
+		</script>
 	</div>
-	<script type="text/javascript">
-		jQuery(document).ready(function ($) {
-			var $sync1 = $(".product-img .owl-carousel"),
-				$sync2 = $(".product-img .product-thumbs .owl-carousel-thumbs"),
-				flag = false,
-				duration = 100;
-			$sync1.owlCarousel({
-				items: 1,
-				margin: 0,
-				nav: false,
-				thumbs: false,
-				animateOut: 'fadeOut',
-				dots: false
-			}).on('changed.owl.carousel', function (e) {
-				if (!flag) {
-					flag = true;
-					$sync2.trigger('to.owl.carousel', [e.item.index, duration, true]);
-					flag = false;
-				}
-			});
-			$sync2.owlCarousel({
-				margin: 0,
-				items: <?php echo $visibleThumbnails ?>,
-				nav: false,
-				center: false,
-				dots: false,
-				navRewind: false
-			}).on('click', '.owl-item', function () {
-				$sync1.trigger('to.owl.carousel', [$(this).index(), duration, true]);
-			}).on('changed.owl.carousel', function (e) {
-				if (!flag) {
-					flag = true;
-					$sync1.trigger('to.owl.carousel', [e.item.index, duration, true]);
-					flag = false;
-				}
-			});
-			$('.product-img-big').zoom();
-		});
-	</script>
 <?php else: ?>
 	<div class="product-img product-img-none visible-xs">
 		<?php
@@ -132,34 +165,3 @@
 		?>
 	</div>
 <?php endif; ?>
-
-<ul id="etalage" class="hidden-xs">
-	<li>				
-		<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image')); ?>" />
-		<img class="etalage_source_image" title="<?php echo $_product->getImageLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image'), true); ?>" />
-	</li>
-	<?php 
-		foreach ($this->getGalleryImages() as $_image) {
-        	if(Mage::registry('current_product')->getImage() != $_image->getFile()) { ?>                
-            <li>
-            	<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())); ?>" />
-				<img class="etalage_source_image" title="<?php echo $_image->getLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()), true); ?>" />
-            </li> 
-        <?php 
-			}    
-		}
-	?>
-</ul>
-<div class="etalage_nav_links hidden-xs">
-	<span class="etalage_nav etalage_nav_end" onclick="thumbsNavEnd();"><i class="icon-arrow-up2"></i></span>
-	<span class="etalage_nav etalage_nav_start" onclick="thumbsNavStart();"><i class="icon-arrow-down2"></i></span>
-</div>
-
-<script type="text/javascript">
-	function thumbsNavStart() {
-		jQuery('.etalage_smallthumb_last').trigger('click');
-	}
-	function thumbsNavEnd() {
-		jQuery('.etalage_smallthumb_first').trigger('click');
-	}
-</script>

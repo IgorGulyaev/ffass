@@ -387,6 +387,9 @@ header {
     width: 100% !important;
   }
 }
+.product-shop {
+  overflow: hidden;
+}
 .etalage_nav {
   position: absolute;
   left: 15px;
@@ -425,9 +428,7 @@ header {
     opacity: 1 !important;
   }
   .etalage_small_thumbs {
-    margin: 30px 0;
-    /*height: 100% !important;*/
-    height: calc(~"100% - 60px") !important;
+    height: 100% !important;
     width: 17% !important;
     ul li {
       width: 100% !important;
@@ -439,6 +440,15 @@ header {
   }
   .etalage_magnifier {
     display: none !important;
+  }
+  .etalage img {
+    object-fit: contain;
+  }
+  &.slide {
+    .etalage_small_thumbs {
+      margin: 30px 0;
+      height: calc(~"100% - 60px") !important;
+    }
   }
 }
 /* END PRODUCT MEDIA */

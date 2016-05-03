@@ -55,6 +55,7 @@
 [class^="icon-"],
 [class*=" icon-"],
 [type=checkbox] + label:before,
+[type=checkbox] + a:before,
 [type=radio] + label:before,
 [type=radio] + a:before,
 .back-link > a:before,

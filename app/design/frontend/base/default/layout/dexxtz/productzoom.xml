@@ -38,7 +38,7 @@
 		
 		<reference name="product.info.media">			
 			<action method="setTemplate" ifconfig="dexxtz_productzoom/general/active"><template>dexxtz/productzoom/media.phtml</template></action>
-			<!--<action method="setTemplate" ifconfig="dexxtz_productzoom/general/active"><template>catalog/product/gallery.phtml</template></action>-->		
+			<!--<action method="setTemplate" ifconfig="dexxtz_productzoom/general/active"><template>catalog/product/gallery.phtml</template></action>-->
 		</reference>
 		
 		<reference name="before_body_end">

@@ -288,8 +288,9 @@ jQuery(document).ready(function ($) {
     var windowWidth = $(window).width();
     responsive();
     $(window).resize(responsive);
+
     function responsive() {
-        if(windowWidth < 767) {
+        if(window.matchMedia('(max-width: 767px)').matches) {
             $(document).on('click', '.navbar .navbar-nav .dropdown > a', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -307,7 +308,7 @@ jQuery(document).ready(function ($) {
                 $('body').css('padding-top', 0);
             });
             $('footer .footer-left').appendTo('.navbar .navbar-footer');
-        } else if(windowWidth > 767) {
+        } else if(window.matchMedia('(min-width: 767px)').matches) {
             $('[data-hover="dropdown"]').dropdownHover();
             $('.navbar').on('affix.bs.affix affix-top.bs.affix', function (e) {
                 var padding = e.type === 'affix' ? $(this).height() : '';
