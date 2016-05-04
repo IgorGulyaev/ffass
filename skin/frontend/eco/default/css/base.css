@@ -1565,7 +1565,7 @@ select::-ms-expand {
 .back-link > a {
     display: inline-block;
     height: 35px;
-    padding: 5px 12px;
+    padding: 0 12px;
     margin-bottom: 0;
     font-size: 14px;
     text-align: center;
@@ -3003,7 +3003,6 @@ a[href*='amazon']:after {
 /* product item */
 
 .products-item {
-    background-color: #fff;
     position: relative;
     padding: 15px;
     text-align: left;
@@ -3330,7 +3329,10 @@ span.product-image {
 
     .qty-group .button-qty {
         text-align: center;
-        border-color: transparent;
+        border-color: transparent !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        box-shadow: none !important;
     }
 
     .qty-group .button-qty:active,
@@ -4725,6 +4727,9 @@ span.product-image {
 /* discount */
 
 @media (min-width: 991px) {
+    .discount {
+        width: 50%;
+    }
     .discount > .discount-form  {
         display: -webkit-box;
         display: -moz-box;
@@ -4739,9 +4744,11 @@ span.product-image {
         width: 100%;
     }
 
-    .discount > .discount-form .input-box,
+    .discount > .discount-form .input-box {
+        width: 70%;
+    }
     .discount > .discount-form .buttons-set {
-        width: 50%;
+        width: 30%;
     }
 
     .discount > .discount-form .input-box > input,
