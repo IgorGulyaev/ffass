@@ -27,7 +27,7 @@
         accordionClass: 'visible-xs',
         tabsClass: 'hidden-xs',
         accordionTemplate: function(heading, groupId, parentId, active) {
-            return  '<div class="panel panel-default">' +
+            return  '<div class="panel panel-default modified">' +
                     '   <div class="panel-heading">' +
                     '      <h4 class="panel-title">' +
                     '      </h4>' +
@@ -158,7 +158,7 @@
     };
 
     TabCollapse.prototype._tabHeadingToPanelHeading = function($heading, groupId, parentId, active) {
-        $heading.addClass('js-tabcollapse-panel-heading ' + (active ? '' : 'collapsed'));
+        $heading.addClass('js-tabcollapse-panel-heading responsive ' + (active ? '' : 'collapsed'));
         $heading.attr({
             'data-toggle': 'collapse',
             'data-parent': '#' + parentId,

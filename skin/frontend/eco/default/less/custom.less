@@ -1277,12 +1277,16 @@ ul.pages-accordeon {
       .border-radius(0);
       .box-shadow(none);
       .panel-heading {
+        background-color: transparent;
+      }
+      .panel-heading {
         padding: 10px 0;
         background: none;
         border: 0;
         .panel-title {
           a {
             &:before {
+              top: -3px;
               font-family: 'icomoon';
               display: inline-block;
               speak: none;
@@ -1302,11 +1306,26 @@ ul.pages-accordeon {
               content: '\e900';
               font-size: 6px;
             }
-            &.collapsed {
+            &:not(.responsive) {
               &:before {
-                display: inline-block;
-                content: '\e902';
-                font-size: 10px;
+                -webkit-transform: rotate(0);
+                -moz-transform: rotate(0);
+                -ms-transform: rotate(0);
+                -o-transform: rotate(0);
+                transform: rotate(0);
+              }
+            }
+            &[aria-expanded="false"] {
+              &:not(.responsive) {
+                &:before {
+                  top: -10px;
+                  left: -7px;
+                  -webkit-transform: rotate(-90deg);
+                  -moz-transform: rotate(-90deg);
+                  -ms-transform: rotate(-90deg);
+                  -o-transform: rotate(-90deg);
+                  transform: rotate(-90deg);
+                }
               }
             }
           }

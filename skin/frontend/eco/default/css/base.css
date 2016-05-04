@@ -1400,6 +1400,7 @@ select:focus {
 
     form .back-link + [type="submit"] {
         float: right;
+        line-height: 23px;
     }
 }
 
@@ -1583,6 +1584,7 @@ select::-ms-expand {
     border: 1px solid #92b545;
     background-color: #92b545;
     font-weight: bold;
+    line-height: 35px;
 }
 
 .back-link > a:hover,
@@ -2487,6 +2489,7 @@ a[href*='amazon']:after {
     -webkit-box-shadow: none;
     box-shadow: none;
     float: left;
+    line-height: 23px;
 }
 
 .sorting .button:hover,
@@ -3408,8 +3411,8 @@ span.product-image {
     .button.btn-cart:hover,
     .button.btn-cart:active,
     .button.btn-cart:focus {
-        background-color: #000!important;
-        border-color: #000!important;
+        background-color: #ce2127 !important;
+        border-color: #ce2127 !important;
     }
 
     .button.btn-cart:active {

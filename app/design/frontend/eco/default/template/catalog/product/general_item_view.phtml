@@ -1,11 +1,14 @@
 <?php
 $helper = $this->helper('catalog/output');
 $_product = $this->getProduct();
-$_parent = $this->getParentBlock();
 $isWishList = $this->getIsWishlist();
 $isCompareList = $this->getIsCompareList();
 $isListMode = $this->getIsListMode();
-$modeTool = $_parent->getMode();
+if ($_parent = $this->getParentBlock()){
+    $modeTool = $_parent->getMode();
+} else {
+    $modeTool = 'grid';
+}
 $isCatalogProductList = (bool)$this->getIsProductList();
 if($isWishList){
     $_product = $this->getProduct()->getProduct();
