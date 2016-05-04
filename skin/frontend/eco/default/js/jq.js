@@ -308,7 +308,11 @@ jQuery(document).ready(function ($) {
                 $('body').css('padding-top', 0);
             });
             $('footer .footer-left').appendTo('.navbar .navbar-footer');
-        } else if(window.matchMedia('(min-width: 767px)').matches) {
+
+            /* Accordeons */
+            $('.nav.nav-tabs').tabCollapse();
+            /* End Accordeons */
+        } else if(window.matchMedia('(min-width: 768px)').matches) {
             $('[data-hover="dropdown"]').dropdownHover();
             $('.navbar').on('affix.bs.affix affix-top.bs.affix', function (e) {
                 var padding = e.type === 'affix' ? $(this).height() : '';

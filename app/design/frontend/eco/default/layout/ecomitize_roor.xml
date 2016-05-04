@@ -140,6 +140,10 @@
             </action>
             <action method="addItem">
                 <type>skin_js</type>
+                <name>js/bootstrap-tabcollapse.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
                 <name>js/jq.js</name>
             </action>
 
