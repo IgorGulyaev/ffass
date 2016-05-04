@@ -1218,6 +1218,48 @@
         float: left !important;
     }
 
+    /* Accordeons */
+    .nav.nav-tabs.hidden-xs + .panel-group.visible-xs > .panel {
+        margin-top: 0;
+    }
+    .nav.nav-tabs.hidden-xs + .panel-group.visible-xs > .panel > .panel-heading .panel-title {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .nav.nav-tabs.hidden-xs + .panel-group.visible-xs > .panel > .panel-heading {
+        padding: 0px 0 5px;
+    }
+    .nav.nav-tabs.hidden-xs + .panel-group.visible-xs > .panel > .panel-heading a {
+        position: relative;
+        display: block;
+        padding: 10px 20px;
+        width: 100%;
+        background-color: #efab01;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        color: #ffffff;
+        font-weight: normal;
+    }
+    .nav.nav-tabs.hidden-xs + .panel-group.visible-xs > .panel > .panel-heading a.collapsed {
+        background-color: #add750;
+    }
+    .nav.nav-tabs.hidden-xs + .panel-group.visible-xs > .panel > .panel-heading a:before {
+        display: block !important;
+        content: '';
+        position: absolute !important;
+        top: 3px;
+        left: 4px;
+        height: calc(100% - 6px);
+        width: calc(100% - 8px);
+        border: 2px dashed #ffffff;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+    .nav.nav-tabs.hidden-xs + .panel-group.visible-xs {}
+    /* End Accordeons */
+
 }
 
 /* tablet horizontal + vertical  */
