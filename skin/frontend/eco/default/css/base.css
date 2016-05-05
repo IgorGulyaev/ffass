@@ -873,7 +873,7 @@ h1:after,
     padding-top: 15px;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     .main {
         padding-bottom: 30px;
     }
@@ -1158,7 +1158,7 @@ header .header-top .nav > li > a {
     right: 100%;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
 
 }
 
@@ -1258,7 +1258,7 @@ header .header-top .nav > li > a {
     padding: 0;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     .block > .block-title > h3,
     .box > .box-title > h3,
     .block > .block-title > h2,
@@ -1367,7 +1367,7 @@ select:focus {
     -webkit-appearance: none;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 7678) {
 
     .form-list .fields {
         position: relative;
@@ -1654,7 +1654,7 @@ select::-ms-expand {
     /*color: #92b545;*/
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     .button,
     .back-link > a {
         white-space: nowrap;
@@ -1819,7 +1819,7 @@ fieldset[disabled] textarea {
 
 /* account dashboard */
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
 
     .box-content [class*='col-'] {
         width: 50%;
@@ -1869,7 +1869,7 @@ fieldset[disabled] textarea {
         margin-top: 15px;
     }
 
-    @media (min-width: 767px) {
+    @media (min-width: 768px) {
         .addresses-list > [class*='col-'] ol > li {
             float: left;
             width: 50%;
@@ -1966,7 +1966,7 @@ footer {
     color: #8a9298;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     footer {
         position: relative;
         z-index: 0;
@@ -2242,7 +2242,7 @@ a[href*='amazon']:after {
     padding: 20px 10px;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     .bootbox .modal-dialog,
     .modal-ajax-cart .modal-dialog,
     .modal-map-popup .modal-dialog,
@@ -2858,7 +2858,7 @@ a[href*='amazon']:after {
     display: none;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
 
     .category-row.products-grid > .category-item {
         position: relative;
@@ -2935,7 +2935,7 @@ a[href*='amazon']:after {
     }
 }
 
-@media (min-width: 767px) and (max-width: 1200px) {
+@media (min-width: 768px) and (max-width: 1200px) {
     .category-row.products-grid > .category-item {
         width: 50%;
     }
@@ -2972,7 +2972,7 @@ a[href*='amazon']:after {
     position: relative;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     .category-row.products-list > .category-item > .products-item {
         display: -webkit-box;
         display: -moz-box;
@@ -3278,7 +3278,7 @@ span.product-image {
         width: 100%;
     }
 
-    @media (min-width: 767px) {
+    @media (min-width: 768px) {
         label[for="qty"] {
             display: inline-block;
             text-transform: uppercase;
@@ -3340,7 +3340,7 @@ span.product-image {
         border-color: #ccc;
     }
 
-    @media (min-width: 767px) {
+    @media (min-width: 768px) {
         .qty-group .button-qty {
             background-color: transparent;
         }
@@ -3374,7 +3374,7 @@ span.product-image {
 
     /* add to cart button */
 
-    @media (min-width: 767px) {
+    @media (min-width: 768px) {
         .product-options-top {
             max-width: 300px;
         }
@@ -3556,7 +3556,7 @@ span.product-image {
     .social-likes > li > .link-email-friend > i {
     }
 
-    @media (min-width: 767px) {
+    @media (min-width: 768px) {
         .social-likes > li {
             padding-right: 20px;
         }
@@ -3907,7 +3907,7 @@ span.product-image {
     padding-right: 10px;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     .my-wishlist .buttons-set button {
         margin: 0 5px;
     }
@@ -4237,7 +4237,7 @@ span.product-image {
     background-color: #92b545!important;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     .header-minicart {
         min-width: 345px;
     }
@@ -4398,7 +4398,7 @@ span.product-image {
 
 /* opc  */
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     .opc-wrapper-opc [class*='opc-col-'] {
         float: left;
     }
@@ -4630,7 +4630,7 @@ span.product-image {
     display: none;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
 
     .opc .col2-set [class*='col-'] {
         float: left;
@@ -4678,7 +4678,7 @@ span.product-image {
     border: 0!important;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     #authorizenet_cc_type_exp_div .input-box,
     #payment_form_authorizenet {
         display: block !important;
@@ -5254,7 +5254,7 @@ form p.required,
     display: none!important;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
     .btn-show-all {
         display: none!important;
     }
