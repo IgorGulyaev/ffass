@@ -1459,18 +1459,29 @@ h1:after,
   .footer-social {
     width: auto;
     &> li {
+      position: relative;
       display: inline-block;
       margin-right: 37px;
+      width: 44px;
+      height: 45px;
       &> a {
+        position: absolute;
+        top: 0;
+        left: 0;
         display: inline-block;
         padding-top: 5px;
         margin-top: -3px;
         width: 44px;
         height: 45px;
-        background: url("@{path}images/soc-flag.png") no-repeat 0 0;
+        background: url("@{path}images/soc-flag.png") no-repeat 0 bottom;
+        .transition(all 300ms ease-in-out);
         i {
           vertical-align: bottom;
           font-size: 18px;
+        }
+        &:hover {
+          padding-top: 15px;
+          height: 55px;
         }
       }
     }
