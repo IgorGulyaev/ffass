@@ -134,8 +134,12 @@ jQuery(document).ready(function ($) {
     $(document).mouseup(function (e) {
         var container = $('#ajaxcartpro-add-confirm');
         if (!container.is(e.target) && container.has(e.target).length === 0) {
-            container.attr('aria-expanded', 'false');
+            container.removeClass('show').addClass('hidden');
         }
+    });
+
+    $('body').on('click', 'a.ajaxcartpro-close', function () {
+        $('#ajaxcartpro-add-confirm').removeClass('show').addClass('hidden');
     });
 
     /* remove alerts */
