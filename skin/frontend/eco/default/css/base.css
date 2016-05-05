@@ -4998,7 +4998,8 @@ span.product-image {
 }
 
 .mini-products-list > .item > a,
-.mini-products-list > .item > .product-details {
+.mini-products-list > .item > .product-details,
+.add-confirm-wrapper .product-details {
    float: left;
 }
 
@@ -5020,11 +5021,13 @@ span.product-image {
     height: auto;
 }
 
+.add-confirm-wrapper .product-details,
 .mini-products-list > .item > .product-details {
     padding-left: 5%;
     position: relative;
 }
 
+.add-confirm-wrapper .product-details .product-name,
 .mini-products-list > .item .product-details .product-name {
     margin-right: 10%;
     text-transform: capitalize;

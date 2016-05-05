@@ -7,18 +7,17 @@
     $price = $item->getPrice();
     $rendererBlock = Mage::getBlockSingleton('ecomitize_all/product_renderer');
     ?>
-    <div class="confirm-product-name">
-        <?php echo $product->getName() ?>
-    </div>
-    <div class="confirm-product-qty-price">
-        <span class="confirm-product-qty">
-            <?php echo $this->__('QTY:') ?> <?php echo $qty; ?> |
-        </span>
-        <span class="confirm-product-price">
-            <?php echo $rendererBlock->getPriceHtml($product, true) ?>
-        </span>
-    </div>
-    <div class="confirm-product-text">
-        <?php echo $this->__('was added to your shopping cart') ?>
+    <div class="product-details">
+        <p class="product-name"><?php echo $product->getName() ?></p>
+        <div class="info-wrapper">
+            <div class="product-qty">
+                <?php echo $this->__('QTY:') ?> <?php echo $qty; ?>
+            </div>
+            <div class="price-box">
+            <span class="price">
+                <?php echo $rendererBlock->getPriceHtml($product, true) ?>
+            </span>
+            </div>
+        </div>
     </div>
 <?php endif; ?>

@@ -131,6 +131,13 @@ jQuery(document).ready(function ($) {
     };
     /* / */
 
+    $(document).mouseup(function (e) {
+        var container = $('#ajaxcartpro-add-confirm');
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            container.attr('aria-expanded', 'false');
+        }
+    });
+
     /* remove alerts */
     $('input.input-text, textarea.input-text, select.input-text').on('keyup', function() {
         $(this).parent().find('.validation-advice').fadeOut('200');
