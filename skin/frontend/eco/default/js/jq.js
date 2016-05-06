@@ -319,6 +319,7 @@ jQuery(document).ready(function ($) {
                 $('body').css('padding-top', 0);
             });
             $('footer .footer-left').appendTo('.navbar .navbar-footer');
+            $('.header-top').prependTo('#navbar');
 
             /* Accordeons */
             $('body:not(.catalog-product-view,  .checkout-onepage-index) .nav.nav-tabs').tabCollapse();
@@ -330,6 +331,7 @@ jQuery(document).ready(function ($) {
                 $('body').css('padding-top', padding);
             });
             $('.navbar .footer-left').appendTo('.row-footer .first');
+            $('.header-top').prependTo('header > .header');
         }
     }
     /**/

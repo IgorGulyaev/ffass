@@ -4258,6 +4258,7 @@ span.product-image {
     }
 
     .header-minicart .minicart-header {
+        max-height: 370px;
         overflow: visible;
     }
 }
