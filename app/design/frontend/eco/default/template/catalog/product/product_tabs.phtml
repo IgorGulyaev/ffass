@@ -1,20 +1,25 @@
+<?php echo $this->getChildHtml('related_products') ?>
 <div class="tabs-wrapper">
     <div class="container">
         <ul class="nav nav-tabs" role="tablist">
-            <li class="active"><a href="#related_products" aria-controls="home" data-toggle="tab"><?php echo $this->__('You May Also Like') ?></a></li>
-            <li><a href="#product_viewed_block" aria-controls="profile" data-toggle="tab"><?php echo $this->__("Viewed") ?></a></li>
+            <?php if ($this->getChildHtml('related_products')): ?><li><a href="#related_products" aria-controls="home" data-toggle="tab"><?php echo $this->__('You May Also Like') ?></a></li><?php endif; ?>
+            <?php if ($this->getChildHtml('product_viewed_block')): ?><li><a href="#product_viewed_block" aria-controls="profile" data-toggle="tab"><?php echo $this->__("Viewed") ?></a></li><?php endif; ?>
         </ul>
     </div>
 </div>
 <div class="container-wrapper">
     <div class="container">
         <div class="tab-content">
-            <div class="tab-pane active" id="related_products">
+            <?php if ($this->getChildHtml('related_products')): ?>
+            <div class="tab-pane" id="related_products">
                 <?php echo $this->getChildHtml('related_products') ?>
             </div>
+            <?php endif; ?>
+            <?php if ($this->getChildHtml('product_viewed_block')): ?>
             <div class="tab-pane" id="product_viewed_block">
                 <?php echo $this->getChildHtml('product_viewed_block') ?>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>

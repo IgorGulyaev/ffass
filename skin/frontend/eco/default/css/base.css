@@ -993,15 +993,17 @@ header .header-top .links > li > a:focus {
     }
 
     .form-search .input-text {
+        height: 35px;
+        border-color: #cacaca;
         border-right: 0;
         text-overflow: ellipsis;
         background-color: #fff!important;
     }
 
     .form-search .button {
+        left: -3px;
         padding: 0 16px;
         background-color: #add750;
-        border-left: 0;
         border-bottom-left-radius: 4px;
         border-top-left-radius: 4px;
         text-align: center;
@@ -1661,7 +1663,7 @@ select::-ms-expand {
     }
 
     .back-link > a {
-        line-height: 25px;
+        line-height: 35px;
     }
 
     .my-account .button[type="submit"] {

@@ -211,7 +211,7 @@ jQuery(document).ready(function ($) {
             margin: 0,
             loop: true,
             nav: false,
-            center: true,
+            center: $center,
             dots: false,
             thumbs: false,
             responsive: {
@@ -235,6 +235,9 @@ jQuery(document).ready(function ($) {
     });
 
     /**/
+
+    $('.catalog-product-view .tabs-wrapper').find('li:first-child').addClass('active');
+    $('.catalog-product-view .container-wrapper').find('.tab-pane:first-child').addClass('active');
 
     /* mobile */
 
