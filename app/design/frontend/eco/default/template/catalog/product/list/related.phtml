@@ -1,7 +1,7 @@
 <?php
-    $relatedProducts = $this->getItems()->addAttributeToSelect('small_image');
+    $relatedProducts = $this->getProduct()->getRelatedProductIds();
 ?>
-<?php if(count($relatedProducts->getItems())): ?>
+<?php if(count($relatedProducts)): ?>
     <div class="carousel">
         <a href="#" class="carousel-controls prev"><i class="icon-left2"></i></a>
         <a href="#" class="carousel-controls next"><i class="icon-right2"></i></a>
@@ -9,7 +9,8 @@
             <?php $productRenderer = $this->getChild('product_renderer'); ?>
             <?php foreach($relatedProducts as $rp): ?>
                 <div class="item">
-                    <?php $productRenderer->setProduct($rp); ?>
+                    <?php $_rel = Mage::getModel('catalog/product')->load($rp); ?>
+                    <?php $productRenderer->setProduct($_rel); ?>
                     <?php echo $productRenderer->toHtml(); ?>
                 </div>
             <?php endforeach ?>

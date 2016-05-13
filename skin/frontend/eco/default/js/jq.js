@@ -311,13 +311,13 @@ jQuery(document).ready(function ($) {
                 $(this).parent().siblings().removeClass('open');
                 $(this).parent().toggleClass('open');
             });
-            $('.cart .cart-row').on('swipeleft', function(e) {
+            /*$('.cart .cart-row').on('swipeleft', function(e) {
                 e.preventDefault();
                 $(this).addClass('remove');
             }).on('swiperight', function(e) {
                 e.preventDefault();
                 $(this).removeClass('remove');
-            });
+            });*/
             $('.navbar').on('affix.bs.affix affix-top.bs.affix', function () {
                 $('body').css('padding-top', 0);
             });

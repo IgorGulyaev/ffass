@@ -126,7 +126,7 @@
     .data-table th,
     .data-table td,
     .data-table tr {
-        display: block;
+        /*display: block;*/
     }
 
     .data-table thead tr {
@@ -161,6 +161,15 @@
     .data-table td:before {
         content: attr(data-title);
     }
+
+    #checkout-review-table > *:not(tfoot) {
+        display: none;
+    }
+
+    .review-content-wrap .item-options {
+        font-size: 12px;
+    }
+    .review-content-wrap {}
 
     /**/
 
