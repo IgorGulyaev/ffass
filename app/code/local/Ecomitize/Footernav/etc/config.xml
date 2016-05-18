@@ -25,6 +25,11 @@
                 </rewrite>
             </catalog>
         </blocks>
+        <helpers>
+            <ecomitize_footernav>
+                <class>Ecomitize_Footernav_Helper</class>
+            </ecomitize_footernav>
+        </helpers>
         <models>
             <ecomitize_footernav>
                 <class>Ecomitize_Footernav_Model</class>
@@ -34,6 +39,11 @@
                     <layer>Ecomitize_Footernav_Model_Layer</layer>
                 </rewrite>
             </catalog>
+            <catalog_resource>
+                <rewrite>
+                    <layer_filter_price>Ecomitize_Footernav_Model_Resource_Layer_Filter_Price</layer_filter_price>
+                </rewrite>
+            </catalog_resource>
         </models>
     </global>
     <frontend>

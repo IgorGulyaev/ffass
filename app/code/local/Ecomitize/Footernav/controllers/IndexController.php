@@ -11,6 +11,20 @@ class Ecomitize_Footernav_IndexController extends Mage_Core_Controller_Front_Act
     public function indexAction(){
 
         $this->loadLayout();
+        $title = $this->setCustomTitle();
+        $this->getLayout()->getBlock('head')->setTitle($this->__($title));
         $this->renderLayout();
+    }
+
+    public function setCustomTitle(){
+        $params = $this->getRequest()->getParams();
+        $option = 'BestDressedTot';
+        if($params['featured'] == 1){
+            $option = 'Customer`s Favorites' ;
+        }
+        if($params['onsale'] == 1){
+            $option = 'New Arrivals';
+        }
+        return $option;
     }
 }

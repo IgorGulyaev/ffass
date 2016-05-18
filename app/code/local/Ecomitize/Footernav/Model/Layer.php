@@ -23,13 +23,29 @@ class Ecomitize_Footernav_Model_Layer extends Mage_Catalog_Model_Layer{
             if (isset($this->_productCollections[$this->getCurrentCategory()->getId()])) {
                 $collection = $this->_productCollections[$this->getCurrentCategory()->getId()];
             } else {
-                //$collection = $this->getCurrentCategory()->getProductCollection();
 
-                $collection = Mage::getModel('catalog/product')->getCollection()
-                    ->addAttributeToSelect('*')
-                    ->addAttributeToFilter($key[0],array('eq' => $params[$key[0]]));
-                $this->prepareProductCollection($collection);
-                $this->_productCollections[$this->getCurrentCategory()->getId()] = $collection;
+                if($params['featured']){
+                    $collection = Mage::getModel('catalog/product')->getCollection()
+                        ->addAttributeToSelect('*')
+                        ->addAttributeToFilter('featured', array('eq' => '1'));
+                    $this->prepareProductCollection($collection);
+                    $this->_productCollections[$this->getCurrentCategory()->getId()] = $collection;
+                }
+                if($params['onsale']){
+                    $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
+                    $tomorrow = mktime(0, 0, 0, date('m'), date('d')+1, date('y'));
+                    $dateTomorrow = date('m/d/y', $tomorrow);
+
+                    $collection = Mage::getModel('catalog/product')->getCollection()
+                        ->addAttributeToSelect('*')
+                        ->addAttributeToFilter('special_price', array('gt'=> -1))
+                        ->addAttributeToFilter('special_from_date', array('date' => true, 'to' => $todayDate))
+                        ->addAttributeToFilter('special_to_date', array('or'=> array(0 => array('date' => true, 'from' => $dateTomorrow), 1 => array('is' => new Zend_Db_Expr('null')))), 'left');
+
+                    $this->prepareProductCollection($collection);
+                    $this->_productCollections[$this->getCurrentCategory()->getId()] = $collection;
+                }
+
             }
 
             return $collection;

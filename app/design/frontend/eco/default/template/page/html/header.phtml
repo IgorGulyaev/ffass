@@ -17,7 +17,7 @@
                     </ul>
                     <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/account-nav.phtml')->toHtml(); ?>
                     <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe-header.phtml')->toHtml(); ?>
-                    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('persistent/customer/form/login-modal.phtml')->toHtml(); ?>
+                    <?php echo $this->getLayout()->createBlock('customer/form_login')->setTemplate('persistent/customer/form/login-modal.phtml')->toHtml(); ?>
                     <?php echo $this->getChildHtml('topLinks'); ?>
                 </div>
             </div>
