@@ -269,7 +269,7 @@ class Dexxtz_Productzoom_Helper_Data extends Mage_Core_Helper_Abstract
 		$js .= '			jQuery("li.etalage_small_thumbs").css("height", newHeight + "px");' . "\r";
 		$js .= '			jQuery(".dexxtz_video").attr("style", position + ": 0; bottom: 0;");' . "\r";
 		$js .= '		}' . "\r";
-		
+
 		return $js;
 	}
 	
