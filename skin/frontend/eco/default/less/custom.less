@@ -227,6 +227,19 @@ header {
   }
 }
 
+.tab-content {
+  &> .tab-pane {
+    .carousel {
+      &+ a {
+        float: right;
+        color: @lightGreen3;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 /* HOME TOP LABEL */
 .index-top-label {
   position: relative;
