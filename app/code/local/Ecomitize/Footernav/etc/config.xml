@@ -25,6 +25,11 @@
                 </rewrite>
             </catalog>
         </blocks>
+        <helpers>
+            <ecomitize_footernav>
+                <class>Ecomitize_Footernav_Helper</class>
+            </ecomitize_footernav>
+        </helpers>
         <models>
             <ecomitize_footernav>
                 <class>Ecomitize_Footernav_Model</class>
