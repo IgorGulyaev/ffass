@@ -1644,6 +1644,7 @@ select::-ms-expand {
 
 [class*='button-'] > i,
 [class*='btn-'] > i {
+    margin-top: 8px;
     margin-right: 8px;
 }
 
