@@ -3405,11 +3405,14 @@ span.product-image {
     }
 
     .section-products .button.btn-cart,
-    .catalog-product-view .button.btn-cart,
     .category-row.products-grid .button.btn-cart,
     .modal-ajax-cart .button.btn-cart {
         display: block;
         width: 100%;
+    }
+
+    .catalog-product-view .button.btn-cart {
+        display: inline-block;
     }
 
     .button.btn-cart:hover,
@@ -3683,9 +3686,9 @@ span.product-image {
 
 .product-view .add-to-links {
     display: inline-block;
-    margin: 63px 0 0;
+    margin: 20px 0 0 20px;
     table-layout: auto;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 
 .product-view .add-to-links i {
