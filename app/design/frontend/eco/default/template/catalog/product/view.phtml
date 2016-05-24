@@ -148,7 +148,12 @@
                 <?php endif; ?>
                 <li>
                     <a href="#tab-block-1" role="tab" data-toggle="tab">
-                        <?php echo $this->__('Cms block tab') ?>
+                        <?php echo $this->__('Shipping & Returns') ?>
+                    </a>
+                </li>
+                <li>
+                    <a href="#ask-form" role="tab" data-toggle="tab">
+                        <?php echo $this->__('Ask a question') ?>
                     </a>
                 </li>
             </ul>
@@ -168,6 +173,21 @@
                 <?php endif; ?>
                 <div class="tab-pane" id="tab-block-1">
                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('tab-shipping-returns')->toHtml(); ?>
+                </div>
+                <div class="tab-pane" id="ask-form">
+                    <div class="row">
+                        <form class="col-sm-6" action="" id="askForm" method="post">
+                            <div class="input-box">
+                                <input class="form-control" type="text" name="ask_email" placeholder="<?php echo $this->__('Your email') ?>"/>
+                            </div>
+                            <div class="input-box">
+                                <textarea class="form-control" name="ask_question" placeholder="<?php echo $this->__('Your question') ?>"></textarea>
+                            </div>
+                            <div class="input-box">
+                                <button class="button" type="submit"><?php echo $this->__('Send Question') ?></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

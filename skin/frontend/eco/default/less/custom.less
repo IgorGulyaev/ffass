@@ -550,7 +550,7 @@ header {
         a {
           display: block;
           position: relative;
-          padding: 8px 20px;
+          padding: 8px 18px;
           .border-radius(4px);
           background-color: @lightGreen3;
           color: #fff;
@@ -570,7 +570,7 @@ header {
         &.active {
           a {
             background-color: @orange;
-            font-size: 20px;
+            font-size: 18px;
             &:before {
               border-right: 0;
               border-top-right-radius: 0;
@@ -1467,6 +1467,47 @@ ul.pages-accordeon {
   }
 }
 /* END SOCIAL LINKS&LIKES */
+
+/* SHIPPING&RETURNS */
+.shipping-returns {
+  text-align: center;
+  table {
+    margin-bottom: 0 !important;
+    width: 100% !important;
+    vertical-align: top;
+    text-align: center;
+    border: 1px solid #cc1d21 !important;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    th, td {
+      padding: 5px;
+      vertical-align: top;
+      border: 1px solid #cc1d21 !important;
+      text-align: center;
+    }
+    th {
+      span {
+        display: block;
+      }
+    }
+    td {
+      .red {
+        font-weight: 600;
+      }
+    }
+    br {
+      display: block !important;
+    }
+  }
+  .red {
+    color: #cc1d21;
+  }
+  .green {
+    color: @headGreen;
+  }
+}
+/* END SHIPPING&RETURNS */
 
 /* GIFT WRAP */
 .giftwrap-container {
