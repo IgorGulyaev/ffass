@@ -93,28 +93,28 @@
                         <?php endforeach ?>
                     </div>
                 </div>
-                <a href="#couponCode" data-toggle="collapse"><?php echo $this->__('I have a coupon code') ?></a>
-                <div id="couponCode" class="collapse">
-                    <?php echo $this->getChildHtml('coupon') ?>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="cart-right">
-                    <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif;?>
-                    <?php echo $this->getChildHtml('totals'); ?>
-                    <?php if(!$this->hasError()): ?>
-                        <?php foreach ($this->getMethods('methods') as $method): ?>
-                            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-                                <?php echo $methodHtml; ?>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                    <?php echo $this->getChildHtml('checkout.cart.extra') ?>
-                    <?php echo $this->getChildHtml('onepage_second'); ?>
-                </div>
             </div>
         </div>
     </form>
+    <a href="#couponCode" data-toggle="collapse"><?php echo $this->__('I have a coupon code') ?></a>
+    <div id="couponCode" class="collapse">
+        <?php echo $this->getChildHtml('coupon') ?>
+    </div>
+    <div class="col-sm-3">
+        <div class="cart-right">
+            <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif;?>
+            <?php echo $this->getChildHtml('totals'); ?>
+            <?php if(!$this->hasError()): ?>
+                <?php foreach ($this->getMethods('methods') as $method): ?>
+                    <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                        <?php echo $methodHtml; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            <?php echo $this->getChildHtml('checkout.cart.extra') ?>
+            <?php echo $this->getChildHtml('onepage_second'); ?>
+        </div>
+    </div>
     <?php /*echo $this->getChildHtml('crosssell') */?>
 </div>
 
