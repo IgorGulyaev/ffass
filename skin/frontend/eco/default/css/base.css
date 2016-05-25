@@ -4837,6 +4837,8 @@ span.product-image {
     margin: auto;
     width: 100px;
     height: 100px;
+    -webkit-animation: butterFly 1s infinite ease-in-out both;
+    animation: butterFly 1s infinite ease-in-out both;
 }
 .bu-pill {
     position: absolute;
@@ -5002,6 +5004,16 @@ span.product-image {
 @keyframes sk-circleFadeDelay {
     0%, 39%, 100% { background-color: #d0c6bd; }
     40% { background-color: #80b435; }
+}
+
+@-webkit-keyframes butterFly {
+    0%, 100% { top: -10px; }
+    50% { top: 15px; }
+}
+
+@keyframes butterFly {
+    0%, 100% { top: -10px; }
+    50% { top: 15px; }
 }
 
 @-webkit-keyframes butterFlyWingLeft {
