@@ -459,7 +459,7 @@
             <reference name="customer.wishlist.items">
                 <action method="unsetChild"><name>customer.wishlist.item.image</name></action>
                 <!--<action method="unsetChild"><name>customer.wishlist.item.cart</name></action>-->
-                <action method="unsetChild"><name>customer.wishlist.item.remove</name></action>
+                <!--<action method="unsetChild"><name>customer.wishlist.item.remove</name></action>-->
             </reference>
         </reference>
     </wishlist_index_index>
