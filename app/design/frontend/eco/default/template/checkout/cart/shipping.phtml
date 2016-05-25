@@ -34,16 +34,20 @@
                 <li>
                     <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
                     <div class="input-box">
-                        <?php echo Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect($this->getEstimateCountryId()) ?>
+                        <div class="select">
+                            <?php echo Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect($this->getEstimateCountryId()) ?>
+                        </div>
                     </div>
                 </li>
             <?php //if($this->getStateActive()): ?>
                 <li>
                     <label for="region_id"<?php if ($this->isStateProvinceRequired()) echo ' class="required"' ?>><?php if ($this->isStateProvinceRequired()) echo '<em>*</em>' ?><?php echo $this->__('State/Province') ?></label>
                     <div class="input-box">
-                        <select id="region_id" name="region_id" title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" style="display:none;"<?php echo ($this->isStateProvinceRequired() ? ' class="validate-select"' : '') ?>>
-                            <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
-                        </select>
+                        <div class="select">
+                            <select id="region_id" name="region_id" title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" style="display:none;"<?php echo ($this->isStateProvinceRequired() ? ' class="validate-select"' : '') ?>>
+                                <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                            </select>
+                        </div>
                        <script type="text/javascript">
                        //<![CDATA[
                            $('region_id').setAttribute('defaultValue',  "<?php echo $this->getEstimateRegionId() ?>");
@@ -80,25 +84,27 @@
 
         <?php if (($_shippingRateGroups = $this->getEstimateRates())): ?>
         <form id="co-shipping-method-form" action="<?php echo $this->getUpdateFormActionUrl() ?>">
-            <select id='drop_estimate_method' name="estimate_method">
-                <option value='-1'>Select</option>
-                <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
-                    <optgroup label="<?php echo $this->getCarrierName($code) ?> ">
-                        <?php foreach ($_rates as $_rate): ?>
-                            <?php $str2 = $_rate->getMethodTitle();
-                            $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax());
-                            $_incl = $this->getShippingPrice($_rate->getPrice(), true);
-                            $str2 .= ' ['. $_excl;
-                            if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl) {
-                                $str2 .= ' '. $this->__('Incl. Tax'); echo $_incl;
-                            }
-                            $str2 .= '] ';
-                            ?>
-                            <option <?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' selected="selected"' ?> value="<?php echo $this->htmlEscape($_rate->getCode()) ?>"><?php echo $str2;?></option>
-                        <?php endforeach; ?>
-                    </optgroup>
-                <?php endforeach; ?>
-            </select>
+            <div class="select">
+                <select id='drop_estimate_method' name="estimate_method">
+                    <option value='-1'>Select</option>
+                    <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
+                        <optgroup label="<?php echo $this->getCarrierName($code) ?> ">
+                            <?php foreach ($_rates as $_rate): ?>
+                                <?php $str2 = $_rate->getMethodTitle();
+                                $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax());
+                                $_incl = $this->getShippingPrice($_rate->getPrice(), true);
+                                $str2 .= ' ['. $_excl;
+                                if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl) {
+                                    $str2 .= ' '. $this->__('Incl. Tax'); echo $_incl;
+                                }
+                                $str2 .= '] ';
+                                ?>
+                                <option <?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' selected="selected"' ?> value="<?php echo $this->htmlEscape($_rate->getCode()) ?>"><?php echo $str2;?></option>
+                            <?php endforeach; ?>
+                        </optgroup>
+                    <?php endforeach; ?>
+                </select>
+            </div>
         </form>
             <script type="text/javascript">
                 document.observe("dom:loaded", function() {
