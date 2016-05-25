@@ -19,7 +19,7 @@ $imageType = $this->getImageType() ? $this->getImageType() : 'small_image';
     <?php if($modeTool!='grid' && $modeTool!=null): ?><div class="row"><div class="row-height"><div class="col-sm-3 col-height col-middle"><?php endif; ?>
     <?php if($isWishList): ?>
         <?php $this->getChild('customer_wishlist_item_remove')->setItem($this->getProduct()); ?>
-        <?php echo $this->getChildHtml('customer_wishlist_item_remove'); ?>
+        <?php //echo $this->getChildHtml('customer_wishlist_item_remove'); ?>
     <?php endif; ?>
     <div class="products-item-img">
         <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
