@@ -3061,7 +3061,7 @@ a[href*='amazon']:after {
         opacity: 1;
     }*/
 
-    .wishlist-item-item {
+    .wishlist-item {
         position: relative;
     }
     .products-item .button-remove,
