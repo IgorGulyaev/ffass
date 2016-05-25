@@ -4386,7 +4386,7 @@ span.product-image {
     font-size: 1.2em;
     font-weight: 300;
     text-align: center;
-    background-color: #92b545;
+    background-color: #efab01;
     color: #fff;
     border-radius: 3px;
     -webkit-animation-duration: 1s;
@@ -4806,6 +4806,10 @@ span.product-image {
     display: none;
 }
 
+.step .loading {
+    display: block;
+}
+
 .loading.active {
     display: block;
 }
@@ -5200,7 +5204,9 @@ span.product-image {
 }
 
 .opc .please-wait:before,
-.opc .please-wait:after,
+.opc .please-wait:after {
+    display: none !important;
+}
 .aw-ln-overlay:before,
 .aw-ln-overlay:after {
     content: '';
