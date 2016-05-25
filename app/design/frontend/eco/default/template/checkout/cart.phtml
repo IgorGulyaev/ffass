@@ -105,9 +105,12 @@
                 <?php if(!$this->hasError()): ?>
                     <?php foreach ($this->getMethods('methods') as $method): ?>
                         <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
-                            <?php echo $methodHtml; ?>
+                            <?php if($method == 'checkout.cart.methods.paypal_express.bottom') $paypalHtml = $this->getMethodHtml($method); ?>
+                            <?php if($method == 'checkout.cart.methods.onepage') $proceedHtml = $this->getMethodHtml($method); ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
+                    <?php echo $proceedHtml ?>
+                    <?php echo $paypalHtml ?>
                 <?php endif; ?>
                 <?php echo $this->getChildHtml('checkout.cart.extra') ?>
                 <?php echo $this->getChildHtml('onepage_second'); ?>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+
+    <default>
+        <reference name="before_body_end">
+            <block type="facebookfree/init" name="belvg_facebookfree_block">
+                <action method="setTemplate" ifconfig="facebookfree/settings/enabled" ifvalue="1">
+                    <template>belvg/facebookfree/block.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </default>
+
+    <customer_account_login>
+        <reference name="customer_form_login">
+            <!-- <action method="setTemplate">
+                <template>belvg/facebookfree/form/customer/login.phtml</template>
+            </action> -->
+            <block type="persistent/form_remember" name="persistent.remember.me" template="persistent/remember_me.phtml" />
+            <block type="core/template" name="persistent.remember.me.tooltip" template="persistent/remember_me_tooltip.phtml" />
+            <block type="facebookfree/links_button" name="belvg_facebookfree_button" template="belvg/facebookfree/form/button.phtml" />
+        </reference>
+    </customer_account_login>
+
+    <checkout_onepage_index>
+        <reference name="checkout.onepage.login">
+            <action method="setTemplate">
+                <template>belvg/facebookfree/form/checkout/login.phtml</template>
+            </action>
+            <block type="persistent/form_remember" name="persistent.remember.me" template="persistent/remember_me.phtml" />
+            <block type="facebookfree/links_button" name="belvg_facebookfree_button" template="belvg/facebookfree/form/button.phtml" />
+        </reference>
+    </checkout_onepage_index>
+
+</layout>

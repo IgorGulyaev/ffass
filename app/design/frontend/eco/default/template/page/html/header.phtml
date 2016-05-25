@@ -15,7 +15,8 @@
                         <li class="pull-left"><a class="btn-back" href="#"><i class="icon-left text-white"></i><?php echo $this->__('Back') ?></a></li>
                         <li class="pull-left"><a href="tel:<?php echo Mage::getStoreConfig('general/store_information/phone'); ?>"><?php echo Mage::getStoreConfig('general/store_information/phone'); ?></a></li>
                     </ul>
-                    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/account-nav.phtml')->toHtml(); ?>
+<!--                    --><?php //echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/account-nav.phtml')->toHtml(); ?>
+                    <?php echo $this->getChildHtml('register_links') ?>
                     <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe-header.phtml')->toHtml(); ?>
                     <?php echo $this->getLayout()->createBlock('customer/form_login')->setTemplate('persistent/customer/form/login-modal.phtml')->toHtml(); ?>
                     <?php echo $this->getChildHtml('topLinks'); ?>
@@ -41,18 +42,7 @@
                                     <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img class="img-responsive" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>"></a>
                                 <?php endif?>
                             </div>
-                            <div class="col-xs-3 col-sm-3 col-xs-height col-xs-middle col-sm-push-5 header-cart">
-                                <ul class="nav nav-inline header-nav-cart">
-                                    <li class="dropdown">
-                                        <?php echo $this->getChildHtml('cart_link'); ?>
-                                        <ul class="dropdown-menu dropdown-menu-cart pull-right">
-                                            <li class="header-minicart">
-                                                <?php echo $this->getChildHtml('minicart_head') ?>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                            <?php echo $this->getChildHtml('minicart_head') ?>
                             <div class="col-xs-12 col-sm-5 col-sm-height col-sm-middle col-sm-pull-3 header-search">
                                 <?php echo $this->getChildHtml('topSearch') ?>
                                 <button class="button button-filter collapsed visible-xs" type="button" data-toggle="collapse" data-target=".col-left" aria-controls="col-left" aria-expanded="false">

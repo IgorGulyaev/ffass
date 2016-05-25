@@ -31,6 +31,18 @@
  */
 
 ?>
-<form id="header-cart" class="block-cart skip-content">
-    <?php echo $this->getChildHtml('minicart_content');?>
-</form>
+
+<div class="col-xs-3 col-sm-3 col-xs-height col-xs-middle col-sm-push-5 header-cart">
+    <ul class="nav nav-inline header-nav-cart">
+        <li class="dropdown">
+            <?php echo $this->getChildHtml('cart_link'); ?>
+            <ul class="dropdown-menu dropdown-menu-cart pull-right">
+                <li class="header-minicart">
+                    <form id="header-cart" class="block-cart skip-content">
+                        <?php echo $this->getChildHtml('minicart_content');?>
+                    </form>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
