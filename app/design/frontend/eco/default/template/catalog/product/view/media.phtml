@@ -76,34 +76,49 @@ $quality  = ($this->getQuality()) ? $this->getQuality() : 100;
         </div>
     </div>
     <div class="product-img product-view-img">
-        <ul class="owl-carousel">
+        <ul id="masterslider">
             <?php foreach ($this->getGalleryImages() as $_image): ?>
-                <li class="item">
+                <li class="item ms-slide">
+                    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeImg);?>" data-src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeImg);?>">
                     <a href="#product-media-modal" class="product-img-big" data-toggle="modal">
-                        <img id="main-product-image" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeImg);?>">
+                        <!--<img src="<?php /*echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeImg);*/?>">-->
+                        <!--<img id="main-product-image" src="<?php /*echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeImg);*/?>">-->
                     </a>
+                    <img class="ms-thumb" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeImg);?>" data-src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeImg);?>">
                 </li>
             <?php endforeach; ?>
         </ul>
-        <div class="carousel product-thumbs">
-            <?php if($this->getGalleryImages()->getSize() > $visibleThumbnails): ?>
+        <!--<div class="carousel product-thumbs">
+            <?php /*if($this->getGalleryImages()->getSize() > $visibleThumbnails): */?>
                 <a href="#" class="carousel-controls prev"><i class="icon-left2"></i></a>
                 <a href="#" class="carousel-controls next"><i class="icon-right2"></i></a>
-            <?php endif; ?>
+            <?php /*endif; */?>
             <div class="product-thumbs-img">
                 <ul class="owl-carousel-thumbs">
-                    <?php foreach ($this->getGalleryImages() as $_image): ?>
+                    <?php /*foreach ($this->getGalleryImages() as $_image): */?>
                         <li class="item">
-                            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeThumbnail);?>">
+                            <img src="<?php /*echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeThumbnail);*/?>">
                         </li>
-                    <?php endforeach; ?>
+                    <?php /*endforeach; */?>
                 </ul>
             </div>
-        </div>
+        </div>-->
     </div>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
-            var $sync1 = $(".product-img .owl-carousel"),
+
+            var slider = new MasterSlider();
+            slider.setup('masterslider' , {
+                width:415,
+                height:555,
+                space:5,
+                view:'basic'
+            });
+            slider.control('arrows');
+            slider.control('thumblist' , {autohide:false ,dir:'v',arrows:true});
+
+
+            /*var $sync1 = $(".product-img .owl-carousel"),
                 $sync2 = $(".product-img .product-thumbs .owl-carousel-thumbs"),
                 flag = false,
                 duration = 100;
@@ -192,7 +207,7 @@ $quality  = ($this->getQuality()) ? $this->getQuality() : 100;
                 navheight:24
             }).on('click', '.item', function () {
                 $sync1.trigger('to.owl.carousel', [$(this).index(), duration, true]);
-            });
+            });*/
             /*$sync2.owlCarouselVert({
                 margin: 0,
                 items: <?php echo $visibleThumbnails ?>,

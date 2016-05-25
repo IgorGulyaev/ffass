@@ -3440,8 +3440,14 @@ span.product-image {
         border-color: #dae2ea;
     }
 
+    .product-view .product-view-img .owl-carousel.owl-loaded {
+        float: right;
+        width: 70%;
+    }
     .product-view .product-thumbs {
         margin-top: 15px;
+        float: left;
+        width: 30%;
     }
 
     .product-view .product-thumbs-img {

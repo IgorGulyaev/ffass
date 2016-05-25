@@ -116,6 +116,7 @@
         </reference>
 
         <reference name="right">
+            <remove name="right.reports.product.compared"/>
             <remove name="amazon_payments.button.right.logo"/>
         </reference>
 

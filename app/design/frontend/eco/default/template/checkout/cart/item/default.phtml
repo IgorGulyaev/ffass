@@ -77,7 +77,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     </div>
     <div class="col-xs-2 col-sm-2 col-xs-height col-xs-middle col-price">
         <div class="price-box cart-price-box">
-            <?php if ($this->getQty() > 1): ?>
+            <?php if ($this->getQty() >= 1): ?>
                 <span class="cart-price cart-price-total">
                     <span class="price"><?php echo $this->helper('checkout')->formatPrice($_item->getRowTotal()) ?></span>
                 </span>

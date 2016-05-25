@@ -62,14 +62,18 @@
 	<div class="product-img product-view-img hidden-xs">
 		<ul id="etalage" class="hidden-xs <?php if(count($this->getGalleryImages()) >= 4):?>slide<?php endif; ?>">
 			<li>
-				<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image')); ?>" />
+				<a href="#product-media-modal" class="product-img-big" data-toggle="modal">
+					<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image')); ?>" />
+				</a>
 				<img class="etalage_source_image" title="<?php echo $_product->getImageLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image'), true); ?>" />
 			</li>
 			<?php
 			foreach ($this->getGalleryImages() as $_image) {
 				if(Mage::registry('current_product')->getImage() != $_image->getFile()) { ?>
 					<li>
-						<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())); ?>" />
+						<a href="#product-media-modal" class="product-img-big" data-toggle="modal">
+							<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())); ?>" />
+						</a>
 						<img class="etalage_source_image" title="<?php echo $_image->getLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()), true); ?>" />
 					</li>
 					<?php

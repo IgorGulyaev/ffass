@@ -87,6 +87,12 @@
                 <stylesheet>css/ion.rangeSlider.skinFlat.css</stylesheet>
             </action>
             <action method="addCss">
+                <stylesheet>css/masterslider/masterslider.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/masterslider/ms-staff-style.css</stylesheet>
+            </action>
+            <action method="addCss">
                 <stylesheet>css/theme.css</stylesheet>
             </action>
             <action method="addCss">
@@ -125,6 +131,18 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <name>js/jquery.html5-placeholder-shim.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/masterslider/masterslider.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/masterslider/masterslider.staff.carousel.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/masterslider/jquery.easing.min.js</name>
             </action>
             <action method="addItem">
                 <type>skin_js</type>
