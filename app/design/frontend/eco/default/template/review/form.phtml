@@ -35,7 +35,7 @@
         <?php foreach ($this->getRatings() as $_rating): ?>
         <div class="col-sm-4">
             <div class="input-box">
-                <label class="control-label"><?php echo $this->escapeHtml($_rating->getRatingCode()) ?></label>
+                <label class="control-label"><em>*</em><?php echo $this->escapeHtml($_rating->getRatingCode()) ?></label>
                 <?php
                     $ratingId = $_rating->getId();
                     $step = 5;
@@ -43,6 +43,7 @@
                     $minOptionValue = $maxOptionValue-$step+1;
                 ?>
                 <input type="number" data-min="<?php echo $minOptionValue; ?>" data-max="<?php echo $maxOptionValue; ?>" name="ratings[<?php echo $ratingId ?>]" id="ratings[<?php echo $ratingId ?>]" class="rating">
+                <div class="validation-advice" style="margin-right: 105px;display: none" id="advice-required-entry-nickname_field_<?php echo $ratingId ?>">This is a required field.</div>
             </div>
         </div>
         <?php endforeach; ?>
@@ -101,6 +102,18 @@
             var r1 = document.getElementById('ratings[1]').value;
             var r2 = document.getElementById('ratings[2]').value;
             var r3 = document.getElementById('ratings[3]').value;
+            jQuery('#advice-required-entry-nickname_field_1').hide();
+            jQuery('#advice-required-entry-nickname_field_2').hide();
+            jQuery('#advice-required-entry-nickname_field_3').hide();
+            if(r1 == ''){
+                jQuery('#advice-required-entry-nickname_field_1').show();
+            }
+            if(r2 == ''){
+                jQuery('#advice-required-entry-nickname_field_2').show();
+            }
+            if(r3 == ''){
+                jQuery('#advice-required-entry-nickname_field_3').show();
+            }
             if(r1 == '' || r2 == '' || r3 == ''){
                 alert("Please specify ratings options.");
                 return false;
