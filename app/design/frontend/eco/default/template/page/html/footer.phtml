@@ -45,16 +45,19 @@
                         <div class="footer-center">
                             <?php echo $this->getChildHtml('footer-social'); ?>
                             <?php echo $this->getChildHtml('footer-help-center'); ?>
+                            <div class="footer-phone contact-line">
+                                <span><?php echo $this->__('Toll Free:') ?></span><a href="tel:<?php echo Mage::getStoreConfig('general/store_information/toll_free'); ?>"><?php echo Mage::getStoreConfig('general/store_information/toll_free'); ?></a>
+                            </div>
                             <?php if(Mage::getStoreConfig('general/store_information/phone')): ?>
                                 <div class="footer-phone contact-line">
                                     <span><?php echo $this->__('Direct:') ?></span><a href="tel:<?php echo Mage::getStoreConfig('general/store_information/phone'); ?>"><?php echo Mage::getStoreConfig('general/store_information/phone'); ?></a>
                                 </div>
                             <?php endif; ?>
-                            <?php if(Mage::getStoreConfig('general/store_information/address')): ?>
-                                <address class="footer-address contact-line hidden-xs">
-                                    <?php echo Mage::getStoreConfig('general/store_information/address'); ?>
-                                </address>
-                            <?php endif; ?>
+<!--                            --><?php //if(Mage::getStoreConfig('general/store_information/address')): ?>
+<!--                                <address class="footer-address contact-line hidden-xs">-->
+<!--                                    --><?php //echo Mage::getStoreConfig('general/store_information/address'); ?>
+<!--                                </address>-->
+<!--                            --><?php //endif; ?>
                             <?php if(Mage::getStoreConfig('trans_email/ident_general/email')): ?>
                                 <div class="footer-email contact-line">
                                     <span><?php echo $this->__('Email:') ?></span><a href="mailto:<?php echo Mage::getStoreConfig('trans_email/ident_general/email'); ?>"><?php echo Mage::getStoreConfig('trans_email/ident_general/email'); ?></a>
