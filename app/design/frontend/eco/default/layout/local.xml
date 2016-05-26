@@ -64,8 +64,10 @@
         <reference name="header">
             <!--<block type="core/template" name="login.modal" as="login_modal" template="persistent/customer/form/login-modal.phtml" />-->
             <block type="directory/currency" name="custom_currency_selector" template="currency/currency.phtml"/>
-            <block type="checkout/cart_sidebar" name="cart.link" as="cart_link" template="checkout/cart/link.phtml" />
+            <block type="core/template" name="register_links" template="page/html/account-nav.phtml"/>
+
             <block type="checkout/cart_minicart" name="minicart_head" template="checkout/cart/minicart.phtml" before="-">
+                <block type="checkout/cart_sidebar" name="cart.link" as="cart_link" template="checkout/cart/link.phtml" />
                 <block type="checkout/cart_sidebar" name="minicart_content" template="checkout/cart/minicart/items.phtml">
                     <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/cart/minicart/default.phtml</template></action>
                     <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/minicart/default.phtml</template></action>
