@@ -4397,6 +4397,24 @@ span.product-image {
     animation-name: shake;
 }
 
+#contactForm .messages {
+    position: relative;
+    max-width: 100%;
+    right: 0;
+    bottom: 0;
+}
+#contactForm .success-msg {
+    background-color: transparent;
+    color: #efab01 !important;
+    font-size: 24px;
+    font-weight: 600;
+    background: url("../images/butterfly.png") no-repeat 0 0;
+    padding: 9px 10px 15px 20px;
+    text-align: left;
+    -webkit-background-size: 32px auto;
+    background-size: 32px auto;
+}
+
 .limit {
     padding-top: 15px;
 }
