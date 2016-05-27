@@ -874,9 +874,39 @@ a[href*='paypal'] {
 #checkout-step-login {
   padding: 0;
 }
+#checkout-step-login #login-form {
+  margin-bottom: 0;
+}
 #checkout-step-login .buttons-set {
   margin-top: 0;
   margin-bottom: 20px;
+}
+#checkout-step-login .buttons-set .f-left {
+  margin-bottom: 30px;
+}
+#accountLogin,
+#checkout-step-login {
+  .fb_login {
+    text-align: center;
+    .or-line {
+      position: relative;
+      margin: 10px 0 30px;
+      border-bottom: 1px solid #efefef;
+      text-align: center;
+      span {
+        position: relative;
+        top: 15px;
+        display: inline-block;
+        padding: 5px;
+        background-color: #fff;
+        color: #efefef;
+        font-size: 14px;
+      }
+    }
+  }
+}
+#accountLogin .fb_login .or-line {
+  margin-top: -20px;
 }
 
 #authorizenet_cc_type_cvv_div {

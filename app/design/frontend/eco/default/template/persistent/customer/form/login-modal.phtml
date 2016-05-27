@@ -69,7 +69,12 @@
                         <p><button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Register')) ?>" class="button link" onclick="window.location='<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>';"><span><span><?php echo $this->__('Register') ?></span></span></button></p>
                     </div>
                 </form>
-                <?php echo $this->getLayout()->createBlock('facebookfree/links_button')->setTemplate('belvg/facebookfree/form/button.phtml')->toHtml(); ?>
+                <div class="fb_login">
+                    <div class="or-line">
+                        <span><?php echo $this->__('OR') ?></span>
+                    </div>
+                    <?php echo $this->getLayout()->createBlock('facebookfree/links_button')->setTemplate('belvg/facebookfree/form/button.phtml')->toHtml(); ?>
+                </div>
             </div>
         </div>
         <script type="text/javascript">

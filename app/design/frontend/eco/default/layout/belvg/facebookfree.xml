@@ -25,9 +25,9 @@
 
     <checkout_onepage_index>
         <reference name="checkout.onepage.login">
-            <action method="setTemplate">
+            <!--<action method="setTemplate">
                 <template>belvg/facebookfree/form/checkout/login.phtml</template>
-            </action>
+            </action>-->
             <block type="persistent/form_remember" name="persistent.remember.me" template="persistent/remember_me.phtml" />
             <block type="facebookfree/links_button" name="belvg_facebookfree_button" template="belvg/facebookfree/form/button.phtml" />
         </reference>
