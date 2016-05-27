@@ -23,46 +23,10 @@
 	$quality  = ($this->getQuality()) ? $this->getQuality() : 100;
 ?>
 <?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
-	<div class="modal fade modal-media" id="product-media-modal" data-backdrop="false">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="icon-close"></i></button>
-					<h3 class="modal-title"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h3>
-				</div>
-				<div class="modal-body">
-					<div class="product-img">
-						<ul class="owl-carousel">
-							<?php foreach ($this->getGalleryImages() as $_image): ?>
-								<li class="item">
-									<a data-toggle="media" href="#product-media-modal" class="open-big">
-										<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeImg);?>">
-									</a>
-								</li>
-							<?php endforeach; ?>
-						</ul>
-						<div class="carousel product-thumbs">
-							<?php if($this->getGalleryImages()->getSize() > 3): ?>
-								<a href="#" class="carousel-controls prev"><i class="icon-left2"></i></a>
-								<a href="#" class="carousel-controls next"><i class="icon-right2"></i></a>
-							<?php endif; ?>
-							<div class="product-thumbs-img">
-								<ul class="owl-carousel-thumbs">
-									<?php foreach ($this->getGalleryImages() as $_image): ?>
-										<li class="item"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'small_image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeThumbnail);?>"></li>
-									<?php endforeach; ?>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="product-img product-view-img hidden-xs">
 		<ul id="etalage" class="hidden-xs <?php if(count($this->getGalleryImages()) >= 4):?>slide<?php endif; ?>">
 			<li>
-				<a href="#product-media-modal" class="product-img-big" data-toggle="modal">
+				<a href="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image'), true); ?>" class="product-img-big fancybox" data-fancybox-group="gallery">
 					<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image')); ?>" />
 				</a>
 				<img class="etalage_source_image" title="<?php echo $_product->getImageLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image'), true); ?>" />
@@ -71,7 +35,7 @@
 			foreach ($this->getGalleryImages() as $_image) {
 				if(Mage::registry('current_product')->getImage() != $_image->getFile()) { ?>
 					<li>
-						<a href="#product-media-modal" class="product-img-big" data-toggle="modal">
+						<a href="<?php echo $_image->getLabel(); ?>" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->keepTransparency(true)->setQuality($quality)->resize($resizeImg);?>" class="product-img-big fancybox" data-fancybox-group="gallery">
 							<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())); ?>" />
 						</a>
 						<img class="etalage_source_image" title="<?php echo $_image->getLabel(); ?>" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()), true); ?>" />
@@ -87,14 +51,6 @@
 			<span class="etalage_nav etalage_nav_start" onclick="thumbsNavStart();"><i class="icon-arrow-down2"></i></span>
 		</div>
 		<?php endif; ?>
-		<script type="text/javascript">
-			function thumbsNavStart() {
-				jQuery('.etalage_smallthumb_last').trigger('click');
-			}
-			function thumbsNavEnd() {
-				jQuery('.etalage_smallthumb_first').trigger('click');
-			}
-		</script>
 	</div>
 	<div class="product-img product-view-img visible-xs">
 		<ul class="owl-carousel">
@@ -123,6 +79,7 @@
 		</div>
 		<script type="text/javascript">
 			jQuery(document).ready(function ($) {
+				$('.fancybox').fancybox();
 				var $sync1 = $(".product-img .owl-carousel"),
 					$sync2 = $(".product-img .product-thumbs .owl-carousel-thumbs"),
 					flag = false,
@@ -159,6 +116,14 @@
 				});
 				// $('.product-img-big').zoom();
 			});
+			function thumbsNavStart() {
+				jQuery('.etalage_smallthumb_last').trigger('click');
+				jQuery(".product-img .owl-carousel").trigger('next.owl.carousel');
+			}
+			function thumbsNavEnd() {
+				jQuery('.etalage_smallthumb_first').trigger('click');
+				jQuery(".product-img .owl-carousel").trigger('prev.owl.carousel');
+			}
 		</script>
 	</div>
 <?php else: ?>

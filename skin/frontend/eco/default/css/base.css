@@ -3450,6 +3450,7 @@ span.product-image {
         float: right;
         width: 70%;
     }
+
     .product-view .product-thumbs {
         margin-top: 15px;
         float: left;
@@ -5654,3 +5655,14 @@ form p.required,
     }
 }
 
+
+@media screen and (max-width: 767px) {
+    .product-view .product-view-img .owl-carousel.owl-loaded {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .product-shop #etalage {
+        max-height: 480px;
+    }
+}

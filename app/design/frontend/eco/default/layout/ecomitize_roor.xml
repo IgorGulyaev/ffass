@@ -87,6 +87,9 @@
                 <stylesheet>css/ion.rangeSlider.skinFlat.css</stylesheet>
             </action>
             <action method="addCss">
+                <stylesheet>css/jquery.fancybox.css</stylesheet>
+            </action>
+            <action method="addCss">
                 <stylesheet>css/masterslider/masterslider.css</stylesheet>
             </action>
             <action method="addCss">
@@ -131,6 +134,10 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <name>js/jquery.html5-placeholder-shim.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery.fancybox.js</name>
             </action>
             <action method="addItem">
                 <type>skin_js</type>
