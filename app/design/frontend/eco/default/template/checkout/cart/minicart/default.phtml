@@ -27,6 +27,7 @@
 <?php
     $_item = $this->getItem();
     $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
+    $orderOptions = $_item->getProduct()->getTypeInstance(true)->getOrderOptions($_item->getProduct());
     $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
 <li class="item" xmlns="http://www.w3.org/1999/html">
@@ -44,6 +45,20 @@
             <div class="product-details">
                 <p class="product-name"><?php if ($this->hasProductUrl()): ?><a href="<?php echo $this->getProductUrl() ?>"><?php endif; ?><?php echo $this->escapeHtml($this->getProductName()) ?><?php if ($this->hasProductUrl()): ?></a><?php endif; ?></p>
                 <div class="info-wrapper">
+                    <div class="attributes-info">
+                        <?php if(!empty($orderOptions['attributes_info'])): ?>
+                            <?php foreach($orderOptions['attributes_info'] as $option): ?>
+                                <div><?php echo $option['label'] . ': ' . $option['value'] ?></div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="bundle-options">
+                        <?php if(!empty($orderOptions['bundle_options'])): ?>
+                            <?php foreach($orderOptions['bundle_options'] as $option): ?>
+                                <div><?php echo $option['label'] . ': ' . $option['value'][0]['title'] ?></div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
                     <div class="product-qty">
                         <?php echo $this->__('Qty') ?>: <?php echo $this->getQty()?>
                     </div>
