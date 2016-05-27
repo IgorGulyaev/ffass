@@ -4689,7 +4689,7 @@ span.product-image {
         border: none !important;
         background-color: #efab01;
     }
-    .opc .section.allow:not(.active) .buttons-set button {
+    .opc .section.allow:not(.active):not(#opc-login) .buttons-set button {
         display: none !important;
     }
 }
