@@ -4141,7 +4141,7 @@ span.product-image {
 .cart-right .cart-checkout {
     margin-bottom: 0;
 }
-.cart-right .paypal-logo .checkout-form-submit {
+.cart-right .paypal-logo > a {
     margin: 0 0 0 10px !important;
     text-align: left;
     text-decoration: underline;
