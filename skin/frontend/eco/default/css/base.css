@@ -4138,6 +4138,14 @@ span.product-image {
 .cart-right .button.btn-checkout {
     margin-top: 15px;
 }
+.cart-right .cart-checkout {
+    margin-bottom: 0;
+}
+.cart-right .paypal-logo .checkout-form-submit {
+    margin: 0 0 0 10px !important;
+    text-align: left;
+    text-decoration: underline;
+}
 
 @media (min-width: 991px) {
 
