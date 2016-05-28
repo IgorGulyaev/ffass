@@ -32,6 +32,9 @@
 ?>
 
 <?php
+$routName = Mage::app()->getRequest()->getRouteName();
+$actionName = Mage::app()->getRequest()->getActionName();
+$controllerName = Mage::app()->getRequest()->getControllerName();
 $pageTitle = $this->getLayout()->getBlock('head')->getTitle();
 
 /*echo '<h5>'.$pageTitle.'</h5>';*/
@@ -39,8 +42,8 @@ $pageTitle = $this->getLayout()->getBlock('head')->getTitle();
 <div class="track hidden-xs">
     <ul class="track-items">
         <li><a data-toggle="modal" data-target="#shopping"><?php echo $this->__('Keep shopping') ?></a></li>
-        <li class="<?php if($pageTitle == 'Shopping Cart') { echo 'active'; }?>"><?php if($pageTitle == 'Shopping Cart') { echo '<span>'.$this->__("Shopping cart").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/cart").'">'.$this->__("Shopping cart").'</a>'; } ?></li>
-        <li class="<?php if($pageTitle == 'Checkout') { echo 'active'; }?>"><?php if($pageTitle == 'Checkout') { echo '<span>'.$this->__("Customer information").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/onepage").'">'.$this->__("Customer information").'</a>'; } ?></li>
+        <li class="<?php if($routName == 'checkout' && $controllerName == 'cart') { echo 'active'; }?>"><?php if($routName == 'checkout' && $controllerName == 'cart') { echo '<span>'.$this->__("Shopping cart").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/cart").'">'.$this->__("Shopping cart").'</a>'; } ?></li>
+        <li class="<?php if($routName == 'checkout' && $controllerName == 'onepage') { echo 'active'; }?>"><?php if($routName == 'checkout' && $controllerName == 'onepage') { echo '<span>'.$this->__("Customer information").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/onepage").'">'.$this->__("Customer information").'</a>'; } ?></li>
         <li><a href="/"><?php echo $this->__('Order review') ?></a></li>
         <li class="<?php if($pageTitle == 'Magento Commerce') { echo 'active'; }?>"><?php if($pageTitle == 'Magento Commerce') { echo '<span>'.$this->__("Order confirmation").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/onepage/success").'">'.$this->__("Order confirmation").'</a>'; } ?></li>
     </ul>
@@ -48,8 +51,8 @@ $pageTitle = $this->getLayout()->getBlock('head')->getTitle();
 <div class="track mobile visible-xs">
     <ul class="track-items owl-carousel">
         <li><a data-toggle="modal" data-target="#shopping"><?php echo $this->__('Keep shopping') ?></a></li>
-        <li class="<?php if($pageTitle == 'Shopping Cart') { echo 'active'; }?>"><?php if($pageTitle == 'Shopping Cart') { echo '<span>'.$this->__("Shopping cart").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/cart").'">'.$this->__("Shopping cart").'</a>'; } ?></li>
-        <li class="<?php if($pageTitle == 'Checkout') { echo 'active'; }?>"><?php if($pageTitle == 'Checkout') { echo '<span>'.$this->__("Customer information").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/onepage").'">'.$this->__("Customer information").'</a>'; } ?></li>
+        <li class="<?php if($routName == 'checkout' && $controllerName == 'cart') { echo 'active'; }?>"><?php if($routName == 'checkout' && $controllerName == 'cart') { echo '<span>'.$this->__("Shopping cart").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/cart").'">'.$this->__("Shopping cart").'</a>'; } ?></li>
+        <li class="<?php if($routName == 'checkout' && $controllerName == 'onepage') { echo 'active'; }?>"><?php if($routName == 'checkout' && $controllerName == 'onepage') { echo '<span>'.$this->__("Customer information").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/onepage").'">'.$this->__("Customer information").'</a>'; } ?></li>
         <li><a href="/"><?php echo $this->__('Order review') ?></a></li>
         <li class="<?php if($pageTitle == 'Magento Commerce') { echo 'active'; }?>"><?php if($pageTitle == 'Magento Commerce') { echo '<span>'.$this->__("Order confirmation").'<i class="icon-curve"></i></span>'; } else { echo '<a href="'.$this->getUrl("checkout/onepage/success").'">'.$this->__("Order confirmation").'</a>'; } ?></li>
     </ul>
@@ -62,10 +65,10 @@ $pageTitle = $this->getLayout()->getBlock('head')->getTitle();
                 <h4 class="modal-title"><?php echo $this->__('Are you sure you want to leave the checkout process?') ?></h4>
             </div>
             <div class="modal-body a-center">
-                <button type="button" class="button btn-orange" data-dismiss="modal"><?php echo $this->__('continue checkout') ?></button>
+                <button onclick="window.location = '<?php echo $this->getUrl('checkout/onepage') ?>'" type="button" class="button btn-orange" data-dismiss="modal"><?php echo $this->__('continue checkout') ?></button>
             </div>
             <div class="modal-footer">
-                <a class="green" href="/"><?php echo $this->__('Continue shopping') ?></a>
+                <a class="green" href="<?php echo Mage::getBaseUrl() ?>"><?php echo $this->__('Continue shopping') ?></a>
             </div>
         </div>
     </div>
