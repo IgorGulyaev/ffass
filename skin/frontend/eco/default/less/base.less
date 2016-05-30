@@ -812,6 +812,10 @@ table[class*='data-table'] {
     &> ul {
       &> li {
         padding: 0;
+        &:nth-child(3n) {
+          clear: both;
+          margin-top: 20px;
+        }
         &:nth-child(even) {
           float: right;
         }

@@ -4737,7 +4737,7 @@ span.product-image {
 @media (min-width: 768px) {
     #authorizenet_cc_type_exp_div .input-box,
     #payment_form_authorizenet {
-        display: block !important;
+        /*display: block !important;*/
         position: relative;
         margin-left: -10px;
         margin-right: -10px;
