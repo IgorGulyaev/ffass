@@ -44,7 +44,7 @@ For checkout/onepage/shipping.phtml:
 */
 /* @var $this Mage_Customer_Block_Widget_Name */
 ?>
-<div class="<?php echo $this->getContainerClassName()?>">
+<div class="<?php echo $this->getContainerClassName()?> row">
 <?php if ($this->showPrefix()): ?>
     <div class="field name-prefix">
         <label for="<?php echo $this->getFieldId('prefix')?>"<?php if ($this->isPrefixRequired()) echo ' class="required"' ?>><?php if ($this->isPrefixRequired()) echo '<em>*</em>' ?><?php echo $this->getStoreLabel('prefix') ?></label>
@@ -61,13 +61,13 @@ For checkout/onepage/shipping.phtml:
         </div>
     </div>
 <?php endif; ?>
-    <div class="field name-firstname">
+    <div class="field name-firstname col-sm-6">
         <label for="<?php echo $this->getFieldId('firstname')?>" class="required"><em>*</em><?php echo $this->getStoreLabel('firstname') ?></label>
         <div class="input-box">
             <input required type="text" id="<?php echo $this->getFieldId('firstname')?>" name="<?php echo $this->getFieldName('firstname')?>" value="<?php echo $this->escapeHtml($this->getObject()->getFirstname()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->getStoreLabel('firstname')) ?>" maxlength="255" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('firstname') ?>" <?php echo $this->getFieldParams() ?> />
         </div>
     </div>
-    <div class="field name-lastname">
+    <div class="field name-lastname col-sm-6">
         <label for="<?php echo $this->getFieldId('lastname')?>" class="required"><em>*</em><?php echo $this->getStoreLabel('lastname') ?></label>
         <div class="input-box">
             <input required type="text" id="<?php echo $this->getFieldId('lastname')?>" name="<?php echo $this->getFieldName('lastname')?>" value="<?php echo $this->escapeHtml($this->getObject()->getLastname()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->getStoreLabel('lastname')) ?>" maxlength="255" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('lastname') ?>" <?php echo $this->getFieldParams() ?> />

@@ -63,6 +63,7 @@
 
         <reference name="header">
             <!--<block type="core/template" name="login.modal" as="login_modal" template="persistent/customer/form/login-modal.phtml" />-->
+            <!--<block type="core/template" name="login.modal" as="login_modal" template="persistent/customer/form/login-modal.phtml" />-->
             <block type="directory/currency" name="custom_currency_selector" template="currency/currency.phtml"/>
             <block type="core/template" name="register_links" template="page/html/account-nav.phtml"/>
 

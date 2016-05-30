@@ -1039,10 +1039,27 @@ a[href*='paypal'] {
   .modal-dialog {
   }
 }
+#accountCreate {
+  .modal-body {
+    form {
+      margin-bottom: 20px;
+    }
+    .control {
+      label {
+        padding-top: 30px;
+      }
+    }
+  }
+}
 @media (min-width: 767px) {
   #accountLogin {
     .modal-dialog {
       width: 394px;
+    }
+  }
+  #accountCreate {
+    .modal-dialog {
+      width: 630px;
     }
   }
 }
@@ -1501,6 +1518,9 @@ ul.pages-accordeon {
       font-weight: 100;
       text-shadow: none;
     }
+  }
+  .modal-info {
+    text-transform: none;
   }
 }
 /* END MODALS */
