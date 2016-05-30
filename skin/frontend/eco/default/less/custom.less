@@ -537,6 +537,33 @@ header {
             text-align: center;
             line-height: 43px;
           }
+          .caret {
+            right: 22px;
+            margin-top: 14px;
+            border: none;
+            font-family: 'icomoon';
+            display: inline-block;
+            speak: none;
+            font-size: 6px;
+            font-style: normal;
+            font-weight: bold;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #000;
+            -webkit-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+            &:before {
+              content: "\e900";
+            }
+          }
+          .dropdown-menu {
+            margin: 0 !important;
+          }
         }
         i {
           position: absolute;
