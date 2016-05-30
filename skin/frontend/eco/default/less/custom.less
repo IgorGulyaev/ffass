@@ -1614,3 +1614,40 @@ ul.pages-accordeon {
   z-index: 5;
 }
 
+/* SIZE CHARTS */
+.size_chart_table {
+  .table-item {
+    float: left;
+    padding: 10px 10px 15px 10px;
+    width: 50%;
+    &:nth-child(odd) {
+      clear: left;
+    }
+  }
+  table {
+    width: 100%;
+    margin-bottom: 0 !important;
+    vertical-align: top;
+    text-align: center;
+    border: 1px solid #cc1d21 !important;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    thead {
+      th {
+        text-align: center;
+      }
+    }
+    td {
+      padding: 5px;
+      vertical-align: top;
+      border: 1px solid #cc1d21 !important;
+      text-align: center;
+    }
+  }
+  &~ p {
+    float: left;
+    width: 100%;
+  }
+}
+/* END SIZE CHARTS */
