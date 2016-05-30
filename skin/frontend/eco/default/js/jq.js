@@ -1,5 +1,10 @@
 jQuery(document).ready(function ($) {
 
+    $('.selectpicker').selectpicker({
+        size: 4
+    });
+
+
     var activeurl = window.location;
     $('.dropdown-menu.account-nav li a[href="'+activeurl+'"]').parent().addClass('active');
 

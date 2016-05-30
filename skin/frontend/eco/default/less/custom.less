@@ -521,16 +521,28 @@ header {
         }
       }
       &.right {
-        padding: 0 6px;
-        border: 1px dashed #a8a8a8;
-        text-align: center;
-        .border-radius(5px);
-        i {
-          margin-right: 15px;
-          color: @orange;
+        position: relative;
+        .bootstrap-select {
+          button {
+            padding: 0;
+            border: none;
+            background: none !important;
+            outline: none !important;
+          }
+          .filter-option {
+            padding: 0 6px;
+            height: 43px;
+            border: 1px dashed #a8a8a8;
+            .border-radius(5px);
+            text-align: center;
+            line-height: 43px;
+          }
         }
-        span {
-          font-size: 16px;
+        i {
+          position: absolute;
+          top: 14px;
+          left: 15px;
+          color: @orange;
         }
       }
     }

@@ -96,6 +96,9 @@
                 <stylesheet>css/masterslider/ms-staff-style.css</stylesheet>
             </action>
             <action method="addCss">
+                <stylesheet>css/bootstrap-select.min.css</stylesheet>
+            </action>
+            <action method="addCss">
                 <stylesheet>css/theme.css</stylesheet>
             </action>
             <action method="addCss">
@@ -150,6 +153,10 @@
             <action method="addItem">
                 <type>skin_js</type>
                 <name>js/masterslider/jquery.easing.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/bootstrap-select.min.js</name>
             </action>
             <action method="addItem">
                 <type>skin_js</type>
