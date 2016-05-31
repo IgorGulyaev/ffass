@@ -630,6 +630,12 @@ a[href*='paypal'] {
   }
 }
 
+.header-cart {
+  .button.btn-cart {
+    display: block;
+  }
+}
+
 /* ~~~ Shopping cart ~~~ */
 .checkout-onepage-success,
 .checkout-cart-index,
@@ -809,6 +815,13 @@ a[href*='paypal'] {
   border: 1px dashed #cdcdcd;
   .border-radius(5px);
 }
+.add-confirm-wrapper {
+  h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+}
 .add-confirm-wrapper,
 .mini-products-list {
   .col-image {
@@ -823,13 +836,19 @@ a[href*='paypal'] {
       .border-radius(5px);
     }
   }
+  .old-price {
+    display: none !important;
+  }
   .info-wrapper {
     &> div {
-      display: inline-block;
       font-weight: 600;
     }
     .product-qty {
+      display: inline-block;
       margin-right: 15px;
+    }
+    .price-box {
+      display: inline-block;
     }
   }
 }
@@ -837,9 +856,9 @@ a[href*='paypal'] {
 .ajaxcartpro-box-hide {
   position: absolute;
   top: 100%;
-  right: 0;
+  right: 16px;
   z-index: 1000;
-  margin: 2px 0 0;
+  margin: -20px 0 0;
   font-size: 14px;
   text-align: left;
   list-style: none;
