@@ -767,12 +767,6 @@ table[class*='data-table'] > tbody + tbody {
     border-top: 2px solid #dae2ea;
 }
 
-table[class*='data-table'] > tbody > tr:hover,
-[id*='totals-table'] > tbody > tr:hover,
-.sp-methods dd:hover {
-    background-color: #dae2ea;
-}
-
 table[class*='data-table'] .product-name {
     margin-top: 0;
     text-align: left!important;
