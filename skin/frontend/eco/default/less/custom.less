@@ -1036,10 +1036,38 @@ a[href*='paypal'] {
           width: 100%;
           text-align: center;
         }
+        &:after {
+          position: absolute;
+          top: 6px;
+          font-family: 'icomoon';
+          display: inline-block;
+          speak: none;
+          font-style: normal;
+          font-weight: normal;
+          font-variant: normal;
+          text-transform: none;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          color: #939393;
+          -webkit-transition: all 0.3s ease-out;
+          -moz-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+          font-size: 14px;
+          content: "\e902";
+          right: -4px;
+        }
       }
       &.active {
         span {
           color: @orange;
+        }
+      }
+      &:last-child {
+        a, span {
+          &:after {
+            display: none;
+          }
         }
       }
     }
