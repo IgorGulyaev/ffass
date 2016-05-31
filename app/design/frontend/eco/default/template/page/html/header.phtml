@@ -6,6 +6,7 @@
 <button class="active-navbar hidden"><i class="icon-close"></i></button>
 <div class="backdrop"></div>
 <div class="content-wrapper">
+    <?php echo $this->getLayout()->createBlock('customer/form_register')->setTemplate('persistent/customer/form/register-modal.phtml')->toHtml(); ?>
     <header>
         <div class="header">
             <div class="header-top">
@@ -19,7 +20,6 @@
                     <?php echo $this->getChildHtml('register_links') ?>
                     <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe-header.phtml')->toHtml(); ?>
                     <?php echo $this->getLayout()->createBlock('customer/form_login')->setTemplate('persistent/customer/form/login-modal.phtml')->toHtml(); ?>
-                    <?php echo $this->getLayout()->createBlock('customer/form_register')->setTemplate('persistent/customer/form/register-modal.phtml')->toHtml(); ?>
                     <?php echo $this->getChildHtml('topLinks'); ?>
                 </div>
             </div>

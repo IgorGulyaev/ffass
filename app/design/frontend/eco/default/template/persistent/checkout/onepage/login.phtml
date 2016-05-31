@@ -58,7 +58,7 @@
                     <input type="radio" name="checkout_method" id="login:login" value="login" class="radio" /><label for="login:login" data-toggle="modal" data-target="#checkoutLogin"><?php echo $this->__('Login') ?></label>
                 </li>
                 <li class="control">
-                    <input type="radio" name="checkout_method" id="login:register" value="register"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" /><label for="login:register"><?php echo $this->__('Register') ?></label>
+                    <input type="radio" name="checkout_method" id="login:register" value="register"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" /><label for="login:register" data-toggle="modal" data-target="#accountCreate"><?php echo $this->__('Register') ?></label>
                 </li>
             </ul>
         <?php else: ?>
