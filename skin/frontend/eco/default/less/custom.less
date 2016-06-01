@@ -641,6 +641,7 @@ a[href*='paypal'] {
 }
 
 /* ~~~ Shopping cart ~~~ */
+.paypal-express-review,
 .checkout-onepage-success,
 .checkout-cart-index,
 .checkout-onepage-index {
@@ -890,6 +891,79 @@ a[href*='paypal'] {
   }
 }
 /* END MINI CART */
+
+/* PAYPAL REVIEW */
+.paypal-express-review {
+  .info-set {
+    max-width: 652px;
+    position: relative;
+    margin: 0 auto;
+    &> .legend {
+      display: none;
+    }
+    .box {
+      padding: 0;
+      border: none;
+      .border-radius(0);
+      .box-shadow(none);
+      .box-title {
+        padding: 0;
+        h3 {
+          position: relative;
+          margin: 0 0 20px;
+          height: 43px;
+          width: 100%;
+          border-radius: 4px;
+          background-color: #92b545;
+          color: #fff;
+          font-size: 17px;
+          font-weight: 600;
+          line-height: 43px;
+          text-align: center;
+          &:before {
+            display: block !important;
+            content: '';
+            position: absolute !important;
+            top: 3px;
+            left: 4px;
+            height: calc(~"100% - 6px");
+            width: calc(~"100% - 8px");
+            border: 2px dashed #fff;
+            border-radius: 5px;
+          }
+          .separator {
+            display: none;
+          }
+          a {
+            position: absolute;
+            right: 0;
+            top: 37px;
+            font-size: 12px;
+            text-transform: none;
+            font-weight: 300;
+            text-decoration: underline;
+            &:before {
+              display: none;
+            }
+          }
+        }
+      }
+      #shipping_method {
+        margin: 0 auto;
+      }
+    }
+  }
+  .buttons-set-order {
+    text-align: center;
+    button {
+      padding: 0 85px;
+      height: 43px;
+      border: none !important;
+      background-color: #efab01;
+    }
+  }
+}
+/* END PAYPAL REVIEW */
 
 #opc-login .step-title {
   display: none;

@@ -1969,6 +1969,7 @@ footer {
     body {
         padding-bottom: 261px;
     }
+    body.paypal-express-review,
     body[class*="checkout-"] {
         padding-bottom: 139px;
     }
@@ -4542,6 +4543,7 @@ span.product-image {
 
 /* checkout */
 
+#details-table .review-product-img,
 #checkout-review-table .review-product-img {
     width: 80px;
     float: left;
