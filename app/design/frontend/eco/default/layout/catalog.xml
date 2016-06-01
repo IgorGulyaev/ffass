@@ -210,7 +210,9 @@ Supported layout update handles (special):
                 <block type="core/template" name="product.info.special.price" as="special.price" template="catalog/product/view/special_price.phtml"/>
 
                 <block type="catalog/product_view" name="product.info.addto" as="addto" template="catalog/product/view/addto.phtml"/>
-                <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="catalog/product/view/addtocart.phtml"/>
+                <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="catalog/product/view/addtocart.phtml">
+                    <action method="append"><block>product.info.addto</block></action>
+                </block>
                 <block type="catalog/product_view" name="product.info.sizechart" as="sizechart" template="catalog/product/view/sizechart.phtml"/>
 
                 <block type="core/text_list" name="product.info.extrahint" as="extrahint" translate="label">
