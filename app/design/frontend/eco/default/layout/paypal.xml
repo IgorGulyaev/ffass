@@ -67,6 +67,7 @@
                 </block>
                 <block type="checkout/agreements" name="paypal.express.review.details.agreements" as="agreements" template="checkout/onepage/agreements.phtml"/>
             </block>
+            <block type="core/template" name="checkout_bottom" template="checkout/onepage/checkout_bottom.phtml" />
         </reference>
         <reference name="head">
             <action method="addItem"><type>skin_js</type><name>js/checkout/review.js</name></action>

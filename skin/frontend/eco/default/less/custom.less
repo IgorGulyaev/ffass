@@ -961,6 +961,9 @@ a[href*='paypal'] {
       border: none !important;
       background-color: #efab01;
     }
+    .loading {
+      display: block;
+    }
   }
 }
 /* END PAYPAL REVIEW */
@@ -1097,6 +1100,7 @@ a[href*='paypal'] {
       text-align: center;
       a, span {
         display: inline-block;
+        margin: 0 !important;
         color: #282828;
         font-size: 19px;
         text-transform: uppercase;
@@ -1109,6 +1113,9 @@ a[href*='paypal'] {
           height: 19px;
           width: 100%;
           text-align: center;
+        }
+        &:before {
+          display: none !important;
         }
         &:after {
           position: absolute;
