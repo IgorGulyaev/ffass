@@ -28,6 +28,7 @@
 $_item = $this->getItem();
 $_product= Mage::getSingleton('catalog/product')->load($_item->getProductId());
 $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
+$orderOptions = $_item->getProduct()->getTypeInstance(true)->getOrderOptions($_item->getProduct());
 $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
 ?>
 <div class="row cart-row">
@@ -39,8 +40,15 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     </div>
     <div class="col-xs-8 col-sm-4 col-xs-height col-xs-middle">
         <h3 class="product-name">
+            <?php $colorLabel = ''; if(!empty($orderOptions['attributes_info'])): ?>
+                <?php foreach($orderOptions['attributes_info'] as $option): ?>
+                    <?php if($option['label'] == 'Color'){$colorLabel = ' – '.$option['value'];} ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
             <?php if ($this->hasProductUrl()):?>
-                <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
+                <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->escapeHtml($this->getProductName()).$colorLabel; ?>
+
+                </a>
             <?php else: ?>
                 <?php echo $this->escapeHtml($this->getProductName()) ?>
             <?php endif; ?>
