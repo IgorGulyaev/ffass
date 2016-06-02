@@ -125,7 +125,12 @@
             <?php endforeach; ?>
         </dl>
         <script type="text/javascript">
-            jQuery('#shMethLabel').text(jQuery('input[type="radio"][name="shipping_method"][checked]').next('label').text());
+            var checkedInput = jQuery('input[type="radio"][name="shipping_method"][checked]');
+            if (!checkedInput.is()){
+                jQuery('#shMethLabel').text('Select shipping method');
+            } else {
+                jQuery('#shMethLabel').text(checkedInput.next('label').text());
+            }
             jQuery('#drop_shipping_method').change(function () {
                 var elVal = jQuery(this).val();
                 jQuery('input[type="radio"][name="shipping_method"]').each(function () {
