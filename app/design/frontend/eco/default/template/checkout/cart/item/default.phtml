@@ -33,7 +33,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 ?>
 <div class="row cart-row">
     <div class="col-xs-4 col-sm-3 col-xs-height col-xs-middle">
-        <a data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>" href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="close"><i class="icon-no"></i></a>
+        <a data-confirm="<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>" href="<?php echo $this->getDeleteUrl()?>" title="<?php echo $this->__('Remove item')?>" class="close"><i onclick="remIm('<?php echo $this->getUrl('checkout/cart')?>')" class="icon-no"></i></a>
         <?php if ($this->hasProductUrl()):?><a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="cart-img product-image">
         <?php endif;?><img class="img-responsive" src="<?php echo $this->getProductThumbnail()->init($_product, 'image')->resize(400); ?>" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>">
         <?php if ($this->hasProductUrl()):?></a><?php endif;?>
@@ -116,3 +116,14 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 
     </div>
 </div>
+
+<script>
+    function remIm(url){
+        var items = document.getElementsByClassName('icon-no');
+        if(items.length == 1){
+            setTimeout(function () {
+                window.location = url;
+            }, 3000);
+        }
+    }
+</script>
