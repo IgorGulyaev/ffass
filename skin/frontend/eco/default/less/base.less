@@ -867,7 +867,8 @@ input[name*="cc_number"] {
   font-weight: bold;
 }
 
-#dd_method_paypal_direct + label {
+#dd_method_paypal_direct + label,
+#p_method_authorizenet + label {
   width: 323px;
   height: 43px;
   color: transparent;
@@ -911,7 +912,7 @@ input[name*="cc_number"] {
     padding-left: 18px;
   }
 }
-
+#paypal_direct_cc_type_exp_div,
 #authorizenet_cc_type_exp_div {
   .cc {
     display: inline-block;
@@ -920,6 +921,53 @@ input[name*="cc_number"] {
     &+ .input-box {
       display: inline-block !important;
       vertical-align: middle;
+    }
+  }
+}
+
+#paypal_direct_cc_type_cvv_div,
+#authorizenet_cc_type_cvv_div {
+  .v-fix {
+    float: none !important;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  a.cvv-what-is-this {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.card_logos {
+  li {
+    display: none;
+    text-transform: uppercase;
+    span {
+      display: inline-block;
+      padding-left: 86px;
+      height: 43px;
+      vertical-align: middle;
+      line-height: 43px;
+    }
+    &[data-cc-type="AE"] {
+      span {
+        background: url("@{path}images/cc/american-express.png") no-repeat 0 center;
+      }
+    }
+    &[data-cc-type="VI"] {
+      span {
+        background: url("@{path}images/cc/visa.png") no-repeat 0 center;
+      }
+    }
+    &[data-cc-type="MC"] {
+      span {
+        background: url("@{path}images/cc/master-card.png") no-repeat 0 center;
+      }
+    }
+    &[data-cc-type="DI"] {
+      span {
+        background: url("@{path}images/cc/discover.png") no-repeat 0 center;
+      }
     }
   }
 }
@@ -941,7 +989,7 @@ table[class*='data-table'] > thead:first-child > tr:first-child > td {
 
 table[class*='data-table'] > tbody > tr:hover,
 [id*='totals-table'] > tbody > tr:hover,
-.sp-methods li:hover {
+div:not(#checkout-step-payment) .sp-methods li:hover {
   background-color: #dae2ea;
 }
 
