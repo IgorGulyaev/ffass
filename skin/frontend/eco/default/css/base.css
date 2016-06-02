@@ -2357,13 +2357,13 @@ a[href*='amazon']:after {
 .modal-body .buttons-set {
     text-align: center;
 }
-.modal-body .buttons-set > .f-left {
+.buttons-set > .f-left {
     display: block;
-    text-align: left;
+    text-align: left !important;
     text-transform: none;
     text-decoration: underline;
 }
-.modal-body .buttons-set .link {
+.buttons-set .link {
     padding: 0;
     border: none;
     background: none;
