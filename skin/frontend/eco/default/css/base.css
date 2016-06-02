@@ -4731,7 +4731,9 @@ span.product-image {
 }
 
 @media (min-width: 768px) {
+    #paypal_direct_cc_type_exp_div .input-box,
     #authorizenet_cc_type_exp_div .input-box,
+    #payment_form_paypal_direct,
     #payment_form_authorizenet {
         /*display: block !important;*/
         position: relative;
@@ -4743,24 +4745,31 @@ span.product-image {
         display: block !important;
     }
 
+    #payment_form_paypal_direct .input-box .v-fix,
     #payment_form_authorizenet .input-box .v-fix {
         position: relative;
     }
+    #payment_form_paypal_direct .input-box .v-fix,
+    #payment_form_paypal_direct > li,
     #payment_form_authorizenet .input-box .v-fix,
     #payment_form_authorizenet > li {
         float: left;
         width: 50%;
         padding: 0 10px;
     }
+    #payment_form_paypal_direct > li.wide,
     #payment_form_authorizenet > li.wide {
         width: 100%;
     }
+    #payment_form_paypal_direct > li.auto,
     #payment_form_authorizenet > li.auto {
         width: auto !important;
     }
+    #payment_form_paypal_direct > li.exp-date,
     #payment_form_authorizenet > li.exp-date {
         padding-right: 30px;
     }
+    #payment_form_paypal_direct > li#ccTypeDisplay,
     #payment_form_authorizenet > li#ccTypeDisplay {
         position: absolute;
         bottom: 15px;
@@ -4769,6 +4778,7 @@ span.product-image {
 }
 
 @media (max-width: 767px) {
+    .sp-methods #payment_form_paypal_direct > li,
     .sp-methods #payment_form_authorizenet > li {
         padding: 0!important;
     }
