@@ -206,11 +206,13 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
     });
 
+
     $('.section-products .owl-carousel').each(function () {
         if ($(this).find('.products-item').length > 4) {
             var $center = true;
         } else {
             var $center = false;
+            $(this).parent().find('.carousel-controls').hide();
         }
         $(this).owlCarousel({
             margin: 0,
@@ -221,19 +223,16 @@ jQuery(document).ready(function ($) {
             thumbs: false,
             responsive: {
                 0:{
-                    items: 1
+                    items: 1,
+                    center: false
                 },
                 767:{
-                    items: 2
-                },
-                991:{
-                    items: 3
+                    items: 3,
+                    center: $center
                 },
                 1200:{
-                    items: 4
-                },
-                1500:{
-                    items: 5
+                    items: 5,
+                    center: $center
                 }
             }
         });

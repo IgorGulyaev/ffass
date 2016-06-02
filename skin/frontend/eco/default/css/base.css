@@ -5389,7 +5389,7 @@ span.product-image {
 .carousel .carousel-controls {
     position: absolute;
     z-index: 991;
-    display: block!important;
+    display: block;
     top: 10%;
     bottom: 10%;
     left: 0;

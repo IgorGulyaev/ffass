@@ -1822,3 +1822,62 @@ ul.pages-accordeon {
   }
 }
 /* END SIZE CHARTS */
+
+#aw-ln-filters-container {
+  input[name="category"] {
+    &+ a {
+      position: relative;
+      display: block;
+      padding: 3px 12px;
+      .border-radius(4px);
+      font-weight: normal;
+      text-decoration: none !important;
+      &:before {
+        display: none;
+      }
+      &:hover {
+        background: #ffcd00;
+        font-weight: 600;
+        &:before {
+          display: block !important;
+          content: '';
+          position: absolute !important;
+          top: 3px;
+          left: 4px;
+          height: calc(~"100% - 6px");
+          width: calc(~"100% - 8px");
+          border: 2px dashed #fff;
+          border-radius: 5px;
+        }
+      }
+    }
+    &:checked {
+      &+ a {
+        background: #ffcd00;
+        font-weight: 600;
+        &:before {
+          display: block !important;
+          content: '';
+          position: absolute !important;
+          top: 3px;
+          left: 4px;
+          height: calc(~"100% - 6px");
+          width: calc(~"100% - 8px");
+          border: 2px dashed #fff;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+  dd ol li {
+    label[for="category"] {
+      margin: 0;
+    }
+    a {
+      font-weight: normal;
+    }
+    span {
+      display: none !important;
+    }
+  }
+}
