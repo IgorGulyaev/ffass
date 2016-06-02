@@ -29,7 +29,7 @@
 <ol id="<?php echo $filterHtmlID; ?>">
     <?php foreach($this->getOptionList() as $option):?>
         <?php $count = $this->getItemCountByOption($option);?>
-        <li>
+        <li style="padding-left:<?php echo $this->getNestingLevel($option, $leftPaddingForOneLevel);?>px">
             <?php if ($count > 0): ?>
                 <label for="<?php echo $this->getFilter()->getCode();?>">
                     <input type="checkbox"
