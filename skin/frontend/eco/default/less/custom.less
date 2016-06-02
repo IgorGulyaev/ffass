@@ -153,6 +153,7 @@ header {
   .tab-content {
     &> .tab-pane {
       display: block !important;
+      clear: both;
       height: 0;
       overflow: hidden;
       -webkit-transition: none;
@@ -166,16 +167,15 @@ header {
       }
       .owl-stage-outer {
         padding: 20px 0;
-        /*margin: 0 -10px;*/
+        margin: 0;
       }
       .owl-stage {
         display: block;
         white-space: nowrap;
       }
       .owl-item {
-        display: inline-block;
-        float: none;
-        vertical-align: bottom;
+        display: block;
+        float: left;
         padding: 15px;
         .products-item {
           -webkit-transition: all 300ms ease-in-out;
