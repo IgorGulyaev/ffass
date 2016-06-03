@@ -801,39 +801,41 @@ awLnUpdater.prototype = {
     },
 
     _uiShowOverlay: function() {
-        this.layerContainer.insertBefore(
-            this._uiCreateOverlay(this.layerContainer),
-            this.layerContainer.firstChild
-        );
-        if (this.productContainer) {
-            this.productContainer.insertBefore(
-                this._uiCreateOverlay(this.productContainer),
-                this.productContainer.firstChild
-            );
-        }
-        if (this.emptyProductContainer) {
-            this.emptyProductContainer.up().insertBefore(
-                this._uiCreateOverlay(this.emptyProductContainer.up()),
-                this.emptyProductContainer.up().firstChild
-            );
-        }
+        //this.layerContainer.insertBefore(
+        //    this._uiCreateOverlay(this.layerContainer),
+        //    this.layerContainer.firstChild
+        //);
+        //if (this.productContainer) {
+        //    this.productContainer.insertBefore(
+        //        this._uiCreateOverlay(this.productContainer),
+        //        this.productContainer.firstChild
+        //    );
+        //}
+        //if (this.emptyProductContainer) {
+        //    this.emptyProductContainer.up().insertBefore(
+        //        this._uiCreateOverlay(this.emptyProductContainer.up()),
+        //        this.emptyProductContainer.up().firstChild
+        //    );
+        //}
+        document.getElementById('loading').style.display = 'block';
     },
 
     _uiHideOverlay: function() {
-        var parentOverlayElementSelector = [this.config.layerContainerElSelector]
-            .concat(this.config.productsContainerElSelectorList)
-            .concat(this.config.emptyProductsContainerElSelectorList)
-        ;
-        var me = this;
-        parentOverlayElementSelector.each(function(cssSelector){
-            var el = $$(cssSelector).first();
-            if (!el || !el.up()) {
-                return;
-            }
-            el.up().select('.' + me.overlayCssClass).each(function(el){
-                el.remove();
-            });
-        });
+        //var parentOverlayElementSelector = [this.config.layerContainerElSelector]
+        //    .concat(this.config.productsContainerElSelectorList)
+        //    .concat(this.config.emptyProductsContainerElSelectorList)
+        //;
+        //var me = this;
+        //parentOverlayElementSelector.each(function(cssSelector){
+        //    var el = $$(cssSelector).first();
+        //    if (!el || !el.up()) {
+        //        return;
+        //    }
+        //    el.up().select('.' + me.overlayCssClass).each(function(el){
+        //        el.remove();
+        //    });
+        //});
+        document.getElementById('loading').style.display = 'none';
     },
 
     _uiCreateOverlay: function(parent) {
