@@ -174,10 +174,10 @@
                     <div class="row">
                         <form class="col-sm-6" action="" id="askForm" method="post">
                             <div class="input-box">
-                                <input class="form-control" type="text" name="ask_email" placeholder="<?php echo $this->__('Your email') ?>"/>
+                                <input class="form-control required-entry" type="email" name="ask_email" placeholder="<?php echo $this->__('Your email') ?>" required />
                             </div>
                             <div class="input-box">
-                                <textarea class="form-control" name="ask_question" placeholder="<?php echo $this->__('Your question') ?>"></textarea>
+                                <textarea class="form-control required-entry" name="ask_question" placeholder="<?php echo $this->__('Your question') ?>" required ></textarea>
                             </div>
                             <div class="input-box">
                                 <button class="button" type="submit"><?php echo $this->__('Send Question') ?></button>
