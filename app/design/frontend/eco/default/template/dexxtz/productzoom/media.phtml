@@ -24,8 +24,8 @@
 ?>
 <?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
 	<div class="product-img product-view-img hidden-xs">
-		<ul id="etalage" class="hidden-xs <?php if(count($this->getGalleryImages()) >= 4):?>slide<?php endif; ?> <?php if(count($this->getGalleryImages()) < 2 ):?>single<?php endif; ?>">
-			<li <?php if(count($this->getGalleryImages()) < 2 ):?>class="single"<?php endif; ?>>
+		<ul id="etalage" class="hidden-xs <?php if(count($this->getGalleryImages()) >= 4):?>slide<?php endif; ?> <?php if(count($this->getGalleryImages()) == 0 ):?>single<?php endif; ?>">
+			<li <?php if(count($this->getGalleryImages()) == 0 ):?>class="single"<?php endif; ?>>
 				<a href="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image'), true); ?>" class="product-img-big fancybox" data-fancybox-group="gallery">
 					<img class="etalage_thumb_image" src="<?php echo $dexxtz->getImageFeatured($this->helper('catalog/image')->init($_product, 'image')); ?>" />
 				</a>
