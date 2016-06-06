@@ -547,16 +547,18 @@
     $.ajax(url,{
       //dataType: "json"
     }).done(function(data){
-      //console.log("Success:" + data);
+      document.getElementById('loading').style.display = 'block';
       self.load(url, function(data, items) {
         self.render(items, function() {
           self.nextUrl = self.getNextUrl(data);
 
           self.resume();
+          document.getElementById('loading').style.display = 'none';
         });
       });
     }).fail(function(xhr, status, error){
       self.resume();
+      document.getElementById('loading').style.display = 'none';
       //console.log("Status: " + status + " Error: " + error);
       //console.log(xhr);
     });
