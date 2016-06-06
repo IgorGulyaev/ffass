@@ -81,7 +81,7 @@ Supported layout update handles (special):
             <block type="catalog/navigation" name="catalog.leftnav" after="currency" template="catalog/navigation/left.phtml"/>
         </reference>
         <reference name="content">
-            <remove name="product_list_toolbar" />
+            <!--<remove name="product_list_toolbar" />-->
             <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
                 <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
                     <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer">
@@ -117,7 +117,7 @@ Supported layout update handles (special):
             <block type="catalog/layer_view" name="catalog.leftnav" after="currency" template="catalog/layer/view.phtml"/>
         </reference>
         <reference name="content">
-            <remove name="product_list_toolbar" />
+            <!--<remove name="product_list_toolbar" />-->
             <!--<block type="core/template" name="ajax.cart.popup" template="catalog/product/ajax_cart.phtml"/>-->
             <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
                 <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">

@@ -1,0 +1,23 @@
+<?php if(Mage::getStoreConfig('infinite_scroll/infinite_scroll_settings/scroll_loader_active')): ?>
+  <script id="scroll" type="text/javascript">
+
+    jQuery(document).ready(function(){
+      var ias = jQuery.ias({
+        container:    "<?php echo Mage::getStoreConfig('infinite_scroll/infinite_scroll_settings/scroll_container'); ?>",
+        item:       "<?php echo Mage::getStoreConfig('infinite_scroll/infinite_scroll_settings/scroll_item'); ?>",
+        pagination: "<?php echo Mage::getStoreConfig('infinite_scroll/infinite_scroll_settings/scroll_pagination'); ?>",
+        next:       "<?php echo Mage::getStoreConfig('infinite_scroll/infinite_scroll_settings/scroll_next'); ?>",
+        triggerPageThreshold : 2
+      });
+
+      ias.extension(new IASTriggerExtension({
+        offset: 1,
+        html: ''
+        //html: '<div class="ias-trigger ias-trigger-next" style="text-align: center; cursor: pointer;"><a>Load more items</a></div>'
+      }));
+
+      jQuery.ias().initialize();
+    });
+
+  </script>
+<?php endif; ?>    
