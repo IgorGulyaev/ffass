@@ -72,17 +72,17 @@
             </updates>
         </layout>
     </frontend>
-    <adminhtml>
-        <events>
-            <controller_action_predispatch_adminhtml_cache_massRefresh>
-                <observers>
-                    <assign_products_to_featured_categories>
-                        <class>ecomitize_footernav/observer</class>
-                        <type>singleton</type>
-                        <method>assignProductsToFeaturedCategories</method>
-                    </assign_products_to_featured_categories>
-                </observers>
-            </controller_action_predispatch_adminhtml_cache_massRefresh>
-        </events>
-    </adminhtml>
+    <!--<adminhtml>-->
+        <!--<events>-->
+            <!--<controller_action_predispatch_adminhtml_cache_massRefresh>-->
+                <!--<observers>-->
+                    <!--<assign_products_to_featured_categories>-->
+                        <!--<class>ecomitize_footernav/observer</class>-->
+                        <!--<type>singleton</type>-->
+                        <!--<method>assignProductsToFeaturedCategories</method>-->
+                    <!--</assign_products_to_featured_categories>-->
+                <!--</observers>-->
+            <!--</controller_action_predispatch_adminhtml_cache_massRefresh>-->
+        <!--</events>-->
+    <!--</adminhtml>-->
 </config>
