@@ -118,6 +118,10 @@
         width: 100%;
     }
 
+    .checkout-bottom-wrapper {
+        display: none !important;
+    }
+
     /* responsive table */
 
     .data-table,

@@ -29,7 +29,7 @@
 <ol id="<?php echo $filterHtmlID; ?>">
     <?php foreach($this->getOptionList() as $option):?>
         <?php $count = $this->getItemCountByOption($option);?>
-        <li style="padding-left:<?php echo $this->getNestingLevel($option, $leftPaddingForOneLevel);?>px">
+        <li class="<?php if($this->getNestingLevel($option) > 0):?>sub-level<?php else: ?>parent-level<?php endif; ?>" style="padding-left:<?php echo $this->getNestingLevel($option, $leftPaddingForOneLevel);?>px">
             <?php if ($count > 0): ?>
                 <label for="<?php echo $this->getFilter()->getCode();?>">
                     <input type="checkbox"
@@ -40,6 +40,11 @@
                     <?php echo $this->getTitleHtmlByOption($option);?>
                 </label>
                 <span>(<?php echo $count; ?>)</span>
+                <?php if($this->getNestingLevel($option) > 0):?>
+                <script type="text/javascript">
+                    jQuery('li.sub-level input:checked').parents('li').prevAll("li.parent-level:last").addClass('parent-checked');
+                </script>
+                <?php endif; ?>
             <?php else: ?>
                 <input type="checkbox" name="<?php echo $this->getFilter()->getCode();?>"
                        value="<?php echo $option->getId();?>" style="display:none"

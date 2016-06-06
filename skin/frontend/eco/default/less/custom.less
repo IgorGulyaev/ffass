@@ -1859,6 +1859,15 @@ ul.pages-accordeon {
       }
     }
   }
+  li {
+    &.parent-checked {
+      input[name="category"] {
+        & + a {
+          font-weight: 600;
+        }
+      }
+    }
+  }
   dd ol li {
     label[for="category"] {
       margin: 0;
