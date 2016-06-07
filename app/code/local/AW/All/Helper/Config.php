@@ -12,14 +12,16 @@
  * =================================================================
  *                 MAGENTO EDITION USAGE NOTICE
  * =================================================================
- * This software is designed to work with Magento community edition and
- * its use on an edition other than specified is prohibited. aheadWorks does not
- * provide extension support in case of incorrect edition use.
+ * This package designed for Magento community edition
+ * aheadWorks does not guarantee correct work of this extension
+ * on any other Magento edition except Magento community edition.
+ * aheadWorks does not provide extension support in case of
+ * incorrect edition usage.
  * =================================================================
  *
  * @category   AW
- * @package    AW_Layerednavigation
- * @version    1.3.2
+ * @package    AW_Mobiletracking
+ * @version    1.1.1
  * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
  * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
  */
@@ -30,5 +32,11 @@ class AW_All_Helper_Config extends Mage_Core_Helper_Abstract
     const EXTENSIONS_FEED_URL = 'http://media.aheadworks.com/feeds/extensions.xml';
     /** Updates Feed path */
     const UPDATES_FEED_URL = 'http://media.aheadworks.com/feeds/updates.xml';
+    /** Estore URL */
+    const STORE_URL = 'http://ecommerce.aheadworks.com/estore/';
+
+    /** EStore response cache key*/
+    const STORE_RESPONSE_CACHE_KEY = 'aw_all_store_response_cache_key';
+
 
 }

@@ -782,6 +782,26 @@ awLnUpdater.prototype = {
         if (newNode) {
             node.parentNode.replaceChild(newNode, node);
         }
+
+        // Updating infinite scroll pagination
+        if(node.id != 'aw-ln-filters'){
+            var ias = jQuery.ias({
+                container:    ".products-grid, .products-list",
+                item:       ".category-item",
+                pagination: ".pages",
+                next:       ".pages  .next",
+                triggerPageThreshold : 2
+            });
+
+            ias.extension(new IASTriggerExtension({
+                offset: 1,
+                //html: ''
+                html: '<div class="ias-trigger ias-trigger-next" style="text-align: center; cursor: pointer;"><a>Load more items</a></div>'
+            }));
+
+            jQuery.ias().initialize();
+        }
+
     },
 
     _evalScripts: function(html) {
