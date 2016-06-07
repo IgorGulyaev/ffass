@@ -12,14 +12,16 @@
  * =================================================================
  *                 MAGENTO EDITION USAGE NOTICE
  * =================================================================
- * This software is designed to work with Magento community edition and
- * its use on an edition other than specified is prohibited. aheadWorks does not
- * provide extension support in case of incorrect edition use.
+ * This package designed for Magento community edition
+ * aheadWorks does not guarantee correct work of this extension
+ * on any other Magento edition except Magento community edition.
+ * aheadWorks does not provide extension support in case of
+ * incorrect edition usage.
  * =================================================================
  *
  * @category   AW
- * @package    AW_Layerednavigation
- * @version    1.3.2
+ * @package    AW_Mobiletracking
+ * @version    1.1.1
  * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
  * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
  */
@@ -37,7 +39,7 @@ class AW_All_Block_System_Config_Form_Fieldset_Awall_Additional extends Mage_Adm
         $html .= "<tr>
             <td class=\"label\"></td>
             <td class=\"value\">
-            <button class=\"scalable\" onclick=\"window.location='" . Mage::getSingleton('adminhtml/url')->getUrl('adminhtml/awall_additional/index') . "'\" type=\"button\">
+            <button class=\"scalable\" onclick=\"window.location='" . Mage::getSingleton('adminhtml/url')->getUrl('awall_admin/additional/index') . "'\" type=\"button\">
                 <span>View Additional info</span>
             </button
             </td>

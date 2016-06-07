@@ -1,0 +1,40 @@
+.aw-mobiletracing-center-contents .aw-mt-credentials label {
+    display:block;     
+    clear:both; 
+}
+
+.aw-mobiletracing-center-contents .aw-mt-credentials input[type=text] {
+    display:block;    
+    margin: 5px auto 5px 0;
+    clear:both; 
+}
+
+.aw-mobiletracing-center-contents .title-buttons, .aw-mobiletracing-center-contents .buttons-set {
+    /*display:none;*/
+}
+
+.aw-mt-credentials img {
+    border: 1px solid #bebcb7;
+    margin-bottom: 20px;
+}
+
+.awmobiletracking-tracking-view .aw-mt-credentials .buttons-set,
+.awmobiletracking-tracking-collecttracks .aw-mt-credentials .buttons-set {
+    text-align: left;
+    margin: 2em 0 0;
+}
+
+.awmobiletracking-tracking-view .aw-mt-credentials .buttons-set .button {
+    float: none;
+    margin: 0;
+}
+
+.aw_mobiletracking_customer_order_number {
+    font-weight: bold;
+    margin: 10px 0 20px;
+}
+
+.aw_mobiletracking_customer_order_email {
+    font-weight: bold;
+    margin: 5px 0;
+}
