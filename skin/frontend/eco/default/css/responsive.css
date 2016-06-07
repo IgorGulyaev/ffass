@@ -43,7 +43,7 @@
     }
 
     .index-banners {
-        margin: -15px -15px 15px;
+        margin: 0 -15px 15px;
     }
 
     /**/
@@ -106,6 +106,13 @@
     }
 
     /**/
+
+    .cms-index-index .main {
+        padding-top: 0;
+    }
+    .cms-index-index .main .std {
+        display: none;
+    }
 
     .page ul.pages-accordeon {
         margin-bottom: 15px;
