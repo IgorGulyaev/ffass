@@ -18,7 +18,7 @@
     $bCntResponsiveXlg  = ($this->getBannerCountResponsiveXlg()) ? $this->getBannerCountResponsiveXlg() : 1;
 ?>
 <?php if(count($data['banner_data'])): ?>
-    <div class="banners banners-<?php echo $gCode; ?>">
+    <div class="banners banners-<?php echo $gCode; ?> wow fadeIn">
         <div class="owl-carousel<?php if (!$this->getAutoHeight() == 'true'): ?> owl-height<?php endif; ?>">
             <?php foreach ($data['banner_data'] as $banner): ?>
                 <div class="item">

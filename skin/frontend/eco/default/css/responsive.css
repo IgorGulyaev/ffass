@@ -17,6 +17,10 @@
 
 @media (max-width: 767px) {
 
+    .wow {
+        visibility: hidden;
+    }
+
     body {
         padding: 0!important;
     }
@@ -328,7 +332,7 @@
 
     .navbar.in,
     .navbar-active .open .dropdown-menu.dropdown-menu-cart {
-        top: 144px;
+        top: 78px;
     }
 
     .backdrop,

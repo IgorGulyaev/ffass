@@ -1,5 +1,9 @@
 jQuery(document).ready(function ($) {
 
+    if ($(window).width() < 768) {
+        new WOW().init();
+    }
+
     $('.selectpicker').selectpicker({
         size: 4
     });
@@ -326,7 +330,7 @@ jQuery(document).ready(function ($) {
                 $('body').css('padding-top', 0);
             });
             $('footer .footer-left').appendTo('.navbar .navbar-footer');
-            $('.header-top').prependTo('#navbar');
+            $('.header-top').prependTo('#navbar').show();
 
             /* Accordeons */
             $('body:not(.catalog-product-view,  .checkout-onepage-index) .nav.nav-tabs').tabCollapse();
