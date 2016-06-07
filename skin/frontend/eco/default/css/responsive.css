@@ -59,6 +59,9 @@
         padding: 22px 0 0;
     }
 
+    .header-top {
+        display: none;
+    }
     .header-top > .container {
         padding: 0;
     }
