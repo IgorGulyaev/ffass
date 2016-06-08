@@ -702,6 +702,11 @@
         font-size: 12px;
     }
 
+    .products-item .add-to-links {
+        top: 21px !important;
+        opacity: 1;
+    }
+
     /**/
 
     /* product view */
