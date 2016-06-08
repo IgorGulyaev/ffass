@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
 
     wowInit();
+    accordeonDirectLink();
 
     $('.selectpicker').selectpicker({
         size: 4
@@ -312,6 +313,19 @@ jQuery(document).ready(function ($) {
     function wowInit() {
         if ($(window).width() < 768) {
             new WOW().init();
+        }
+    }
+
+    function accordeonDirectLink() {
+        var directLink = $('ul.pages-accordeon a[href^="http"]');
+        if (directLink[0]) {
+            directLink.each(function () {
+                var $this = $(this);
+                var directHref = $this.attr('href');
+                var directText = $this.text().replace(/ /g,'');
+                $this.addClass('hidden-xs').clone().insertAfter($this).addClass('visible-xs').removeClass('hidden-xs').attr('data-toggle', 'tab').attr('href', directText).attr('onclick', 'javascript:location.href="'+directHref+'"');
+            });
+
         }
     }
 
