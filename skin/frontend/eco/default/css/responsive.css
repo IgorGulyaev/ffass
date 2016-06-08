@@ -118,6 +118,10 @@
         margin-bottom: 10px;
     }
 
+    .main {
+        min-height: 0;
+    }
+
     .cms-index-index .main {
         padding-top: 0;
     }
