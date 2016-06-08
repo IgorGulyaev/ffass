@@ -1289,7 +1289,7 @@
         -moz-border-radius: 5px;
         border-radius: 5px;
     }
-    .nav.nav-tabs.hidden-xs + .panel-group.visible-xs > .panel > .panel-heading a:after {
+    .nav.nav-tabs.hidden-xs + .panel-group.visible-xs > .panel > .panel-heading a:not(.no-arrow):after {
         font-family: 'icomoon';
         display: inline-block;
         speak: none;

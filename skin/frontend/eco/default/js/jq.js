@@ -323,7 +323,7 @@ jQuery(document).ready(function ($) {
                 var $this = $(this);
                 var directHref = $this.attr('href');
                 var directText = $this.text().replace(/ /g,'');
-                $this.addClass('hidden-xs').clone().insertAfter($this).addClass('visible-xs').removeClass('hidden-xs').attr('data-toggle', 'tab').attr('href', directText).attr('onclick', 'javascript:location.href="'+directHref+'"');
+                $this.addClass('hidden-xs').clone().insertAfter($this).addClass('visible-xs no-arrow').removeClass('hidden-xs').attr('data-toggle', 'tab').attr('href', directText).attr('onclick', 'javascript:location.href="'+directHref+'"');
             });
 
         }
