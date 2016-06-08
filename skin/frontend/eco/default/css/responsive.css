@@ -569,6 +569,7 @@
     }
     div.index-info-block a {
         padding: 0 40px;
+        width: 80%;
         font-size: 18px;
         line-height: 43px;
     }
