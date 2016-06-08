@@ -1271,6 +1271,7 @@
         border-radius: 4px;
         color: #ffffff;
         font-weight: normal;
+        text-decoration: none!important;
     }
     .nav.nav-tabs.hidden-xs + .panel-group.visible-xs > .panel > .panel-heading a.collapsed {
         background-color: #add750;
