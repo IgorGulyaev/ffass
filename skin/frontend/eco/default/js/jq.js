@@ -350,8 +350,10 @@ jQuery(document).ready(function ($) {
             $('footer .footer-left').appendTo('.navbar .navbar-footer');
             $('.header-top').prependTo('#navbar').show();
 
+            $('.button-filter').insertAfter('.category-title');
+
             /* Accordeons */
-            $('body:not(.catalog-product-view,  .checkout-onepage-index) .nav.nav-tabs').tabCollapse();
+            $('body:not(.catalog-product-view,  .checkout-onepage-index) div:not(.index-tabs) .nav.nav-tabs').tabCollapse();
             /* End Accordeons */
         } else if(window.matchMedia('(min-width: 768px)').matches) {
             $('[data-hover="dropdown"]').dropdownHover();
@@ -361,6 +363,7 @@ jQuery(document).ready(function ($) {
             });
             $('.navbar .footer-left').appendTo('.row-footer .first');
             $('.header-top').prependTo('header > .header');
+            $('.button-filter').insertAfter('#search_mini_form');
         }
     }
     /**/

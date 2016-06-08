@@ -706,6 +706,9 @@
         top: 21px !important;
         opacity: 1;
     }
+    .section-products .tab-content> .tab-pane> a {
+        margin-right: 15px;
+    }
 
     /**/
 
