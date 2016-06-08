@@ -234,6 +234,10 @@
         display: none;
     }
 
+    .category-description {
+        font-size: 14px;
+    }
+
     /* filter button */
 
     .button-filter {
@@ -1070,7 +1074,6 @@
     .product-view .product-view-img .product-thumbs,
     .short-description,
     .footer-right-info,
-    .category-description,
     .category-image,
     .breadcrumb,
     .owl-nav,
