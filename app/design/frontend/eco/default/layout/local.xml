@@ -519,6 +519,10 @@
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/bootstrap-slider.min.js</name></action>
+            <action method="addCss"><stylesheet>css/slider.css</stylesheet></action>
+        </reference>
         <reference name="left">
             <block type="catalog/layer_view" name="catalog.leftnav" after="currency" template="catalog/layer/view.phtml"/>
         </reference>

@@ -25,6 +25,9 @@ class Ecomitize_Footernav_IndexController extends Mage_Core_Controller_Front_Act
         if($params['onsale'] == 1){
             $option = 'New Arrivals';
         }
+        if($params['clearance'] == 1){
+            $option = 'Recently Viewed';
+        }
         return $option;
     }
 }

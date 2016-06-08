@@ -23,4 +23,7 @@
     <awshopbybrand_index_brandpageview>
         <update handle="aw_layerednavigation_handle"/>
     </awshopbybrand_index_brandpageview>
+    <offers_index_index>
+        <update handle="aw_layerednavigation_handle"/>
+    </offers_index_index>
 </layout>

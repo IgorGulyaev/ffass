@@ -24,6 +24,10 @@ class Ecomitize_Footernav_Helper_Data extends Mage_Core_Helper_Abstract
             $label = 'New Arrivals';
             $option = 'New Arrivals';
         }
+        if($params['clearance'] == 1){
+            $label = 'Recently Viewed';
+            $option = 'Recently Viewed';
+        }
 
         $breadcrumbs = Mage::app()->getLayout()->getBlock('breadcrumbs');
         $breadcrumbs->addCrumb('home', array('label' => Mage::helper('cms')->__('Home'), 'title' => Mage::helper('cms')->__('Home Page'), 'link' => Mage::getBaseUrl()));
