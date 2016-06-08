@@ -121,10 +121,6 @@ class Amasty_Conf_Block_Catalog_Product_View_Type_Configurable extends Mage_Cata
                         
                     }
                 }
-                if (Mage::getStoreConfig('amconf/general/show_clear'))
-                {
-                    $html = '<a href="#" onclick="javascript: spConfig.clearConfig(); return false;">' . $this->__('Reset Configuration') . '</a>' . $html;
-                }
                 $html = '<script type="text/javascript">
                             var amConfAutoSelectAttribute = ' . intval(Mage::getStoreConfig('amconf/general/auto_select_attribute')) . ';
                             confData = new AmConfigurableData(' . Zend_Json::encode($confData) . ');
