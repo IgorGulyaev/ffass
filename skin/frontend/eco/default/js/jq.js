@@ -1,13 +1,10 @@
 jQuery(document).ready(function ($) {
 
-    if ($(window).width() < 768) {
-        new WOW().init();
-    }
+    wowInit();
 
     $('.selectpicker').selectpicker({
         size: 4
     });
-
 
     var activeurl = window.location;
     $('.dropdown-menu.account-nav li a[href="'+activeurl+'"]').parent().addClass('active');
@@ -310,6 +307,13 @@ jQuery(document).ready(function ($) {
     var windowWidth = $(window).width();
     responsive();
     $(window).resize(responsive);
+    $(window).resize(wowInit);
+
+    function wowInit() {
+        if ($(window).width() < 768) {
+            new WOW().init();
+        }
+    }
 
     function responsive() {
         if(window.matchMedia('(max-width: 767px)').matches) {
