@@ -213,6 +213,7 @@
         border-color: transparent!important;
     }
     .form-search .button {
+        left: 0;
         border: 1px solid #cacaca;
     }
 
