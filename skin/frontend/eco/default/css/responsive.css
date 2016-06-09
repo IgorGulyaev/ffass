@@ -1431,6 +1431,11 @@
     #co-payment-form .sp-methods> ul> li {
         float: left !important;
     }
+    #p_method_paypal_direct + label,
+    #p_method_authorizenet + label {
+        -webkit-background-size: auto 35px;
+        background-size: auto 35px;
+    }
 
     /* Accordeons */
     .nav.nav-tabs.hidden-xs + .panel-group.visible-xs > .panel {
@@ -1915,6 +1920,20 @@
 
     .sorting .btn-filter > i {
         margin: 0 10px!important;
+    }
+
+    #my-orders-table,
+    #my-orders-table tbody, #my-orders-table th, #my-orders-table tr {
+        display: block;
+    }
+    #my-orders-table td {
+        display: inline-block;
+        width: 49px;
+    }
+    #my-orders-table tr td:nth-last-child(2),
+    #my-orders-table tr td:last-child {
+        display: block;
+        text-align: center;
     }
 }
 
