@@ -1926,11 +1926,15 @@
     #my-orders-table tbody, #my-orders-table th, #my-orders-table tr {
         display: block;
     }
+    #my-orders-table tr {
+        border: 2px solid #fafafa;
+    }
     #my-orders-table td {
         display: inline-block;
         width: 49%;
     }
     #my-orders-table tr td:nth-last-child(2) {
+        background-color: #fafafa;
         color: #92b545;
     }
     #my-orders-table tr td:nth-last-child(2),
@@ -1939,7 +1943,7 @@
         width: 100%;
         text-align: center;
     }
-    #my-orders-table tr td:last-child .a-center a {
+    #my-orders-table tr td.a-center a {
         color: #92b545;
     }
 }
