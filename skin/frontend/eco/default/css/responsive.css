@@ -1272,7 +1272,7 @@
     .track-items.owl-carousel .owl-item li a:after,
     .track-items.owl-carousel .owl-item li span:before,
     .track-items.owl-carousel .owl-item li span:after {
-        position: absolute;
+        /*position: absolute;
         top: 6px;
         font-family: 'icomoon';
         display: inline-block;
@@ -1289,7 +1289,8 @@
         -moz-transition: all 0.3s ease-out;
         transition: all 0.3s ease-out;
         font-size: 14px;
-        content: "\e902";
+        content: "\e902";*/
+        display: none !important;
     }
     .track-items.owl-carousel .owl-item li a:before,
     .track-items.owl-carousel .owl-item li span:before {
@@ -1305,6 +1306,36 @@
     .track-items.owl-carousel .owl-item:last-child li span:after {
         display: none;
     }
+    .track-items.owl-carousel .owl-nav {
+        position: relative;
+        width: 100vw;
+    }
+    .track-items.owl-carousel .owl-nav .owl-prev {
+        top: -29px;
+        bottom: auto;
+        left: 2%;
+        height: 30px;
+    }
+    .track-items.owl-carousel .owl-nav .owl-next {
+        top: -29px;
+        bottom: auto;
+        right: 11%;
+        height: 30px;
+    }
+    .track-items.owl-carousel .owl-nav .owl-prev:before,
+    .track-items.owl-carousel .owl-nav .owl-next:before {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 30px;
+        text-align: center;
+        content: "\e913";
+        margin: 0;
+        color: #939393;
+        font-size: 14px;
+    }
+
     .opc .step-title {
         margin: 0 -15px;
     }
