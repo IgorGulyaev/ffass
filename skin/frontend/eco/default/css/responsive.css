@@ -724,6 +724,21 @@
 
     /**/
 
+    /* WISHLIST */
+    .my-wishlist .products-item {
+        padding: 34px 15px 15px;
+    }
+    .wishlist-item .button-remove i {
+        margin-right: 18px;
+    }
+    .wishlist-item .products-item > .products-item-img {
+        margin-bottom: 20px !important;
+    }
+    .wishlist-item .products-item .product-name a {
+        font-weight: 600;
+    }
+    /* END WISHLIST */
+
     /* product view */
 
     .product-view .icon-star {
