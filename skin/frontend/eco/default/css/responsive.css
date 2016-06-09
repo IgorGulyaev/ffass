@@ -1257,6 +1257,13 @@
     }
     /* END SIZE CHARTS */
 
+    .track {
+        margin-bottom: 20px;
+    }
+    .track .track-items li a i,
+    .track .track-items li span i {
+        display: none;
+    }
     .track-items.owl-carousel .owl-stage-outer {
         overflow: visible;
     }
@@ -1443,6 +1450,22 @@
     }
     .nav.nav-tabs.hidden-xs + .panel-group.visible-xs {}
     /* End Accordeons */
+
+    .checkout-cart-index .main h1,
+    .paypal-express-review .header .header-inner .header-navbar,
+    .paypal-express-review .header .header-inner .header-cart,
+    .paypal-express-review .header .header-inner .header-search,
+    .checkout-onepage-success .header .header-inner .header-navbar,
+    .checkout-onepage-success .header .header-inner .header-cart,
+    .checkout-onepage-success .header .header-inner .header-search,
+    .checkout-cart-index .header .header-inner .header-navbar,
+    .checkout-cart-index .header .header-inner .header-cart,
+    .checkout-cart-index .header .header-inner .header-search,
+    .checkout-onepage-index .header .header-inner .header-navbar,
+    .checkout-onepage-index .header .header-inner .header-cart,
+    .checkout-onepage-index .header .header-inner .header-search {
+        display: none !important;
+    }
 
 }
 
