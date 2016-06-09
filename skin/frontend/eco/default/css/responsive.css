@@ -1475,6 +1475,35 @@
     .nav.nav-tabs.hidden-xs + .panel-group.visible-xs {}
     /* End Accordeons */
 
+    .paypal-express-review html,
+    .checkout-onepage-success html,
+    .checkout-cart-index html,
+    .checkout-onepage-index html,
+    .paypal-express-review body,
+    .checkout-onepage-success body,
+    .checkout-cart-index body,
+    .checkout-onepage-index body {
+        min-height: 0;
+    }
+
+    .paypal-express-review .page,
+    .checkout-onepage-success .page,
+    .checkout-cart-index .page,
+    .checkout-onepage-index .page {
+        min-height: 100vh;
+        height: 100%;
+    }
+
+    .paypal-express-review .footer,
+    .checkout-onepage-success .footer,
+    .checkout-cart-index .footer,
+    .checkout-onepage-index .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+
     .checkout-cart-index .main h1,
     .paypal-express-review .header .header-inner .header-navbar,
     .paypal-express-review .header .header-inner .header-cart,
