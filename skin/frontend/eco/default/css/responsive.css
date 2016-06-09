@@ -245,6 +245,18 @@
     .col-left {
         display: none;
     }
+    body[class^="customer-account"] .col-left {
+        display: block;
+    }
+    .block-account .block-title {
+        padding: 10px;
+        text-align: center;
+        color: #fff;
+        background-color: #add750;
+    }
+    .block-account .block-content {
+        display: none;
+    }
 
     .category-description {
         font-size: 14px;

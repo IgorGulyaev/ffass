@@ -337,6 +337,9 @@ jQuery(document).ready(function ($) {
                 $(this).parent().siblings().removeClass('open');
                 $(this).parent().toggleClass('open');
             });
+            $(document).on('click', '.block-account .block-title', function () {
+                $(this).next().slideToggle();
+            });
             /*$('.cart .cart-row').on('swipeleft', function(e) {
                 e.preventDefault();
                 $(this).addClass('remove');
