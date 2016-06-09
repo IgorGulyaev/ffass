@@ -1155,6 +1155,30 @@
     .cart .product-image {
         padding: 0;
     }
+    .cart-right .paypal-logo > a {
+        margin: 0 !important;
+        text-align: center;
+    }
+    .cart-right .button {
+        margin: 0 auto 15px;
+        width: 80%;
+    }
+    .cart-checkout:before {
+        display: none;
+    }
+    .cart-checkout .button:after {
+         position: absolute;
+         display: block;
+         content: '';
+         top: -25px;
+         left: -28px;
+         height: 46px;
+         width: 55px;
+         background: url("../images/butterfly.png") no-repeat 0 0;
+         -webkit-background-size: contain;
+         background-size: contain;
+     }
+
 
     .product-view .price-box {
         padding-bottom: 0;
@@ -1517,6 +1541,11 @@
         padding: 15px;
         font-size: 38px;
         line-height: 1.2;
+    }
+
+    .track .track-items li a i:before,
+    .track .track-items li span i:before {
+        font-size: 14px;
     }
 
 }
