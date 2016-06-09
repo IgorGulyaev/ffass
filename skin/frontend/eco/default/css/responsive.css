@@ -745,6 +745,8 @@
         text-align: center;
     }
     .ratings-bar .bar {
+        padding-right: 12px;
+        padding-left: 10px;
         height: 18px !important;
     }
     .ratings-bar .bar,
@@ -1146,6 +1148,10 @@
     }
     #form-cart {}
 
+    .ajaxcartpro-box-hide {
+        min-width: 285px;
+    }
+
     .cart .cart-row [class*='col-'] {
         display: inline-block;
     }
@@ -1193,7 +1199,9 @@
     .product-view h1 {
         text-transform: none;
     }
-    .owl-nav {
+    .product-img .owl-nav,
+    .track .owl-nav,
+    .section-products .owl-nav {
         display: block !important;
     }
     .owl-nav .owl-prev,
