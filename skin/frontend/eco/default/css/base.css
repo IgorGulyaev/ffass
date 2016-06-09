@@ -1421,8 +1421,14 @@ select:focus {
     }
 
     #add_recipient_button {
-        margin: 15px 0;
+        margin: 10px 0;
+        clear: both;
+        float: left;
+        width: 100%;
     }
+        #add_recipient_button button {
+            margin: 0;
+        }
 
     .input-box .v-fix + .v-fix {
         margin-top: 15px;
