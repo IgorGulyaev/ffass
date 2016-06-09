@@ -985,7 +985,9 @@
         font-size: 16px;
         text-transform: none;
     }
-
+    .modal .buttons-set > .f-left {
+        margin-bottom: 20px;
+    }
     .modal .button {
         padding-right: 42px;
         padding-left: 42px;
