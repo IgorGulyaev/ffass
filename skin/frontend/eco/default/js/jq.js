@@ -353,7 +353,7 @@ jQuery(document).ready(function ($) {
             $('.button-filter').insertAfter('.category-title');
 
             /* Accordeons */
-            $('body:not(.catalog-product-view,  .checkout-onepage-index, cms-index-index) .nav.nav-tabs').tabCollapse();
+            $('body:not(.catalog-product-view,  .checkout-onepage-index, .cms-index-index) .nav.nav-tabs').tabCollapse();
             /* End Accordeons */
         } else if(window.matchMedia('(min-width: 768px)').matches) {
             $('[data-hover="dropdown"]').dropdownHover();
