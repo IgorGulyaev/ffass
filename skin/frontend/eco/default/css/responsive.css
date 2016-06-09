@@ -532,12 +532,12 @@
     }
     .navbar .header-top .nav > li,
     .navbar .header-top .links > li {
-        display: inline-block;
+        display: table-cell;
         float: none;
     }
     .navbar .header-top .nav > li > a,
     .navbar .header-top .links > li > a {
-        padding: 18px 24px !important;
+        padding: 18px 6px !important;
         margin: 0;
         color: #5d5d5d;
         border: 0;
@@ -546,9 +546,13 @@
         text-decoration: underline;
     }
 
+    .header-top .dropdown > a:after {
+        display: none;
+    }
     .header-top .nav.nav-inline {
-        display: block !important;
+        display: table !important;
         float: none !important;
+        width: 100%;
     }
 
 
