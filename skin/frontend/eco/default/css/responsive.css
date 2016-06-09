@@ -200,7 +200,7 @@
         color: #92b545;
     }
     #my-orders-table tr td.a-center a {
-        color: #92b545;
+        color: #efab01;
     }
 
     #checkout-review-table > *:not(tfoot) {
@@ -1948,10 +1948,6 @@
     }
     #my-orders-table tr td:nth-last-child(2) {
         background-color: #fafafa;
-        color: #92b545;
-    }
-    #my-orders-table tr td.a-center a {
-        color: #92b545;
     }
 }
 
