@@ -245,7 +245,7 @@
     .col-left {
         display: none;
     }
-    body[class^="customer-account"] .col-left {
+    body[class*="customer-account"] .col-left {
         display: block;
     }
     .block-account .block-title {
