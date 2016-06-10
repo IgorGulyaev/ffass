@@ -65,6 +65,12 @@ class Ecomitize_Navigation_Block_Page_Html_Topmenu extends Mage_Page_Block_Html_
             $outermostClassCode = '';
             $outermostClass = $menuTree->getOutermostClass();
 
+            if ($child->hasChildren()) {
+                $parentClass = 'parent ';
+            } else {
+                $parentClass = '';
+            }
+
             if ($childLevel == 0 && $outermostClass) {
                 $outermostClassCode = ' class="' . $outermostClass . ($child->hasChildren() ? ' dropdown-toggle" data-hover="dropdown" ' : '"');
                 $child->setClass($outermostClass);
@@ -72,8 +78,7 @@ class Ecomitize_Navigation_Block_Page_Html_Topmenu extends Mage_Page_Block_Html_
 
             $html .= '<li ' . ($childLevel == 0 ? $this->getTopClassName($counter, $childrenCount, $this->_getRenderedMenuItemAttributes($child)) : $this->_getRenderedMenuItemAttributes($child)) . '>';
 
-            $html .= '<a href="' . $child->getUrl() . '" ' . $outermostClassCode  . '>' . $this->escapeHtml($child->getName()) . '</a>';
-
+            $html .= '<a href="' . $child->getUrl() . '" ' . $outermostClassCode  . ' class="' . $parentClass . '">' . $this->escapeHtml($child->getName()) . '</a>';
 
             if ($child->hasChildren()) {
                 if (!empty($childrenWrapClass)) {
@@ -95,7 +100,7 @@ class Ecomitize_Navigation_Block_Page_Html_Topmenu extends Mage_Page_Block_Html_
 
             if($childLevel > 0) {
                 if($child->getId() === $lastNode->getId() && !is_null($child->getId())){
-                    $html .= '<li ' . 'class="' .'level'.$childLevel.' btn-show-all'. '">';
+                    $html .= '<li ' . 'class="' . 'level'.$childLevel.' btn-show-all'. '">';
                     $html .= '<a href="' . $child->getParent()->getUrl() . '" ' . '>' . 'Show All Products' . ' ' . $child->getParent()->getName() . '</a>';
                     $html .= '</li>';
                 }

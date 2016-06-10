@@ -1838,6 +1838,48 @@
         left: auto;
         right: 100%;
     }
+    .navbar .navbar-nav a.parent {
+        position: relative;
+    }
+    .navbar .navbar-nav a.parent:after {
+        position: absolute;
+        top: 15px;
+        font-family: 'icomoon';
+        display: inline-block;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #555;
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+        font-size: 10px;
+    }
+    .navbar .navbar-nav a.parent:hover:after,
+    .navbar .navbar-nav a.parent:active:after,
+    .navbar .navbar-nav a.parent:focus:after {
+        color: #fff;
+    }
+
+    .navbar .navbar-nav .dropdown-left a.parent {
+        padding-right: 26px;
+    }
+    .navbar .navbar-nav .dropdown-right a.parent {
+        padding-left: 26px;
+    }
+    .navbar .navbar-nav .dropdown-left a.parent:after {
+        right: 12px;
+        content: "\e902";
+    }
+    .navbar .navbar-nav .dropdown-right a.parent:after {
+        left: 12px;
+        content: "\e901";
+    }
 
     /* footer */
 
