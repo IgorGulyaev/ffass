@@ -1251,7 +1251,7 @@
     #form-cart {}
 
     .ajaxcartpro-box-hide {
-        min-width: 285px;
+        min-width: 91vw;
     }
 
     .cart .cart-row [class*='col-'] {

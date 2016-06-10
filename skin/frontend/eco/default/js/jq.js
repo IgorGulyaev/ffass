@@ -331,6 +331,7 @@ jQuery(document).ready(function ($) {
 
     function responsive() {
         if(window.matchMedia('(max-width: 767px)').matches) {
+
             $(document).on('click', '.navbar .navbar-nav .dropdown > a', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -353,7 +354,11 @@ jQuery(document).ready(function ($) {
             $('footer .footer-left').appendTo('.navbar .navbar-footer');
             $('.header-top').prependTo('#navbar').show();
 
-            $('.catalog-category-view .button-filter, .catalogsearch-result-index .button-filter').insertAfter('.main > .page-title');
+            if ($('.category-item').length < 2) {
+                $('.button-filter').remove();
+            } else {
+                $('.catalog-category-view .button-filter, .catalogsearch-result-index .button-filter').insertAfter('.main > .page-title').fadeIn();
+            }
 
             /* Accordeons */
             $('body:not(.catalog-product-view,  .checkout-onepage-index, .cms-index-index) .nav.nav-tabs').tabCollapse();
