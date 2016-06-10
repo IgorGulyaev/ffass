@@ -15,13 +15,32 @@
 	$dexxtz = Mage::helper('productzoom');
 	
 	$dexxtz->getCss();
-	$dexxtz->getJs();
+
 
 	$visibleThumbnails  = ($this->getVisibleThumbnails()) ? $this->getVisibleThumbnails() : '3';
 	$resizeImg  = ($this->getResizeImg()) ? $this->getResizeImg() : '1000, 1000';
 	$resizeThumbnail  = ($this->getResizeThumbnail()) ? $this->getResizeThumbnail() : '220, 130';
 	$quality  = ($this->getQuality()) ? $this->getQuality() : 100;
 ?>
+
+<input type="hidden" id="thumb_image_width" value="<?php echo $dexxtz->getFeaturedWidth() ?>">
+<input type="hidden" id="thumb_image_height" value="<?php echo $dexxtz->getFeaturedHeight() ?>">
+<input type="hidden" id="source_image_width" value="<?php echo $dexxtz->getImageZoomWidth() ?>">
+<input type="hidden" id="source_image_height" value="<?php echo $dexxtz->getImageZoomHeight() ?>">
+<input type="hidden" id="zoom_area_width" value="<?php echo $dexxtz->getZoomAreaWidth() ?>">
+<input type="hidden" id="zoom_area_height" value="<?php echo $dexxtz->getZoomAreaHeight() ?>">
+<input type="hidden" id="show_descriptions" value="<?php echo $dexxtz->getDescriptionActive() ?>">
+<input type="hidden" id="description_location" value="<?php echo $dexxtz->getDescriptionPosition() ?>">
+<input type="hidden" id="description_opacity" value="<?php echo $dexxtz->getDescriptionOpacity() ?>">
+<input type="hidden" id="small_thumbs" value="<?php echo $dexxtz->getThubnailsQty() ?>">
+<input type="hidden" id="smallthumb_inactive_opacity" value="<?php echo $dexxtz->getOpacityInative() ?>">
+<input type="hidden" id="smallthumbs_position" value="<?php echo $dexxtz->getThubnailsPosition() ?>">
+<input type="hidden" id="magnifier_opacity" value="<?php echo $dexxtz->getOpacityMagnifier() ?>">
+<input type="hidden" id="show_icon" value="<?php echo $dexxtz->getShowIcon() ?>">
+<input type="hidden" id="speed" value="<?php echo $dexxtz->getFadeInterval() ?>">
+<input type="hidden" id="autoplay" value="<?php echo $dexxtz->getAutoplay() ?>">
+<input type="hidden" id="autoplay_interval" value="<?php echo $dexxtz->getAutoplayInterval() ?>">
+
 <?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
 	<div class="product-img product-view-img hidden-xs">
 		<ul id="etalage" class="hidden-xs <?php if(count($this->getGalleryImages()) >= 4):?>slide<?php endif; ?> <?php if(count($this->getGalleryImages()) == 0 ):?>single<?php endif; ?>">
@@ -134,3 +153,4 @@
 		?>
 	</div>
 <?php endif; ?>
+<?php $dexxtz->getJs(); ?>

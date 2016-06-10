@@ -154,6 +154,7 @@
         <remove name="product.clone_prices"/>
         <remove name="html_calendar"/>
         <reference name="head">
+            <action method="addJs"><script>ecomitize/prototype.js</script></action>
             <action method="addItem"><type>skin_js</type><name>js/bootstrap-rating-input.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/responsive-tabs.js</name></action>
             <action method="addItem"><type>skin_js</type><name>js/jquery.zoom.js</name></action>
