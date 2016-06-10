@@ -16,40 +16,40 @@ class Dexxtz_Productzoom_Helper_Data extends Mage_Core_Helper_Abstract
 		
 		return $active;
 	}
-	
-	private function getAutoplay()
+
+	public function getAutoplay()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/general/autoplay');
 		$autoplay = ($value == true) ? 'true' : 'false';
 		
 		return $autoplay;
 	}
-	
-	private function getAutoplayInterval()
+
+	public function getAutoplayInterval()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/general/autoplay_interval');
 		$autoplayInterval = ($value) ? $value : 6000;
 		
 		return $autoplayInterval;
 	}
-	
-	private function getFadeInterval()
+
+	public function getFadeInterval()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/general/fadein_interval');
 		$fadeInterval = ($value) ? $value : 0;
 		
 		return $fadeInterval;
 	}
-	
-	private function getShowIcon()
+
+	public function getShowIcon()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/general/magnifier_icon');
 		$magnifierIcon = ($value == true) ? 'true' : 'false';
 		
 		return $magnifierIcon;
 	}
-	
-	private function getFeaturedWidth()
+
+	public function getFeaturedWidth()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/featured_settings/featured_width');
 		$featuredWidth = ($value) ? $value : '300';
@@ -57,62 +57,62 @@ class Dexxtz_Productzoom_Helper_Data extends Mage_Core_Helper_Abstract
 		return $featuredWidth;
 	}
 
-	private function getFeaturedHeight()
+	public function getFeaturedHeight()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/featured_settings/featured_height');
 		$featuredHeight = ($value) ? $value : '300';
 		
 		return $featuredHeight;
 	}
-	
-	private function getThubnailsQty()
+
+	public function getThubnailsQty()
 	{
 		$qty = Mage::getStoreConfig('dexxtz_productzoom/thumbnails_settings/thumbnails_qty');		
 		$qty = ($this->getVideoActive() == 1) ? $qty + 1: $qty;
 		
 		return $qty;
 	}
-	
-	private function getThubnailsPosition()
+
+	public function getThubnailsPosition()
 	{
 		$position = Mage::getStoreConfig('dexxtz_productzoom/thumbnails_settings/thumbnails_position');
 		
 		return $position;
 	}
-	
-	private function getImageZoomWidth()
+
+	public function getImageZoomWidth()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/zoom_settings/zoom_image_width');
 		$zoomWidth = ($value) ? $value : 300;
 		
 		return $zoomWidth;
 	}
-	
-	private function getImageZoomHeight()
+
+	public function getImageZoomHeight()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/zoom_settings/zoom_image_height');
 		$zoomHeight = ($value) ? $value : 300;
 		
 		return $zoomHeight;
 	}
-	
-	private function getZoomAreaWidth()
+
+	public function getZoomAreaWidth()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/zoom_settings/zoom_area_width');
 		$areaWidth = ($value) ? $value : 500;
 		
 		return $areaWidth;
 	}
-	
-	private function getZoomAreaHeight()
+
+	public function getZoomAreaHeight()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/zoom_settings/zoom_area_height');
 		$areaHeight = ($value) ? $value : null;
 		
 		return $areaHeight;
 	}
-	
-	private function getDescriptionActive()
+
+	public function getDescriptionActive()
 	{
 		$active = Mage::getStoreConfig('dexxtz_productzoom/zoom_settings/description_active');
 		if ($active == 0) {
@@ -122,29 +122,29 @@ class Dexxtz_Productzoom_Helper_Data extends Mage_Core_Helper_Abstract
 		return $js;
 	}
 
-	private function getDescriptionPosition()
+	public function getDescriptionPosition()
 	{
 		$position = Mage::getStoreConfig('dexxtz_productzoom/zoom_settings/description_position');
 		
 		return $position;
 	}
 
-	private function getDescriptionOpacity()
+	public function getDescriptionOpacity()
 	{
 		$opacity = Mage::getStoreConfig('dexxtz_productzoom/zoom_settings/description_opacity');
 		
 		return $opacity;
 	}
 
-	private function getOpacityInative()
+	public function getOpacityInative()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/css_settings/opacity_inative');
 		$opacityInative = ($value) ? $value : '0.3';
 		
 		return $opacityInative;
 	}
-	
-	private function getOpacityMagnifier()
+
+	public function getOpacityMagnifier()
 	{
 		$value = Mage::getStoreConfig('dexxtz_productzoom/css_settings/opacity_magnifier');
 		$opacityMagnifier = ($value) ? $value : '0.5';
@@ -215,7 +215,7 @@ class Dexxtz_Productzoom_Helper_Data extends Mage_Core_Helper_Abstract
 		echo $js;
 	}
 
-	private function getVideoActive()
+	public function getVideoActive()
 	{
 		$active = Mage::getStoreConfig('dexxtz_productzoom/video/active');
 		
@@ -242,7 +242,7 @@ class Dexxtz_Productzoom_Helper_Data extends Mage_Core_Helper_Abstract
 		}
 	}
 
-	private function getVideoJs()
+	public function getVideoJs()
 	{
 		$video = (Mage::registry('current_product')->getDexxtzVideo()) ? true : false;
 		$media = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
@@ -272,8 +272,8 @@ class Dexxtz_Productzoom_Helper_Data extends Mage_Core_Helper_Abstract
 
 		return $js;
 	}
-	
-	private function getDescriptionCss()
+
+	public function getDescriptionCss()
 	{
 		$bg    = Mage::getStoreConfig('dexxtz_productzoom/zoom_settings/background_color');
 		$color = Mage::getStoreConfig('dexxtz_productzoom/zoom_settings/description_color');
@@ -313,14 +313,14 @@ class Dexxtz_Productzoom_Helper_Data extends Mage_Core_Helper_Abstract
 		echo $css;
 	}
 
-	private function getImageResize()
+	public function getImageResize()
 	{
 		$resize = Mage::getStoreConfig('dexxtz_productzoom/featured_settings/resize');
 		
 		return $resize;
 	}
-	
-	private function getImageBg()
+
+	public function getImageBg()
 	{
 		$bg = Mage::getStoreConfig('dexxtz_productzoom/featured_settings/background_color');
 		
