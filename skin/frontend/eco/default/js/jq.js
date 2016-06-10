@@ -353,7 +353,7 @@ jQuery(document).ready(function ($) {
             $('footer .footer-left').appendTo('.navbar .navbar-footer');
             $('.header-top').prependTo('#navbar').show();
 
-            $('.catalog-product-view .button-filter, .catalogsearch-result-index .button-filter').insertAfter('.page-title');
+            $('.catalog-category-view .button-filter, .catalogsearch-result-index .button-filter').insertAfter('.page-title');
 
             /* Accordeons */
             $('body:not(.catalog-product-view,  .checkout-onepage-index, .cms-index-index) .nav.nav-tabs').tabCollapse();
