@@ -44,7 +44,7 @@
             <dl id="aw-ln-filters-container">
                 <?php foreach ($this->getFilterList() as $_filter): ?>
                     <?php if($this->getItemCountByFilter($_filter)): ?>
-                        <dt>
+                        <dt class="title-<?php echo $_filter->getTitle() ?>">
                             <span><?php echo $_filter->getTitle() ?></span>
                             <?php if ($this->isFilterHasAppliedValues($_filter)):?>
                                 <span class="aw-ln-filter-clear">
@@ -54,7 +54,7 @@
                                 <?php echo $this->renderHelp($_filter); ?>
                             <?php endif;?>
                         </dt>
-                        <dd>
+                        <dd class="body-<?php echo $_filter->getTitle() ?>">
                             <?php echo $this->renderFilter($_filter); ?>
                         </dd>
                     <?php endif; ?>

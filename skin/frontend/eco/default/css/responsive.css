@@ -879,6 +879,16 @@
         font-size: inherit;
     }
 
+    #catClone {
+        display: block;
+    }
+
+    .cat-cloned .block-layered-nav .title-Category,
+    .cat-cloned .block-layered-nav .body-Category {
+        display: none;
+    }
+
+
     .form-price h4 {
         margin-top: 0;
     }
