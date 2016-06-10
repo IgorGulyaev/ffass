@@ -107,10 +107,29 @@
     }
 
     .minicart-wrapper {
+        position: relative;
         padding: 20px;
         background-color: #fff;
         width: 100%;
         border-bottom: 1px dashed #cdcdcd;
+    }
+    .minicart-wrapper:before {
+        position: absolute;
+        top: -7px;
+        right: 29px;
+        display: block;
+        content: '';
+        height: 12px;
+        width: 12px;
+        border-top: 1px dashed #cdcdcd !important;
+        border-left: 1px dashed #cdcdcd !important;
+        background-color: #fff;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        transform-origin: center;
     }
     .header-minicart .minicart-actions a,
     .header-minicart .minicart-actions button {
@@ -319,7 +338,7 @@
         display: block!important;
         float: none!important;
         margin: 0!important;
-        border: 0!important;
+        border: 0 !important;
         position: absolute;
         z-index: 9999;
         left: 0;
@@ -334,6 +353,32 @@
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+    }
+
+    #navbar {
+        overflow: visible;
+        border: 1px dashed #cdcdcd !important;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+    }
+    #navbar .header-top:before {
+        position: absolute;
+        top: -7px;
+        left: 24px;
+        display: block;
+        content: '';
+        height: 12px;
+        width: 12px;
+        border-top: 1px dashed #cdcdcd !important;
+        border-left: 1px dashed #cdcdcd !important;
+        background-color: #f6f6f6;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        transform-origin: center;
     }
 
     .navbar .navbar-footer .account-nav {
