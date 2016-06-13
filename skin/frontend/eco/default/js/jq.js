@@ -361,7 +361,7 @@ jQuery(document).ready(function ($) {
             if ($('.category-item').length < 2) {
                 $('body').addClass('filter-removed');
             }
-            $('.catalog-category-view .button-filter, .catalogsearch-result-index .button-filter').insertAfter('.main > .page-title');
+            $('.catalog-category-view .button-filter, .catalogsearch-result-index .button-filter').insertAfter('.main .page-title');
 
             /* Accordeons */
             $('body:not(.catalog-product-view,  .checkout-onepage-index, .cms-index-index) .nav.nav-tabs').tabCollapse();
