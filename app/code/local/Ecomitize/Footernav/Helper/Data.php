@@ -28,6 +28,13 @@ class Ecomitize_Footernav_Helper_Data extends Mage_Core_Helper_Abstract
             $label = 'Recently Viewed';
             $option = 'Recently Viewed';
         }
+        if($params['related'] == 1){
+            $product = Mage::getModel('catalog/product')->load($params['product']);
+            if($product->getId()){
+                $option = 'Related Products of ' . $product->getName();
+                $label = 'Related Products of ' . $product->getName();
+            }
+        }
 
         $breadcrumbs = Mage::app()->getLayout()->getBlock('breadcrumbs');
         $breadcrumbs->addCrumb('home', array('label' => Mage::helper('cms')->__('Home'), 'title' => Mage::helper('cms')->__('Home Page'), 'link' => Mage::getBaseUrl()));
