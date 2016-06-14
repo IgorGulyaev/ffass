@@ -37,6 +37,14 @@ class Ecomitize_Footernav_Model_Layer extends Mage_Catalog_Model_Layer{
                     $this->prepareProductCollection($collection);
                     $this->_productCollections[$this->getCurrentCategory()->getId()] = $collection;
                 }
+                if($params['related']){
+                    if($params['product']){
+                        $product = Mage::getModel('catalog/product')->load($params['product']);
+                        $collection = $product->getRelatedProductCollection()->addAttributeToSelect('*');
+                        $this->prepareProductCollection($collection);
+//                        $this->_productCollections[$this->getCurrentCategory()->getId()] = $collection;
+                    }
+                }
                 if($params['onsale']){
                     $todayDate  = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
                     $tomorrow = mktime(0, 0, 0, date('m'), date('d')+1, date('y'));

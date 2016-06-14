@@ -28,6 +28,12 @@ class Ecomitize_Footernav_IndexController extends Mage_Core_Controller_Front_Act
         if($params['clearance'] == 1){
             $option = 'Recently Viewed';
         }
+        if($params['related'] == 1){
+            $product = Mage::getModel('catalog/product')->load($params['product']);
+            if($product->getId()){
+                $option = 'Related Products of ' . $product->getName();
+            }
+        }
         return $option;
     }
 }

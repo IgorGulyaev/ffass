@@ -12,10 +12,13 @@ class Ecomitize_All_Block_Filterproducts_Featured extends Mage_Catalog_Block_Pro
      */
     protected function _getProductCollection()
     {
+        $category = Mage::getResourceModel('catalog/category_collection')
+            ->addFieldToFilter('url_key', 'featured')
+            ->getFirstItem();
         $storeId  = Mage::app()->getStore()->getId();
         $products = Mage::getResourceModel('catalog/product_collection')
             ->setStoreId($storeId)
-            ->addAttributeToFilter('featured', array('eq' => '1'))
+            ->addCategoryFilter($category)
             ->addAttributeToSelect('image')
             ->addAttributeToSelect('name')
             ->addMinimalPrice()
@@ -23,11 +26,6 @@ class Ecomitize_All_Block_Filterproducts_Featured extends Mage_Catalog_Block_Pro
             ->addTaxPercents()
             ->setPageSize(5)
             ->addAttributeToSort('position', 'desc');
-
-        if ($curCat = Mage::registry('current_category')) {
-            $products->addCategoryFilter($curCat)
-                ->addUrlRewrite($curCat->getId());
-        }
 
         Mage::getSingleton('catalog/product_status')
             ->addVisibleFilterToCollection($products);
