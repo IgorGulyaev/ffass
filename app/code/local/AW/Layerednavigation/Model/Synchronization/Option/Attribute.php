@@ -143,17 +143,17 @@ class AW_Layerednavigation_Model_Synchronization_Option_Attribute
 
     protected function _updateLabels($attribute)
     {
-        $synchList = $attribute->getData('synchronize');
-        if ($synchList === null) {
-            return $this;
-        }
-        $synchList = array_keys($synchList);
+//        $synchList = $attribute->getData('synchronize');
+//        if ($synchList === null) {
+//            return $this;
+//        }
+//        $synchList = array_keys($synchList);
 
         $attribute = Mage::getModel('catalog/entity_attribute')->load($attribute->getId());
 
         $filterId = array_search($attribute->getAttributeCode(), $this->_filterAttributeCodeList);
         $filterModel = Mage::getModel('aw_layerednavigation/filter')->load($filterId);
-        if (in_array('attribute', $synchList)) {
+        //if (in_array('attribute', $synchList)) {
             $this->_dropFilterLabels($filterModel);
             $data = array(
                 'filter_id' => $filterId,
@@ -167,8 +167,8 @@ class AW_Layerednavigation_Model_Synchronization_Option_Attribute
                 Mage::logException($e);
             }
             $this->_saveFilterLabels($filterModel, $attribute);
-        }
-        if (in_array('option', $synchList)) {
+        //}
+        //if (in_array('option', $synchList)) {
             $this->_dropOptionLabels($filterModel);
 
             $optionLabels = $this->_getOptionLabelValues($attribute);
@@ -194,7 +194,7 @@ class AW_Layerednavigation_Model_Synchronization_Option_Attribute
                     }
                 }
             }
-        }
+        //}
     }
 
     /**
