@@ -1,5 +1,5 @@
 <?php
-    $onsaleProducts = $this->getLoadedProductCollection();
+    $onsaleProducts = $this->getLoadedProductCollection()->addAttributeToSelect('small_image');
     $imageHelper = $this->helper('catalog/image');
 ?>
 <?php if(count($onsaleProducts->getItems())): ?>
