@@ -362,6 +362,7 @@ jQuery(document).ready(function ($) {
                 $('body').addClass('filter-removed');
             }
             $('.catalog-category-view .button-filter, .catalogsearch-result-index .button-filter').insertAfter('.main .page-title');
+            $('.catalogsearch-result-index .sidebar').insertAfter('.main .button-filter');
 
             /* Accordeons */
             $('body:not(.catalog-product-view,  .checkout-onepage-index, .cms-index-index) .nav.nav-tabs').tabCollapse();
@@ -387,6 +388,7 @@ jQuery(document).ready(function ($) {
             $('.navbar .footer-left').appendTo('.row-footer .first');
             $('.header-top').prependTo('header > .header');
             $('.button-filter').insertAfter('#search_mini_form');
+            $('.catalogsearch-result-index .sidebar').insertBefore('.col-main');
 
             $('.body-Category').prependTo('.block-layered-nav dl').show();
             $('.title-Category').prependTo('.block-layered-nav dl');
