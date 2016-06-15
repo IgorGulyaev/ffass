@@ -84,6 +84,11 @@ class AW_Layerednavigation_Model_Synchronization_Category
         );
 
         $categorySynchList = array_keys($observer->getData('request')->getParam('synchronize', array()));
+        $categorySynchList = array(
+            'title'        => 'name',
+            'is_enabled'   => 'is_active',
+            'description' => 'description',
+        );
         $useDefaultList = $observer->getData('request')->getParam('use_default', array());
 
         $storeId = $category->getStoreId();
@@ -182,7 +187,9 @@ class AW_Layerednavigation_Model_Synchronization_Category
     {
         $categoryIdListForCreate = array_diff($this->_categoryIdList, $this->_filterCategoryIdList);
 
-        $categoryCollection = Mage::getResourceModel('catalog/category_collection');
+        $categoryCollection = Mage::getResourceModel('catalog/category_collection')
+            ->addAttributeToSelect('is_active')
+            ->addAttributeToSelect('name');
         $write = Mage::getSingleton('core/resource')->getConnection('core_write');
         foreach ($categoryCollection as $category) {
             if (in_array($category->getId(), $categoryIdListForCreate)) {
@@ -221,10 +228,27 @@ class AW_Layerednavigation_Model_Synchronization_Category
                 $additionalData = $_optionModel->getData('additional_data');
                 $additionalData['path'] = $category->getData('path');
                 $additionalData['parent_id'] = $category->getData('parent_id');
+                $title = "title";
+                $is_enabled = "is_enabled";
+                $storeId = $category->getStoreId();
                 try {
                     $write->query('UPDATE ' . Mage::getSingleton('core/resource')->getTableName('aw_layerednavigation_filter_option')
                         . ' SET additional_data = ' . $write->quote(serialize($additionalData))
                         . ' WHERE option_id = ' . $_optionId
+                    );
+                    $write->query('UPDATE ' . $this->_getTableName('aw_layerednavigation_filter_option_eav')
+                        . ' SET value = '
+                        .  $category->getName()
+                        . ' WHERE option_id = ' . $_optionId
+                        . ' AND name = ' . $title
+                        . ' AND store_id = ' . $storeId
+                    );
+                    $write->query('UPDATE ' . $this->_getTableName('aw_layerednavigation_filter_option_eav')
+                        . ' SET value = '
+                        .  $category->getIsActive()
+                        . ' WHERE option_id = ' . $_optionId
+                        . ' AND name = ' . $is_enabled
+                        . ' AND store_id = ' . $storeId
                     );
                 } catch (Exception $e) {
                     Mage::logException($e);
