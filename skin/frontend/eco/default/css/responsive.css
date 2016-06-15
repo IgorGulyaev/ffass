@@ -907,6 +907,21 @@
 
     /**/
 
+    .banners-home-page-banners .owl-carousel .owl-stage {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .banners-home-page-banners .owl-carousel .owl-stage .item,
+    .banners-home-page-banners .owl-carousel .owl-stage .unibanner-item,
+    .banners-home-page-banners .owl-carousel .owl-stage .row-height {
+        height: 100%;
+    }
+
     /* section-products */
 
     .section-products {
