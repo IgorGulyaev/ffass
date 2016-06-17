@@ -1851,6 +1851,10 @@
         right: 0;
         left: auto;
     }
+    .navbar .navbar-nav > .dropdown-left + .dropdown-right > .dropdown-menu {
+        left: 0;
+        right: auto;
+    }
 
     .navbar .navbar-nav > .dropdown-right > .dropdown-menu:after,
     .navbar .navbar-nav > .dropdown-right > .dropdown-menu:before {

@@ -11,7 +11,7 @@ jQuery(document).ready(function ($) {
             if ($(this).parent().hasClass('open') == true) {
                 window.location.href = $(this).attr('href');
             } else {
-                $(this).parent().siblings().removeClass('open');
+                $(this).parent().siblings().removeClass('open').find('.open').removeClass('open');
                 $(this).parent().addClass('open');
             }
         });
