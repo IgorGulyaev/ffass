@@ -3,6 +3,20 @@ jQuery(document).ready(function ($) {
     wowInit();
     accordeonDirectLink();
 
+    if (is_touch_device()) {
+        $('html').addClass('touch');
+        $(document).on('click', '.navbar .navbar-nav .dropdown > a', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            if ($(this).parent().hasClass('open') == true) {
+                window.location.href = $(this).attr('href');
+            } else {
+                $(this).parent().siblings().removeClass('open');
+                $(this).parent().addClass('open');
+            }
+        });
+    }
+
     $('.selectpicker').selectpicker({
         size: 4
     });
@@ -316,6 +330,12 @@ jQuery(document).ready(function ($) {
         }
     }
 
+    function is_touch_device() {
+        return (('ontouchstart' in window)
+        || (navigator.MaxTouchPoints > 0)
+        || (navigator.msMaxTouchPoints > 0));
+    }
+
     function accordeonDirectLink() {
         var directLink = $('ul.pages-accordeon a[href^="http"]');
         if (directLink[0]) {
@@ -379,7 +399,19 @@ jQuery(document).ready(function ($) {
             }
             /* End Category filter */
 
-        } else if(window.matchMedia('(min-width: 768px)').matches) {
+        } else if(window.matchMedia('(min-width: 768px)' && is_touch_device()).matches) {
+            $('.navbar').on('affix.bs.affix affix-top.bs.affix', function (e) {
+                var padding = e.type === 'affix' ? $(this).height() : '';
+                $('body').css('padding-top', padding);
+            });
+            $('.navbar .footer-left').appendTo('.row-footer .first');
+            $('.header-top').prependTo('header > .header');
+            $('.button-filter').insertAfter('#search_mini_form');
+            $('.catalogsearch-result-index .sidebar').insertBefore('.col-main');
+
+            $('.body-Category').prependTo('.block-layered-nav dl').show();
+            $('.title-Category').prependTo('.block-layered-nav dl');
+        } else if(window.matchMedia('(min-width: 768px)' && !is_touch_device()).matches) {
             $('[data-hover="dropdown"]').dropdownHover();
             $('.navbar').on('affix.bs.affix affix-top.bs.affix', function (e) {
                 var padding = e.type === 'affix' ? $(this).height() : '';

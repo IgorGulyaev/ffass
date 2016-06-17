@@ -2124,6 +2124,9 @@
         margin-bottom: 10px;
         width: 100%;
     }
+    .navbar .navbar-nav > li > a {
+        font-size: 14px;
+    }
 }
 @media (min-width: 650px) and (max-width: 991px) {
     .dropdown-menu-cart {

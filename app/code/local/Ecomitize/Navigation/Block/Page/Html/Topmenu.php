@@ -66,9 +66,11 @@ class Ecomitize_Navigation_Block_Page_Html_Topmenu extends Mage_Page_Block_Html_
             $outermostClass = $menuTree->getOutermostClass();
 
             if ($child->hasChildren()) {
-                $parentClass = 'parent ';
+                $parentClass = 'parent dropdown-toggle';
+                $dataHover = 'data-hover="dropdown"';
             } else {
                 $parentClass = '';
+                $dataHover = '';
             }
 
             if ($childLevel == 0 && $outermostClass) {
@@ -78,7 +80,7 @@ class Ecomitize_Navigation_Block_Page_Html_Topmenu extends Mage_Page_Block_Html_
 
             $html .= '<li ' . ($childLevel == 0 ? $this->getTopClassName($counter, $childrenCount, $this->_getRenderedMenuItemAttributes($child)) : $this->_getRenderedMenuItemAttributes($child)) . '>';
 
-            $html .= '<a href="' . $child->getUrl() . '" ' . $outermostClassCode  . ' class="' . $parentClass . '">' . $this->escapeHtml($child->getName()) . '</a>';
+            $html .= '<a href="' . $child->getUrl() . '" ' . $outermostClassCode  . ' class="' . $parentClass . '" '. $dataHover .'>' . $this->escapeHtml($child->getName()) . '</a>';
 
             if ($child->hasChildren()) {
                 if (!empty($childrenWrapClass)) {
