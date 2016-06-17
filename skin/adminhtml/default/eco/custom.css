@@ -1,0 +1,794 @@
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,500italic,700,700italic,900,900italic,300italic,300,100italic,100);
+@import url('font-awesome.css');
+
+* {
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+     background: #eef0f0;
+     height: 100%;
+}
+
+body {
+    background: #eef0f0;
+    height: auto !important;
+    min-height: 100%;
+    position: relative;
+}
+
+main {
+    min-height: 100%!important;
+    padding-bottom: 100px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.content-buttons.form-buttons:after,
+.attribute-values-container-main:after,
+#order-totals:after,
+#order-coupons:after {
+    display: table;
+    clear: both;
+    content: '';
+}
+
+html,
+body,
+input,
+button,
+select,
+textarea {
+    font-family: 'Roboto', sans-serif!important;
+}
+
+a,
+button,
+input,
+select,
+.grid tr,
+.categories-side-col .tree-actions,
+.grid a img[src*='media'],
+[class*='edit'] [onclick*='filename_image'] img {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+a,
+a:hover,
+a:active,
+a:focus,
+a img,
+img,
+a,
+button,
+button:active,
+button:focus,
+input,
+textarea,
+select,
+:focus {
+    outline: none !important;
+}
+
+@font-face {
+    font-family: 'ecomitize';
+    src:    url('fonts/ecomitize.eot?7x7cl7');
+    src:    url('fonts/ecomitize.eot?7x7cl7#iefix') format('embedded-opentype'),
+    url('fonts/ecomitize.ttf?7x7cl7') format('truetype'),
+    url('fonts/ecomitize.woff?7x7cl7') format('woff'),
+    url('fonts/ecomitize.svg?7x7cl7#ecomitize') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.link-ecomitize-support:before {
+    font-family: 'ecomitize' !important;
+    display: inline-block;
+    position: relative;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: middle;
+    margin-right: 8px;
+    font-size: 17px;
+    top: -1px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-eco-magento:before {
+    content: "\e603";
+}
+.icon-eco-logo:before {
+    content: "\e604";
+}
+.icon-eco-logo-mini:before {
+    content: "\e60b";
+}
+
+.link-ecomitize-support:before {
+    content: "\e60b";
+}
+
+.notification-global:before,
+#page-help-link:before,
+.link-store-scope:before,
+.messages > li > ul > li:before,
+.message-popup .message-popup-content .message-icon:before,
+.message-popup .message-popup-head a:before,
+.message-popup .message-popup-content .read-more a:before,
+button.add > span:before,
+.head-products:before,
+.head-categories:before,
+.pager > a[title*='Previous'],
+.pager > a[title*='Next'],
+.link-feed:before,
+.grid a[href*='/edit/']:before,
+button.save:before,
+.options-box a[title="Apply"]:before,
+.options-box a[title="Open Chooser"]:before,
+.filter-actions button[title="Search"]:before,
+span.checkbox [type=checkbox] + span:before,
+ul.tabs a.changed span.changed:before,
+button.go:before,
+dl.accordion dt a:before,
+div.collapseable a:before,
+dl.accordion dt.open a:before,
+div.collapseable a.open:before,
+button.back:before,
+button.icon-btn:before,
+button.show-hide:before,
+button.add-widget:before,
+button.add-image:before,
+button.add-variable:before,
+.super-attributes div.attribute-name-container:before,
+.subdue:after,
+.note-list li:before,
+a[title="Refresh"]:before,
+#order-sidebar_reorder th.a-center:before,
+#order-sidebar_compared th.a-center:last-child:before,
+#order-sidebar_compared .create-order-sidebar-block table th:nth-last-child(2):before,
+#order-sidebar_cart .create-order-sidebar-block table th:nth-last-child(2):before,
+#order-sidebar_pviewed th.a-center:last-child:before,
+#order-sidebar_reorder th.a-center:last-child:before,
+#order-sidebar_cart th.a-center:last-child:before,
+.entry-edit .tools > a:before,
+.edit-attribute-set-table #tree-div2 .x-tree-node a:before,
+.aw-ln-position-el:before,
+.magento_close:before {
+    display: inline-block;
+    position: relative;
+    font: normal normal normal 14px/1 FontAwesome;
+    text-rendering: auto;
+    vertical-align: middle;
+    margin-right: 8px;
+    font-size: 13px;
+    top: -1px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.notification-global:before,
+#page-help-link:before,
+.link-store-scope:before {
+    vertical-align: middle;
+}
+
+.edit-attribute-set-table #tree-div2 .x-tree-node a:before {
+    content: "\f247";
+}
+
+.entry-edit .tools > a:before {
+    content: "\f040";
+}
+
+button.add-variable:before {
+    content: "\f05a";
+}
+
+button.add-image:before {
+    content: "\f03e";
+}
+
+button.add-widget:before {
+    content: "\f247";
+}
+
+.notification-global:before {
+    content: "\f06a";
+    font-size: 20px;
+    color: #eb5e00;
+}
+
+#page-help-link:before,
+.link-store-scope:before {
+    content: "\f059";
+    font-size: 17px;
+    top: -2px;
+}
+
+.messages > li.error-msg > ul > li:before,
+.message-popup .message-popup-content .message-notice:before {
+    content: "\f071";
+}
+
+.message-popup .message-popup-head a:before {
+    content: "\f00d";
+}
+
+.message-popup .message-popup-content .read-more a:before {
+    content: "\f064";
+    font-size: 11px;
+}
+
+button.add > span:before,
+#order-sidebar_reorder th.a-center:before,
+#order-sidebar_compared th.a-center:last-child:before,
+#order-sidebar_pviewed th.a-center:last-child:before,
+#order-sidebar_reorder th.a-center:last-child:before,
+#order-sidebar_cart th.a-center:last-child:before {
+    content: "\f067";
+}
+
+#order-sidebar_reorder th.a-center:before,
+#order-sidebar_compared th.a-center:last-child:before,
+#order-sidebar_pviewed th.a-center:last-child:before,
+#order-sidebar_reorder th.a-center:last-child:before,
+#order-sidebar_cart th.a-center:last-child:before {
+    font-size: 16px;
+    margin-right: 0;
+}
+
+#order-sidebar_compared th.a-center:last-child:before,
+#order-sidebar_pviewed th.a-center:last-child:before,
+#order-sidebar_reorder th.a-center:before,
+#order-sidebar_reorder th.a-center:last-child:before,
+#order-sidebar_cart th.a-center:last-child:before {
+    color: #31a348;
+}
+
+.head-products:before,
+.head-categories:before {
+    content: "\f1b2";
+    font-size: 20px;
+    top: -2px;
+}
+
+.pager > a[title*='Previous']:before {
+    content: "\f060";
+}
+
+.pager > a[title*='Next']:before {
+    content: "\f061";
+}
+
+.link-feed:before {
+    content: "\f09e";
+    color: #FB7629;
+}
+
+.grid a[href*='/edit/']:before {
+    content: "\f040";
+}
+
+button.save:before,
+.options-box a[title="Apply"]:before,
+.subdue:after {
+    content: "\f00c";
+}
+
+.options-box a[title="Open Chooser"]:before {
+    content: "\f03a";
+}
+
+.options-box a[title="Apply"]:before,
+.options-box a[title="Open Chooser"]:before {
+    margin: 0!important;
+}
+
+.filter-actions button[title="Search"]:before {
+    content: "\f002";
+}
+
+ul.tabs a.changed span.changed:before {
+    content: "\f0c7";
+    font-size: 14px;
+}
+
+button:before {
+    top: -2px!important;
+}
+
+button.go:before {
+    content: "\f08e";
+    top: -1px!important;
+}
+
+dl.accordion dt a:before,
+div.collapseable a:before {
+    content: "\f077";
+}
+
+dl.accordion dt.open a:before,
+div.collapseable a.open:before {
+    content: "\f078";
+}
+
+button.back:before {
+    content: "\f053";
+    top: -1px!important;
+}
+
+button.delete.icon-btn:before,
+#order-sidebar_compared .create-order-sidebar-block table th:nth-last-child(2):before,
+#order-sidebar_cart .create-order-sidebar-block table th:nth-last-child(2):before,
+.magento_close:before {
+    content: "\f00d";
+    margin: 0!important;
+}
+
+.magento_close:before {
+    color: #fff;
+    font-size: 20px;
+}
+
+.magento_close {
+    text-align: center;
+    top: 13px!important;
+    right: 13px!important;
+}
+
+#order-sidebar_compared .create-order-sidebar-block table th:nth-last-child(2):before,
+#order-sidebar_cart .create-order-sidebar-block table th:nth-last-child(2):before {
+    font-size: 16px;
+    top: -2px;
+    color: #31a348;
+}
+
+button.show-hide:before {
+    content: "\f06e";
+}
+
+.super-attributes div.attribute-name-container:before {
+    content: "\f07d";
+    color: #31a348;
+    font-size: 20px;
+}
+
+.note-list li:before {
+    content: "\f016";
+}
+
+a[title="Refresh"]:before {
+    content: "\f021";
+    color: #fff!important;
+    font-size: 15px;
+    margin-right: 0;
+    top: -2px;
+}
+
+.x-tree-lines [class*='-plus'],
+.x-tree-lines [class*='-minus'],
+.x-tree-lines .x-tree-node-icon {
+    background-image: url(images/sprite.png)!important;
+    background-repeat: no-repeat!important;
+    width: 15px!important;
+    height: 15px!important;
+    position: relative;
+}
+
+.x-tree-lines [class*='-minus'] {
+    background-position: 0 0!important;
+}
+
+.x-tree-lines [class*='-plus'] {
+    background-position: -15px 0!important;
+}
+
+.x-tree-lines .x-tree-node-icon {
+    background-position: -30px 0!important;
+    margin-left: 8px;
+    top: 4px;
+}
+
+.x-tree-node {
+    padding: 3px 0!important;
+    position: relative;
+}
+
+.x-tree-node-el.folder {
+    padding: 3px 0!important;
+}
+
+.x-tree-node:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    margin-top: 2px;
+    border-top: 1px solid #e5e5e5;
+    width: 16px;
+    z-index: 0;
+}
+
+.x-tree-node-indent,
+.x-tree-elbow,
+.x-tree-elbow-end,
+.x-tree-lines > div > li.x-tree-node:before,
+.subdue img,
+a[title="Refresh"] img,
+#order-sidebar_reorder img[alt="Add To Order"],
+#order-sidebar_compared img[alt="Add To Order"],
+#order-sidebar_compared .create-order-sidebar-block table th:nth-last-child(2) img[title="Remove"],
+#order-sidebar_cart .create-order-sidebar-block table th:nth-last-child(2) img[title="Remove"],
+#order-sidebar_pviewed img[alt="Add To Order"],
+#order-sidebar_reorder th img,
+#order-sidebar_cart th img,
+.edit-attribute-set-table #tree-div2 .x-tree-node img {
+    display: none;
+}
+
+.x-tree-lines ul {
+    margin-left: 7px;
+    padding-left: 7px;
+    border-left: 1px solid #e5e5e5;
+    position: relative;
+}
+
+.x-tree-lines ul:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: -1px;
+    bottom: 0;
+    border-left: 1px solid #fff;
+    height: 12px;
+    z-index: 0;
+}
+
+.x-tree-node .x-tree-selected a span {
+    background: rgba(54, 68, 78, 0.1);
+}
+
+span.checkbox [type=checkbox] {
+    display: none;
+}
+
+span.checkbox {
+    display: inline-block;
+    position: relative;
+}
+
+span.checkbox [type=checkbox] + span:before {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    font-size: 11px;
+    position: relative;
+    cursor: pointer;
+    text-indent: 1px;
+    vertical-align: middle;
+    color: #36444e;
+    background-color: transparent;
+    border: 1px solid #c8c8c8;
+    border-radius: 2px;
+    margin: 0;
+}
+
+span.checkbox:hover [type=checkbox] + span:before {
+    border-color: #36444e;
+}
+
+span.checkbox [type=checkbox]:checked + span:before {
+    content: "\f00c";
+}
+
+span .checkbox-select-all [type=checkbox] {
+    display: inline-block!important;
+    position: absolute!important;
+    z-index: 999;
+    top: -3px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    width: 15px;
+    height: 15px;
+    opacity: 0;
+}
+
+.adminhtml-catalog-product-edit .columns > .side-col {
+    border-right: 0;
+    background-color: transparent;
+}
+
+.adminhtml-catalog-product-edit [for="store_switcher"] {
+    display: none!important;
+}
+
+.adminhtml-catalog-product-edit .columns > .side-col h3 {
+    display: none;
+}
+
+p.form-buttons {
+    text-align: left!important;
+    float: none;
+    margin-top: 20px!important;
+    display: block;
+}
+
+p.form-buttons button {
+    height: 28px;
+    line-height: 18px;
+    padding: 5px 12px;
+}
+
+.content-header h3.head-products {
+    float: none;
+}
+
+.iwd-block dl > dt.label {
+    background-color: rgba(255, 255, 255, 0.5)!important;
+    background-position: 10px center!important;
+}
+
+[href*='knowledge-base/entry/understanding-store-scopes'] {
+    display: none!important;
+}
+
+.form-list tr[id*='time'] select,
+.form-list tr[id*='date'] select {
+    display: inline-block!important;
+    min-width: 70px;
+    width: auto!important;
+}
+
+.autocomplete-indicator {
+    display: none!important;
+}
+
+.giftmessage-whole-order-container td {
+    white-space: nowrap;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.giftmessage-whole-order-container {
+    float: none!important;
+    width: auto!important;
+}
+
+.giftmessage-whole-order-container fieldset {
+    padding: 0!important;
+}
+
+.giftmessage-whole-order-container form {
+    display: block;
+}
+
+#order_history_block textarea,
+#comments_block textarea {
+    width: 100%!important;
+    margin-bottom: 15px;
+    padding: 10px!important;
+}
+
+#order_history_block .divider {
+    display: none;
+}
+
+#order-form_account {
+    margin-bottom: 25px;
+}
+
+.page-create-order .entry-edit {
+    background-color: transparent;
+}
+
+textarea {
+    resize: vertical;
+}
+
+#order-comment textarea {
+    width: 100%!important;
+}
+
+#order-coupons .content > p {
+    display: table;
+    width: 100%;
+}
+
+#order-coupons .content > p > input,
+#order-coupons .content > p > button {
+    display: table-cell;
+}
+
+#order-coupons .content > p > input {
+    width: 74%!important;
+}
+
+#order-coupons .content > p > button {
+    width: 25%!important;
+}
+
+#order-coupons .content {
+    margin-top: 10px;
+}
+
+.adminhtml-cache-index .scope-label {
+    vertical-align: middle;
+}
+
+.adminhtml-cache-index .scope-label button {
+    display: block;
+    width: 100%;
+}
+
+input + label[for] {
+    margin-left: 5px;
+    position: relative;
+    top: 1px;
+}
+
+.dynamic-grid {
+    margin-bottom: 15px;
+}
+
+#attribute-options-table > th {
+    vertical-align: middle;
+}
+
+.flex {
+    position: relative;
+}
+
+.flex:before,
+.flex:after {
+    display: block;
+    background-color: #31a348;
+    width: 110px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    z-index: 1!important;
+    top: 0;
+}
+
+.flex:before {
+    content: 'Upload Files';
+    right: 0;
+}
+
+.flex:after {
+    content: 'Browse Files';
+    left: 0;
+}
+
+.flex embed {
+    position: relative;
+    z-index: 2!important;
+    opacity: 0;
+}
+
+.edit-attribute-set-table {
+    table-layout: auto;
+}
+
+.edit-attribute-set-table > tbody > tr > td {
+    vertical-align: top;
+    width: 30%;
+}
+
+.edit-attribute-set-table > tbody > tr > td.attribute-set-1 {
+    width: 40%;
+}
+
+.edit-attribute-set-table .edit-attribute-set-inner {
+    background-color: #fff;
+    padding: 20px 20px 0;
+    margin: 0 10px;
+}
+
+.edit-attribute-set-table .edit-attribute-set-1 .edit-attribute-set-inner {
+    padding: 0;
+}
+
+.edit-attribute-set-table .x-tree-lines ul:after {
+    height: 9px;
+}
+
+.edit-attribute-set-table .content-header h3 {
+    margin-top: 0;
+    line-height: 1;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.edit-attribute-set-table button {
+    display: block!important;
+    width: 100%;
+}
+
+.edit-attribute-set-table button.delete {
+    position: relative;
+    margin-top: -10px;
+}
+
+.edit-attribute-set-table .edit-attribute-set .form-list td.label label {
+    width: auto;
+}
+
+.edit-attribute-set-table .edit-attribute-set .form-list td.label {
+    width: 100%;
+}
+
+.edit-attribute-set-table .edit-attribute-set .form-list td.label:first-child {
+    width: 30%;
+}
+
+.edit-attribute-set-table .edit-attribute-set .form-list td.value {
+    width: 70%;
+}
+
+.edit-attribute-set-table .edit-attribute-set .form-list td.value input.input-text {
+    max-width: 100%;
+}
+
+.edit-attribute-set-table .edit-attribute-set table {
+    width: 100%;
+}
+
+.edit-attribute-set-table .note-block {
+    margin-top: 15px;
+}
+
+.edit-attribute-set-table #tree-div1 {
+    width: 100%!important;
+}
+
+.edit-attribute-set-table #tree-div2 .x-tree-node:before {
+    display: none;
+}
