@@ -1693,6 +1693,17 @@
 }
 
 /* tablet horizontal  */
+@media (min-width: 991px) {
+
+    body {
+        padding-bottom: 261px;
+    }
+
+    .footer-center span {
+        font-size: 16px;
+    }
+
+}
 @media (min-width: 991px) and (max-width: 1200px) {
 
 
@@ -1707,8 +1718,16 @@
 /* tablet portrait  */
 @media (min-width: 768px) and (max-width: 991px) {
 
+    body {
+        padding-bottom: 268px;
+    }
+
+    .btn-scroll-top {
+        bottom: 20px;
+    }
+
     .container {
-        width: 90%;
+        width: 95%;
     }
 
     .unibanner-item.mixed .uni-text .uni-content {
@@ -1720,6 +1739,13 @@
     .track .track-items li a i:before,
     .track .track-items li span i:before {
         font-size: 14px;
+    }
+
+    .footer-center a {
+        font-size: 13px;
+    }
+    .footer-center span {
+        font-size: 16px;
     }
 
 }

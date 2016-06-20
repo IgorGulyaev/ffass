@@ -1972,9 +1972,6 @@ footer {
 }
 
 @media (min-width: 768px) {
-    body {
-        padding-bottom: 261px;
-    }
     body.paypal-express-review,
     body[class*="checkout-"] {
         padding-bottom: 139px;
