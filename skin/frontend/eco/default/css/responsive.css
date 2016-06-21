@@ -2176,6 +2176,9 @@
         margin-bottom: 10px;
         width: 100%;
     }
+    .validation-advice {
+        margin-right: 0 !important;
+    }
     .navbar .navbar-nav > li > a {
         font-size: 14px;
     }
