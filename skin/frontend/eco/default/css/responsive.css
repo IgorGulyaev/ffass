@@ -1715,7 +1715,9 @@
 
 /* desktop */
 @media (min-width: 1200px) {
-
+    #ask-form {
+        width: 50%;
+    }
 }
 
 /* tablet portrait  */
