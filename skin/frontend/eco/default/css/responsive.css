@@ -1668,6 +1668,16 @@
 }
 
 /* tablet horizontal + vertical  */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .track .track-items li a, .track .track-items li span {
+        font-size: 16px;
+    }
+    .track .track-items li a i:before,
+    .track .track-items li span i:before {
+        font-size: 12px;
+    }
+}
+
 @media (min-width: 768px) and (max-width: 1200px) {
     #etalage .etalage_zoom_area,
     .etalage_zoom_area {
@@ -1758,14 +1768,6 @@
         padding: 15px;
         font-size: 38px;
         line-height: 1.2;
-    }
-
-    .track .track-items li a, .track .track-items li span {
-        font-size: 16px;
-    }
-    .track .track-items li a i:before,
-    .track .track-items li span i:before {
-        font-size: 12px;
     }
 
     .footer-center a {
