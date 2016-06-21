@@ -1739,6 +1739,9 @@
         margin-bottom: 30px;
     }
 
+    .top-link-cart > span > span.cart-info {
+        padding-left: 11px;
+    }
     .top-link-cart i {
         margin-right: 0;
         font-size: 42px;
