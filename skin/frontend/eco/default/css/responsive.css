@@ -1706,7 +1706,10 @@
 }
 @media (min-width: 991px) and (max-width: 1200px) {
 
-
+    .product-shop .add-to-cart .wrap button {
+        padding-right: 54px;
+        padding-left: 54px;
+    }
 
 }
 
