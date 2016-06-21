@@ -2230,6 +2230,14 @@
 }
 @media (max-width: 767px) {
 
+    .index-tabs .tab-content> .tab-pane .owl-item.active.center .products-item {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+
     #etalage {
         max-height: 380px;
     }
