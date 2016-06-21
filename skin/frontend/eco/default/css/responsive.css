@@ -1739,6 +1739,18 @@
         margin-bottom: 30px;
     }
 
+    .top-link-cart i {
+        margin-right: 0;
+        font-size: 42px;
+    }
+    .top-link-cart > span > span > span {
+        font-size: 14px;
+    }
+    .header-cart {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
     .unibanner-item.mixed .uni-text .uni-content {
         padding: 15px;
         font-size: 38px;
