@@ -2218,6 +2218,11 @@
         right: -30px !important;
     }
 }
+@media (max-width: 768px) {
+    .cart > .row > .col-xs-12 {
+        width: 100%;
+    }
+}
 @media (max-width: 767px) {
 
     #etalage {
