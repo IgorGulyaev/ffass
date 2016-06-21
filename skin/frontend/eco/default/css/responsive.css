@@ -1752,6 +1752,11 @@
         font-size: 16px;
     }
 
+    footer .copyright {
+        padding-right: 35px;
+        font-size: 14px;
+    }
+
 }
 
 
