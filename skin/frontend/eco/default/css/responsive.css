@@ -1760,9 +1760,12 @@
         line-height: 1.2;
     }
 
+    .track .track-items li a, .track .track-items li span {
+        font-size: 16px;
+    }
     .track .track-items li a i:before,
     .track .track-items li span i:before {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .footer-center a {
