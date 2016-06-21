@@ -349,7 +349,7 @@ Supported layout update handles (special):
         <label>Catalog Product Email to a Friend</label>
         <!-- Mage_Catalog -->
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
             <action method="addJs"><script>varien/product.js</script></action>

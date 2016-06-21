@@ -480,6 +480,12 @@
         </reference>
     </customer_logged_in>
 
+    <sendfriend_product_send>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </sendfriend_product_send>
+
     <rss_index_index translate="label">
         <label>RSS Feeds List</label>
         <reference name="root">

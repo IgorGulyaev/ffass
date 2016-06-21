@@ -1769,6 +1769,11 @@
         margin: 0!important;
     }
 
+    .send-friend {
+        margin: 0 auto;
+        width: 500px;
+    }
+
     /* navbar */
 
     .navbar.affix {
