@@ -2149,6 +2149,12 @@
     }
 }
 @media (min-width: 767px) and (max-width: 991px) {
+    .product-shop #etalage {
+        max-height: 340px;
+    }
+    .ratings-bar .bar {
+        padding-left: 10px;
+    }
     .product-shop .add-to-cart .wrap {
         margin-right: 5%;
     }
@@ -2157,7 +2163,14 @@
         padding-left: 30px;
     }
     .product-view .add-to-links {
-        margin-top: 41px;
+        padding-left: 15px;
+        margin-top: 0;
+        margin-left: 0;
+        width: 120px;
+        vertical-align: top;
+    }
+    #ask-form {
+        width: 100%;
     }
     .add-to-links a:before {
         margin-bottom: 10px;
