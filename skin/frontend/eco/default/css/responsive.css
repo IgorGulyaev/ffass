@@ -1730,6 +1730,10 @@
         width: 95%;
     }
 
+    .pages-accordeon.tab-content {
+        margin-bottom: 30px;
+    }
+
     .unibanner-item.mixed .uni-text .uni-content {
         padding: 15px;
         font-size: 38px;
