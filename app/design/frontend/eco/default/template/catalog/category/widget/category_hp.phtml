@@ -44,7 +44,14 @@ $url                    = $_category->getUrl();
             <a href="<?php echo $_category->getUrl(); ?>">
                 <h3><?php echo $name ?></h3>
             </a>
-            <p><?php echo $categoryDescription ?></p>
+            <p <?php if(strlen($categoryDescription) > 150):?>class="ellipsis"<?php endif; ?>><?php
+                if(strlen($categoryDescription) > 150) {
+                    $in = substr($categoryDescription, 0, strpos(wordwrap($categoryDescription, 150), "\n"));
+                    $out = strlen($in) > 150 ? substr($in, 0, 150) . "..." : $in;
+                    echo $out;
+                } else {
+                    echo $categoryDescription;
+                } ?></p>
             <a href="<?php echo $url ?>" class="button"><?php echo $this->__('Shop now >') ?></a>
         </div>
     </div>

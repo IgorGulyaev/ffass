@@ -4841,7 +4841,7 @@ span.product-image {
 
 .opc-ajax-loader,
 .loading {
-    position: fixed;
+    position: fixed !important;
     z-index: 99999;
     background: rgba(255, 255, 255, .8);
     left: 0;
