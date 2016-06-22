@@ -29,7 +29,7 @@ $catId                  = $this->getCatId();
 $_category              = Mage::getModel('catalog/category')->load($catId);
 $name                   = $_category->getName();
 $image                  = $_category->getThumbnail();
-$categoryDescription    = $_category->getDescription();
+$categoryDescription    = $_category->getCategoryShortDescription();
 $url                    = $_category->getUrl();
 ?>
 <div class="hp-cat col-xs-6">
