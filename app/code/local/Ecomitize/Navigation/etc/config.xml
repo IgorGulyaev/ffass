@@ -32,5 +32,26 @@
                 <class>Ecomitize_Navigation_Model</class>
             </ecomitize_navigation>
         </models>
+        <resources>
+            <ecomitize_navigation_setup>
+                <setup>
+                    <module>Ecomitize_Navigation</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </ecomitize_navigation_setup>
+            <ecomitize_navigation_write_setup>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </ecomitize_navigation_write_setup>
+            <ecomitize_navigation_read_setup>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </ecomitize_navigation_read_setup>
+        </resources>
     </global>
 </config>
