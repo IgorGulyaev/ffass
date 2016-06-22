@@ -2215,6 +2215,9 @@
     .my-account table[class*='data-table'] {
         font-size: 11px;
     }
+    .wishlist-item .products-item {
+        padding-top: 30px;
+    }
 }
 @media (min-width: 650px) and (max-width: 991px) {
     .dropdown-menu-cart {
