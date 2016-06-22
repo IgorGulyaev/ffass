@@ -2218,6 +2218,9 @@
     .wishlist-item .products-item {
         padding-top: 30px;
     }
+    .my-wishlist .buttons-set button {
+        margin-bottom: 5px;
+    }
 }
 @media (min-width: 650px) and (max-width: 991px) {
     .dropdown-menu-cart {
