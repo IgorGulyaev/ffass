@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+	<adminhtml_mapping_index>
+		<reference name="content">
+			<block type="csvimport/adminhtml_mapping" name="mapping.attr" />
+		</reference>
+	</adminhtml_mapping_index>
+	<adminhtml_mapping_new>
+		<reference name="content">
+			<block type="csvimport/adminhtml_mapping_new" name="createmapping.attr" />
+		</reference>
+	</adminhtml_mapping_new>
+	<adminhtml_upload_index>
+		<reference name="content">
+			<block type="csvimport/adminhtml_upload" name="upload.form" />
+		</reference>
+	</adminhtml_upload_index>
+	<adminhtml_log_index>
+		<reference name="content">
+			<block type="csvimport/adminhtml_log" name="log.files" />
+		</reference>
+	</adminhtml_log_index>
+	<adminhtml_log_details>
+		<reference name="content">
+			<block type="csvimport/adminhtml_logfile" name="log.file.details" />
+		</reference>
+	</adminhtml_log_details>
+</layout>

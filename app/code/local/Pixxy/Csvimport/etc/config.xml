@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Pixxy_Csvimport>
+			<version>1.0.4</version>
+		</Pixxy_Csvimport>
+	</modules>
+	<global>
+		<!-- HELPERS -->
+		<helpers>
+			<csvimport>
+				<class>Pixxy_Csvimport_Helper</class>
+			</csvimport>
+		</helpers>
+		<!-- MODELS -->
+		<models>
+			<pixxy_csvimport>
+				<class>Pixxy_Csvimport_Model</class>
+				<resourceModel>pixxy_csvimport_resource</resourceModel>
+			</pixxy_csvimport>
+			<pixxy_csvimport_resource>
+				<class>Pixxy_Csvimport_Model_Resource</class>
+				<entities>
+					<file>
+						<table>pixxy_csvimport_file</table>
+					</file>
+					<log>
+						<table>pixxy_csvimport_log</table>
+					</log>
+					<mappingprofile>
+						<table>pixxy_csvimport_mappingprofile</table>
+					</mappingprofile>
+					<mappingattribute>
+						<table>pixxy_csvimport_mappingattribute</table>
+					</mappingattribute>
+					<tmppositions>
+						<table>pixxy_csvimport_tmppositions</table>
+					</tmppositions>
+					<reindex>
+						<table>pixxy_csvimport_reindex</table>
+					</reindex>
+					<parent>
+						<table>pixxy_csvimport_parent</table>
+					</parent>
+					<curproducts>
+						<table>pixxy_csvimport_curproducts</table>
+					</curproducts>
+				</entities>
+			</pixxy_csvimport_resource>
+		</models>
+		<!-- BLOCKS -->
+		<blocks>
+			<csvimport>
+				<class>Pixxy_Csvimport_Block</class>
+			</csvimport>
+		</blocks>
+		<!-- RESOURCES -->
+		<resources>
+			<pixxy_csvimport_setup>
+				<setup>
+					<module>Pixxy_Csvimport</module>
+				</setup>
+			</pixxy_csvimport_setup>
+		</resources>
+		<!-- TEMPLATE -->
+		<template>
+	        <email>
+	            <pixxy_csvimport_email translate="label" module="csvimport">
+	                <label>Pixxy CSV Import</label>
+	                <file>pixxy_csvimport.html</file>
+	                <type>html</type>
+	            </pixxy_csvimport_email>
+	        </email>
+    	</template>
+	</global>
+	<!-- SYSTEM.XML DEAFULT VALUES -->
+	<default>
+		<csvimport>
+			<general>
+				<enabled>1</enabled>
+				<file_location>/media/csvimport/</file_location>
+			</general>
+			<cronsettings>
+				<count_import>1000</count_import>	
+				<interval_scanner>*/10 * * * *</interval_scanner>	
+				<auto_delete_scanner_files>0</auto_delete_scanner_files>
+				<auto_delete_imported_files>0</auto_delete_imported_files>
+			</cronsettings>
+			<stock>
+				<enabled>1</enabled>
+				<attribute_name>qty</attribute_name>
+			</stock>
+			<attroptions>
+				<addoptions>1</addoptions>
+				<addmoptions>1</addmoptions>
+				<process_empty_options>0</process_empty_options>
+			</attroptions>
+			<debug>
+				<log>1</log>
+				<send_email>1</send_email>
+			</debug>
+		</csvimport>
+	</default>	
+	<!-- ADMIN ROUTE -->
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<pixxy_csvimport before="Mage_Adminhtml">Pixxy_Csvimport_Adminhtml</pixxy_csvimport>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	<adminhtml>
+		<layout>
+			<updates>
+				<csvimport>
+					<file>pixxy_csvimport.xml</file>
+				</csvimport>
+			</updates>
+		</layout>
+	</adminhtml>
+	<!-- CRONS -->
+	<crontab>
+        <jobs>
+            <csv_scanner>
+            	<schedule>
+            		<config_path>csvimport/cronsettings/interval_scanner</config_path>
+            	</schedule>
+            	<run>
+            		<model>pixxy_csvimport/scanner::scan</model>
+            	</run>
+            </csv_scanner>
+            <csv_check_import>
+            	<schedule>
+            		<cron_expr>0,30 * * * *</cron_expr>
+            	</schedule>
+            	<run>
+            		<model>pixxy_csvimport/scanner::check</model>
+            	</run>
+            </csv_check_import>
+        </jobs>
+    </crontab>
+</config>

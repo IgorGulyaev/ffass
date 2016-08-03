@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<csvimport>
+										<title>Pixxy CSV Import Options</title>
+									</csvimport>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+	<!-- ADMIN MAIN MENU -->
+	<menu>
+		<pixxy_csvimport>
+			<title>Ecomitize CSV Import</title>
+			<sort_order>85</sort_order>
+			<children>
+			<!-- 
+				<import_progress>
+					<title>Debug</title>
+					<action>adminhtml/test/index</action>
+				</import_progress>
+			 -->
+				<log>
+					<title>File Log</title>
+					<action>adminhtml/log/index</action>
+				</log>
+				<attribute_mapping>
+					<title>Attribute Mapping</title>
+					<action>adminhtml/mapping/index</action>
+				</attribute_mapping>
+				<upload>
+					<title>Upload file</title>
+					<action>adminhtml/upload/index</action>
+				</upload>
+			</children>
+		</pixxy_csvimport>
+	</menu>
+</config>
