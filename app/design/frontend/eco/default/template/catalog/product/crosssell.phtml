@@ -41,7 +41,8 @@
     <div class="owl-carousel">
         <?php foreach ($crossselll_product_collection as $_item): ?>
             <div class="item">
-                <?php $productRenderer->setProduct($_item); ?>
+		<?php $crossselll_product = Mage::getModel('catalog/product')->load($_item->getId()) ?>
+                <?php $productRenderer->setProduct($crossselll_product); ?>
                 <?php echo $productRenderer->toHtml(); ?>
             </div>
         <?php endforeach ?>
