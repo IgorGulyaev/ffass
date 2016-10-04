@@ -162,6 +162,20 @@
         <reference name="content">
             <!--<block type="core/template" name="product.info.back.link" after="-" template="catalog/product/back_link.phtml"/>-->
         </reference>
+	<reference name="before_footer">
+            <block type="core/template" name="block.footer.container" template="cms/block.phtml">
+                <action method="setElementClass"><value>container</value></action>
+                <block type="core/template" name="block.page.crosssell" template="cms/block.phtml">
+                    <action method="setElementClass"><value>section-products crosssell-product</value></action>
+                    <block type="core/template" name="catalog.product.crosssell" as="crosssell" template="catalog/product/crosssell.phtml">
+                        <action method="setTitle"><value>Customers Who Bought This Also Bought</value></action>
+                        <block type="ecomitize_all/product_renderer" name="product.renderer" as="product_renderer">
+                            <action method="setImageType"><value>thumbnail</value></action>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </reference>
     </catalog_product_view>
 
     <catalog_category_view>
