@@ -28,7 +28,7 @@
 <?php $option = $this->getOption()?>
 
 <?php if ($this->getImagePosition() == AW_Layerednavigation_Model_Source_Filter_Image_Position::TEXT_ONLY_CODE):?>
-    <a title="<?php echo $option->getDescription();?>"><?php echo $option->getTitle();?></a>
+    <a title="<?php //echo $option->getDescription();?>"><?php echo $option->getTitle();?></a>
 <?php elseif($this->getImagePosition() == AW_Layerednavigation_Model_Source_Filter_Image_Position::IMAGE_ONLY_CODE):?>
     <img src="<?php echo $this->getOptionImageUrl($option, 20, 20);?>" alt="<?php echo $option->getTitle();?>" width="20" height="20" title="<?php echo $option->getDescription();?>"/>
 <?php elseif($this->getImagePosition() == AW_Layerednavigation_Model_Source_Filter_Image_Position::LEFT_CODE):?>
