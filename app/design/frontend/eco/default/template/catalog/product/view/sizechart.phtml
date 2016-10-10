@@ -4,8 +4,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
                 <?php if(trim($chart_link) != ''): ?>
-                    <iframe src="<?php echo $chart_link ?>"></iframe>
+                    <iframe height="100%" width="100%" src="<?php echo $chart_link ?>"></iframe>
                 <?php else: ?>
                     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('size_charts_block')->toHtml(); ?>
                 <?php endif; ?>
