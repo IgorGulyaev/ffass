@@ -72,48 +72,6 @@
                     </div>
                 </li>
             </ul>
-
-           <?php if (($_shippingRateGroups = $this->getEstimateRates())): ?>
-               <form id="co-shipping-method-form" action="<?php echo $this->getUpdateFormActionUrl() ?>">
-                   <div class="select">
-                       <select id='drop_estimate_method' name="estimate_method">
-                           <option value='-1'>Select</option>
-                           <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
-                               <optgroup label="<?php echo $this->getCarrierName($code) ?> ">
-                                   <?php foreach ($_rates as $_rate): ?>
-                                       <?php $str2 = $_rate->getMethodTitle();
-                                       $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax());
-                                       $_incl = $this->getShippingPrice($_rate->getPrice(), true);
-                                       $str2 .= ' ['. $_excl;
-                                       if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl) {
-                                           $str2 .= ' '. $this->__('Incl. Tax'); echo $_incl;
-                                       }
-                                       $str2 .= '] ';
-                                       ?>
-                                       <option <?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' selected="selected"' ?> value="<?php echo $this->htmlEscape($_rate->getCode()) ?>"><?php echo $str2;?></option>
-                                   <?php endforeach; ?>
-                               </optgroup>
-                           <?php endforeach; ?>
-                       </select>
-                   </div>
-               </form>
-               <script type="text/javascript">
-                   document.observe("dom:loaded", function() {
-                       $('drop_estimate_method').observe('change',function(){
-                           if($('drop_estimate_method').getValue() == -1){
-                               alert('Please Select Shipping Method');
-                           }else{
-                               $('loading').setStyle({
-                                   display: 'block'
-                               });
-                               $('co-shipping-method-form').submit();
-                           }
-                       });
-                   });
-               </script>
-
-           <?php endif; ?>
-
             <div class="buttons-set">
                 <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Calculate Shipping')) ?>" onclick="coShippingMethodForm.submit()" class="button"><span><span><?php echo $this->__('Calculate Shipping') ?></span></span></button>
             </div>
@@ -124,6 +82,47 @@
         //]]>
         </script>
 
+        <?php if (($_shippingRateGroups = $this->getEstimateRates())): ?>
+        <form id="co-shipping-method-form" action="<?php echo $this->getUpdateFormActionUrl() ?>">
+            <div class="select">
+                <select id='drop_estimate_method' name="estimate_method">
+                    <option value='-1'>Select</option>
+                    <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
+                        <optgroup label="<?php echo $this->getCarrierName($code) ?> ">
+                            <?php foreach ($_rates as $_rate): ?>
+                                <?php $str2 = $_rate->getMethodTitle();
+                                $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax());
+                                $_incl = $this->getShippingPrice($_rate->getPrice(), true);
+                                $str2 .= ' ['. $_excl;
+                                if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl) {
+                                    $str2 .= ' '. $this->__('Incl. Tax'); echo $_incl;
+                                }
+                                $str2 .= '] ';
+                                ?>
+                                <option <?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' selected="selected"' ?> value="<?php echo $this->htmlEscape($_rate->getCode()) ?>"><?php echo $str2;?></option>
+                            <?php endforeach; ?>
+                        </optgroup>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </form>
+            <script type="text/javascript">
+                jQuery('.cart-right').addClass('shipping-select');
+                document.observe("dom:loaded", function() {
+                    $('drop_estimate_method').observe('change',function(){
+                        if($('drop_estimate_method').getValue() == -1){
+                            alert('Please Select Shipping Method');
+                        }else{
+                            $('loading').setStyle({
+                                display: 'block'
+                            });
+                            $('co-shipping-method-form').submit();
+                        }
+                    });
+                });
+            </script>
+
+        <?php endif; ?>
         <script type="text/javascript">
         //<![CDATA[
             var coShippingMethodForm = new VarienForm('shipping-zip-form');
