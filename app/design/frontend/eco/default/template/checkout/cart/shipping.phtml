@@ -73,7 +73,7 @@
                 </li>
             </ul>
             <div class="buttons-set">
-                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Calculate Shipping')) ?>" onclick="coShippingMethodForm.submit()" class="button"><span><span><?php echo $this->__('Calculate Shipping') ?></span></span></button>
+                <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Calculate Shipping')) ?>" onclick="coShippingMethodForm.submit()" class="button calc-shipping"><span><span><?php echo $this->__('Calculate Shipping') ?></span></span></button>
             </div>
         </form>
         <script type="text/javascript">
@@ -83,7 +83,7 @@
         </script>
 
         <?php if (($_shippingRateGroups = $this->getEstimateRates())): ?>
-        <form id="co-shipping-method-form" action="<?php echo $this->getUpdateFormActionUrl() ?>">
+        <form id="co-shipping-method-form" class="estimate-method" action="<?php echo $this->getUpdateFormActionUrl() ?>">
             <div class="select">
                 <select id='drop_estimate_method' name="estimate_method">
                     <option value='-1'>Select</option>
