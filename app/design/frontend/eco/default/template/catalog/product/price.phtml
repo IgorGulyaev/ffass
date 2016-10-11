@@ -206,10 +206,14 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
                 </span>
             <?php else: ?>
                 <span class="regular-price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
-                    <?php if ($_finalPrice == $_price): ?>
-                        <?php echo $_coreHelper->formatPrice($_price, true) ?>
+                    <?php if($priceRange && min($priceRange) < max($priceRange)): ?>
+                        <?php echo $_coreHelper->formatPrice(min($priceRange), true) . ' - ' . $_coreHelper->formatPrice(max($priceRange), true) ?>
                     <?php else: ?>
-                        <?php echo $_coreHelper->formatPrice($_finalPrice, true) ?>
+                        <?php if ($_finalPrice == $_price): ?>
+                            <?php echo $_coreHelper->formatPrice($_price, true) ?>
+                        <?php else: ?>
+                            <?php echo $_coreHelper->formatPrice($_finalPrice, true) ?>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </span>
             <?php endif; ?>
@@ -397,21 +401,21 @@ $_specialPriceStoreLabel = $this->getProductAttribute('special_price')->getStore
 
     <?php endif; /* if ($_finalPrice == $_price): */ ?>
 
-    <?php if ($this->getDisplayMinimalPrice() && $priceRange && min($priceRange) < max($priceRange)): ?>
-
-        <?php $_minimalPriceDisplayValue = min($priceRange); ?>
-        <?php if ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, array(0, 1, 4))): ?>
-            <?php $_minimalPriceDisplayValue = min($priceRange) + $_weeeTaxAmount; ?>
-        <?php endif; ?>
-
-        <span class="label"><?php echo $this->__(' - ') ?></span>
-        <span class="regular-price">
-        <span class="price" id="product-minimal-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
-            <?php echo $_coreHelper->formatPrice($_minimalPriceDisplayValue, false) ?>
-        </span>
-        </span>
-
-    <?php endif; /* if ($this->getDisplayMinimalPrice() && $_minimalPrice && $_minimalPrice < $_finalPrice): */ ?>
+<!--    --><?php //if ($this->getDisplayMinimalPrice() && $priceRange && min($priceRange) < max($priceRange)): ?>
+<!---->
+<!--        --><?php //$_minimalPriceDisplayValue = min($priceRange); ?>
+<!--        --><?php //if ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, array(0, 1, 4))): ?>
+<!--            --><?php //$_minimalPriceDisplayValue = min($priceRange) + $_weeeTaxAmount; ?>
+<!--        --><?php //endif; ?>
+<!---->
+<!--        <span class="label">--><?php //echo $this->__(' - ') ?><!--</span>-->
+<!--        <span class="regular-price">-->
+<!--        <span class="price" id="product-minimal-price---><?php //echo $_id ?><!----><?php //echo $this->getIdSuffix() ?><!--">-->
+<!--            --><?php //echo $_coreHelper->formatPrice($_minimalPriceDisplayValue, false) ?>
+<!--        </span>-->
+<!--        </span>-->
+<!---->
+<!--    --><?php //endif; /* if ($this->getDisplayMinimalPrice() && $_minimalPrice && $_minimalPrice < $_finalPrice): */ ?>
     </div>
 
 <?php else: /* if (!$_product->isGrouped()): */ ?>
