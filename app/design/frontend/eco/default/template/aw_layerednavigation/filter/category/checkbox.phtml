@@ -42,7 +42,7 @@
                 <span>(<?php echo $count; ?>)</span>
                 <?php if($this->getNestingLevel($option) > 0):?>
                 <script type="text/javascript">
-                    jQuery('li.sub-level input:checked').parents('li').prevAll("li.parent-level:last").addClass('parent-checked');
+                    jQuery('li.sub-level input:checked').parents('li').prevAll("li.parent-level:first").addClass('parent-checked');
                 </script>
                 <?php endif; ?>
             <?php else: ?>
