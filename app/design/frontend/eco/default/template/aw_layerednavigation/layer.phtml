@@ -24,11 +24,12 @@
  * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
  */
 ?><?php /** @var AW_Layerednavigation_Block_Layer $this */ ?>
+<?php $currentCategory = Mage::getModel('catalog/layer')->getCurrentCategory(); ?>
 <?php if($this->canShowBlock()): ?>
     <div class="block block-layered-nav" id="aw-ln-filters">
-        <div class="block-title">
-            <strong><span><?php echo $this->__('Shop By') ?></span></strong>
-        </div>
+        <!-- <div class="block-title"> -->
+            <!-- <strong><span><?php //echo $this->__('Shop By') ?></span></strong> -->
+        <!-- </div> -->
         <div class="block-content toggle-content">
             <script type="text/javascript">
                 var awLnUpdaterInstance = new awLnUpdater();
@@ -38,14 +39,14 @@
                     (<a href="javascript:void(0)"><?php echo $this->__("Clear All");?></a>)
                 </span>
             <?php endif;?>
-            <p class="block-subtitle block-subtitle--filter"">
-                <?php echo $this->__('Shopping Options') ?>
-            </p>
+            <!-- <p class="block-subtitle block-subtitle--filter""> -->
+                <!-- <?php //echo $this->__('Shopping Options') ?> -->
+            <!-- </p> -->
             <dl id="aw-ln-filters-container">
                 <?php foreach ($this->getFilterList() as $_filter): ?>
                     <?php if($this->getItemCountByFilter($_filter)): ?>
                         <dt class="title-<?php echo $_filter->getTitle() ?>">
-                            <span><?php echo $_filter->getTitle() ?></span>
+                            <span><?php if($_filter->getTitle() == "Category" && $currentCategory->getName()){ echo $currentCategory->getName(); } else{echo $_filter->getTitle(); }  ?></span>
                             <?php if ($this->isFilterHasAppliedValues($_filter)):?>
                                 <span class="aw-ln-filter-clear">
                                     (<a href="javascript:void(0)"><?php echo $this->__("Clear");?></a>)
