@@ -21,9 +21,13 @@
         <div class="left">
             <a href="#" data-toggle="modal" data-target="#productSizeChart"><?php echo $this->__('Size Chart') ?></a>
         </div>
+        <?php
+        $storeId = Mage::app()->getStore()->getId();
+        if ($trueSize = Mage::getResourceModel('catalog/product')->getAttributeRawValue($this->getProduct()->getId(), 'fits_true', $storeId)): ?>
         <div class="right">
             <i class="icon-size"></i>
             <span><?php echo $this->__('Fits True To Size') ?></span>
         </div>
+        <?php endif; ?>
     </div>
 </div>
