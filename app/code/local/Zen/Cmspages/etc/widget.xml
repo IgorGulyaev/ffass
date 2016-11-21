@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<widgets>
+    <zen_cmspages type="zen_cmspages/cmspages" >
+        <name>CMS pages block widget</name>
+        <description type="desc">Cmspages widget</description>
+        <parameters>
+            <cmspages_pages_option translate="label">
+                <label>cmspages_pages</label>
+                <visible>1</visible>
+                <type>multiselect</type>
+                <source_model>zen_cmspages/options</source_model>
+            </cmspages_pages_option>
+        </parameters>
+    </zen_cmspages>
+</widgets>

@@ -1,0 +1,19 @@
+{
+  "name": "zen_roor",
+  "version": "0.0.0",
+  "authors": [
+    "Zen <design@zen.com>"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3",
+    "font-awesome": "~4"
+  }
+}

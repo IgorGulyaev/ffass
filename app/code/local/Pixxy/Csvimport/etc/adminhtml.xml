@@ -22,7 +22,7 @@
 	<!-- ADMIN MAIN MENU -->
 	<menu>
 		<pixxy_csvimport>
-			<title>Ecomitize CSV Import</title>
+			<title>Zen CSV Import</title>
 			<sort_order>85</sort_order>
 			<children>
 			<!-- 

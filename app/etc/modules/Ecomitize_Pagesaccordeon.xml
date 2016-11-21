@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <Ecomitize_Pagesaccordeon>
-            <active>true</active>
-            <codePool>local</codePool>
-        </Ecomitize_Pagesaccordeon>
-    </modules>
-</config>

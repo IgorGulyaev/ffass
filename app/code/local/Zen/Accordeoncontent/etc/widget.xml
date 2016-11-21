@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<widgets>
+    <zen_accordeoncontent type="zen_accordeoncontent/pages" >
+        <name>Custom pages menu widget</name>
+        <description type="desc">Custom pages menu accordeon/tab</description>
+        <parameters>
+            <accordeoncontent_option translate="label">
+                <label>Pages</label>
+                <visible>1</visible>
+                <type>zen_accordeoncontent/adminhtml_system_config_taboptions</type>
+            </accordeoncontent_option>
+            <accordeoncontent_type translate="label">
+                <label>Menu type</label>
+                <visible>1</visible>
+                <type>select</type>
+                <source_model>zen_accordeoncontent/type</source_model>
+            </accordeoncontent_type>
+            <accordeoncontent_where_show translate="label">
+                <label>Where to show menu</label>
+                <visible>1</visible>
+                <type>multiselect</type>
+                <source_model>zen_accordeoncontent/options</source_model>
+            </accordeoncontent_where_show>
+        </parameters>
+    </zen_accordeoncontent>
+</widgets>

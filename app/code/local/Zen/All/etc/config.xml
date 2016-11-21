@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Carousels
+ *
+ * @package    Zen_All
+ * @author     Zent Magento Team <>
+ * @copyright  Copyright (c) 2015 Zen http://www.zen.com
+ */
+-->
+<config>
+    <modules>
+        <Zen_All>
+            <version>1.0.1</version>
+        </Zen_All>
+    </modules>
+    <adminhtml>
+    </adminhtml>
+    <global>
+        <models>
+            <zen_all>
+                <class>Zen_All_Model</class>
+            </zen_all>
+            <ajaxcartpro>
+                <rewrite>
+                    <renderer>Zen_All_Model_Ajaxcartpro_Renderer</renderer>
+                </rewrite>
+            </ajaxcartpro>
+        </models>
+        <resources>
+            <zen_all_setup>
+                <setup>
+                    <module>Zen_All</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </zen_all_setup>
+        </resources>
+        <blocks>
+            <zen_all>
+                <class>Zen_All_Block</class>
+            </zen_all>
+            <core>
+                <rewrite>
+                    <html_select>Zen_All_Block_Html_Select</html_select>
+                </rewrite>
+            </core>
+        </blocks>
+        <helpers>
+            <zen_all>
+                <class>Zen_All_Helper</class>
+            </zen_all>
+        </helpers>
+        <resources>
+            <zen_all_setup>
+                <setup>
+                    <module>Zen_All</module>
+                </setup>
+            </zen_all_setup>
+        </resources>
+    </global>
+    <frontend>
+        <routers>
+            <deal>
+                <use>standard</use>
+                <args>
+                    <module>Zen_All</module>
+                    <frontName>recomendation</frontName>
+                </args>
+            </deal>
+        </routers>
+        <checkout>
+            <args>
+                <modules>
+                    <zen_all before="Mage_Checkout">Zen_All</zen_all>
+                </modules>
+            </args>
+        </checkout>
+    </frontend>
+</config>

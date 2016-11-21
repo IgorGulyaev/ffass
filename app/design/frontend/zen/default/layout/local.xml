@@ -1,0 +1,571 @@
+<layout version="0.1.0">
+    <default>
+        <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
+            <!--<block type="newsletter/subscribe" name="topmenu.newsletter" as="newsletter" template="newsletter/subscribe-header.phtml"/>-->
+        </block>
+        <reference name="root">
+            <block type="core/text_list" name="left_first" as="left_first" translate="label">
+                <label>Left Column First (shows above main column on smaller screens)</label>
+            </block>
+            <block type="core/text_list" name="item_section" as="item_section" translate="label">
+                <label>Section Content Area</label>
+            </block>
+            <block type="core/text_list" name="before_footer" as="before_footer" translate="label">
+                <label>Section Content Area</label>
+            </block>
+            <reference name="top.links">
+                <action method="addLink" translate="label title">
+                    <label>Contact Us</label>
+                    <url>contacts</url>
+                    <title>Contact Us</title>
+                    <prepare>true</prepare>
+                    <urlParams helper="core/url/getHomeUrl"/>
+                    <position>1</position>
+                    <liParams/>
+                    <aParams>class="top-link-contact-us"</aParams>
+                    <beforeText></beforeText>
+                    <afterText></afterText>
+                </action>
+                <action method="addLink" translate="label title">
+                    <label>Help Center</label>
+                    <url>help-center</url>
+                    <title>Help Center</title>
+                    <prepare>true</prepare>
+                    <urlParams helper="core/url/getHomeUrl"/>
+                    <position>2</position>
+                    <liParams/>
+                    <aParams>class="top-link-help-center"</aParams>
+                    <beforeText></beforeText>
+                    <afterText></afterText>
+                </action>
+                <action method="addLink" translate="label title">
+                    <label>Sign Up For Newsletter</label>
+                    <url>#</url>
+                    <title>Sign Up For Newsletter</title>
+                    <prepare>true</prepare>
+                    <urlParams helper="core/url/getHomeUrl"/>
+                    <position>3</position>
+                    <liParams/>
+                    <aParams>class="top-link-newsletter" data-toggle="modal" data-target="#newsletterHeader"</aParams>
+                    <beforeText></beforeText>
+                    <afterText></afterText>
+                </action>
+                <action method="removeLinkByUrl"><url helper="customer/getLogoutUrl"/></action>
+                <action method="removeLinkByUrl"><url helper="customer/getLoginUrl"/></action>
+                <action method="removeLinkByUrl"><url helper="opc/paypal/getLoginUrl"/></action>
+                <action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action>
+                <remove name="customer_login_link"/>
+                <remove name="checkout_cart_link"/>
+                <remove name="checkout_cart_link_custom"/>
+                <remove name="wishlist_link"/>
+            </reference>
+        </reference>
+
+        <reference name="header">
+            <!--<block type="core/template" name="login.modal" as="login_modal" template="persistent/customer/form/login-modal.phtml" />-->
+            <!--<block type="core/template" name="login.modal" as="login_modal" template="persistent/customer/form/login-modal.phtml" />-->
+            <block type="directory/currency" name="custom_currency_selector" template="currency/currency.phtml"/>
+            <block type="core/template" name="register_links" template="page/html/account-nav.phtml"/>
+
+            <block type="checkout/cart_minicart" name="minicart_head" template="checkout/cart/minicart.phtml" before="-">
+                <block type="checkout/cart_sidebar" name="cart.link" as="cart_link" template="checkout/cart/link.phtml" />
+                <block type="checkout/cart_sidebar" name="minicart_content" template="checkout/cart/minicart/items.phtml">
+                    <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/cart/minicart/default.phtml</template></action>
+                    <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/minicart/default.phtml</template></action>
+                    <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/minicart/default.phtml</template></action>
+                    <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/minicart/default.phtml</template></action>
+
+                    <block type="core/text_list" name="cart_sidebar.cart_promotion" as="cart_promotion" translate="label" module="checkout">
+                        <label>Mini-cart promotion block</label>
+                    </block>
+                    <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                        <label>Shopping Cart Sidebar Extra Actions</label>
+                    </block>
+                </block>
+            </block>
+
+            <block type="core/template" name="index.cms.block.toplabel.wrapper" template="cms/block.phtml">
+                <action method="setElementClass"><value>index-top-label hidden-xs</value></action>
+                <block type="core/template" name="index.cms.block.toplabel.inner" template="cms/block.phtml">
+                    <action method="setElementClass"><value>inner hidden-xs</value></action>
+                    <block type="cms/block" name="index.cms.block.toplabel">
+                        <action method="setBlockId"><block_id>index-top-label</block_id></action>
+                    </block>
+                </block>
+            </block>
+
+        </reference>
+
+        <reference name="footer">
+            <block type="core/text_list" name="before.footer" as="before_footer"/>
+            <block type="cms/block" name="nav.footer" as="footer-nav">
+                <action method="setBlockId"><value>footer-nav</value></action>
+            </block>
+            <block type="cms/block" name="footer.help.center" as="footer-help-center">
+                <action method="setBlockId"><value>footer-help-center</value></action>
+            </block>
+            <block type="cms/block" name="footer.social" as="footer-social">
+                <action method="setBlockId"><value>footer-social</value></action>
+            </block>
+            <block type="cms/block" name="footer.payment" as="footer-payment">
+                <action method="setBlockId"><value>footer-payment</value></action>
+            </block>
+            <block type="newsletter/subscribe" name="footer.newsletter" as="newsletter" before="footer_store_language" template="newsletter/subscribe.phtml"/>
+        </reference>
+
+        <reference name="left">
+            <remove name="left.newsletter"/>
+            <remove name="catalog.compare.sidebar"/>
+        </reference>
+
+        <reference name="right">
+            <remove name="right.reports.product.compared"/>
+            <remove name="amazon_payments.button.right.logo"/>
+        </reference>
+
+        <reference name="content">
+            <block type="core/template" name="loading" before="-" template="page/html/loading.phtml"/>
+        </reference>
+
+        <!--<remove name="left.poll"/>-->
+        <!--<remove name="right.poll"/>-->
+        <remove name="currency"/>
+        <remove name="right.permanent.callout"/>
+        <remove name="left.permanent.callout"/>
+        <remove name="right.permanent.callout"/>
+        <remove name="paypal.partner.right.logo"/>
+        <remove name="wishlist_sidebar"/>
+        <remove name="cart_sidebar"/>
+        <remove name="sale.reorder.sidebar"/>
+        <remove name="banner.left"/>
+        <remove name="banner.home"/>
+    </default>
+
+    <catalogsearch_advanced_result>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </catalogsearch_advanced_result>
+
+    <catalog_product_view translate="label">
+        <remove name="product.info.addtocart.paypal"/>
+        <remove name="bml.right.logo"/>
+        <remove name="product.info.addtocart.paypaluk.wrapper"/>
+        <remove name="product.clone_prices"/>
+        <remove name="html_calendar"/>
+        <reference name="head">
+            <action method="addJs"><script>zen/prototype.js</script></action>
+            <action method="addItem"><type>skin_js</type><name>js/bootstrap-rating-input.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/responsive-tabs.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jquery.zoom.js</name></action>
+        </reference>
+        <reference name="content">
+            <!--<block type="core/template" name="product.info.back.link" after="-" template="catalog/product/back_link.phtml"/>-->
+        </reference>
+	<reference name="before_footer">
+            <block type="core/template" name="block.footer.container" template="cms/block.phtml">
+                <action method="setElementClass"><value>container</value></action>
+                <block type="core/template" name="block.page.crosssell" template="cms/block.phtml">
+                    <action method="setElementClass"><value>section-products crosssell-product</value></action>
+                    <block type="core/template" name="catalog.product.crosssell" as="crosssell" template="catalog/product/crosssell.phtml">
+                        <action method="setTitle"><value>Customers Who Bought This Also Bought</value></action>
+                        <block type="zen_all/product_renderer" name="product.renderer" as="product_renderer">
+                            <action method="setImageType"><value>thumbnail</value></action>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </reference>
+    </catalog_product_view>
+
+    <catalog_category_view>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+    </catalog_category_view>
+
+    <PRODUCT_TYPE_bundle>
+        <remove name="bundle.tierprices"/>
+        <remove name="product.info.qtyincrements"/>
+    </PRODUCT_TYPE_bundle>
+
+    <checkout_cart_index>
+    </checkout_cart_index>
+
+    <catalog_category_layered>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="left">
+            <remove name="left.newsletter"/>
+            <remove name="currency"/>
+        </reference>
+    </catalog_category_layered>
+
+    <catalogsearch_advanced_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </catalogsearch_advanced_index>
+
+    <cms_index_index>
+        <reference name="content">
+            <remove name="page_content_heading"/>
+
+            <block type="core/template" name="home.cms.block.index.section" template="cms/block.phtml">
+                <action method="setElementClass"><value>index-banners</value></action>
+                <block type="banner/banner" name="home.page.banners">
+                    <action method="setBannerGroupCode"><value>home-page-banners</value></action>
+                    <action method="setMixedBanner"><value>true</value></action>
+                    <action method="setBannerCount"><value>1</value></action>
+                    <action method="setBannerResponsive"><value>true</value></action>
+                    <action method="setBannerCountResponsiveXs"><value>1</value></action>
+                    <action method="setBannerCountResponsiveSm"><value>1</value></action>
+                    <action method="setBannerCountResponsiveMd"><value>1</value></action>
+                    <action method="setBannerCountResponsiveLg"><value>1</value></action>
+                    <action method="setBannerCountResponsiveXlg"><value>1</value></action>
+                    <action method="setBannerImgMaxWidth"><value>1000</value></action>
+                    <action method="setBannerLoop"><value>true</value></action>
+                    <action method="setBannerNav"><value>true</value></action>
+                    <action method="setBannerDots"><value>true</value></action>
+                    <action method="setBannerHeight"><value>true</value></action>
+                    <action method="setBannerLinkText"><value>Shop now</value></action>
+                </block>
+            </block>
+
+            <block type="core/template" name="home.cms.block.index.section.special" template="cms/block.phtml">
+                <action method="setElementClass"><value>index-special-banners</value></action>
+                <block type="banner/banner" name="index.special.banners">
+                    <action method="setBannerGroupCode"><value>index-special-banners</value></action>
+                    <action method="setBannerCount"><value>3</value></action>
+                    <action method="setBannerResponsive"><value>true</value></action>
+                    <action method="setBannerCountResponsiveXs"><value>3</value></action>
+                    <action method="setBannerCountResponsiveSm"><value>3</value></action>
+                    <action method="setBannerCountResponsiveMd"><value>3</value></action>
+                    <action method="setBannerCountResponsiveLg"><value>3</value></action>
+                    <action method="setBannerCountResponsiveXlg"><value>3</value></action>
+                    <action method="setBannerImgMaxWidth"><value>1000</value></action>
+                    <action method="setBannerLoop"><value>false</value></action>
+                    <action method="setBannerNav"><value>false</value></action>
+                    <action method="setBannerDots"><value>false</value></action>
+                    <action method="setBannerHeight"><value>true</value></action>
+                </block>
+            </block>
+
+            <block type="core/template" name="index.cms.block.infoblock.wrapper" template="cms/block.phtml">
+                <action method="setElementClass"><value>index-info-block</value></action>
+                <block type="cms/block" name="index.cms.block.infoblock">
+                    <action method="setBlockId"><block_id>index-info-block</block_id></action>
+                </block>
+            </block>
+
+            <block type="core/template" name="home.cms.block.index.hp.cats" template="cms/block.phtml">
+                <action method="setElementClass"><value>index-cat-blocks</value></action>
+                <action method="setTitle"><value>Categories</value></action>
+                <block type="core/template" name="hp.cats.wrapper" template="cms/block.phtml">
+                    <action method="setElementClass"><value>row</value></action>
+                    <block type="catalog/navigation" name="hp.cat.new" template="catalog/category/widget/category_hp.phtml">
+                        <action method="setCatId"><value>5</value></action>
+                    </block>
+                    <block type="catalog/navigation" name="hp.cat.holiday" template="catalog/category/widget/category_hp.phtml">
+                        <action method="setCatId"><value>4</value></action>
+                    </block>
+                    <block type="catalog/navigation" name="hp.cat.brand" template="catalog/category/widget/category_hp.phtml">
+                        <action method="setCatId"><value>8</value></action>
+                    </block>
+                    <block type="catalog/navigation" name="hp.cat.clearance" template="catalog/category/widget/category_hp.phtml">
+                        <action method="setCatId"><value>9</value></action>
+                    </block>
+                </block>
+            </block>
+
+            <!--<block type="catalog/navigation" name="block.index.category" template="catalog/category/widget/category_list.phtml">
+                <action method="setCarousel"><value>true</value></action>
+                <action method="setStagePadding"><value>100</value></action>
+                <action method="setCarouselCount"><value>5</value></action>
+                <action method="setCarouselResponsive"><value>true</value></action>
+                <action method="setCarouselCountResponsiveXs"><value>3</value></action>
+                <action method="setCarouselCountResponsiveSm"><value>5</value></action>
+                <action method="setCarouselCountResponsiveMd"><value>5</value></action>
+                <action method="setCarouselCountResponsiveLg"><value>7</value></action>
+                <action method="setCarouselLoop"><value>true</value></action>
+                <action method="setCarouselNav"><value>false</value></action>
+                <action method="setCarouselDots"><value>false</value></action>
+                <action method="setCarouselHeight"><value>true</value></action>
+            </block>-->
+
+        </reference>
+        <reference name="before_footer">
+            <block type="core/template" name="block.index.tabs" template="cms/block.phtml">
+                <action method="setElementClass"><value>section-products index-tabs tabpanel-cookie</value></action>
+                <block type="core/template" name="block.index.tabs.wrapper" template="catalog/product/index_tabs.phtml">
+                    <block type="zen_all/filterproducts_sale" name="on.sale.products" as="on_sale_products" template="catalog/product/list/onsale.phtml">
+                        <block type="zen_all/product_renderer" name="product.renderer" as="product_renderer"/>
+                    </block>
+                    <block type="zen_all/filterproducts_featured" name="featured.products" as="featured_products" template="catalog/product/list/featured.phtml">
+                        <block type="zen_all/product_renderer" name="product.renderer" as="product_renderer">
+                            <action method="setImageType"><value>image</value></action>
+                        </block>
+                    </block>
+                    <block type="reports/product_viewed" name="home.reports.product.viewed" as="clearance" template="reports/home_product_viewed.phtml"/>
+                </block>
+            </block>
+        </reference>
+    </cms_index_index>
+
+    <contacts_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <action method="unsetChild"><name>contactForm</name></action>
+
+            <block type="core/template" name="block.contacts.row" template="cms/block.phtml">
+                <action method="setElementClass"><value>row contact-row</value></action>
+                <block type="core/template" name="block.contacts.col.right" template="cms/block.phtml">
+                    <action method="setElementClass"><value>col-sm-6 contact-col-left</value></action>
+                    <block type="cms/block" name="block.contacts">
+                        <action method="setBlockId"><value>contacts</value></action>
+                    </block>
+                </block>
+                <block type="core/template" name="block.contacts.col.left" template="cms/block.phtml">
+                    <action method="setElementClass"><value>col-sm-6 contact-col-right</value></action>
+                    <block type="core/template" name="contactForm" template="contacts/form.phtml"/>
+                </block>
+            </block>
+
+        </reference>
+    </contacts_index_index>
+
+    <catalogsearch_result_index>
+        <reference name="search_result_list">
+            <block type="zen_all/product_renderer" name="product.renderer" as="product_renderer"/>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result>
+        <reference name="search_result_list">
+            <block type="zen_all/product_renderer" name="product.renderer" as="product_renderer"/>
+        </reference>
+    </catalogsearch_advanced_result>
+
+    <customer_account>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>My Account</crumbName>
+                <crumbInfo><label>My Account</label><title>My Account</title><link>/customer/account/</link></crumbInfo>
+            </action>
+        </reference>
+
+        <reference name="left">
+            <action method="unsetChild"><name>cart_sidebar</name></action>
+            <remove name="catalog.compare.sidebar"/>
+
+            <action method="unsetChild"><name>customer_account_navigation</name></action>
+            <action method="setElementClass"><value>nav</value></action>
+            <block type="customer/account_navigation" name="customer_account_navigation" before="-" template="customer/account/navigation.phtml">
+                <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
+                <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action>
+                <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+                <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>My Orders</label></action>
+                <action method="addLink" translate="label" module="review"><name>reviews</name><path>review/customer</path><label>My Product Reviews</label></action>
+                <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>
+                <action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
+                <action method="addLink" translate="label" module="customer"><name>logout</name><path>customer/account/logout/</path><label>Logout</label></action>
+            </block>
+
+        </reference>
+    </customer_account>
+
+    <customer_account_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>My Account</crumbName>
+                <crumbInfo><label>My Account</label><title>My Account</title><link>/customer/account/</link></crumbInfo>
+            </action>
+        </reference>
+    </customer_account_index>
+
+    <customer_account_edit>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>My Account</crumbName>
+                <crumbInfo><label>My Account</label><title>My Account</title><link>/customer/account/</link></crumbInfo>
+            </action>
+        </reference>
+    </customer_account_edit>
+
+    <customer_account_create>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>Create an Account</crumbName>
+                <crumbInfo><label>Create an Account</label><title>Create an Account</title></crumbInfo>
+            </action>
+        </reference>
+    </customer_account_create>
+
+    <catalog_seo_sitemap_category>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>Categories Sitemap</crumbName>
+                <crumbInfo><label>Categories Sitemap</label><title>Categories Sitemap</title></crumbInfo>
+            </action>
+        </reference>
+    </catalog_seo_sitemap_category>
+
+    <catalog_seo_sitemap_product>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>Products Sitemap</crumbName>
+                <crumbInfo><label>Products Sitemap</label><title>Products Sitemap</title></crumbInfo>
+            </action>
+        </reference>
+    </catalog_seo_sitemap_product>
+
+
+    <customer_account_forgotpassword>
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>Login or Create an Account</crumbName>
+                <crumbInfo><label>Login or Create an Account</label><title>Login or Create an Account</title><link>/customer/account/login/</link></crumbInfo>
+            </action>
+            <action method="addCrumb">
+                <crumbName>Forgot Your Password?</crumbName>
+                <crumbInfo><label>Forgot Your Password?</label><title>Forgot Your Password?</title></crumbInfo>
+            </action>
+        </reference>
+    </customer_account_forgotpassword>
+
+    <wishlist_index_index>
+        <reference name="customer.wishlist">
+            <block type="zen_all/product_renderer" name="product.renderer" as="product_renderer">
+                <action method="setIsWishlist"><value>true</value></action>
+                <block type="wishlist/customer_wishlist_item_column_remove" name="customer.wishlist.item.remove" as="customer_wishlist_item_remove" template="wishlist/item/column/remove.phtml"/>
+            </block>
+            <reference name="customer.wishlist.items">
+                <action method="unsetChild"><name>customer.wishlist.item.image</name></action>
+                <!--<action method="unsetChild"><name>customer.wishlist.item.cart</name></action>-->
+                <!--<action method="unsetChild"><name>customer.wishlist.item.remove</name></action>-->
+            </reference>
+        </reference>
+    </wishlist_index_index>
+
+    <catalogsearch_result_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <customer_logged_in>
+        <reference name="top.links">
+            <action method="removeLinkByUrl"><url helper="customer/getLogoutUrl"/></action>
+        </reference>
+    </customer_logged_in>
+
+    <sendfriend_product_send>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </sendfriend_product_send>
+
+    <rss_index_index translate="label">
+        <label>RSS Feeds List</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </rss_index_index>
+
+    <print translate="label" module="page">
+        <label>All Pages (Print Version)</label>
+        <!-- Mage_Page -->
+        <block type="page/html" name="root" output="toHtml" template="page/print.phtml">
+
+            <block type="page/html_head" name="head" as="head">
+                <action method="addJs"><script>prototype/prototype.js</script></action>
+                <action method="addJs"><script>mage/translate.js</script></action>
+                <action method="addJs"><script>lib/ccard.js</script></action>
+                <action method="addJs"><script>prototype/validation.js</script></action>
+                <action method="addJs"><script>varien/js.js</script></action>
+
+                <action method="addCss"><stylesheet>css/bootstrap.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/style.css</stylesheet></action>
+                <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 8</if></action>
+                <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/print.css</stylesheet><params>media="print"</params></action>
+
+                <action method="addItem"><type>js</type><name>lib/ds-sleight.js</name><params/><if>lt IE 7</if></action>
+                <action method="addItem"><type>skin_js</type><name>js/ie6.js</name><params/><if>lt IE 7</if></action>
+            </block>
+
+            <block type="core/text_list" name="content" as="content" translate="label">
+                <label>Main Content Area</label>
+            </block>
+
+        </block>
+    </print>
+
+    <offers_index_index translate="label">
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/bootstrap-slider.min.js</name></action>
+            <action method="addCss"><stylesheet>css/slider.css</stylesheet></action>
+        </reference>
+        <reference name="left">
+            <block type="catalog/layer_view" name="catalog.leftnav" after="currency" template="catalog/layer/view.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="category.products" template="catalog/category/brand_view.phtml">
+                <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <block type="zen_all/product_renderer" name="product.renderer" as="product_renderer">
+                        <action method="setIsProductList"><value>true</value></action>
+                    </block>
+                    <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                </block>
+            </block>
+        </reference>
+    </offers_index_index>
+
+</layout>

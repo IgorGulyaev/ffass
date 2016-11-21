@@ -32,7 +32,7 @@
 						 ->setToName($senderName)
 						 ->setToEmail($email_address)
 						 ->setBody($processedTemplate)
-						 ->setSubject('Ecomitize CSV Import')
+						 ->setSubject('Zen CSV Import')
 						 ->setFromEmail($senderEmail)
 						 ->setFromName($senderName)
 						 ->setType('html');

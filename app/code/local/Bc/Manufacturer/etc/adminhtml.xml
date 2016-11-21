@@ -27,7 +27,7 @@
             <admin>
                 <children>
                     <biztech>
-                        <title>Ecomitize</title>
+                        <title>Zen</title>
                         <sort_order>10</sort_order>
                         <children>
                             <logo module="manufacturer" translate="title">

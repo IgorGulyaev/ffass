@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * @package    Zen_Sizechart
+ * @author     Zent Magento Team <>
+ * @copyright  Copyright (c) 2015 Zen http://www.zen.com
+ */
+-->
+<config>
+    <modules>
+        <Zen_Sizechart>
+            <version>0.1.1</version>
+        </Zen_Sizechart>
+    </modules>
+    <global>
+        <models>
+
+        </models>
+        <resources>
+            <zen_sizechart_setup>
+                <setup>
+                    <module>Zen_Sizechart</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </zen_sizechart_setup>
+        </resources>
+        <blocks>
+
+        </blocks>
+        <helpers>
+            <zen_sizechart>
+                <class>Zen_Sizechart_Helper</class>
+            </zen_sizechart>
+        </helpers>
+    </global>
+</config>

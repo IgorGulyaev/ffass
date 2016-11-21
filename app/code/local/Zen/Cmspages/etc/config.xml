@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Zen_Cmspages>
+            <version>0.0.1</version>
+        </Zen_Cmspages>
+    </modules>
+    <frontend>
+        <routers>
+            <Zen_Cmspages>
+                <use>standard</use>
+                <args>
+                    <module>Zen_Cmspages</module>
+                    <frontName>cmspages</frontName>
+                </args>
+            </Zen_Cmspages>
+        </routers>
+    </frontend>
+    <global>
+        <blocks>
+            <zen_cmspages>
+                <class>Zen_Cmspages_Block</class>
+            </zen_cmspages>
+        </blocks>
+        <helpers>
+            <zen_cmspages>
+                <class>Zen_Cmspages_Helper</class>
+            </zen_cmspages>
+        </helpers>
+        <models>
+            <zen_cmspages>
+                <class>Zen_Cmspages_Model</class>
+            </zen_cmspages>
+        </models>
+    </global>
+</config>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Zen_Navigation
+ *
+ * @package    Zen_All
+ * @author     Zent Magento Team <>
+ * @copyright  Copyright (c) 2015 Zen http://www.zen.com
+ */
+-->
+<config>
+    <modules>
+        <Zen_Navigation>
+            <version>1.0.0</version>
+        </Zen_Navigation>
+    </modules>
+    <global>
+        <blocks>
+            <zen_navigation>
+                <class>Zen_Navigation_Block</class>
+            </zen_navigation>
+        </blocks>
+        <blocks>
+            <page>
+                <rewrite>
+                    <html_topmenu>Zen_Navigation_Block_Page_Html_Topmenu</html_topmenu>
+                </rewrite>
+            </page>
+        </blocks>
+        <models>
+            <zen_navigation>
+                <class>Zen_Navigation_Model</class>
+            </zen_navigation>
+        </models>
+        <resources>
+            <zen_navigation_setup>
+                <setup>
+                    <module>Zen_Navigation</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </zen_navigation_setup>
+            <zen_navigation_write_setup>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </zen_navigation_write_setup>
+            <zen_navigation_read_setup>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </zen_navigation_read_setup>
+        </resources>
+    </global>
+</config>

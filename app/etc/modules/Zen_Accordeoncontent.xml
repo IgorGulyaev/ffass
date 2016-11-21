@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Zen_Accordeoncontent>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Zen_Accordeoncontent>
+    </modules>
+</config>

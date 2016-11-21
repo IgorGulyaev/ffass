@@ -1,0 +1,10 @@
+<?php
+
+$breadcrumbs = Mage::helper('zen_footernav')->getBreadCrumbs($this->getRequest()->getParams());
+echo $breadcrumbs['breadcrumbs']->toHtml();
+
+?>
+
+<h1><?php echo $breadcrumbs['option'] ?></h1>
+
+<?php echo $this->getChildHtml('product_list') ?>
